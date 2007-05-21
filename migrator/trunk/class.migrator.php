@@ -24,7 +24,7 @@ class Dump_File{
   }
 
   function download($inline = false){
-
+	$HTTP_USER_AGENT = '';
     $user_agent = (isset($_SERVER["HTTP_USER_AGENT"]) ) ? $_SERVER["HTTP_USER_AGENT"] : $HTTP_USER_AGENT;
     while (@ob_end_clean());
     $filesize = filesize($this->pathname."/".$this->filename);
@@ -182,6 +182,21 @@ class JFiler{
     }
 
   }
+}
+
+/**
+ * ETL Plugin
+ * An ETL Plugin examines the database and returns SQL queries
+ */
+class ETLPlugin {
+	
+	function ETLPlugin() {
+		
+	}
+	
+	function getName() { return "ETL Plugin Default"; }
+	function getAssociatedTable() { return Array(); }
+	functio
 }
 
 ?>

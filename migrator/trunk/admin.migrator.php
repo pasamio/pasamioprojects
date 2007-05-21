@@ -288,7 +288,6 @@ function makeDumps($option){
              echo "<script language=\"JavaScript\" type=\"text/javascript\">window.setTimeout('location.href=\"".$link."\";',500+$delaypersession);</script>\n";
              flush();
              break;
-             return;
           }else{
              if (($rec_no == 0) && ($dump_struct <> "")) makeTableDef($mosConfig_db, $tables[$key], &$SQLDump);
              if (!makeTableContent($option, $tables[$key], &$rec_no, &$SQLDump, $startTime)) break;
