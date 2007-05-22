@@ -1,6 +1,6 @@
 <?php
 /**
- * Banner Table ETL
+ * Banner Client Table ETL
  * 
  * This plugin handles ETL for the banner plugin 
  * 
@@ -18,25 +18,25 @@
  */
 
 /**
- * Banner ETL Plugin
+ * Banner Client ETL Plugin
  */
-class Banner_ETL extends ETLPlugin {
+class BannerClient_ETL extends ETLPlugin {
 	
 	/**
 	 * Returns the name of the plugin
 	 */
-	function getName() { return "Banner ETL Plugin"; }
+	function getName() { return "Banner Client ETL Plugin"; }
 	
 	/**
 	 * Returns the table that this plugin transforms
 	 */
-	function getAssociatedTable() { return 'banner'; }
+	function getAssociatedTable() { return 'bannerclient'; }
 	
 	/**
 	 * Returns the number of entries in the table
 	 */
 	function getEntries() { 
-		$this->db->setQuery('SELECT count(*) FROM #__banner');
+		$this->db->setQuery('SELECT count(*) FROM #__bannerclient');
 		return $this->db->loadResult();	
 	}
 	
@@ -44,14 +44,13 @@ class Banner_ETL extends ETLPlugin {
 	 * Does the transformation from start to amount rows.
 	 */
 	function doTransformation($start, $amount) {
-		$this->db->setQuery('SELECT * FROM #__banner LIMIT '. $start . ','. $amount);
+		$this->db->setQuery('SELECT * FROM #__bannerclient LIMIT '. $start . ','. $amount);
 		$retval = Array();
 		$results = $this->db->loadAssocList();
 		foreach($results as $result) {
-			$retval[] = 'INSERT INTO #__banner (bid,cid,type,name,imptotal,impmade,clicks,imageurl,clickurl,date,showBanner,checked_out,checked_out_time,editor,custombannercode) '. 
-						'VALUES('. $result['bid'] . ', '. $result['cid'] .', "'.$result['type'].'","'.$result['name'].'", '.$result['imptotal'].','.$result['impmade'].','.$result['clicks'].',"'.
-						$result['imageurl'].'","'.$result['clickurl'].'","'.$result['date'].'",'.$result['showBanner'].','.$result['checked_out'].',"'.$result['checked_out_time'].'","'.
-						$result['editor'].'","'.$result['custombannercode'].'");'; 
+			$retval[] = 'INSERT INTO #__bannerclient (cid,name,contact,email,extrainfo,checked_out, checked_out_time, editor) '.
+						'VALUES('. $result['cid'] . ', "'.$result['name'].'", "'.$result['contact'].'","'.$result['email'].'","'.$result['extrainfo'].'",'.
+						$result['checked_out'].',"'.$result['checked_out_time'].'","'.$result['editor'].'");'; 
 		}
 		return $retval;
 	}

@@ -17,9 +17,9 @@
  * @see JoomlaCode Project: http://joomlacode.org/gf/project/pasamioprojects
  */
 
-$plugin_target = "Banner_ETL";
+$plugin_target = "Content_ETL";
 
-migratorInclude('plugins/banner');
+migratorInclude('plugins/content');
 global $database;
 $target = new $plugin_target($database);
 
