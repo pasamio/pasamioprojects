@@ -189,14 +189,34 @@ class JFiler{
  * An ETL Plugin examines the database and returns SQL queries
  */
 class ETLPlugin {
+	/** @var $db Local Database Object */
+	var $db = null;
 	
-	function ETLPlugin() {
-		
+	function ETLPlugin(&$database) {
+		$this->db = $database;	
 	}
 	
+	/**
+	 * Returns the name of the plugin
+	 */
 	function getName() { return "ETL Plugin Default"; }
-	function getAssociatedTable() { return Array(); }
-	functio
+	
+	/**
+	 * Returns the table that this plugin transforms
+	 */
+	function getAssociatedTable() { return ''; }
+	
+	/**
+	 * Returns the number of entries in the table
+	 */
+	function getEntries() { return 0; }
+	
+	/**
+	 * Does the transformation from start to amount rows.
+	 */
+	function doTransformation($start, $amount) {
+		
+	}
 }
 
 ?>

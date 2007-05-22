@@ -31,6 +31,8 @@ class TOOLBAR_migrator{
     mosMenuBar::custom('makeDumps', '../components/com_migrator/images/backup.png', '../components/com_migrator/images/backup_f2.png', 'Dump It', false);
     mosMenuBar::spacer();
     mosMenuBar::custom('showAbout', '../components/com_migrator/images/info.png', '../components/com_migrator/images/info_f2.png', 'About', false);
+    mosMenuBar::spacer();
+    mosMenuBar::custom('testPlugin', '../components/com_migrator/images/info.png', '../components/com_migrator/images/info_f2.png', 'Test ETL Plugin', false);
     mosMenuBar::endTable();
   }
 }

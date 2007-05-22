@@ -1,0 +1,30 @@
+<?php
+/**
+ * ETL Plugin Tester
+ * 
+ * This file tests an ETL Plugin 
+ * 
+ * PHP4/5
+ *  
+ * Created on May 22, 2007
+ * 
+ * @package jmigrator
+ * @author Sam Moffatt <S.Moffatt@toowoomba.qld.gov.au>
+ * @author Toowoomba City Council Information Management Department
+ * @license GNU/GPL http://www.gnu.org/licenses/gpl.html
+ * @copyright 2007 Toowoomba City Council/Developer Name 
+ * @version SVN: $Id:$
+ * @see JoomlaCode Project: http://joomlacode.org/gf/project/pasamioprojects
+ */
+
+$plugin_target = "Banner_ETL";
+
+migratorInclude('plugins/banner');
+global $database;
+$target = new $plugin_target($database);
+
+echo 'Testing Name: '.  $target->getName() . '<br />';
+echo 'Testing Table Name: '. $target->getAssociatedTable() . '<br />';
+echo 'Testing Row Count: '. $target->getEntries() . '<br />';
+echo 'Testing Transformation: <br /><pre>' . print_r($target->doTransformation(0, $target->getEntries()),1) . '</pre><br />';
+?>
