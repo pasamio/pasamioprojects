@@ -1,8 +1,8 @@
 <?php
 /**
- * Core Log Items ETL Plugin
+ * Poll Data ETL Plugin
  * 
- * Core Log Items ETL Plugin for #__core_log_items
+ * Poll Data ETL Plugin for #__poll_data
  * 
  * MySQL 4.0
  * PHP4
@@ -17,13 +17,13 @@
  * @see JoomlaCode Project: http://joomlacode.org/gf/project/pasamioproject
  */
 
-class Core_Log_Items_ETL extends ETLPlugin {
+class Poll_Data_ETL extends ETLPlugin {
 	
 	var $ignorefieldlist = Array();
 	var $maplist = Array();
 	
-	function getName() { return "Core Log Items ETL Plugin"; }
-	function getAssociatedTable() { return 'core_log_items'; }
+	function getName() { return "Poll Data ETL Plugin"; }
+	function getAssociatedTable() { return 'poll_data'; }
 	
 	function mapvalues($key,$value) {
 		switch($key) {

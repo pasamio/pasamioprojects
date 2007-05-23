@@ -1,8 +1,8 @@
 <?php
 /**
- * Core Log Items ETL Plugin
+ * Statistics - Agent ETL Plugin
  * 
- * Core Log Items ETL Plugin for #__core_log_items
+ * Statistics - Agent ETL Plugin for #__stats_agent
  * 
  * MySQL 4.0
  * PHP4
@@ -17,13 +17,13 @@
  * @see JoomlaCode Project: http://joomlacode.org/gf/project/pasamioproject
  */
 
-class Core_Log_Items_ETL extends ETLPlugin {
+class Stats_Agent_ETL extends ETLPlugin {
 	
 	var $ignorefieldlist = Array();
 	var $maplist = Array();
 	
-	function getName() { return "Core Log Items ETL Plugin"; }
-	function getAssociatedTable() { return 'core_log_items'; }
+	function getName() { return "Statistics - Agent ETL Plugin"; }
+	function getAssociatedTable() { return 'stats_agent'; }
 	
 	function mapvalues($key,$value) {
 		switch($key) {

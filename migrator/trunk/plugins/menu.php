@@ -2,7 +2,7 @@
 /**
  * Menu ETL Plugin
  * 
- * Menu ETL Plugin for Tablename
+ * Menu ETL Plugin for #__menu
  * 
  * MySQL 4.0
  * PHP4
@@ -20,7 +20,7 @@
 class Menu_ETL extends ETLPlugin {
 	
 	var $ignorefieldlist = Array();
-	var $maplist = Array();
+	var $maplist = Array('params');
 	
 	function getName() { return "Menu ETL Plugin"; }
 	function getAssociatedTable() { return 'menu'; }

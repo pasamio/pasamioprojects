@@ -1,8 +1,8 @@
 <?php
 /**
- * Core Log Items ETL Plugin
+ * Templates Menu ETL Plugin
  * 
- * Core Log Items ETL Plugin for #__core_log_items
+ * Templates Menu ETL Plugin for #__templates_menu
  * 
  * MySQL 4.0
  * PHP4
@@ -17,13 +17,13 @@
  * @see JoomlaCode Project: http://joomlacode.org/gf/project/pasamioproject
  */
 
-class Core_Log_Items_ETL extends ETLPlugin {
+class Templates_Menu_ETL extends ETLPlugin {
 	
 	var $ignorefieldlist = Array();
 	var $maplist = Array();
 	
-	function getName() { return "Core Log Items ETL Plugin"; }
-	function getAssociatedTable() { return 'core_log_items'; }
+	function getName() { return "Templates Menu ETL Plugin"; }
+	function getAssociatedTable() { return 'templates_menu'; }
 	
 	function mapvalues($key,$value) {
 		switch($key) {

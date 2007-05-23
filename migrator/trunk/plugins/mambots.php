@@ -2,7 +2,7 @@
 /**
  * Mambot to Plugin ETL Plugin
  * 
- * Mambot to Plugin ETL Plugin for Tablename
+ * Mambot to Plugin ETL Plugin for #__mambots to #__plugins
  * 
  * MySQL 4.0
  * PHP4

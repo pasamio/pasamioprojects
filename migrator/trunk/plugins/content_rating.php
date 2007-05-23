@@ -2,7 +2,7 @@
 /**
  * Content Rating ETL Plugin
  * 
- * Content Rating ETL Plugin for Tablename
+ * Content Rating ETL Plugin for #__content_rating
  * 
  * MySQL 4.0
  * PHP4

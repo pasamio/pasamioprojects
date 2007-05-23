@@ -2,7 +2,7 @@
 /**
  * Groups ETL Plugin
  * 
- * Groups ETL Plugin for Tablename
+ * Groups ETL Plugin for #__groups
  * 
  * MySQL 4.0
  * PHP4

@@ -17,9 +17,9 @@
  * @see JoomlaCode Project: http://joomlacode.org/gf/project/pasamioprojects
  */
 
-$plugin_target = "categories_etl";
+$plugin_target = "modules_etl";
 
-migratorInclude('plugins/categories');
+migratorInclude('plugins/modules');
 global $database;
 $target = new $plugin_target($database);
 

@@ -32,6 +32,5 @@ class Categories_ETL extends ETLPlugin {
 	 */
 	function getAssociatedTable() { return 'categories'; }
 	
-
 }
 ?>

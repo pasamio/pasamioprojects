@@ -1,8 +1,8 @@
 <?php
 /**
- * Core Log Items ETL Plugin
+ * Core ACL Groups ARO Map ETL Plugin
  * 
- * Core Log Items ETL Plugin for #__core_log_items
+ * Core ACL Groups ARO Map ETL Plugin for #__core_acl_groups_aro_map
  * 
  * MySQL 4.0
  * PHP4
@@ -17,13 +17,13 @@
  * @see JoomlaCode Project: http://joomlacode.org/gf/project/pasamioproject
  */
 
-class Core_Log_Items_ETL extends ETLPlugin {
+class Core_ACL_Groups_ARO_Map_ETL extends ETLPlugin {
 	
 	var $ignorefieldlist = Array();
 	var $maplist = Array();
 	
-	function getName() { return "Core Log Items ETL Plugin"; }
-	function getAssociatedTable() { return 'core_log_items'; }
+	function getName() { return "Core ACL Groups ARO Map ETL Plugin"; }
+	function getAssociatedTable() { return 'core_acl_groups_aro_map'; }
 	
 	function mapvalues($key,$value) {
 		switch($key) {

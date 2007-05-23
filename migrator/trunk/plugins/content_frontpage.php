@@ -2,7 +2,7 @@
 /**
  * Frontpage Content ETL Plugin
  * 
- * Frontpage Content ETL Plugin for Tablename
+ * Frontpage Content ETL Plugin for #__content_frontpage
  * 
  * MySQL 4.0
  * PHP4

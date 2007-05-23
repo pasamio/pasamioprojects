@@ -1,8 +1,8 @@
 <?php
 /**
- * Core Log Items ETL Plugin
+ * Messages Configuration ETL Plugin
  * 
- * Core Log Items ETL Plugin for #__core_log_items
+ * Messages Configuration ETL Plugin for #__messages_cfg
  * 
  * MySQL 4.0
  * PHP4
@@ -17,13 +17,13 @@
  * @see JoomlaCode Project: http://joomlacode.org/gf/project/pasamioproject
  */
 
-class Core_Log_Items_ETL extends ETLPlugin {
+class Messages_CFG_ETL extends ETLPlugin {
 	
 	var $ignorefieldlist = Array();
 	var $maplist = Array();
 	
-	function getName() { return "Core Log Items ETL Plugin"; }
-	function getAssociatedTable() { return 'core_log_items'; }
+	function getName() { return "Messages Configuration ETL Plugin"; }
+	function getAssociatedTable() { return 'messages_cfg'; }
 	
 	function mapvalues($key,$value) {
 		switch($key) {

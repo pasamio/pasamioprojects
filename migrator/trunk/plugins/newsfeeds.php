@@ -1,8 +1,8 @@
 <?php
 /**
- * Core Log Items ETL Plugin
+ * Newsfeeds ETL Plugin
  * 
- * Core Log Items ETL Plugin for #__core_log_items
+ * Newsfeeds ETL Plugin for #__newsfeeds
  * 
  * MySQL 4.0
  * PHP4
@@ -17,13 +17,13 @@
  * @see JoomlaCode Project: http://joomlacode.org/gf/project/pasamioproject
  */
 
-class Core_Log_Items_ETL extends ETLPlugin {
+class Newsfeeds_ETL extends ETLPlugin {
 	
 	var $ignorefieldlist = Array();
 	var $maplist = Array();
 	
-	function getName() { return "Core Log Items ETL Plugin"; }
-	function getAssociatedTable() { return 'core_log_items'; }
+	function getName() { return "Newsfeeds ETL Plugin"; }
+	function getAssociatedTable() { return 'newsfeeds'; }
 	
 	function mapvalues($key,$value) {
 		switch($key) {

@@ -2,7 +2,7 @@
 /**
  * Core Log Searches ETL Plugin
  * 
- * Core Log Searches ETL Plugin for Tablename
+ * Core Log Searches ETL Plugin for #__core_log_searches
  * 
  * MySQL 4.0
  * PHP4
