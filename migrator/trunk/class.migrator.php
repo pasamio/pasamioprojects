@@ -192,6 +192,12 @@ class ETLPlugin {
 	/** @var $db Local Database Object */
 	var $db = null;
 	
+	/** @var $fieldlist List of fields to ignore */
+	var $ignorefieldlist = Array();
+	
+	/** @var $maplist List of fields that need mapping */
+	var $maplist = Array();
+	
 	function ETLPlugin(&$database) {
 		$this->db = $database;	
 	}
@@ -207,15 +213,46 @@ class ETLPlugin {
 	function getAssociatedTable() { return ''; }
 	
 	/**
+	 * Returns the table that this plugins transforms its data into
+	 */
+	function getTargetTable() { return $this->getAssociatedTable(); }
+	
+	/**
 	 * Returns the number of entries in the table
 	 */
-	function getEntries() { return 0; }
+	function getEntries() { 
+		$this->db->setQuery('SELECT count(*) FROM #__'. $this->getAssociatedTable());
+		return $this->db->loadResult();			
+	}
+	
+	/**
+	 * Maps old params to new params
+	 */
+	function mapValues($key,$input) {
+		return $input;
+	}
 	
 	/**
 	 * Does the transformation from start to amount rows.
 	 */
 	function doTransformation($start, $amount) {
-		
+		$this->db->setQuery('SELECT * FROM #__'.$this->getAssociatedTable() .' LIMIT '. $start . ','. $amount);
+		$retval = Array();
+		$results = $this->db->loadAssocList();
+		foreach($results as $result) {
+			$fieldvalues = '';
+			$fieldnames = '';
+			foreach($result as $key=>$value) {
+				if(in_array($key, $this->ignorefieldlist)) { continue; }
+				if(in_array($key, $this->maplist)) { $value = $this->mapValues($key, $value); }
+				if(strlen($fieldvalues)) { $fieldvalues .= ','; $fieldnames .= ','; } 
+				$fieldvalues .= '\''. mysql_real_escape_string($value) .'\'';
+				$fieldnames  .= '`'.$key.'`';
+			}
+			$retval[] = 'INSERT INTO #__'. $this->getTargetTable() .' ('. $fieldnames . ')'.
+			 			'VALUES( '. $fieldvalues .');';
+		}
+		return $retval;
 	}
 }
 

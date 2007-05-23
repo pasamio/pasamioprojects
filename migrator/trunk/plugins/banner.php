@@ -22,6 +22,9 @@
  */
 class Banner_ETL extends ETLPlugin {
 	
+	var $ignorefieldlist = Array();
+	var $maplist = Array('');
+	
 	/**
 	 * Returns the name of the plugin
 	 */
@@ -32,28 +35,5 @@ class Banner_ETL extends ETLPlugin {
 	 */
 	function getAssociatedTable() { return 'banner'; }
 	
-	/**
-	 * Returns the number of entries in the table
-	 */
-	function getEntries() { 
-		$this->db->setQuery('SELECT count(*) FROM #__banner');
-		return $this->db->loadResult();	
-	}
-	
-	/**
-	 * Does the transformation from start to amount rows.
-	 */
-	function doTransformation($start, $amount) {
-		$this->db->setQuery('SELECT * FROM #__banner LIMIT '. $start . ','. $amount);
-		$retval = Array();
-		$results = $this->db->loadAssocList();
-		foreach($results as $result) {
-			$retval[] = 'INSERT INTO #__banner (bid,cid,type,name,imptotal,impmade,clicks,imageurl,clickurl,date,showBanner,checked_out,checked_out_time,editor,custombannercode) '. 
-						'VALUES('. $result['bid'] . ', '. $result['cid'] .', "'.$result['type'].'","'.$result['name'].'", '.$result['imptotal'].','.$result['impmade'].','.$result['clicks'].',"'.
-						$result['imageurl'].'","'.$result['clickurl'].'","'.$result['date'].'",'.$result['showBanner'].','.$result['checked_out'].',"'.$result['checked_out_time'].'","'.
-						$result['editor'].'","'.$result['custombannercode'].'");'; 
-		}
-		return $retval;
-	}
 }
 ?>

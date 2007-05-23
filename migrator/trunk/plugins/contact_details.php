@@ -20,40 +20,13 @@
 /**
  * Contact ETL Plugin
  */
-class ContactDetails_ETL extends ETLPlugin {
+class Contact_Details_ETL extends ETLPlugin {
 	
-	/**
-	 * Returns the name of the plugin
-	 */
+	var $ignorefieldlist = Array();
+	
 	function getName() { return "Contact Details ETL Plugin"; }
 	
-	/**
-	 * Returns the table that this plugin transforms
-	 */
-	function getAssociatedTable() { return 'contactdetails'; }
+	function getAssociatedTable() { return 'contact_details'; }
 	
-	/**
-	 * Returns the number of entries in the table
-	 */
-	function getEntries() { 
-		$this->db->setQuery('SELECT count(*) FROM #__contact_details');
-		return $this->db->loadResult();	
-	}
-	
-	/**
-	 * Does the transformation from start to amount rows.
-	 */
-	function doTransformation($start, $amount) {
-		$this->db->setQuery('SELECT * FROM #__contact_details LIMIT '. $start . ','. $amount);
-		$retval = Array();
-		$results = $this->db->loadAssocList();
-		foreach($results as $result) {
-			$retval[] = 'INSERT INTO #__contact_details (id, name, con_position, address, suburb, state, country, postcode, telephone, fax, misc, image, imagepos, email_to, default_con, published, checked_out, checked_out_time, ordering, params, user_id, catid, access) '. 
-						'VALUES('.$result['id'].', "'.$result['name'].'", "'.$result['con_position'].'","'.$result['address'].'", "'.$result['suburb'].'", "'.$result['state'].'", "'.$result['country'].'", "'.$result['postcode'].'", "'.$result['telephone'].'", "'.
-						$result['fax'].'", "'.$result['misc'].'","'.$result['image'].'", "'.$result['imagepos'].'", "'.$result['email_to'].'", '.$result['default_con'].', '.$result['published'].', '.$result['checked_out'].', "'.$result['checked_out_time'].'", '.
-						$result['ordering'].', "'.$result['params'].'", '.$result['user_id'].', '.$result['catid'].', '.$result['access'].');'; 
-		}
-		return $retval;
-	}
 }
 ?>
