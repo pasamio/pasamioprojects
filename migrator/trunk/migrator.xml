@@ -48,14 +48,14 @@ PRIMARY KEY(`taskid`)
 			<filename>tests/taskbuilder_test.php</filename>
 			<filename>tests/tasklist_test.php</filename>
 			<filename>dumps/index.php</filename>
-			<filename>images/backup.png</filename>
-			<filename>images/backup_f2.png</filename>
-			<filename>images/delete.png</filename>
-			<filename>images/download.png</filename>
 			<filename>images/info.png</filename>
 			<filename>images/info_f2.png</filename>
 			<filename>images/logo.png</filename>
-			<filename>images/sql_info.png</filename>
+<!--			<filename>images/backup.png</filename>
+			<filename>images/backup_f2.png</filename>
+			<filename>images/delete.png</filename>
+			<filename>images/download.png</filename>
+			<filename>images/sql_info.png</filename>-->
 			<filename>language/english.php</filename>
 			<filename>plugins/banner.php</filename>
 			<filename>plugins/bannerclient.php</filename>
