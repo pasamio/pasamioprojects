@@ -20,7 +20,7 @@
 class Poll_Menu_ETL extends ETLPlugin {
 	
 	var $ignorefieldlist = Array();
-	var $maplist = Array();
+	var $valuesmap = Array();
 	
 	function getName() { return "Poll Menu ETL Plugin"; }
 	function getAssociatedTable() { return 'poll_menu'; }

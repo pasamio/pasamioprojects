@@ -20,7 +20,7 @@
 class Mambots_ETL extends ETLPlugin {
 	
 	var $ignorefieldlist = Array();
-	var $maplist = Array('params');
+	var $valuesmap = Array('params');
 	
 	function getName() { return "Mambot to Plugin ETL Plugin"; }
 	function getAssociatedTable() { return 'mambots'; }

@@ -20,7 +20,7 @@
 class Content_Rating_ETL extends ETLPlugin {
 	
 	var $ignorefieldlist = Array();
-	var $maplist = Array();
+	var $valuesmap = Array();
 	
 	function getName() { return "Content Rating ETL Plugin"; }
 	function getAssociatedTable() { return 'content_rating'; }

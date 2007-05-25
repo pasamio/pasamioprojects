@@ -1,0 +1,19 @@
+<h1>Joomla! 1.0 to 1.5 Migrator</h1><hr />
+<p>This component handles migration of your 1.0 data to a 1.5 site.</p>
+<p>Migrating your data is quite simple:</p>
+<ol>
+	<li>Install this component</li>
+	<li>Install any third party ETL plugins and table creation files</li>
+	<li>Run the migration creation system</li>
+	<li>Download the resultant SQL file</li>
+	<li>Upload the SQL file as a part of your 1.5 installation.</li>
+	<li>If you have no third party components to migrate your job here is done!</li>
+	<li>Once your 1.5 site is operating, install the Migration Assistant component</li>
+	<li>Run the Migration Assistant to download and install 1.5 versions of your components <b>OR</b></li>
+	<li>Manually install special migration install files on your 1.5 site (installer packages without SQL included)</li>
+</ol>
+<p>Note: We cannot ensure that third party extensions will work properly or as they did. Additionally 1.5 changes a lot
+of functionality within Joomla! and some items will be moved. This system does an almost complete database transfer to
+your new 1.5 site but some settings cannot be transferred and need to be manually re-entered.</p>
+<p><a href="index2.php?option=com_migrator&act=3rdparty">3rd Party Information</a> - <a href="index2.php?option=com_migrator&act=listplugins">List Plugins</a> - <a href="index2.php?option=com_migrator&act=startProcess">Create Migration SQL File</a></p>
+<!--<p>Debugging: <a href="index2.php?option=com_migrator&act=testetl">Test ETL</a> - <a href="index2.php?option=com_migrator&act=testenumerator">Test Enumerator</a> - <a href="index2.php?option=com_migrator&act=testtaskbuilder">Test Task Builder</a></p>-->

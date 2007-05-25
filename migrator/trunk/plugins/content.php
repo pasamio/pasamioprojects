@@ -23,7 +23,7 @@
 class Content_ETL extends ETLPlugin {
 	
 	var $ignorefieldlist = Array();
-	var $maplist = Array();
+	var $valuesmap = Array();
 	function getName() { return "Content ETL Plugin"; }	
 	function getAssociatedTable() { return 'content'; }
 	

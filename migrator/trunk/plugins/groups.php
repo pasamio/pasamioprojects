@@ -20,7 +20,7 @@
 class Groups_ETL extends ETLPlugin {
 	
 	var $ignorefieldlist = Array();
-	var $maplist = Array();
+	var $valuesmap = Array();
 	
 	function getName() { return "Groups ETL Plugin"; }
 	function getAssociatedTable() { return 'groups'; }

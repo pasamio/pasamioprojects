@@ -20,7 +20,7 @@
 class Core_ACL_Groups_ARO_Map_ETL extends ETLPlugin {
 	
 	var $ignorefieldlist = Array();
-	var $maplist = Array();
+	var $valuesmap = Array();
 	
 	function getName() { return "Core ACL Groups ARO Map ETL Plugin"; }
 	function getAssociatedTable() { return 'core_acl_groups_aro_map'; }

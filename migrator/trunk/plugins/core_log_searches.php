@@ -20,7 +20,7 @@
 class Core_Log_Searches_ETL extends ETLPlugin {
 	
 	var $ignorefieldlist = Array();
-	var $maplist = Array();
+	var $valuesmap = Array();
 	
 	function getName() { return "Core Log Searches ETL Plugin"; }
 	function getAssociatedTable() { return 'core_log_searches'; }

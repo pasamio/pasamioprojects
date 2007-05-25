@@ -20,7 +20,7 @@
 class Newsfeeds_ETL extends ETLPlugin {
 	
 	var $ignorefieldlist = Array();
-	var $maplist = Array();
+	var $valuesmap = Array();
 	
 	function getName() { return "Newsfeeds ETL Plugin"; }
 	function getAssociatedTable() { return 'newsfeeds'; }

@@ -1,0 +1,329 @@
+<?php
+
+/**
+ * Document Description
+ * 
+ * Document Long Description 
+ * 
+ * PHP4/5
+ *  
+ * Created on May 25, 2007
+ * 
+ * @package package_name
+ * @author Your Name <author@toowoomba.qld.gov.au>
+ * @author Toowoomba City Council Information Management Department
+ * @license GNU/GPL http://www.gnu.org/licenses/gpl.html
+ * @copyright 2007 Toowoomba City Council/Developer Name 
+ * @version SVN: $Id:$
+ * @see Project Documentation DM Number: #???????
+ * @see Gaza Documentation: http://gaza.toowoomba.qld.gov.au
+ * @see JoomlaCode Project: http://joomlacode.org/gf/project/
+ */
+
+// no direct access
+defined('_VALID_MOS') or die('Restricted access');
+
+/**
+ * Migrator Include Function
+ * Short hand to referencing back to this plugin
+ */
+function migratorInclude($file) {
+	global $mosConfig_absolute_path;
+	$file = migratorBasePath() . $file . '.php';
+	if (file_exists($file)) {
+		require_once ($file);
+	} else
+		die('CRITICAL ERROR: Failed attempt to include:' . $file);
+}
+
+/**
+ * Displays a file from the resource directory
+ * @param $file string Filename to display
+ */
+function displayResource($file) {
+	$file = migratorBasePath() . '/resources/' . $file . '.html';
+	if (file_exists($file)) {
+		echo '<div align="left" style="border: 1px solid black; padding: 5px; ">';
+		include ($file);
+		echo '</div>';
+	} else
+		die('CRITICAL ERROR: Failed attempt to include:' . $file);
+}
+
+/**
+ * Migrator base path
+ * @return string Path to this component
+ */
+function migratorBasePath() {
+	global $mosConfig_absolute_path;
+	return $mosConfig_absolute_path . '/administrator/components/com_migrator/';
+}
+
+/**
+ * ETL Plugin
+ * An ETL Plugin examines the database and returns SQL queries
+ */
+class ETLPlugin {
+	/** @var $db Local Database Object */
+	var $db = null;
+
+	/** @var $fieldlist List of fields to ignore */
+	var $ignorefieldlist = Array ();
+
+	/** @var $valuesmap List of field values that need mapping/transformation */
+	var $valuesmap = Array ();
+
+	/** @var $namesmap List of field names that need mapping/transformation */
+	var $namesmap = Array ();
+
+	function ETLPlugin(& $database) {
+		$this->db = $database;
+	}
+	
+	function toString() {
+		return$this->getName() . '; Transforms table ' . $this->getAssociatedTable() . ' to ' . $this->getTargetTable() . '<br />';
+	}
+
+	/**
+	 * Returns the name of the plugin
+	 */
+	function getName() {
+		return "ETL Plugin Default";
+	}
+
+	/**
+	 * Returns the table that this plugin transforms
+	 */
+	function getAssociatedTable() {
+		return '';
+	}
+
+	/**
+	 * Returns the table that this plugins transforms its data into
+	 */
+	function getTargetTable() {
+		return $this->getAssociatedTable();
+	}
+
+	/**
+	 * Returns the number of entries in the table
+	 */
+	function getEntries() {
+		$this->db->setQuery('SELECT count(*) FROM #__' . $this->getAssociatedTable());
+		return $this->db->loadResult();
+	}
+
+	/**
+	 * Maps old params to new params
+	 */
+	function mapValues($key, $input) {
+		return $input;
+	}
+
+	/**
+	 * Maps old names to new names (useful for renaming fields)
+	 */
+	function mapNames($key, $input) {
+		return $input;
+	}
+
+	/**
+	 * Does the transformation from start to amount rows.
+	 */
+	function doTransformation($start, $amount) {
+		$this->db->setQuery('SELECT * FROM #__' . $this->getAssociatedTable() . ' LIMIT ' . $start . ',' . $amount);
+		$retval = Array ();
+		$results = $this->db->loadAssocList();
+		foreach ($results as $result) {
+			$fieldvalues = '';
+			$fieldnames = '';
+			foreach ($result as $key => $value) {
+				if (in_array($key, $this->ignorefieldlist)) {
+					continue;
+				}
+				if (in_array($key, $this->valuesmap)) {
+					$value = $this->mapValues($key, $value);
+				}
+				if (in_array($key, $this->namesmap)) {
+					$key = $this->mapNames($key, $key);
+				}
+				if (strlen($fieldvalues)) {
+					$fieldvalues .= ',';
+					$fieldnames .= ',';
+				}
+				$fieldvalues .= '\'' . mysql_real_escape_string($value) . '\'';
+				$fieldnames .= '`' . $key . '`';
+			}
+			$retval[] = 'INSERT INTO #__' . $this->getTargetTable() . ' (' . $fieldnames . ')' .
+			'VALUES( ' . $fieldvalues . ');';
+		}
+		return $retval;
+	}
+}
+
+/**
+ * Plugin Enumerator
+ * Discovers and holds plugins
+ */
+class ETLEnumerator {
+
+	/** @var $pluginlist Plugin list */
+	var $pluginList = Array ();
+	/** @var $plugins Plugins */
+	var $plugins = Array();
+
+	function getPlugins($debug=false) {
+		global $mosConfig_absolute_path;
+		if (count($this->pluginList)) {
+			return $this->pluginList;
+		}
+
+		$dir = opendir(migratorBasePath() . 'plugins');
+		while ($file = readdir($dir)) {
+			if(stristr($file,'php')) {
+				if($debug) echo 'Found '.$file.'<br />'; 
+				$this->pluginList[] = str_replace('.php','',$file);
+			}
+		}
+		closedir($dir);
+		return $this->pluginList;
+	}
+	
+	function includePlugins($debug=false) {
+		if(!count($this->pluginList)) {
+			$this->getPlugins();
+		}
+		foreach($this->pluginList as $plugin) {
+			if($debug) echo 'Including '.$plugin.'<br />';
+			migratorInclude('plugins/'.$plugin);
+		}
+	}
+	
+	function &createPlugins($debug=false) {
+		if(!count($this->pluginList)) {
+			$this->getPlugins();
+		}
+		foreach($this->pluginList as $plugin) {
+			$this->createPlugin($plugin);
+		}
+		return $this->plugins;	
+	}
+	
+	function &createPlugin($pluginname, $debug=false) {
+		global $database;
+		if(!count($this->pluginList)) {
+			$this->getPlugins();
+		}
+		if(in_array($pluginname,$this->pluginList)) {
+			migratorInclude('plugins/'.$pluginname);
+			$classname = $pluginname . '_etl';
+			$this->plugins[$pluginname] = new $classname($database);
+			return $this->plugins[$pluginname];
+		}
+		return false;
+	}
+	
+	function &getPlugin($pluginname) {
+		if(isset($this->plugins[$pluginname])) {
+			return $this->plugins[$pluginname];
+		}
+		if(in_array($pluginname,$this->pluginList)) {
+			return $this->createPlugin($pluginname);
+		}
+		return false;
+	}
+}
+
+/**
+ * Base type of a task
+ */
+class Task extends mosDBTable{
+	var $taskid = 0;
+	var $tablename = '';
+	var $start = 0;
+	var $amount = 0;
+	
+	function Task(&$db, $table='', $s=0, $a=0, $t=null) {
+		$this->tablename = $table;
+		$this->start = $s;
+		$this->amount = $a;
+		$this->total = $t ? $t : $a;
+		$this->mosDBTable('#__migrator_tasks','taskid',$db);
+	}
+	
+	function toString() {
+		return 'Task #'.$this->taskid.'; Table: '. $this->tablename .'; Start: '. $this->start .'; Amount to convert: '. $this->amount .'; Total Rows: '.$this->total .';<br />';
+	}
+	
+	function execute() {
+		
+	}
+}
+
+/**
+ * Task Builder
+ * Creates a list of tasks
+ */
+class TaskBuilder {
+		/** @var $db Local DB reference */
+		var $db = null;
+		/** @var $plugins Local ETL Enumerator */
+		var $plugins = null;
+		/** @var $tasklist List of tasks */
+		var $tasklist = Array();
+		
+		function TaskBuilder(&$database, &$plugins) {
+			$this->db = &$database;
+			$this->plugins = &$plugins; 
+		}
+		
+		function buildTaskList($debug=false) {
+			foreach($this->plugins as $name=>$plugin) {				
+				if($debug) echo 'Examining '. $name .'<br />';
+				$this->tasklist[] = new Task($this->db, $this->plugins[$name]->getAssociatedTable(), 0, $this->plugins[$name]->getEntries());
+			}
+			return $this->tasklist;
+		}
+		
+		function saveTaskList($debug=false) {
+			if(!count($this->tasklist)) {
+				$this->buildTaskList();
+			}
+			foreach($this->tasklist as $task) {
+				$this->db->setQuery("DUMMY");
+				$this->db->setQuery("INSERT INTO #__migrator_tasks VALUES(0,'". $task->tablename ."','".$task->start."','".$task->amount."','".$task->amount."')");
+				$this->db->Query() or die($this->db->getErrorMsg());
+			}
+		}
+}
+
+/**
+ * Task Execution System
+ */
+class TaskList {
+	/** @var $db Local DB reference */
+	var $db = null;
+	
+	function TaskList(&$database) {
+		$this->db = &$database;
+	}
+	
+	function &getNextTask() {
+		$this->db->setQuery("SELECT taskid FROM #__migrator_tasks LIMIT 0,1 ORDER BY taskid");
+		$taskid = $this->db->loadResult();
+		$task = new Task($this->db);
+		$task->load($taskid);
+		return $task;
+	}
+	
+	function listAll() {
+		$this->db->setQuery("SELECT taskid FROM #__migrator_tasks ORDER BY taskid");
+		$results = $this->db->loadResultArray();
+		$task = new Task($this->db);
+		foreach($results as $result) {
+			$task->load($result);
+			echo $task->toString();
+		}
+	}
+}
+?>

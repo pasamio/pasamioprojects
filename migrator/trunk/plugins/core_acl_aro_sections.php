@@ -20,7 +20,7 @@
 class Core_ACL_ARO_Sections_ETL extends ETLPlugin {
 	
 	var $ignorefieldlist = Array();
-	var $maplist = Array();
+	var $valuesmap = Array();
 	
 	function getName() { return "Core ACL ARO Sections ETL Plugin"; }
 	function getAssociatedTable() { return 'core_acl_aro_sections'; }

@@ -20,7 +20,8 @@
 class Template_ETL extends ETLPlugin {
 	
 	var $ignorefieldlist = Array();
-	var $maplist = Array();
+	var $namesmap = Array();
+	var $valuesmap = Array();
 	
 	function getName() { return "Template ETL Plugin"; }
 	function getAssociatedTable() { return 'template'; }

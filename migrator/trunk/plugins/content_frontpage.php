@@ -20,7 +20,7 @@
 class Content_Frontpage_ETL extends ETLPlugin {
 	
 	var $ignorefieldlist = Array();
-	var $maplist = Array();
+	var $valuesmap = Array();
 	
 	function getName() { return "Frontpage Content ETL Plugin"; }
 	function getAssociatedTable() { return 'content_frontpage'; }

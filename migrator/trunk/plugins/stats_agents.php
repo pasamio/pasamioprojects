@@ -17,13 +17,13 @@
  * @see JoomlaCode Project: http://joomlacode.org/gf/project/pasamioproject
  */
 
-class Stats_Agent_ETL extends ETLPlugin {
+class Stats_Agents_ETL extends ETLPlugin {
 	
 	var $ignorefieldlist = Array();
-	var $maplist = Array();
+	var $valuesmap = Array();
 	
-	function getName() { return "Statistics - Agent ETL Plugin"; }
-	function getAssociatedTable() { return 'stats_agent'; }
+	function getName() { return "Statistics - Agents ETL Plugin"; }
+	function getAssociatedTable() { return 'stats_agents'; }
 	
 	function mapvalues($key,$value) {
 		switch($key) {

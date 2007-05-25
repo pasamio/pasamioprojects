@@ -20,7 +20,7 @@
 class Polls_ETL extends ETLPlugin {
 	
 	var $ignorefieldlist = Array();
-	var $maplist = Array();
+	var $valuesmap = Array();
 	
 	function getName() { return "Polls ETL Plugin"; }
 	function getAssociatedTable() { return 'polls'; }

@@ -20,7 +20,7 @@
 class Sections_ETL extends ETLPlugin {
 	
 	var $ignorefieldlist = Array();
-	var $maplist = Array();
+	var $valuesmap = Array();
 	
 	function getName() { return "Sections ETL Plugin"; }
 	function getAssociatedTable() { return 'sections'; }

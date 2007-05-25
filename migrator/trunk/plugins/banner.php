@@ -23,7 +23,7 @@
 class Banner_ETL extends ETLPlugin {
 	
 	var $ignorefieldlist = Array();
-	var $maplist = Array('');
+	var $valuesmap = Array('');
 	
 	/**
 	 * Returns the name of the plugin

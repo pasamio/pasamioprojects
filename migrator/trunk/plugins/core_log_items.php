@@ -20,7 +20,7 @@
 class Core_Log_Items_ETL extends ETLPlugin {
 	
 	var $ignorefieldlist = Array();
-	var $maplist = Array();
+	var $valuesmap = Array();
 	
 	function getName() { return "Core Log Items ETL Plugin"; }
 	function getAssociatedTable() { return 'core_log_items'; }

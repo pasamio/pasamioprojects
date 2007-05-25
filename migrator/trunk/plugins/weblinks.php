@@ -20,7 +20,7 @@
 class Weblinks_ETL extends ETLPlugin {
 	
 	var $ignorefieldlist = Array();
-	var $maplist = Array();
+	var $valuesmap = Array();
 	
 	function getName() { return "Weblinks ETL Plugin"; }
 	function getAssociatedTable() { return 'weblinks'; }

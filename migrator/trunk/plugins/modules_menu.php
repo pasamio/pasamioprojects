@@ -1,8 +1,8 @@
 <?php
 /**
- * Template ETL Plugin
+ * Modules Menu ETL Plugin
  * 
- * Template ETL Plugin for Tablename
+ * Modules Menu ETL Plugin for #__modules_menu
  * 
  * MySQL 4.0
  * PHP4
@@ -17,13 +17,13 @@
  * @see JoomlaCode Project: http://joomlacode.org/gf/project/pasamioproject
  */
 
-class Template_ETL extends ETLPlugin {
+class Modules_Menu_ETL extends ETLPlugin {
 	
 	var $ignorefieldlist = Array();
-	var $maplist = Array();
+	var $valuesmap = Array();
 	
-	function getName() { return "Template ETL Plugin"; }
-	function getAssociatedTable() { return 'template'; }
+	function getName() { return "Modules Menu ETL Plugin"; }
+	function getAssociatedTable() { return 'modules_menu'; }
 	
 	function mapvalues($key,$value) {
 		switch($key) {

@@ -1,0 +1,13 @@
+<h1>3rd Party Component Notes</h1><hr />
+<p>If you have a component written by a third party developer then by default this migrator will not transfer
+their data. However the developer of your component may have created some migration plugins that you can install
+that will include the component in the migration system.</p>
+<br />
+<h2>Installing extra plugins</h2>
+<p>You can install extra plugins by doing the following:</p>
+<ol>
+	<li>Upload all <b>tablename.php</b> files to the <b>administrator/component/com_migrator/plugins</b> folder on your Joomla! install</li>
+	<li>Upload all <b>componentname.sql</b> files to the <b>administrator/component/com_migrator/tables</b> folder on your Joomla! install</li>
+</ol>
+<p>At this point when you run the migration script the third party component's data should also be exported.</p>
+<p><a href="javascript:history.go(-1)"><< Back</a></p>

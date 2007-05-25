@@ -20,7 +20,7 @@
 class Messages_CFG_ETL extends ETLPlugin {
 	
 	var $ignorefieldlist = Array();
-	var $maplist = Array();
+	var $valuesmap = Array();
 	
 	function getName() { return "Messages Configuration ETL Plugin"; }
 	function getAssociatedTable() { return 'messages_cfg'; }

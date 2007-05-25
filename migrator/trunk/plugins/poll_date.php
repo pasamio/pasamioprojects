@@ -20,7 +20,7 @@
 class Poll_Date_ETL extends ETLPlugin {
 	
 	var $ignorefieldlist = Array();
-	var $maplist = Array();
+	var $valuesmap = Array();
 	
 	function getName() { return "Poll Date ETL Plugin"; }
 	function getAssociatedTable() { return 'poll_date'; }

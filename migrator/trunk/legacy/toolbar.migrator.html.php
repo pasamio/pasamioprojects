@@ -14,7 +14,7 @@
 // no direct access
 defined('_VALID_MOS') or die('Restricted access');
 
-class TOOLBAR_migrator{
+class TOOLBAR_migrator_legacy {
 
   function _ABOUT($option) {
     mosMenuBar::startTable();

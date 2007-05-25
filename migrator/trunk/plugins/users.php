@@ -20,7 +20,7 @@
 class Users_ETL extends ETLPlugin {
 	
 	var $ignorefieldlist = Array();
-	var $maplist = Array();
+	var $valuesmap = Array();
 	
 	function getName() { return "Users ETL Plugin"; }
 	function getAssociatedTable() { return 'users'; }
