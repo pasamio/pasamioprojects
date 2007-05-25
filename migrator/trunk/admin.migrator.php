@@ -1,6 +1,4 @@
 <?php
-
-
 /**
 * @version $Id: admin.migrator.php 2006-05-29 23:00
 * @package Migrator
