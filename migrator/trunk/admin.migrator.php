@@ -1,5 +1,6 @@
 <?php
 
+
 /**
 * @version $Id: admin.migrator.php 2006-05-29 23:00
 * @package Migrator
@@ -15,11 +16,16 @@
 // no direct access
 defined('_VALID_MOS') or die('Restricted access');
 
-$mig_version = "1.0.7";
 define("MAX_LINE_LENGTH", 65536);
+$max_php_run = ini_get("max_execution_time");
+if ($max_php_run <> 0) {
+	$run_time = intval($max_php_run / 2);
+} else {
+	$run_time = 15;
+}
+$startTime = mosProfiler :: getmicrotime();
 
-
-require_once($mainframe->getPath('class'));
+require_once ($mainframe->getPath('class'));
 
 migratorInclude('legacy/main.migrator');
 migratorInclude('legacy/class.migrator');
@@ -49,27 +55,42 @@ elseif ($act <> '') {
 	}
 }
 
-
-switch($func) {
-	case 'testetl':
+switch ($func) {
+	case 'testetl' :
 		testETL();
 		break;
-	case 'testenumerator':
+	case 'testenumerator' :
 		testEnumerator();
 		break;
-	case 'testtaskbuilder':
+	case 'testtaskbuilder' :
 		testTaskBuilder();
 		break;
-	case 'doTask':
+	case 'testtasklist' :
+		testTaskList();
+		break;
+	case 'start' :
+		start();
+		break;
+	case 'dotask' :
 		doTask();
 		break;
-	case 'listplugins':
+	case 'listplugins' :
 		listPlugins();
 		break;
-	case '3rdparty':
+	case '3rdparty' :
 		displayResource('3pd');
 		break;
-	default:
+	// Legacy Functions
+	case 'showdumps' :
+		showDumps($option);
+		break;
+	case 'deletefile' :
+		deleteFile($option);
+		break;		
+	case 'downloadIt' :
+		downloadIt($option);
+		break;		
+	default :
 		displayResource('default');
 		break;
 }
@@ -96,9 +117,6 @@ switch ($func) {
 		break;
 	case 'showInfo' :
 		showInfo($option);
-		break;
-	case 'downloadIt' :
-		downloadIt($option);
 		break;
 	case 'testPlugin':
 		doTestPlugin();
@@ -129,21 +147,89 @@ function testTaskBuilder() {
 	back();
 }
 
-function doTask() {
-	global $database;
+function testTaskList() {
+	migratorInclude('tests/tasklist_test');
+	back();
+}
+
+function start() {
+	global $mosConfig_absolute_path, $mosConfig_db, $mosConfig_dbprefix, $database;
+	$enumerator = new ETLEnumerator();
+	$plugins = $enumerator->createPlugins();
+	$tasks = new TaskBuilder($database, $plugins);
+	$tasks->saveTaskList();
 	$tasklist = new TaskList($database);
-	
+	$tasklist->listAll();
+	$SQLDump = new JFiler(1);
+	if (!isset ($_SESSION['sql_file_time'])) {
+		$_SESSION['sql_file_time'] = time();
+		$sql_time = $_SESSION['sql_file_time'];
+	} else {
+		$sql_time = $_SESSION['sql_file_time'];
+	}
+	if (!isset ($_SESSION['sql_file'])) {
+		$sql_file = $mosConfig_db . "_" . strftime("%Y%m%d_%H%M%S", $sql_time) . '.sql';
+		$_SESSION['sql_file'] = $sql_file;
+		$SQLDump->createFile($mosConfig_absolute_path . "/administrator/components/com_migrator/dumps/" . $sql_file);
+		//makeHeaderTableDef($mosConfig_db, $sql_time, & $SQLDump, count($tables), $header_def, $dump_struct);
+	} else {
+		$sql_file = mosGetParam($_SESSION, 'sql_file');
+		$SQLDump->openFile($mosConfig_absolute_path . "/administrator/components/com_migrator/dumps/" . $sql_file);
+	}
+	$link = "index2.php?option=com_migrator&act=dotask";
+	echo "<script language=\"JavaScript\" type=\"text/javascript\">window.setTimeout('location.href=\"" . $link . "\";',500);</script>\n";
+	flush();
+	die();
+}
+
+function doTask() {
+	global $mosConfig_absolute_path, $mosConfig_db, $mosConfig_dbprefix, $database;
+	$tasklist = new TaskList($database);
+	if ($tasklist->countTasks()) {
+		$SQLDump = new JFiler(1);
+		if (!isset ($_SESSION['sql_file_time'])) {
+			$_SESSION['sql_file_time'] = time();
+			$sql_time = $_SESSION['sql_file_time'];
+		} else {
+			$sql_time = $_SESSION['sql_file_time'];
+		}
+		if (!isset ($_SESSION['sql_file'])) {
+			$sql_file = $mosConfig_db . "_" . strftime("%Y%m%d_%H%M%S", $sql_time) . '.sql';
+			$_SESSION['sql_file'] = $sql_file;
+			$SQLDump->createFile($mosConfig_absolute_path . "/administrator/components/com_migrator/dumps/" . $sql_file);
+			//makeHeaderTableDef($mosConfig_db, $sql_time, & $SQLDump, count($tables), $header_def, $dump_struct);
+		} else {
+			$sql_file = mosGetParam($_SESSION, 'sql_file');
+			$SQLDump->openFile($mosConfig_absolute_path . "/administrator/components/com_migrator/dumps/" . $sql_file);
+		}
+
+		while ($task = $tasklist->getNextTask()) {
+			$task->execute($SQLDump);
+		}
+	}
+	unset ($_SESSION['dump_stage']);
+	unset ($_SESSION['sql_file_time']);
+	unset ($_SESSION['prev_time']);
+	unset ($_SESSION['sql_file_time']);
+	unset ($_SESSION['tables']);
+	unset ($_SESSION['table']);
+	unset ($_SESSION['sql_file']);
+	unset ($_SESSION['rec_no']);
+	unset ($_SESSION['start_time']);
+	echo '<p>Done, there are no tasks left. <a href="index2.php?option=com_migrator">Home</a></p>';
+	$link = "index2.php?option=com_migrator";
+	echo "<script language=\"JavaScript\" type=\"text/javascript\">window.setTimeout('location.href=\"" . $link . "\";',500);</script>\n";
+
 }
 
 function listPlugins() {
 	$enumerator = new ETLEnumerator();
 	echo '<table class="adminlist">';
 	echo '<tr><th>Name</th><th>Transformation</th></tr>';
-	foreach($enumerator->createPlugins() as $plugin) {
-		echo '<tr><td>'. implode('</td><td>', explode(';',$plugin->toString())) .'</td></tr>';
+	foreach ($enumerator->createPlugins() as $plugin) {
+		echo '<tr><td>' . implode('</td><td>', explode(';', $plugin->toString())) . '</td></tr>';
 	}
 	echo '</table>';
 	back();
 }
-
 ?>

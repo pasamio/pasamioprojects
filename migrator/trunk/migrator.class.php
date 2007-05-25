@@ -1,5 +1,6 @@
 <?php
 
+
 /**
  * Document Description
  * 
@@ -79,9 +80,9 @@ class ETLPlugin {
 	function ETLPlugin(& $database) {
 		$this->db = $database;
 	}
-	
+
 	function toString() {
-		return$this->getName() . '; Transforms table ' . $this->getAssociatedTable() . ' to ' . $this->getTargetTable() . '<br />';
+		return $this->getName() . '; Transforms table ' . $this->getAssociatedTable() . ' to ' . $this->getTargetTable() . '<br />';
 	}
 
 	/**
@@ -155,7 +156,7 @@ class ETLPlugin {
 				$fieldnames .= '`' . $key . '`';
 			}
 			$retval[] = 'INSERT INTO #__' . $this->getTargetTable() . ' (' . $fieldnames . ')' .
-			'VALUES( ' . $fieldvalues . ');';
+			'VALUES( ' . $fieldvalues . ');'."\n";
 		}
 		return $retval;
 	}
@@ -166,13 +167,12 @@ class ETLPlugin {
  * Discovers and holds plugins
  */
 class ETLEnumerator {
-
 	/** @var $pluginlist Plugin list */
 	var $pluginList = Array ();
 	/** @var $plugins Plugins */
-	var $plugins = Array();
+	var $plugins = Array ();
 
-	function getPlugins($debug=false) {
+	function getPlugins($debug = false) {
 		global $mosConfig_absolute_path;
 		if (count($this->pluginList)) {
 			return $this->pluginList;
@@ -180,54 +180,56 @@ class ETLEnumerator {
 
 		$dir = opendir(migratorBasePath() . 'plugins');
 		while ($file = readdir($dir)) {
-			if(stristr($file,'php')) {
-				if($debug) echo 'Found '.$file.'<br />'; 
-				$this->pluginList[] = str_replace('.php','',$file);
+			if (stristr($file, 'php')) {
+				if ($debug)
+					echo 'Found ' . $file . '<br />';
+				$this->pluginList[] = str_replace('.php', '', $file);
 			}
 		}
 		closedir($dir);
 		return $this->pluginList;
 	}
-	
-	function includePlugins($debug=false) {
-		if(!count($this->pluginList)) {
+
+	function includePlugins($debug = false) {
+		if (!count($this->pluginList)) {
 			$this->getPlugins();
 		}
-		foreach($this->pluginList as $plugin) {
-			if($debug) echo 'Including '.$plugin.'<br />';
-			migratorInclude('plugins/'.$plugin);
+		foreach ($this->pluginList as $plugin) {
+			if ($debug)
+				echo 'Including ' . $plugin . '<br />';
+			migratorInclude('plugins/' . $plugin);
 		}
 	}
-	
-	function &createPlugins($debug=false) {
-		if(!count($this->pluginList)) {
+
+	function & createPlugins($debug = false) {
+		if (!count($this->pluginList)) {
 			$this->getPlugins();
 		}
-		foreach($this->pluginList as $plugin) {
+		foreach ($this->pluginList as $plugin) {
 			$this->createPlugin($plugin);
 		}
-		return $this->plugins;	
+		return $this->plugins;
 	}
-	
-	function &createPlugin($pluginname, $debug=false) {
+
+	function & createPlugin($pluginname, $debug = false) {
 		global $database;
-		if(!count($this->pluginList)) {
+		if (!count($this->pluginList)) {
 			$this->getPlugins();
 		}
-		if(in_array($pluginname,$this->pluginList)) {
-			migratorInclude('plugins/'.$pluginname);
+		if (in_array($pluginname, $this->pluginList)) {
+			migratorInclude('plugins/' . $pluginname);
 			$classname = $pluginname . '_etl';
-			$this->plugins[$pluginname] = new $classname($database);
+			$this->plugins[$pluginname] = new $classname ($database);
 			return $this->plugins[$pluginname];
 		}
 		return false;
 	}
-	
-	function &getPlugin($pluginname) {
-		if(isset($this->plugins[$pluginname])) {
+
+	function & getPlugin($pluginname) {
+		if (isset ($this->plugins[$pluginname])) {
 			return $this->plugins[$pluginname];
 		}
-		if(in_array($pluginname,$this->pluginList)) {
+		if (in_array($pluginname, $this->pluginList)) {
 			return $this->createPlugin($pluginname);
 		}
 		return false;
@@ -237,26 +239,49 @@ class ETLEnumerator {
 /**
  * Base type of a task
  */
-class Task extends mosDBTable{
+class Task extends mosDBTable {
 	var $taskid = 0;
 	var $tablename = '';
 	var $start = 0;
 	var $amount = 0;
-	
-	function Task(&$db, $table='', $s=0, $a=0, $t=null) {
+
+	function Task(& $db, $table = '', $s = 0, $a = 0, $t = null) {
 		$this->tablename = $table;
 		$this->start = $s;
 		$this->amount = $a;
 		$this->total = $t ? $t : $a;
-		$this->mosDBTable('#__migrator_tasks','taskid',$db);
+		$this->mosDBTable('#__migrator_tasks', 'taskid', $db);
 	}
-	
+
 	function toString() {
-		return 'Task #'.$this->taskid.'; Table: '. $this->tablename .'; Start: '. $this->start .'; Amount to convert: '. $this->amount .'; Total Rows: '.$this->total .';<br />';
+		return 'Task #' . $this->taskid . '; Table: ' . $this->tablename . '; Start: ' . $this->start . '; Amount to convert: ' . $this->amount . '; Total Rows: ' . $this->total . ';<br />';
 	}
-	
-	function execute() {
-		
+
+	function execute($outputfile=null) {
+		global $run_time, $startTime;
+		echo '<p>Executing Task: '. $this->toString() .'</p>';
+		if(!$this->amount) { $this->delete(); return false; }
+		for ($i = 0; $i <= $this->amount; $i++) {
+			// Ensure that we get at least one through
+			$enumerator = new ETLEnumerator();
+			$plugin = $enumerator->createPlugin($this->tablename) or die('Failed to create plugin: '. $this->tablename);
+			$sql = $plugin->doTransformation($this->start+$i,1);
+			foreach($sql as $query) {
+				if($outputfile) $outputfile->writeFile($query); else echo $query.'<br />';
+			}
+			$checkTime = mosProfiler :: getmicrotime();
+			if (($checkTime - $startTime) >= $run_time) {
+				// Update this task
+				$this->start = $this->start + $i;
+				$this->store();
+				$link = "index2.php?option=com_migrator&act=dotask";
+				echo "<script language=\"JavaScript\" type=\"text/javascript\">window.setTimeout('location.href=\"" . $link . "\";',500);</script>\n";
+				flush();
+				die();
+			}
+			$this->delete() or die($database->_db->getErrorMsg());
+		}
+		return true;
 	}
 }
 
@@ -265,36 +290,36 @@ class Task extends mosDBTable{
  * Creates a list of tasks
  */
 class TaskBuilder {
-		/** @var $db Local DB reference */
-		var $db = null;
-		/** @var $plugins Local ETL Enumerator */
-		var $plugins = null;
-		/** @var $tasklist List of tasks */
-		var $tasklist = Array();
-		
-		function TaskBuilder(&$database, &$plugins) {
-			$this->db = &$database;
-			$this->plugins = &$plugins; 
+	/** @var $db Local DB reference */
+	var $db = null;
+	/** @var $plugins Local ETL Enumerator */
+	var $plugins = null;
+	/** @var $tasklist List of tasks */
+	var $tasklist = Array ();
+
+	function TaskBuilder(& $database, & $plugins) {
+		$this->db = & $database;
+		$this->plugins = & $plugins;
+	}
+
+	function buildTaskList($debug = false) {
+		foreach ($this->plugins as $name => $plugin) {
+			if ($debug)
+				echo 'Examining ' . $name . '<br />';
+			$this->tasklist[] = new Task($this->db, $this->plugins[$name]->getAssociatedTable(), 0, $this->plugins[$name]->getEntries());
 		}
-		
-		function buildTaskList($debug=false) {
-			foreach($this->plugins as $name=>$plugin) {				
-				if($debug) echo 'Examining '. $name .'<br />';
-				$this->tasklist[] = new Task($this->db, $this->plugins[$name]->getAssociatedTable(), 0, $this->plugins[$name]->getEntries());
-			}
-			return $this->tasklist;
+		return $this->tasklist;
+	}
+
+	function saveTaskList($debug = false) {
+		if (!count($this->tasklist)) {
+			$this->buildTaskList();
 		}
-		
-		function saveTaskList($debug=false) {
-			if(!count($this->tasklist)) {
-				$this->buildTaskList();
-			}
-			foreach($this->tasklist as $task) {
-				$this->db->setQuery("DUMMY");
-				$this->db->setQuery("INSERT INTO #__migrator_tasks VALUES(0,'". $task->tablename ."','".$task->start."','".$task->amount."','".$task->amount."')");
-				$this->db->Query() or die($this->db->getErrorMsg());
-			}
+		foreach ($this->tasklist as $task) {
+			$this->db->setQuery("INSERT INTO #__migrator_tasks VALUES(0,'" . $task->tablename . "','" . $task->start . "','" . $task->amount . "','" . $task->amount . "')");
+			$this->db->Query() or die($this->db->getErrorMsg());
 		}
+	}
 }
 
 /**
@@ -303,27 +328,32 @@ class TaskBuilder {
 class TaskList {
 	/** @var $db Local DB reference */
 	var $db = null;
-	
-	function TaskList(&$database) {
-		$this->db = &$database;
+
+	function TaskList(& $database) {
+		$this->db = & $database;
 	}
-	
-	function &getNextTask() {
-		$this->db->setQuery("SELECT taskid FROM #__migrator_tasks LIMIT 0,1 ORDER BY taskid");
-		$taskid = $this->db->loadResult();
+
+	function & getNextTask() {
+		$this->db->setQuery("SELECT taskid FROM #__migrator_tasks ORDER BY taskid LIMIT 0,1");
+		$taskid = $this->db->loadResult();// or die('Failed to find next task: ' . $this->db->getErrorMsg());
+		if(!$taskid) return false;
 		$task = new Task($this->db);
-		$task->load($taskid);
-		return $task;
+		if($task->load($taskid)) return $task; else return false; //die('Task '. $taskid .' failed to load:'. print_r($this,1));
 	}
-	
+
 	function listAll() {
 		$this->db->setQuery("SELECT taskid FROM #__migrator_tasks ORDER BY taskid");
 		$results = $this->db->loadResultArray();
 		$task = new Task($this->db);
-		foreach($results as $result) {
+		foreach ($results as $result) {
 			$task->load($result);
 			echo $task->toString();
 		}
+	}
+	
+	function countTasks() {
+		$this->db->setQuery("SELECT count(*) FROM #__migrator_tasks");
+		return $this->db->loadResult();
 	}
 }
 ?>
