@@ -1,3 +1,6 @@
+http://java.sun.com/j2se/1.5.0/docs/guide/intl/encoding.doc.html
+
+
 ASCII,American Standard Code for Information Interchange
 Cp1252,Windows Latin-1
 ISO-8859-1,Latin alphabet No. 1
