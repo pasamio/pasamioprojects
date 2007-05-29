@@ -1,0 +1,136 @@
+ASCII,American Standard Code for Information Interchange
+Cp1252,Windows Latin-1
+ISO-8859-1,Latin alphabet No. 1
+ISO-8859-15,Latin alphabet No. 9, 'Euro' enabled
+UTF-8,8 Bit UCS Transformation Format
+UTF-16,16 Bit UCS Transformation Format
+Cp1250,Windows Eastern Europe
+Cp1251,Windows Russian (Cyrillic)
+Cp1253,Windows Greek
+Cp1254,Windows Turkish
+Cp1255,Windows Hebrew
+Cp1256,Windows Arabic
+Cp1257,Windows Baltic
+Cp1258,Windows Vietnamese
+ISO-8859-2,Latin alphabet No. 2
+ISO-8859-3,Latin alphabet No. 3
+ISO-8859-4,Latin alphabet No. 4
+ISO-8859-5,Latin/Cyrillic Alphabet
+ISO-8859-6,Latin/Arabic Alphabet
+ISO-8859-7,Latin/Greek Alphabet
+ISO-8859-8,Latin/Hebrew Alphabet
+ISO-8859-9,Latin alphabet No. 5
+ISO-8859-13,Latin alphabet No. 7
+MS932,Windows Japanese
+EUC-JP,JISX 0201, 0208 and 0212, EUC encoding Japanese
+EUC-JP-LINUX,JISX 0201, 0208, EUC encoding Japanese
+SJIS,Shift-JIS, Japanese
+ISO-2022-JP,JIS X 0201, 0208, in ISO 2002 form, Japanese
+MS936,Windows Simplified Chinese
+GB18030,Simplified Chinese, PRC standard
+EUC_CN,GB2312, EUC encoding, Simplified Chinese
+GB2312,GB2312, EUC encoding, Simplified Chinese
+GBK,GBK, Simplified Chinese
+ISCII91,ISCII encoding of Indic scripts
+ISO-2022-CN-GB,GB2312 in ISO 2022 CN form, Simplified Chinese
+MS949,Windows Korean
+EUC_KR,KS C 5601, EUC encoding, Korean
+ISO-2022-KR,ISO 2022 KR, Korean
+MS950,Windows Traditional Chinese
+EUC-TW,CNS 11643 (Plane 1-3), EUC encoding, Traditional Chinese
+ISO-2022-CN-CNS,CNS 11643 in ISO 2022 CN form, Traditional Chinese
+Big5,Big5, Traditional Chinese
+Big5-HKSCS,Big5 with Hong Kong extensions, Traditional Chinese
+TIS-620,TIS 620, Thai
+KOI8-R,KOI8-R, Russian
+Big5_Solaris,Big5 with seven additional Hanzi ideograph character mappings
+Cp037,USA, Canada (Bilingual, French), Netherlands, Portugal, Brazil, Australia
+Cp273,IBM Austria, Germany
+Cp277,IBM Denmark, Norway
+Cp278,IBM Finland, Sweden
+Cp280,IBM Italy
+Cp284,IBM Catalan/Spain, Spanish Latin America
+Cp285,IBM United Kingdom, Ireland
+Cp297,IBM France
+Cp420,IBM Arabic
+Cp424,IBM Hebrew
+Cp437,MS-DOS United States, Australia, New Zealand, South Africa
+Cp500,EBCDIC 500V1
+Cp737,PC Greek
+Cp775,PC Baltik
+Cp838,IBM Thailand extended SBCS
+Cp850,MS-DOS Latin-1
+Cp852,MS-DOS Latin 2
+Cp855,IBM Cyrillic
+Cp856,IBM Hebrew
+Cp857,IBM Turkish
+Cp858,MS-DOS Latin-1 with Euro character
+Cp860,MS-DOS Portuguese
+Cp861,MS-DOS Icelandic
+Cp862,PC Hebrew
+Cp863,MS-DOS Canadian French
+Cp864,PC Arabic
+Cp865,MS-DOS Nordic
+Cp866,MS-DOS Russian
+Cp868,MS-DOS Pakistan
+Cp869,IBM Modern Greek
+Cp870,IBM Multilingual Latin-2
+Cp871,IBM Iceland
+Cp874,IBM Thai
+Cp875,IBM Greek
+Cp918,IBM Pakistan (Urdu)
+Cp921,IBM Lativa, Lithuania (AIX, DOS)
+Cp922,IBM Estonia (AIX, DOS)
+Cp930,Japanese Katakana-Kanji mixed with 4370 UDC, superset of 5026
+Cp933,Korean mixed with 1880 UDC, superset of 5029
+Cp935,Simplified Chinese mixed with 1880 UDC, superset of 5031
+Cp937,Traditional Chinsese Hostmixed with 6204 UDC, superset of 5033
+Cp939,Japanese Latin Kanji mixed with 4370 UDC, superset of 5035
+Cp942,IBM OS/2 Japanese, superset of Cp932
+Cp942C,Variant of Cp942: IBM OS/2 Japanese, superset of Cp932
+Cp943,IBM OS/2 Japanese, superset of Cp932 and Shift-JIS
+Cp943C,Variant of Cp943: IBM OS/2 Japanese, superset of Cp932 and Shift-JIS
+Cp948,IBM OS/2 Chinese (Taiwan) superset of Cp938
+Cp949,PC Korean
+Cp949C,Variant of Cp949: PC Korean
+Cp950,PC Chinese (Hong Kong, Taiwan)
+Cp964,AIX Chinese (Taiwan)
+Cp970,AIX Korean
+Cp1006,IBM AIX Parkistan (Urdu)
+Cp1025,IBM Multilingual Cyrillic: Bulgaria, Bosnia, Herzegovinia, Macedonia (FYR)
+Cp1026,IBM Latin-5, Turkey
+Cp1046,IBM Arabic Windows
+Cp1097,IBM Iran (Farsi)/Persian
+Cp1098,IBM Iran (Farsi)/Persian (PC)
+Cp1112,IBM Lativa, Lithuania
+Cp1122,IBM Estonia
+Cp1123,IBM Ukraine
+Cp1124,IBM AIX Ukraine
+Cp1140,USA, Canada (Bilingual, French), Netherlands, Portugal, Brazil, Australia (with Euro)
+Cp1141,IBM Austria, Germany (Euro enabled)
+Cp1142,IBM Denmark, Norway (Euro enabled)
+Cp1143,IBM Finland, Sweden (Euro enabled)
+Cp1144,IBM Italy (Euro enabled)
+Cp1145,IBM Catalan/Spain, Spanish Latin America (with Euro)
+Cp1146,IBM United Kingdom, Ireland (with Euro)
+Cp1147,IBM France (with Euro)
+Cp1148,IBM EBCDIC 500V1 (with Euro)
+Cp1149,IBM Iceland (with Euro)
+Cp1381,IBM OS/2, DOS People's Republic of Chine (PRC)
+Cp1383,IBM AIX People's Republic of Chine (PRC)
+Cp33722,IBM-eucJP - Japanese (superset of 5050)
+MS874,Windows Thai
+MacArabic,Macintosh Arabic
+MacCentralEurope,Macintosh Latin-2
+MacCroatian,Macintosh Croatian
+MacCyrillic,Macintosh Cyrillic
+MacDingbat,Macintosh Dingbat
+MacGreek,Macintosh Greek
+MacHebrew,Macintosh Hebrew
+MacIceland,Macintosh Iceland
+MacRoman,Macintosh Roman
+MacRomania,Macintosh Romania
+MacSymbol,Macintosh Symbol
+MacThai,Macintosh Thai
+MacTurkish,Macintosh Turkish
+MacUkraine,Macintosh Ukraine
