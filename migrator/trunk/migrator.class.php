@@ -155,7 +155,7 @@ class ETLPlugin {
 				$fieldvalues .= '\'' . mysql_real_escape_string($value) . '\'';
 				$fieldnames .= '`' . $key . '`';
 			}
-			$retval[] = 'INSERT INTO #__' . $this->getTargetTable() . ' (' . $fieldnames . ')' .
+			$retval[] = 'INSERT INTO jos_' . $this->getTargetTable() . ' (' . $fieldnames . ')' .
 			'VALUES( ' . $fieldvalues . ');'."\n";
 		}
 		return $retval;
