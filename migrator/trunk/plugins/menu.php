@@ -28,6 +28,7 @@ class Menu_ETL extends ETLPlugin {
 	function mapvalues($key,$value) {
 		switch($key) {
 			case 'params':
+				$value = str_replace('author=','show_author=',$value);
 				$value = str_replace('readmore=','show_readmore=',$value);
 				$value = str_replace('pdf=','show_pdf_icon=',$value);
 				$value = str_replace('print=','show_print_icon=',$value);
@@ -60,6 +61,7 @@ class Menu_ETL extends ETLPlugin {
 				$value = str_replace('cat_items=','show_cat_num_articles=',$value);
 				$value = str_replace('display=','show_pagination_limit=',$value);
 				$value = str_replace('navigation=','show_item_navigation=',$value);
+				$value .= "\nshow_title=1\n";
 				return $value;
 				break;
 			default:
