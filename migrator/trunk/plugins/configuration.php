@@ -24,7 +24,7 @@ class Configuration_ETL extends ETLPlugin {
 	var $valuesmap = Array();
 	
 	function getName() { return "Glboal Configuration ETL Plugin"; }
-	function getAssociatedTable() { return 'configuration.php'; }
+	function getAssociatedTable() { return 'configuration'; }
 	function getTargetTable() { return 'various tables'; }
 	
 	function getEntries() { return 1; }
