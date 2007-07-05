@@ -64,6 +64,9 @@ PRIMARY KEY(`taskid`)
 			<filename>plugins/content_frontpage.php</filename>
 			<filename>plugins/content_rating.php</filename>
 			<filename>plugins/content.php</filename>
+			<filename>plugins/configuration.php</filename>
+			<filename>plugins/core_acl_groups_aro_map.php</filename>
+			<filename>plugins/core_acl_aro.php</filename>
 			<filename>plugins/core_log_items.php</filename>
 			<filename>plugins/core_log_searches.php</filename>
 			<filename>plugins/menu.php</filename>
