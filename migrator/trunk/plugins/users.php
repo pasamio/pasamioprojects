@@ -20,13 +20,17 @@
 class Users_ETL extends ETLPlugin {
 	
 	var $ignorefieldlist = Array();
-	var $valuesmap = Array();
+	var $valuesmap = Array('params');
 	
 	function getName() { return "Users ETL Plugin"; }
 	function getAssociatedTable() { return 'users'; }
 	
 	function mapvalues($key,$value) {
 		switch($key) {
+			case 'params':
+				$value = preg_replace('/editor.*/','editor=',$value); // Strip editor
+				return $value;
+				break;
 			default:
 				return $value;
 				break;
