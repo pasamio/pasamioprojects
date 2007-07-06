@@ -1,24 +1,21 @@
 <?php
-
-
 /**
- * Document Description
+ * Main Migrator Support Class
  * 
- * Document Long Description 
+ * This file contains classes to support the migrator
+ * The majority of the task and ETL is handled here
  * 
  * PHP4/5
  *  
  * Created on May 25, 2007
  * 
- * @package package_name
- * @author Your Name <author@toowoomba.qld.gov.au>
+ * @package JMigrator
+ * @author Sam Moffatt <S.Moffatt@toowoomba.qld.gov.au>
  * @author Toowoomba City Council Information Management Department
  * @license GNU/GPL http://www.gnu.org/licenses/gpl.html
- * @copyright 2007 Toowoomba City Council/Developer Name 
+ * @copyright 2007 Toowoomba City Council/Sam Moffatt
  * @version SVN: $Id:$
- * @see Project Documentation DM Number: #???????
- * @see Gaza Documentation: http://gaza.toowoomba.qld.gov.au
- * @see JoomlaCode Project: http://joomlacode.org/gf/project/
+ * @see JoomlaCode Project: http://joomlacode.org/gf/project/pasamioprojects
  */
 
 // no direct access
@@ -116,6 +113,7 @@ class ETLPlugin {
 
 	/**
 	 * Maps old params to new params
+	 * Run before names
 	 */
 	function mapValues($key, $input) {
 		return $input;
@@ -124,8 +122,8 @@ class ETLPlugin {
 	/**
 	 * Maps old names to new names (useful for renaming fields)
 	 */
-	function mapNames($key, $input) {
-		return $input;
+	function mapNames($key) {
+		return $key;
 	}
 
 	/**
@@ -146,7 +144,7 @@ class ETLPlugin {
 					$value = $this->mapValues($key, $value);
 				}
 				if (in_array($key, $this->namesmap)) {
-					$key = $this->mapNames($key, $key);
+					$key = $this->mapNames($key);
 				}
 				if (strlen($fieldvalues)) {
 					$fieldvalues .= ',';
@@ -156,7 +154,7 @@ class ETLPlugin {
 				$fieldnames .= '`' . $key . '`';
 			}
 			$retval[] = 'INSERT INTO jos_' . $this->getTargetTable() . ' (' . $fieldnames . ')' .
-			'VALUES( ' . $fieldvalues . ');'."\n";
+			' VALUES ( ' . $fieldvalues . ');'."\n";
 		}
 		return $retval;
 	}
@@ -316,7 +314,7 @@ class TaskBuilder {
 			$this->buildTaskList();
 		}
 		foreach ($this->tasklist as $task) {
-			$this->db->setQuery("INSERT INTO #__migrator_tasks VALUES(0,'" . $task->tablename . "','" . $task->start . "','" . $task->amount . "','" . $task->amount . "')");
+			$this->db->setQuery("INSERT INTO #__migrator_tasks VALUES (0,'" . $task->tablename . "','" . $task->start . "','" . $task->amount . "','" . $task->amount . "')");
 			$this->db->Query() or die($this->db->getErrorMsg());
 		}
 	}

@@ -28,7 +28,7 @@ class Users_ETL extends ETLPlugin {
 	function mapvalues($key,$value) {
 		switch($key) {
 			case 'params':
-				$value = preg_replace('/editor.*/','editor=',$value); // Strip editor
+				$value = preg_replace('/editor=[A-Za-z0-9_.-]*/','editor=',$value); // Strip editor
 				return $value;
 				break;
 			default:

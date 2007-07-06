@@ -21,9 +21,17 @@ class Core_ACL_ARO_ETL extends ETLPlugin {
 	
 	var $ignorefieldlist = Array();
 	var $valuesmap = Array();
+	var $namesmap = Array('aro_id');
 	
 	function getName() { return "Core ACL ARO ETL Plugin"; }
 	function getAssociatedTable() { return 'core_acl_aro'; }
+	
+	function mapNames($name) {
+		switch($name) {
+			case 'aro_id': return 'id'; break; // Rename the aro_id field
+			default: return $name; break;
+		}
+	}
 	
 	function mapvalues($key,$value) {
 		switch($key) {

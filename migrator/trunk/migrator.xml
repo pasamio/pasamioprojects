@@ -73,6 +73,8 @@ PRIMARY KEY(`taskid`)
 			<filename>plugins/messages_cfg.php</filename>
 			<filename>plugins/messages.php</filename>
 			<filename>plugins/modules.php</filename>
+			<filename>plugins/modules_menu.php</filename>			
+			<filename>plugins/templates_menu.php</filename>
 			<filename>plugins/newsfeeds.php</filename>
 			<filename>plugins/poll_data.php</filename>
 			<filename>plugins/poll_date.php</filename>
