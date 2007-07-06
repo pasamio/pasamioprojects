@@ -106,7 +106,7 @@ class JFiler{
   function createFile($filename){
     $this->filename = $filename;
     if ($this->fp = fopen($this->filename, "wb")){
-       @chmod ($configfile, 0777);
+       @chmod ($this->filename, 0777);
        $this->isopen = true;
        return $this->filename;
     }else{
