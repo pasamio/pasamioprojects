@@ -88,43 +88,19 @@ switch ($func) {
 	case 'downloadIt' :
 		downloadIt($option);
 		break;		
+	case 'done':
+		done($option);
+		break;
+	case 'install':
+		install($option);
+		break;
+	case 'add':
+		addPlugin($option);
+		break;
 	default :
 		displayResource('default');
 		break;
 }
-
-/*
-switch ($func) {
-	case 'showDumps' :
-		showDumps($option);
-		break;
-	case 'makeDumps' :
-		makeDumps($option);
-		break;
-	case 'makeDownload' :
-		makeDownload($option);
-		break;
-	case 'showAbout' :
-		showAbout($option);
-		break;
-	case 'doFullBackup' :
-		startFullDump();
-		break;
-	case 'deleteFile' :
-		deleteFile($option);
-		break;
-	case 'showInfo' :
-		showInfo($option);
-		break;
-	case 'testPlugin':
-		doTestPlugin();
-		break;
-	
-	default :
-		showDumps($option);
-		break;
-}
-*/
 
 function back() {
 	echo '<p><a href="javascript:history.go(-1)">Back</a></p>';
@@ -174,10 +150,23 @@ function start() {
 		$sql_file = mosGetParam($_SESSION, 'sql_file');
 		$SQLDump->openFile($mosConfig_absolute_path . "/administrator/components/com_migrator/dumps/" . $sql_file);
 	}
+	$table_base_path = $mosConfig_absolute_path . "/administrator/components/com_migrator/tables/"; 
+	$tables = opendir($table_base_path);
+	while($entry = readdir($tables)) {
+		if( $entry != "." && $entry != ".." && is_file($table_base_path.$entry)) {
+			if(stristr($entry,'sql') !== FALSE) {
+				$file = fopen($table_base_path.$entry,'r');
+				$data = fread($file, filesize($table_base_path.$entry));
+				$SQLDump->writeFile($data."\n");
+				fclose($file);
+			}
+		}
+	}
+	closedir($tables);
 	$link = "index2.php?option=com_migrator&act=dotask";
 	echo "<script language=\"JavaScript\" type=\"text/javascript\">window.setTimeout('location.href=\"" . $link . "\";',500);</script>\n";
-	flush();
-	die();
+//	flush();
+//	die();
 }
 
 function doTask() {
@@ -214,8 +203,8 @@ function doTask() {
 	unset ($_SESSION['sql_file']);
 	unset ($_SESSION['rec_no']);
 	unset ($_SESSION['start_time']);
-	echo '<p>Done, there are no tasks left. <a href="index2.php?option=com_migrator">Home</a></p>';
-	$link = "index2.php?option=com_migrator";
+	echo '<p>Done, there are no tasks left. <a href="index2.php?option=com_migrator&act=done">Home</a></p>';
+	$link = "index2.php?option=com_migrator&act=done";
 	echo "<script language=\"JavaScript\" type=\"text/javascript\">window.setTimeout('location.href=\"" . $link . "\";',500);</script>\n";
 
 }
@@ -229,5 +218,40 @@ function listPlugins() {
 	}
 	echo '</table>';
 	back();
+}
+
+function done($option) {
+	displayResource('done');
+}
+
+function addPlugin() {
+	displayResource('add');
+}
+
+function install() {
+	global $mosConfig_absolute_path;
+	$installbasepath = $mosConfig_absolute_path .'/administrator/components/com_migrator/';	
+	if(isset($_FILES['uploadfile']) && is_array($_FILES['uploadfile'])) {
+		$file = $_FILES['uploadfile'];
+		switch(substr($file['name'], -3)) {
+			case 'sql':
+				// We have a table upload
+				if(move_uploaded_file($file['tmp_name'], $installbasepath.'/tables/'.$file['name']))
+					mosRedirect("index2.php?option=com_migrator&act=add","Install succeeded");
+				else mosRedirect("index2.php?option=com_migrator&act=add","Install failed.");
+				break;	
+			case 'php':
+				// We have a migrator plugin upload
+				if(move_uploaded_file($file['tmp_name'], $installbasepath.'/plugins/'.$file['name']))
+					mosRedirect("index2.php?option=com_migrator&act=add","Install succeeded");
+				else mosRedirect("index2.php?option=com_migrator&act=add","Install failed.");
+				break;
+			default:
+				// Error?
+				mosRedirect("index2.php?option=com_migrator&act=add","Install failed: Unknown file.");
+				return;
+				break;
+		}
+	} else mosRedirect("index2.php?option=com_migrator&act=add","Attempt to install failed.");
 }
 ?>

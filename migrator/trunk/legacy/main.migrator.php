@@ -261,7 +261,7 @@ defined('_VALID_MOS') or die('Restricted access');
           if (($checkTime - $startTime) >= $run_time){
              $_SESSION['table']  = $table;
              $_SESSION['rec_no'] = $rec_no;
-             $link = "index2.php?option=$option&task=makeDumps";
+             $link = "index2.php?option=$option&act=makeDumps";
              echo "<script language=\"JavaScript\" type=\"text/javascript\">window.setTimeout('location.href=\"".$link."\";',500+$delaypersession);</script>\n";
              flush();
              return false;

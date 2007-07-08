@@ -275,7 +275,7 @@ class Task extends mosDBTable {
 				$link = "index2.php?option=com_migrator&act=dotask";
 				echo "<script language=\"JavaScript\" type=\"text/javascript\">window.setTimeout('location.href=\"" . $link . "\";',500);</script>\n";
 				flush();
-				die();
+				//die();
 			}
 			$this->delete() or die($database->_db->getErrorMsg());
 		}

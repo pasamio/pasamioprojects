@@ -53,14 +53,14 @@ function showDumps($option) {
 	if (count($dumps) > 0) {
 		$z_temp = "";
 		foreach ($dumps as $dump) {
-			$download = "<a href=\"index2.php?option=$option&task=downloadIt&file=" . $dump . "\">\n" .
+			$download = "<a href=\"index2.php?option=$option&act=downloadIt&file=" . $dump . "\">\n" .
 			"<img src=\"components/$option/images/download.png\" width=\"16\" height=\"16\" border=\"0\" alt=\"" . _BBKP_DOWNLOAD . "\" title=\"" . _BBKP_DOWNLOAD . "\" /></a>";
-			$delete = "<a href=\"javascript:if (confirm('Are you sure you want to delete $dump?')){ window.location.href='index2.php?option=$option&task=deletefile&file=$dump';}\">\n" .
+			$delete = "<a href=\"javascript:if (confirm('Are you sure you want to delete $dump?')){ window.location.href='index2.php?option=$option&act=deletefile&file=$dump';}\">\n" .
 			"<img src=\"components/$option/images/delete.png\" width=\"16\" height=\"16\" border=\"0\" alt=\"" . _BBKP_DEL . "\" title=\"" . _BBKP_DEL . "\" /></a>";
 			if ((strpos($dump, "REPORT") > 0) && (strpos($dump, ".html") > 0)) {
 				$info = "&nbsp;";
 			} else {
-				$info = "<a href=\"index2.php?option=$option&task=showInfo&file=" . $dump . "\">\n" .
+				$info = "<a href=\"index2.php?option=$option&act=showInfo&file=" . $dump . "\">\n" .
 				"<img src=\"components/$option/images/sql_info.png\" width=\"16\" height=\"16\" border=\"0\" alt=\"" . _BBKP_SQL_INFO . "\" title=\"" . _BBKP_SQL_INFO . "\" /></a>";
 			}
 
@@ -229,7 +229,7 @@ function makeDumps($option) {
 			$_SESSION['table'] = $tables[$key -1];
 			$_SESSION['rec_no'] = 0;
 			HTML_migrator :: showProcess($tables[$key], $rec_no, $sql_file, $key, count($tables), $header_def);
-			$link = "index2.php?option=$option&task=makeDumps";
+			$link = "index2.php?option=$option&act=makeDumps";
 			echo "<script language=\"JavaScript\" type=\"text/javascript\">window.setTimeout('location.href=\"" . $link . "\";',500+$delaypersession);</script>\n";
 			flush();
 			break;
@@ -267,7 +267,7 @@ function makeDumps($option) {
 			unset ($_SESSION['sql_file']);
 			unset ($_SESSION['rec_no']);
 			unset ($_SESSION['start_time']);
-			$link = "index2.php?option=$option&task=makeDumps";
+			$link = "index2.php?option=$option&act=makeDumps";
 			echo "<script language=\"JavaScript\" type=\"text/javascript\">window.setTimeout('location.href=\"" . $link . "\";',500+$delaypersession);</script>\n";
 			flush();
 		}

@@ -1,0 +1,13 @@
+<h1>Installing Migrators</h1><hr>
+<p>There are a few ways to install migrator extensions. If you have only one or two extensions,
+then you can use the form below to upload them manually. However if you have access to the server
+you can upload the plugin files into their respective directories (plugins and tables). The system
+uses only files that exist on the file system so registration with a database system isn't required
+for a plugin to apply.</p>
+<div class="installer-form">
+<form method="post" enctype="multipart/form-data" action="index2.php">
+<input type="hidden" name="option" value="com_migrator">
+<input type="hidden" name="act" value="install">
+<p>Upload Plugin: <input type="file" name="uploadfile"></p>
+<p><input type="submit" value="Upload Plugin"></p>
+<p><a href="index2.php?option=com_migrator">Home</a></p>
