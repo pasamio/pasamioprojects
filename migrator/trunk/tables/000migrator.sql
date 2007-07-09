@@ -5,6 +5,8 @@
 # 
 # The migration packages will be run on the 1.5 install to basically auto install new migration
 # packages on the site. 
+
+DROP TABLE IF EXISTS #__migration_packages; 
 CREATE TABLE #__migration_packages (
 	`id` INT(11) NOT NULL AUTO_INCREMENT,
 	`name` VARCHAR(100) NOT NULL,

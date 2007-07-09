@@ -52,7 +52,7 @@ elseif ($act <> '') {
 		$func = '';
 	}
 }
-
+$func = strtolower($func);
 switch ($func) {
 	case 'testetl' :
 		testETL();
@@ -85,7 +85,7 @@ switch ($func) {
 	case 'deletefile' :
 		deleteFile($option);
 		break;		
-	case 'downloadIt' :
+	case 'downloadit' :
 		downloadIt($option);
 		break;		
 	case 'done':
@@ -152,16 +152,22 @@ function start() {
 	}
 	$table_base_path = $mosConfig_absolute_path . "/administrator/components/com_migrator/tables/"; 
 	$tables = opendir($table_base_path);
+	$tablelist = Array();
 	while($entry = readdir($tables)) {
 		if( $entry != "." && $entry != ".." && is_file($table_base_path.$entry)) {
 			if(stristr($entry,'sql') !== FALSE) {
-				$file = fopen($table_base_path.$entry,'r');
-				$data = fread($file, filesize($table_base_path.$entry));
-				$SQLDump->writeFile($data."\n");
-				fclose($file);
+				$tablelist[] = $entry;
 			}
 		}
 	}
+	sort($tablelist);
+	foreach($tablelist as $entry) {
+		$file = fopen($table_base_path.$entry,'r');
+		$data = fread($file, filesize($table_base_path.$entry));
+		$SQLDump->writeFile($data."\n");
+		fclose($file);
+	}
+	
 	closedir($tables);
 	$link = "index2.php?option=com_migrator&act=dotask";
 	echo "<script language=\"JavaScript\" type=\"text/javascript\">window.setTimeout('location.href=\"" . $link . "\";',500);</script>\n";
@@ -204,7 +210,7 @@ function doTask() {
 	unset ($_SESSION['rec_no']);
 	unset ($_SESSION['start_time']);
 	echo '<p>Done, there are no tasks left. <a href="index2.php?option=com_migrator&act=done">Home</a></p>';
-	$link = "index2.php?option=com_migrator&act=done";
+	$link = "index2.php?option=com_migrator&act=done&mosmsg=Your+SQL+Download+File+Name+is+". urlencode($sql_file);
 	echo "<script language=\"JavaScript\" type=\"text/javascript\">window.setTimeout('location.href=\"" . $link . "\";',500);</script>\n";
 
 }

@@ -23,18 +23,23 @@
 class Content_ETL extends ETLPlugin {
 	
 	var $ignorefieldlist = Array();
-	var $valuesmap = Array();
+	var $valuesmap = Array('introtext','fulltext');
 	function getName() { return "Content ETL Plugin"; }	
 	function getAssociatedTable() { return 'content'; }
 	
 	function mapvalues($key,$value) {
+
 		switch($key) {
+			case 'introtext':
+			case 'fulltext':
+				// Remove mosimage
+				$value = str_replace('{mosimage}','',$value);		
+				break;
 			default:
 				return $value;
 				break;
 		}
 	}
-	
 
 }
 ?>

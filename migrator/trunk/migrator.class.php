@@ -24,6 +24,7 @@ defined('_VALID_MOS') or die('Restricted access');
 /**
  * Migrator Include Function
  * Short hand to referencing back to this plugin
+ * @param string file name of file to include without .php
  */
 function migratorInclude($file) {
 	global $mosConfig_absolute_path;
@@ -73,6 +74,9 @@ class ETLPlugin {
 
 	/** @var $namesmap List of field names that need mapping/transformation */
 	var $namesmap = Array ();
+	
+	/** @var $_currentRecord The current record that is being translated */
+	var $_currentRecord = null;
 
 	function ETLPlugin(& $database) {
 		$this->db = $database;
@@ -136,6 +140,7 @@ class ETLPlugin {
 		foreach ($results as $result) {
 			$fieldvalues = '';
 			$fieldnames = '';
+			$this->_currentRecord =& $result; // Reference this so that sub funcs might get to it
 			foreach ($result as $key => $value) {
 				if (in_array($key, $this->ignorefieldlist)) {
 					continue;

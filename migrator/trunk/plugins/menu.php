@@ -61,7 +61,13 @@ class Menu_ETL extends ETLPlugin {
 				$value = str_replace('cat_items=','show_cat_num_articles=',$value);
 				$value = str_replace('display=','show_pagination_limit=',$value);
 				$value = str_replace('navigation=','show_item_navigation=',$value);
+				// Conditional
+				// If there isn't a http run the url swapper
+				if(stristr($value,'http') === FALSE) $value = str_replace('url=','url=http://', $value);
+				// Wack in show_title for good measure				
 				$value .= "\nshow_title=1\n";
+				// Show page title for places where show title isn't relevant
+				if(stristr($value,'show_page_title') === FALSE) $value .= "show_page_title=1\n";
 				return $value;
 				break;
 			default:
