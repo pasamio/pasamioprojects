@@ -147,7 +147,6 @@ function handleMosImage($key, $value, $etlplugin) {
 		$GLOBALS['botMosImageArray'] 	=& $images;
 		//$GLOBALS['botMosImageArray'] 	=& $combine;
 		
-		echo 'Updating through replacer<br />';
 		// perform the replacement
 		//$row->text = preg_replace_callback( $regex, 'botMosImage_replacer', $row->text );
 		$value = preg_replace_callback($regex, 'botMosImage_replacer', $value);
@@ -314,7 +313,6 @@ function processImages ( &$row, &$params, &$introCount ) {
 */
 function botMosImage_replacer( &$matches ) {
 	$i = $GLOBALS['botMosImageCount']++;
-	echo @$GLOBALS['botMosImageArray'][$i].'<br />';
 	return @$GLOBALS['botMosImageArray'][$i];
 }
 ?>
