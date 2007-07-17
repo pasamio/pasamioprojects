@@ -30,7 +30,7 @@ defined('_VALID_MOS') or die('Restricted access');
   $delaypersession = 5;
   $backup_path     = "/administrator/components/com_migrator/dumps/";
   DEFINE('_MIG_DATE_FORMAT_LC2', "%d.%m.%Y %H:%M");
-  $core_tables = array ($mosConfig_dbprefix."banner",
+  /*$core_tables = array ($mosConfig_dbprefix."banner",
                         $mosConfig_dbprefix."bannerclient",
                         $mosConfig_dbprefix."bannerfinish",
                         $mosConfig_dbprefix."categories",
@@ -68,7 +68,7 @@ defined('_VALID_MOS') or die('Restricted access');
                            $mosConfig_dbprefix."usertypes",
                            $mosConfig_dbprefix."weblinks"
                            );
-
+	*/
   function mosGetMySQLVersionShort(){
     if (!function_exists("mysql_get_server_info")){
        $mysql_s=PMBP_I_NO_RES;

@@ -33,6 +33,7 @@ PRIMARY KEY(`taskid`)
 			<filename>admin.migrator.php</filename>
 			<filename>admin.migrator.html.php</filename>
 			<filename>migrator.class.php</filename>		
+			<filename>legacy/index.htm</filename>
 			<filename>legacy/admin.migrator.html.php</filename>
 			<filename>legacy/legacy.php</filename>
 			<filename>legacy/class.migrator.php</filename>
@@ -40,16 +41,20 @@ PRIMARY KEY(`taskid`)
 			<filename>legacy/migrator.info.html</filename>
 			<filename>legacy/toolbar.migrator.php</filename>
 			<filename>legacy/toolbar.migrator.html.php</filename>
-			<!--<filename>tables/000migrator.sql</filename>-->
+<!--			<filename>tables/000migrator.sql</filename>-->
+			<filename>tables/index.htm</filename>
+			<filename>resources/index.htm</filename>			
 			<filename>resources/3pd.html</filename>
 			<filename>resources/default.html</filename>
 			<filename>resources/add.html</filename>
 			<filename>resources/done.html</filename>
+			<filename>tests/index.htm</filename>
 			<filename>tests/enumerator_test.php</filename>
 			<filename>tests/plugin_test.php</filename>
 			<filename>tests/taskbuilder_test.php</filename>
 			<filename>tests/tasklist_test.php</filename>
-			<filename>dumps/index.php</filename>
+			<filename>dumps/index.htm</filename>
+			<filename>images/index.htm</filename>			
 			<filename>images/info.png</filename>
 			<filename>images/info_f2.png</filename>
 			<filename>images/logo.png</filename>
@@ -59,6 +64,7 @@ PRIMARY KEY(`taskid`)
 			<filename>images/download.png</filename>
 			<filename>images/sql_info.png</filename>-->
 			<filename>language/english.php</filename>
+			<filename>plugins/index.htm</filename>			
 			<filename>plugins/banner.php</filename>
 			<filename>plugins/bannerclient.php</filename>
 			<filename>plugins/categories.php</filename>

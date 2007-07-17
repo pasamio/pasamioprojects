@@ -151,24 +151,25 @@ function start() {
 		$SQLDump->openFile($mosConfig_absolute_path . "/administrator/components/com_migrator/dumps/" . $sql_file);
 	}
 	$table_base_path = $mosConfig_absolute_path . "/administrator/components/com_migrator/tables/"; 
-	$tables = opendir($table_base_path);
-	$tablelist = Array();
-	while($entry = readdir($tables)) {
-		if( $entry != "." && $entry != ".." && is_file($table_base_path.$entry)) {
-			if(stristr($entry,'sql') !== FALSE) {
-				$tablelist[] = $entry;
+	if($tables = opendir($table_base_path)) {
+		$tablelist = Array();
+		while($entry = readdir($tables)) {
+			if( $entry != "." && $entry != ".." && is_file($table_base_path.$entry)) {
+				if(stristr($entry,'sql') !== FALSE) {
+					$tablelist[] = $entry;
+				}
 			}
 		}
+		sort($tablelist);
+		foreach($tablelist as $entry) {
+			$file = fopen($table_base_path.$entry,'r');
+			$data = fread($file, filesize($table_base_path.$entry));
+			$SQLDump->writeFile($data."\n");
+			fclose($file);
+		}
+		
+		closedir($tables);
 	}
-	sort($tablelist);
-	foreach($tablelist as $entry) {
-		$file = fopen($table_base_path.$entry,'r');
-		$data = fread($file, filesize($table_base_path.$entry));
-		$SQLDump->writeFile($data."\n");
-		fclose($file);
-	}
-	
-	closedir($tables);
 	$link = "index2.php?option=com_migrator&act=dotask";
 	echo "<script language=\"JavaScript\" type=\"text/javascript\">window.setTimeout('location.href=\"" . $link . "\";',500);</script>\n";
 //	flush();

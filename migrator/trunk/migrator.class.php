@@ -339,9 +339,10 @@ class TaskList {
 	function & getNextTask() {
 		$this->db->setQuery("SELECT taskid FROM #__migrator_tasks ORDER BY taskid LIMIT 0,1");
 		$taskid = $this->db->loadResult();// or die('Failed to find next task: ' . $this->db->getErrorMsg());
-		if(!$taskid) return false;
+		$false = false;
+		if(!$taskid) return $false;
 		$task = new Task($this->db);
-		if($task->load($taskid)) return $task; else return false; //die('Task '. $taskid .' failed to load:'. print_r($this,1));
+		if($task->load($taskid)) return $task; else return $false; //die('Task '. $taskid .' failed to load:'. print_r($this,1));
 	}
 
 	function listAll() {
