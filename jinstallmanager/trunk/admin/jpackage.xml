@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- $Id: jpackage.xml 87 2006-07-17 03:51:02Z schmalls $ -->
+<install type="component" version="1.0.0">
+	<name>JPackage</name>
+	<author>Joomla! Project</author>
+	<creationDate>2006</creationDate>
+	<copyright>(C) 2005 - 2006 Open Source Matters. All rights reserved.</copyright>
+	<license>http://www.gnu.org/copyleft/gpl.html GNU/GPL</license>
+	<authorEmail>admin@joomla.org</authorEmail>
+	<authorUrl>www.joomla.org</authorUrl>
+	<version>1.0</version>
+	<description>This components allows for remote package update/installation</description>
+	<installfile>package/install.jpackage.php</installfile>
+	<install>
+		<sql>
+			<file version="4.1.2">package/install.jpackage.sql</file>
+			<file version="3.2.0">package/install.jpackage.sql</file>
+		</sql>
+	</install>
+	<uninstallfile>package/uninstall.jpackage.php</uninstallfile>
+	<uninstall>
+		<sql>
+			<file version="4.1.2">package/uninstall.jpackage.sql</file>
+			<file version="3.2.0">package/uninstall.jpackage.sql</file>
+		</sql>
+	</uninstall>
+	<administration>
+		<menu>jpackage</menu>
+		<languages folder="languages">
+			<language tag="en-GB">en-GB.com_jpackage.ini</language>
+		</languages>
+		<files>
+			<filename>admin.jpackage.php</filename>
+			<filename>controller.php</filename>
+			<filename>toolbar.jpackage.html.php</filename>
+			<filename>toolbar.jpackage.php</filename>
+			<filename>cache/index.html</filename>
+			<filename>classes/xmlrpc.php</filename>
+			<filename>models/category.php</filename>
+			<filename>models/core.php</filename>
+			<filename>models/default.php</filename>
+			<filename>models/install.php</filename>
+			<filename>models/package.php</filename>
+			<filename>package/install.jpackage.php</filename>
+			<filename>package/uninstall.jpackage.php</filename>
+			<filename>package/install.jpackage.sql</filename>
+			<filename>package/uninstall.jpackage.sql</filename>
+			<filename>views/category/category.php</filename>
+			<filename>views/core/core.php</filename>
+			<filename>views/default/default.php</filename>
+			<filename>views/install/install.php</filename>
+			<filename>views/package/package.php</filename>
+		</files>
+	</administration>
+</install>

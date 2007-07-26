@@ -1,0 +1,31 @@
+<!ELEMENT install (name, creationDate, author, authorEmail, authorUrl, copyright, license, version, description, library, files*, downloadsource*)>
+<!ATTLIST install
+	type NMTOKEN #FIXED "library"
+	version CDATA #IMPLIED
+>
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT creationDate (#PCDATA)>
+<!ELEMENT author (#PCDATA)>
+<!ELEMENT authorEmail (#PCDATA)>
+<!ELEMENT authorUrl (#PCDATA)>
+<!ELEMENT copyright (#PCDATA)>
+<!ELEMENT license (#PCDATA)>
+<!ELEMENT version (#PCDATA)>
+<!ATTLIST version
+	id CDATA #REQUIRED
+>
+<!ELEMENT description (#PCDATA)>
+<!ELEMENT library (#PCDATA)>
+<!ELEMENT files (filename | folder)*>
+<!ATTLIST files
+	folder CDATA #IMPLIED
+>
+<!ELEMENT downloadsource (#PCDATA)>
+<!ELEMENT filename (#PCDATA)>
+<!ELEMENT folder (#PCDATA)>
+<!ELEMENT file (#PCDATA)>
+<!ATTLIST file
+	charset NMTOKEN #FIXED "utf8"
+	driver NMTOKEN #REQUIRED
+>
+
