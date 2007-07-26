@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE downloadlist SYSTEM "/home/moffats/public_html/eclipse-remote/jinstallsource/resources/downloadlist.dtd" >
+<downloadlist>
+  <packagename>JAuth Tools SSO Library</packagename>
+  <mirror version="1">http://sammoffatt.com.au/downloads/sso-library.zip</mirror>
+</downloadlist>

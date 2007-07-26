@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE downloadlist SYSTEM "/home/moffats/public_html/eclipse-remote/jinstallsource/resources/downloadlist.dtd" >
+<downloadlist>
+  <packagename>JAuthTools Synchronization Plugin</packagename>
+  <mirror version="1">http://sammoffatt.com.au/downloads/sync-plugin.zip</mirror>
+</downloadlist>
