@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- $Id: jpackagedir.xml 202 2006-08-20 07:05:55Z schmalls $ -->
+<install type="component" version="1.0.0">
+  <name>JPackageDir</name>
+  <author>Joomla! Project</author>
+  <creationDate>August 2006</creationDate>
+  <copyright>(C) 2005 - 2006 Open Source Matters. All rights reserved.</copyright>
+  <license>http://www.gnu.org/copyleft/gpl.html GNU/GPL</license>
+  <authorEmail>admin@joomla.org</authorEmail>
+  <authorUrl>www.joomla.org</authorUrl>
+  <version>1.0</version>
+  <description>This component holds the Joomla! Updater Directory Framework</description>
+	<installfile>install.jpackagedir.php</installfile>
+	<uninstallfile>uninstall.jpackagedir.php</uninstallfile>
+	<install>
+		<queries>
+			<query>
+			CREATE TABLE `#__jpackagedir_categories` (
+			  `id` double NOT NULL auto_increment,
+			  `parent_id` double NOT NULL default '0',
+			  `name` text NOT NULL,
+			  `description` text NOT NULL,
+			  `published` tinyint(4) NOT NULL default '0',
+			  `created` datetime NOT NULL default '0000-00-00 00:00:00',
+			  `created_by` int(11) unsigned NOT NULL default '0',
+			  `created_by_alias` text NOT NULL,
+			  `modified` datetime NOT NULL default '0000-00-00 00:00:00',
+			  `modified_by` int(11) unsigned NOT NULL default '0',
+			  `modified_by_alias` text NOT NULL,
+			  `checked_out` int(11) unsigned NOT NULL default '0',
+			  `checked_out_time` datetime NOT NULL default '0000-00-00 00:00:00',
+			  PRIMARY KEY  (`id`),
+			  KEY `parent_id` (`parent_id`)
+			) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+			</query>
+			<query>
+			CREATE TABLE `#__jpackagedir_dependencies` (
+			  `id` double NOT NULL auto_increment,
+			  `packageid` double NOT NULL default '0',
+			  `dependid` double NOT NULL default '0',
+			  PRIMARY KEY  (`id`),
+			  KEY `packageid` (`packageid`),
+			  KEY `dependid` (`dependid`)
+			) TYPE=MyISAM AUTO_INCREMENT=1 ;
+			</query>
+			<query>
+			CREATE TABLE `#__jpackagedir_packages` (
+			  `id` double NOT NULL auto_increment,
+			  `link_id` int(11) NOT NULL default '0',
+			  `type` text NOT NULL,
+			  `name` text NOT NULL,
+			  `description` text NOT NULL,
+			  `filesize` double NOT NULL default '0',
+			  `version` text NOT NULL,
+			  `url` text NOT NULL,
+			  `hashtype` text NOT NULL,
+			  `checksum` text NOT NULL,
+			  `directory` text NOT NULL,
+			  `created` datetime NOT NULL default '0000-00-00 00:00:00',
+			  `created_by` int(11) unsigned NOT NULL default '0',
+			  `created_by_alias` text NOT NULL,
+			  `modified` datetime NOT NULL default '0000-00-00 00:00:00',
+			  `modified_by` int(11) unsigned NOT NULL default '0',
+			  `modified_by_alias` text NOT NULL,
+			  `checked_out` int(11) unsigned NOT NULL default '0',
+			  `checked_out_time` datetime NOT NULL default '0000-00-00 00:00:00',
+			  PRIMARY KEY  (`id`),
+			  FULLTEXT KEY `version` (`version`),
+			  KEY `link_id` (`link_id`),
+			  FULLTEXT KEY `type` (`type`),
+			  FULLTEXT KEY `name` (`name`)
+			) TYPE=MyISAM AUTO_INCREMENT=1 ;
+			</query>
+			<query>
+			CREATE TABLE `#__jpackagedir_projects` (
+			  `id` double NOT NULL auto_increment,
+			  `category_id` double NOT NULL default '0',
+			  `name` text NOT NULL,
+			  `description` text NOT NULL,
+			  `developer` text NOT NULL,
+			  `email` text NOT NULL,
+			  `website` text NOT NULL,
+			  `licence` text NOT NULL,
+			  `developerurl` text NOT NULL,
+			  `projecturl` text NOT NULL,
+			  `docurl` text NOT NULL,
+			  `faqurl` text NOT NULL,
+			  `supporturl` text NOT NULL,
+			  `tutorialurl` text NOT NULL,
+			  `screenshoturl` text NOT NULL,
+			  `demourl` text NOT NULL,
+			  `published` tinyint(4) NOT NULL default '0',
+			  `created` datetime NOT NULL default '0000-00-00 00:00:00',
+			  `created_by` int(11) unsigned NOT NULL default '0',
+			  `created_by_alias` text NOT NULL,
+			  `modified` datetime NOT NULL default '0000-00-00 00:00:00',
+			  `modified_by` int(11) unsigned NOT NULL default '0',
+			  `modified_by_alias` text NOT NULL,
+			  `checked_out` int(11) unsigned NOT NULL default '0',
+			  `checked_out_time` datetime NOT NULL default '0000-00-00 00:00:00',
+			  PRIMARY KEY  (`id`),
+			  KEY `category_id` (`category_id`)
+			) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+			</query>
+			<query>
+			CREATE TABLE `#__jpackagedir_relations` (
+			  `id` double NOT NULL auto_increment,
+			  `category_id` double NOT NULL default '0',
+			  `project_id` double NOT NULL default '0',
+			  PRIMARY KEY  (`id`),
+			  KEY `category_id` (`category_id`),
+			  KEY `project_id` (`project_id`)
+			) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+			</query>
+		</queries>
+	</install>
+	<uninstall>
+		<queries>
+			<query>DELETE FROM `#__jpackagedir_categories`</query>
+			<query>DELETE FROM `#__jpackagedir_dependencies`</query>
+			<query>DELETE FROM `#__jpackagedir_packages`</query>
+			<query>DELETE FROM `#__jpackagedir_project`</query>
+			<query>DELETE FROM `#__jpackagedir_relations`</query>
+		</queries>
+	</uninstall>
+	<administration>
+		<menu>JPackageDir</menu>
+		<submenu>
+			<menu task="">Packages</menu>
+			<menu task="projects">Projects</menu>
+			<menu task="categories">Categories</menu>
+			<menu task="about">Configuration</menu>
+		</submenu>
+		<languages folder="admin">
+	   		<language tag="en-GB">en-GB.com_jpackagedir.ini</language>
+		</languages>
+		<files>
+			<filename>admin.jpackagedir.php</filename>
+			<filename>controller.php</filename>
+			<filename>jpackagedir.xml</filename>
+			<filename>install.jpackagedir.php</filename>
+			<filename>jpackagedir.helper.php</filename>
+			<filename>toolbar.jpackagedir.html.php</filename>
+			<filename>toolbar.jpackagedir.php</filename>
+			<filename>uninstall.jpackagedir.php</filename>
+			<filename>helpers/general.php</filename>
+			<filename>models/list.php</filename>
+			<filename>models/package.php</filename>
+			<filename>table/jpackagedir_packages.php</filename>
+			<filename>views/list/list.php</filename>
+			<filename>views/package/package.php</filename>
+		</files>
+	</administration>
+</install>

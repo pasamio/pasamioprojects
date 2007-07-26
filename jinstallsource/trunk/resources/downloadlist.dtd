@@ -1,0 +1,6 @@
+<!ELEMENT downloadlist (packagename, mirror*) >
+<!ELEMENT packagename (#PCDATA) >
+<!ELEMENT mirror (#PCDATA) >
+<!ATTLIST mirror
+	version CDATA #REQUIRED
+>
