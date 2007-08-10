@@ -101,4 +101,11 @@
   DEFINE('_BBKP_UNKNOW_FILE', "Unknown");
   DEFINE('_BBKP_MANUALLY_FILE', "Manually");
 
+  DEFINE('_BBKP_NOTASKSLEFT', 'Done, there are no tasks left.');
+  DEFINE('_BBKP_HOME', 'Home');
+  DEFINE('_BBKP_NAME', 'Name');
+  DEFINE('_BBKP_TRANSFORMATION','Transformation');
+  DEFINE('_BBKP_CRITINCLUDEERR', 'CRITICAL ERROR: Failed attempt to include:');
+  DEFINE('_BBKP_EXECTASK', 'Executing Task: ');
+  DEFINE('_BBKP_EXAMINING', 'Examining ');
   ?>

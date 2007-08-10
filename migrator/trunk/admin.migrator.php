@@ -210,7 +210,8 @@ function doTask() {
 	unset ($_SESSION['sql_file']);
 	unset ($_SESSION['rec_no']);
 	unset ($_SESSION['start_time']);
-	echo '<p>Done, there are no tasks left. <a href="index2.php?option=com_migrator&act=done">Home</a></p>';
+	
+	echo '<p>'. _BBKP_NOTASKSLEFT . ' <a href="index2.php?option=com_migrator&act=done">'. _BBKP_HOME .'</a></p>';
 	$link = "index2.php?option=com_migrator&act=done&mosmsg=Your+SQL+Download+File+Name+is+". urlencode($sql_file);
 	echo "<script language=\"JavaScript\" type=\"text/javascript\">window.setTimeout('location.href=\"" . $link . "\";',500);</script>\n";
 
@@ -219,7 +220,7 @@ function doTask() {
 function listPlugins() {
 	$enumerator = new ETLEnumerator();
 	echo '<table class="adminlist">';
-	echo '<tr><th>Name</th><th>Transformation</th></tr>';
+	echo '<tr><th>'. _BBKP_NAME . '</th><th>'. _BBKP_TRANSFORMATION .'</th></tr>';
 	foreach ($enumerator->createPlugins() as $plugin) {
 		echo '<tr><td>' . implode('</td><td>', explode(';', $plugin->toString())) . '</td></tr>';
 	}

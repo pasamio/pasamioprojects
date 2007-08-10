@@ -32,7 +32,7 @@ function migratorInclude($file) {
 	if (file_exists($file)) {
 		require_once ($file);
 	} else
-		die('CRITICAL ERROR: Failed attempt to include:' . $file);
+		die(_BBKP_CRITINCLERR . $file);
 }
 
 /**
@@ -46,7 +46,7 @@ function displayResource($file) {
 		include ($file);
 		echo '</div>';
 	} else
-		die('CRITICAL ERROR: Failed attempt to include:' . $file);
+		die(_BBKP_CRITINCLERR . $file);
 }
 
 /**
@@ -262,7 +262,7 @@ class Task extends mosDBTable {
 
 	function execute($outputfile=null) {
 		global $run_time, $startTime;
-		echo '<p>Executing Task: '. $this->toString() .'</p>';
+		echo '<p>'. _BBKP_EXECTASK .  $this->toString() .'</p>';
 		if(!$this->amount) { $this->delete(); return false; }
 		for ($i = 0; $i <= $this->amount; $i++) {
 			// Ensure that we get at least one through
@@ -308,7 +308,7 @@ class TaskBuilder {
 	function buildTaskList($debug = false) {
 		foreach ($this->plugins as $name => $plugin) {
 			if ($debug)
-				echo 'Examining ' . $name . '<br />';
+				echo _BBKP_EXAMINING . $name . '<br />';
 			$this->tasklist[] = new Task($this->db, $this->plugins[$name]->getAssociatedTable(), 0, $this->plugins[$name]->getEntries());
 		}
 		return $this->tasklist;
