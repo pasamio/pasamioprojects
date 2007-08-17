@@ -108,4 +108,22 @@
   DEFINE('_BBKP_CRITINCLUDEERR', 'CRITICAL ERROR: Failed attempt to include:');
   DEFINE('_BBKP_EXECTASK', 'Executing Task: ');
   DEFINE('_BBKP_EXAMINING', 'Examining ');
+  DEFINE('_BBKP_PROCESSED', 'Processed ');
+  DEFINE('_BBKP_PERCOFTABLE', '% of table');
+  DEFINE('_BBKP_BEFORETIMEOUT', ' before timeout ');
+  DEFINE('_BBKP_OF', ' of ');
+  DEFINE('_BBKP_TO', ' to ');
+  DEFINE('_BBKP_ROWS', ' rows ');
+  DEFINE('_BBKP_NEXT', 'Next');
+  DEFINE('_BBKP_PLUGINCREATEFAILURE', 'Failed to create plugin: ');
+  DEFINE('_BBKP_MIGRATIONINPROGRESS', 'Migration In Progress');
+  DEFINE('_BBKP_MIGMESSAGE', 'If you have Javascript enabled the migrator will automatically progress until complete. Alternatively you can click next after each step');
+  DEFINE('_BBKP_INCLUDING','Including ');
+  DEFINE('_BBKP_FOUND', 'Found ');
+  DEFINE('_BBKP_TASK', 'Task #');
+  DEFINE('_BBKP_TABLE','; Table: ');
+  DEFINE('_BBKP_START','; Start: ');
+  DEFINE('_BBKP_AMOUNTTOCONVERT', '; Amount to convert: ');
+  DEFINE('_BBKP_TOTALROWS','; Total Rows: ');
+  DEFINE('_BBKP_TRANSFORMSTABLE','; Transforms table ');
   ?>

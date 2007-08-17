@@ -83,7 +83,7 @@ class ETLPlugin {
 	}
 
 	function toString() {
-		return $this->getName() . '; Transforms table ' . $this->getAssociatedTable() . ' to ' . $this->getTargetTable() . '<br />';
+		return $this->getName() . __BBKP_TRANSFORMSTABLE . $this->getAssociatedTable() . __BBKP_TO . $this->getTargetTable() . '<br />';
 	}
 
 	/**
@@ -185,7 +185,7 @@ class ETLEnumerator {
 		while ($file = readdir($dir)) {
 			if (stristr($file, 'php')) {
 				if ($debug)
-					echo 'Found ' . $file . '<br />';
+					echo _BBKP_FOUND . $file . '<br />';
 				$this->pluginList[] = str_replace('.php', '', $file);
 			}
 		}
@@ -199,7 +199,7 @@ class ETLEnumerator {
 		}
 		foreach ($this->pluginList as $plugin) {
 			if ($debug)
-				echo 'Including ' . $plugin . '<br />';
+				echo __BBKP_INCLUDING . $plugin . '<br />';
 			migratorInclude('plugins/' . $plugin);
 		}
 	}
@@ -251,39 +251,47 @@ class Task extends mosDBTable {
 	function Task(& $db, $table = '', $s = 0, $a = 0, $t = null) {
 		$this->tablename = $table;
 		$this->start = $s;
-		$this->amount = $a;
 		$this->total = $t ? $t : $a;
+		$this->amount = $a ? $a : $this->total - $this->start;
+		
 		$this->mosDBTable('#__migrator_tasks', 'taskid', $db);
 	}
 
 	function toString() {
-		return 'Task #' . $this->taskid . '; Table: ' . $this->tablename . '; Start: ' . $this->start . '; Amount to convert: ' . $this->amount . '; Total Rows: ' . $this->total . ';<br />';
+		return _BBKP_TASK . $this->taskid . _BBKP_TABLE . $this->tablename . _BBKP_START . $this->start . _BBKP_AMOUNTTOCONVERT . $this->amount . _BBKP_TOTALROWS . $this->total . ';<br />';
 	}
 
 	function execute($outputfile=null) {
 		global $run_time, $startTime;
 		echo '<p>'. _BBKP_EXECTASK .  $this->toString() .'</p>';
-		if(!$this->amount) { $this->delete(); return false; }
-		for ($i = 0; $i <= $this->amount; $i++) {
+		if(!$this->amount || $this->start > $this->amount) { $this->delete(); return false; }
+		for ($i = $this->start; $i <= $this->amount; $i++) {
 			// Ensure that we get at least one through
 			$enumerator = new ETLEnumerator();
-			$plugin = $enumerator->createPlugin($this->tablename) or die('Failed to create plugin: '. $this->tablename);
-			$sql = $plugin->doTransformation($this->start+$i,1);
+			$plugin = $enumerator->createPlugin($this->tablename) or die(__BBKP_PLUGINCREATEFAILURE. $this->tablename);
+			$sql = $plugin->doTransformation($i,1);
 			foreach($sql as $query) {
 				if($outputfile) $outputfile->writeFile($query); else echo $query.'<br />';
 			}
 			$checkTime = mosProfiler :: getmicrotime();
 			if (($checkTime - $startTime) >= $run_time) {
+				$rows  = $i - $this->start;
+				echo '<p>' . _BBKP_PROCESSED . $rows. _BBKP_ROWS . '('. $this->start . _BBKP_TO . $i .') '. _BBKP_OF . $this->tablename . _BBKP_BEFORETIMEOUT .' ( '. number_format((($i / $this->amount) * 100),2) . _BBKP_PERCOFTABLE .')</p>';
 				// Update this task
-				$this->start = $this->start + $i;
+				$this->start = $i;
 				$this->store();
+				//die('Updating a task due to timeout');
 				$link = "index2.php?option=com_migrator&act=dotask";
-				echo "<script language=\"JavaScript\" type=\"text/javascript\">window.setTimeout('location.href=\"" . $link . "\";',500);</script>\n";
+				echo '<a href="'.$link.'">'._BBKP_NEXT.'</a>';
+				echo "<script language=\"JavaScript\" type=\"text/javascript\">window.setTimeout('location.href=\"" . $link . "\";',1000);</script>\n";
+				echo '</div>';
 				flush();
-				//die();
+				exit();
+				return false;
 			}
-			$this->delete() or die($database->_db->getErrorMsg());
 		}
+		//echo 'Now deleting task outside loop';
+		$this->delete() or die($database->_db->getErrorMsg());
 		return true;
 	}
 }

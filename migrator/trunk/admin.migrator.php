@@ -14,6 +14,8 @@
 // no direct access
 defined('_VALID_MOS') or die('Restricted access');
 
+if(!count($_SESSION)) die('BLANK SESSION!');
+
 define("MAX_LINE_LENGTH", 65536);
 $max_php_run = ini_get("max_execution_time");
 if ($max_php_run <> 0) {
@@ -135,6 +137,7 @@ function start() {
 	$tasklist = new TaskList($database);
 	$tasklist->listAll();
 	$SQLDump = new JFiler(1);
+	print_r($_SESSION);
 	if (!isset ($_SESSION['sql_file_time'])) {
 		$_SESSION['sql_file_time'] = time();
 		$sql_time = $_SESSION['sql_file_time'];
@@ -196,7 +199,9 @@ function doTask() {
 			$sql_file = mosGetParam($_SESSION, 'sql_file');
 			$SQLDump->openFile($mosConfig_absolute_path . "/administrator/components/com_migrator/dumps/" . $sql_file);
 		}
-
+		echo '<div style="border: 5px solid red; padding: 5px;">';
+		echo '<h1>'._BBKP_MIGRATIONINPROGRESS.'</h1><hr />';
+		echo '<p style="font-weight:bold; color: green;">'._BBKP_MIGMESSAGE.'</p>';
 		while ($task = $tasklist->getNextTask()) {
 			$task->execute($SQLDump);
 		}
