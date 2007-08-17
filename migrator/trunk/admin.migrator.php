@@ -137,7 +137,6 @@ function start() {
 	$tasklist = new TaskList($database);
 	$tasklist->listAll();
 	$SQLDump = new JFiler(1);
-	print_r($_SESSION);
 	if (!isset ($_SESSION['sql_file_time'])) {
 		$_SESSION['sql_file_time'] = time();
 		$sql_time = $_SESSION['sql_file_time'];
