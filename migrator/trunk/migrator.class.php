@@ -137,6 +137,7 @@ class ETLPlugin {
 		$this->db->setQuery('SELECT * FROM #__' . $this->getAssociatedTable() . ' LIMIT ' . $start . ',' . $amount);
 		$retval = Array ();
 		$results = $this->db->loadAssocList();
+		if(!count($results)) return $retval;
 		foreach ($results as $result) {
 			$fieldvalues = '';
 			$fieldnames = '';

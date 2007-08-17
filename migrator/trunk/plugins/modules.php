@@ -19,7 +19,7 @@
 
 class Modules_ETL extends ETLPlugin {
 	
-	var $ignorefieldlist = Array();
+	var $ignorefieldlist = Array('groups');
 	var $valuesmap = Array('params');
 	
 	function getName() { return "Modules ETL Plugin"; }
