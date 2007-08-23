@@ -201,6 +201,7 @@ function doTask() {
 		echo '<div style="border: 5px solid red; padding: 5px;">';
 		echo '<h1>'._BBKP_MIGRATIONINPROGRESS.'</h1><hr />';
 		echo '<p style="font-weight:bold; color: green;">'._BBKP_MIGMESSAGE.'</p>';
+		$SQLDump->writeFile("# Starting bulk migration run\n");
 		while ($task = $tasklist->getNextTask()) {
 			$task->execute($SQLDump);
 		}

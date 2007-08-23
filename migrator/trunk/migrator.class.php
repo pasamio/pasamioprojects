@@ -279,7 +279,7 @@ class Task extends mosDBTable {
 				$rows  = $i - $this->start;
 				echo '<p>' . _BBKP_PROCESSED . $rows. _BBKP_ROWS . '('. $this->start . _BBKP_TO . $i .') '. _BBKP_OF . $this->tablename . _BBKP_BEFORETIMEOUT .' ( '. number_format((($i / $this->amount) * 100),2) . _BBKP_PERCOFTABLE .')</p>';
 				// Update this task
-				$this->start = $i;
+				$this->start = $i + 1;
 				$this->store();
 				//die('Updating a task due to timeout');
 				$link = "index2.php?option=com_migrator&act=dotask";
