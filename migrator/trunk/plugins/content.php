@@ -124,6 +124,7 @@ function handleMosImage($key, $value, $etlplugin) {
 			. "\n AND folder = 'content'"
 			;
 			$database->setQuery( $query );
+			$mambot = null;
 			$database->loadObject($mambot);
 			
 			// save query to class variable
