@@ -216,7 +216,7 @@ function makeDumps($option) {
 		$sql_file = $mosConfig_db . "_" . strftime("%Y%m%d_%H%M%S", $sql_time) . $dump_ext;
 		$_SESSION['sql_file'] = $sql_file;
 		$SQLDump->createFile($mosConfig_absolute_path . "/administrator/components/$option/dumps/" . $sql_file);
-		makeHeaderTableDef($mosConfig_db, $sql_time, & $SQLDump, count($tables), $header_def, $dump_struct);
+		makeHeaderTableDef($mosConfig_db, $sql_time, $SQLDump, count($tables), $header_def, $dump_struct);
 	} else {
 		$sql_file = mosGetParam($_SESSION, 'sql_file');
 		$SQLDump->openFile($mosConfig_absolute_path . "/administrator/components/$option/dumps/" . $sql_file);
