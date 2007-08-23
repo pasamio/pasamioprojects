@@ -41,7 +41,7 @@ PRIMARY KEY(`taskid`)
 			<filename>legacy/migrator.info.html</filename>
 			<filename>legacy/toolbar.migrator.php</filename>
 			<filename>legacy/toolbar.migrator.html.php</filename>
-<!--			<filename>tables/000migrator.sql</filename>-->
+			<filename>tables/000migrator.sql</filename>
 			<filename>tables/index.htm</filename>
 			<filename>resources/index.htm</filename>			
 			<filename>resources/3pd.html</filename>
