@@ -102,7 +102,7 @@ defined('_VALID_MOS') or die('Restricted access');
                 if ($dirfile != "." && $dirfile != ".."){
                    $path_parts = pathinfo($data_path."/".$dirfile);
                    $file_ext = strtolower($path_parts["extension"]);
-                   if (($file_ext == "sql") || ($file_ext == "html") || ($file_ext == "gz")) $filelist[] = $dirfile;
+                   if (($file_ext == "sql") || ($file_ext == "html") || ($file_ext == "gz") || ($file_ext == "dat")) $filelist[] = $dirfile;
                 }
           }
           if ((count($filelist) > 0) && ($sort)) rsort($filelist);
