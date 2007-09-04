@@ -37,13 +37,13 @@ class Content_ETL extends ETLPlugin {
 				// Replace {mospagebreak} -> <hr class="system-pagebreak" />
 				$value = str_replace('{mospagebreak}','<hr class="system-pagebreak" />',$value);
 				// Replace {mospagebreak title=The page title} -> <hr class="system-pagebreak" title="The page title" />
-				$value = preg_replace('/{mospagebreak title=([A-Za-z0-9 ]*)}/','<hr class="system-pagebreak" title="\1" />', $value);
+				$value = preg_replace('/{mospagebreak title=([^\}]*)}/','<hr class="system-pagebreak" title="\1" />', $value);
 				// Replace {mospagebreak heading=The first page} -> <hr class="system-pagebreak" alt="The first page" />
-				$value = preg_replace('/{mospagebreak heading=([A-Za-z0-9 ]*)}/','<hr class="system-pagebreak" alt="\1" />', $value);
+				$value = preg_replace('/{mospagebreak heading=([^\}]*)}/','<hr class="system-pagebreak" alt="\1" />', $value);
 				// Replace {mospagebreak title=The page title&heading=The first page} -> <hr class="system-pagebreak" title="The page title" alt="The first page" />
-				$value = preg_replace('/{mospagebreak title=([A-Za-z0-9 ]*)&heading=([A-Za-z0-9 ]*)}/', '<hr class="system-pagebreak" title="\1" alt="\2" />', $value);
+				$value = preg_replace('/{mospagebreak title=([^\& ]*)&heading=([^\}]*)}/', '<hr class="system-pagebreak" title="\1" alt="\2" />', $value);
 				// Replace {mospagebreak heading=The first page&title=The page title} -> <hr class="system-pagebreak" title="The page title" alt="The first page" />
-				$value = preg_replace('/{mospagebreak heading=([A-Za-z0-9 ]*)&title=([A-Za-z0-9 ]*)}/', '<hr class="system-pagebreak" title="\2" alt="\1" />', $value);
+				$value = preg_replace('/{mospagebreak heading=([^\&]*)&title=([^\}]*)}/', '<hr class="system-pagebreak" title="\2" alt="\1" />', $value);
 				
 				//---------------------------------------------------
 				// mosloadposition
