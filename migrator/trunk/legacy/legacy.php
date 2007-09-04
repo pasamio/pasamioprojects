@@ -235,8 +235,8 @@ function makeDumps($option) {
 			break;
 		} else {
 			if (($rec_no == 0) && ($dump_struct <> ""))
-				makeTableDef($mosConfig_db, $tables[$key], & $SQLDump);
-			if (!makeTableContent($option, $tables[$key], & $rec_no, & $SQLDump, $startTime))
+				makeTableDef($mosConfig_db, $tables[$key], $SQLDump);
+			if (!makeTableContent($option, $tables[$key], $rec_no, $SQLDump, $startTime))
 				break;
 			$key++;
 		}

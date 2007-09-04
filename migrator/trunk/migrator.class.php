@@ -83,7 +83,7 @@ class ETLPlugin {
 	}
 
 	function toString() {
-		return $this->getName() . __BBKP_TRANSFORMSTABLE . $this->getAssociatedTable() . __BBKP_TO . $this->getTargetTable() . '<br />';
+		return $this->getName() . _BBKP_TRANSFORMSTABLE . $this->getAssociatedTable() . _BBKP_TO . $this->getTargetTable() . '<br />';
 	}
 
 	/**
@@ -200,7 +200,7 @@ class ETLEnumerator {
 		}
 		foreach ($this->pluginList as $plugin) {
 			if ($debug)
-				echo __BBKP_INCLUDING . $plugin . '<br />';
+				echo _BBKP_INCLUDING . $plugin . '<br />';
 			migratorInclude('plugins/' . $plugin);
 		}
 	}
@@ -269,7 +269,7 @@ class Task extends mosDBTable {
 		for ($i = $this->start; $i <= $this->amount; $i++) {
 			// Ensure that we get at least one through
 			$enumerator = new ETLEnumerator();
-			$plugin = $enumerator->createPlugin($this->tablename) or die(__BBKP_PLUGINCREATEFAILURE. $this->tablename);
+			$plugin = $enumerator->createPlugin($this->tablename) or die(_BBKP_PLUGINCREATEFAILURE. $this->tablename);
 			$sql = $plugin->doTransformation($i,1);
 			foreach($sql as $query) {
 				if($outputfile) $outputfile->writeFile($query); else echo $query.'<br />';

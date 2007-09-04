@@ -84,6 +84,8 @@ function handleMosImage($key, $value, $etlplugin) {
 		$_MAMBOTS = new stdClass();
 	}
 	
+	$mambot = null;
+	
 	if(strpos($value, 'mosimage') === false) {
 		return $value;
 	}
