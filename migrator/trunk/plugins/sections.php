@@ -20,13 +20,22 @@
 class Sections_ETL extends ETLPlugin {
 	
 	var $ignorefieldlist = Array();
-	var $valuesmap = Array();
+	
+	var $valuesmap = Array('alias');
+	
+	var $newfieldlist = Array('alias');
 	
 	function getName() { return "Sections ETL Plugin"; }
 	function getAssociatedTable() { return 'sections'; }
 	
 	function mapvalues($key,$value) {
 		switch($key) {
+			case 'alias':
+				if(!strlen(trim($value))) {
+					return stringURLSafe($this->_currentRecord['title']);
+				}
+				return $value;
+				break; // could really let this drop down here but anyway
 			default:
 				return $value;
 				break;

@@ -20,7 +20,8 @@
 class Menu_ETL extends ETLPlugin {
 	
 	var $ignorefieldlist = Array();
-	var $valuesmap = Array('params');
+	var $valuesmap = Array('params','alias','title_alias');
+	var $newfieldlist = Array('alias');
 	
 	function getName() { return "Menu ETL Plugin"; }
 	function getAssociatedTable() { return 'menu'; }
@@ -70,6 +71,13 @@ class Menu_ETL extends ETLPlugin {
 				if(stristr($value,'show_page_title') === FALSE) $value .= "show_page_title=1\n";
 				return $value;
 				break;
+			case 'alias':
+				if(!strlen(trim($value))) {
+					// Name + Menu type to ensure that the alias is unique to the menu (or close enough)
+					return stringURLSafe($this->_currentRecord['name'] .' '.$this->_currentRecord['menutype']);
+				}
+				return $value;
+				break; // could really let this drop down here but anyway				
 			default:
 				return $value;
 				break;

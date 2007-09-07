@@ -23,7 +23,9 @@
 class Content_ETL extends ETLPlugin {
 	
 	var $ignorefieldlist = Array();
-	var $valuesmap = Array('introtext','fulltext');
+	var $valuesmap = Array('introtext','fulltext','alias');
+	var $newfieldlist = Array('alias');
+	
 	function getName() { return "Content ETL Plugin"; }	
 	function getAssociatedTable() { return 'content'; }
 	
@@ -63,6 +65,18 @@ class Content_ETL extends ETLPlugin {
 				// Done, return result
 				return $value;
 				break;
+			case 'alias':
+				// Use the title_alias if it exists
+				if(strlen(trim($this->_currentRecord('title_alias')))) {
+					// clean it up appropriately
+					return stringURLSafe($this->_currentRecord('title_alias'));
+				// If it doesn't see if this is empty
+				} else if(!strlen(trim($value))) {
+					// use the title field
+					return stringURLSafe($this->_currentRecord['title']);
+				} 
+				return $value; // shouldn't happen anyway...
+				break; // could really let this drop down here but anyway
 			default:
 				return $value;
 				break;

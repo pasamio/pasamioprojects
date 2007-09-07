@@ -59,6 +59,34 @@ function migratorBasePath() {
 }
 
 /**
+ * This method processes a string and replaces all accented UTF-8 characters by unaccented
+ * ASCII-7 "equivalents", whitespaces are replaced by hyphens and the string is lowercased.
+ *
+ * @static
+ * @param	string	$input	String to process
+ * @return	string	Processed string
+ * @since	1.5
+ */
+function stringURLSafe($string)
+{
+	//remove any '-' from the string they will be used as concatonater
+	$str = str_replace('-', ' ', $string);
+	
+	$str = htmlentities(utf8_decode($str));
+	$str = preg_replace(
+		array('/&szlig;/','/&(..)lig;/', '/&([aouAOU])uml;/','/&(.)[^;]*;/'),
+		array('ss',"$1","$1".'e',"$1"),
+		$str);
+
+	// remove any duplicate whitespace, and ensure all characters are alphanumeric
+	$str = preg_replace(array('/\s+/','/[^A-Za-z0-9\-]/'), array('-',''), $str);
+
+	// lowercase and trim
+	$str = trim(strtolower($str));
+	return $str;
+}
+
+/**
  * ETL Plugin
  * An ETL Plugin examines the database and returns SQL queries
  */
@@ -66,8 +94,11 @@ class ETLPlugin {
 	/** @var $db Local Database Object */
 	var $db = null;
 
-	/** @var $fieldlist List of fields to ignore */
+	/** @var $ignorefieldlist List of fields to ignore */
 	var $ignorefieldlist = Array ();
+	
+	/** @var $newfieldlist List of fields to add (with blank values) */
+	var $newfieldlist = Array();
 
 	/** @var $valuesmap List of field values that need mapping/transformation */
 	var $valuesmap = Array ();
@@ -136,11 +167,17 @@ class ETLPlugin {
 	function doTransformation($start, $amount) {
 		$this->db->setQuery('SELECT * FROM #__' . $this->getAssociatedTable() . ' LIMIT ' . $start . ',' . $amount);
 		$retval = Array ();
+		$newFields = Array();
+		foreach($this->newfieldlist as $fieldname) {
+			$newFields[$fieldname] = '';
+		}
 		$results = $this->db->loadAssocList();
+		
 		if(!count($results)) return $retval;
 		foreach ($results as $result) {
 			$fieldvalues = '';
 			$fieldnames = '';
+			$result = array_merge($result, $newFields); // 
 			$this->_currentRecord =& $result; // Reference this so that sub funcs might get to it
 			foreach ($result as $key => $value) {
 				if (in_array($key, $this->ignorefieldlist)) {
