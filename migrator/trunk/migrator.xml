@@ -91,6 +91,7 @@ PRIMARY KEY(`taskid`)
 			<filename>plugins/sections.php</filename>
 			<filename>plugins/users.php</filename>
 			<filename>plugins/weblinks.php</filename>
+			<filename>plugins/backlink_migration.php</filename>
 		</files>
 	</administration>
 </mosinstall>
