@@ -1,16 +1,6 @@
-# Backlink Migration Assistant
+# Migrator SQL Plugin
 #
-# This file is the SQL create for backlink migration
-# Backlink migration is used to keep old links active.
-#
-# We use jos_ instead for migration purposes
+# These files are designed to have SQL CREATE TABLE statements
+# so that tables are created for data migration.
+# 
 
-DROP TABLE IF EXISTS #__migration_backlinks; 
-CREATE TABLE #__migration_backlinks (
-	`itemid` INT(11) NOT NULL,
-	`name` VARCHAR(100) NOT NULL,
-	`url` TEXT NOT NULL,
-	`sefurl` TEXT NOT NULL,
-	`newurl` TEXT NOT NULL,
-	PRIMARY KEY(`itemid`)
-);
