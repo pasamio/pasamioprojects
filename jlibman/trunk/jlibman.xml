@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE install SYSTEM "http://dev.joomla.org/xml/1.5/component-install.dtd">
+<install type="component" version="1.5.0">
+ <name>JLibMan</name>
+ <!-- The following elements are optional and free of formatting conttraints -->
+ <creationDate>21-Sep-2007</creationDate>
+ <author>Sam Moffatt</author>
+ <authorEmail>S.Moffatt@toowoomba.qld.gov.au</authorEmail>
+ <authorUrl>http://www.toowoomba.qld.gov.au</authorUrl>
+ <copyright>Copyright (c) 2007 Toowoomba City Council/Sam Moffatt</copyright>
+ <license>GNU GPL</license>
+ <!--  The version string is recorded in the components table -->
+ <version>0.1</version>
+ <!-- The description is optional and defaults to the name -->
+ <description>This component is designed to allow custom library installation</description>
+ 
+ <administration>
+  <!-- Administration Menu Section -->
+  <menu>JLibMan</menu>
+  
+  <!-- Administration Main File Copy Section -->
+  <files folder="admin">
+   <filename>index.html</filename>
+   <filename>admin.jlibman.php</filename>
+  </files>  
+ </administration>
+</install>
