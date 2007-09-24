@@ -549,7 +549,7 @@ defined('_VALID_MOS') or die('Restricted access');
 
     $content.= "    </table>\r\n"
               ."    <br />\r\n"
-              ."    <div style=\"border-top: 1px solid #BF4E4A;\">Report created with Migrator ".$mig_version." by <a href=\"http://www.mambobaer.de\" target=\"_blank\">MamboBaer.de</a></div>\r\n"
+//              ."    <div style=\"border-top: 1px solid #BF4E4A;\">Report created with Migrator ".$mig_version." by <a href=\"http://www.mambobaer.de\" target=\"_blank\">MamboBaer.de</a></div>\r\n"
               ."  </center>\r\n"
               ."  </body>\r\n"
               ."</html>\r\n";
