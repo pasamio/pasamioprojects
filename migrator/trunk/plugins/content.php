@@ -67,9 +67,9 @@ class Content_ETL extends ETLPlugin {
 				break;
 			case 'alias':
 				// Use the title_alias if it exists
-				if(strlen(trim($this->_currentRecord('title_alias')))) {
+				if(strlen(trim($this->_currentRecord['title_alias']))) {
 					// clean it up appropriately
-					return stringURLSafe($this->_currentRecord('title_alias'));
+					return stringURLSafe($this->_currentRecord['title_alias']);
 				// If it doesn't see if this is empty
 				} else if(!strlen(trim($value))) {
 					// use the title field

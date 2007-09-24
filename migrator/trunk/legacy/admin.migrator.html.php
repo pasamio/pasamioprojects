@@ -42,7 +42,7 @@ class HTML_migrator_legacy {
               ."  </table>\n"
               ."  <input type=\"hidden\" name=\"option\" value=\"$option\">\n"
               ."  <input type=\"hidden\" name=\"task\" value=\"showDumps\">\n"
-              ."</form>\n"
+              ."</form>\n";
 //              ."<div class=\"footer\" align=\"center\">\n"
 //              ."  <div style=\"font-size: 10px;\" align=\"center\">Migrator ".$mig_version." by <a href=\"http://www.mambobaer.de\" target=\"_blank\">MamboBaer.de</a></div>\n"
 //              ."</div>\n";
@@ -87,7 +87,7 @@ class HTML_migrator_legacy {
               ."  <input type=\"hidden\" name=\"option\" value=\"$option\" />\n"
               ."  <input type=\"hidden\" name=\"task\" value=\"\" />\n"
               ."  <input type=\"hidden\" name=\"boxchecked\" value=\"0\" />\n"
-              ."</form>\n"
+              ."</form>\n";
 //              ."<div class=\"footer\" align=\"center\">\n"
 //              ."  <div style=\"font-size: 10px;\" align=\"center\">Migrator ".$mig_version." by <a href=\"http://www.mambobaer.de\" target=\"_blank\">MamboBaer.de</a></div>\n"
 //              ."</div>\n";
