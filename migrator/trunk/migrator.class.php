@@ -40,12 +40,19 @@ function migratorInclude($file) {
  * @param $file string Filename to display
  */
 function displayResource($file) {
-	$file = migratorBasePath() . '/resources/' . $file . '.html';
-	if (file_exists($file)) {
+	global  $mosConfig_lang;
+	$file_lang = migratorBasePath() . '/resources/' . $file . '.' . $mosConfig_lang . '.html';
+	$file = migratorBasePath() . '/resources/' . $file . '.english.html';
+	if (file_exists($file_lang)) {
+		echo '<div align="left" style="border: 1px solid black; padding: 5px; ">';
+		include ($file_lang);
+		echo '</div>';
+	} else if (file_exists($file)) {
 		echo '<div align="left" style="border: 1px solid black; padding: 5px; ">';
 		include ($file);
 		echo '</div>';
-	} else
+	}
+	else
 		die(_BBKP_CRITINCLERR . $file);
 }
 
