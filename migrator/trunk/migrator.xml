@@ -44,10 +44,10 @@ PRIMARY KEY(`taskid`)
 			<filename>tables/000migrator.sql</filename>
 			<filename>tables/index.htm</filename>
 			<filename>resources/index.htm</filename>			
-			<filename>resources/3pd.html</filename>
-			<filename>resources/default.html</filename>
-			<filename>resources/add.html</filename>
-			<filename>resources/done.html</filename>
+			<filename>resources/3pd.english.html</filename>
+			<filename>resources/default.english.html</filename>
+			<filename>resources/add.english.html</filename>
+			<filename>resources/done.english.html</filename>
 			<filename>tests/index.htm</filename>
 			<filename>tests/enumerator_test.php</filename>
 			<filename>tests/plugin_test.php</filename>
