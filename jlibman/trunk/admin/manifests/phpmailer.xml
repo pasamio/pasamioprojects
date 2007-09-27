@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<manifest>
+	<name>PHPMailer</name>
+	<packagename>phpmailer</packagename>
+	<url>http://www.joomla.org</url>
+	<version>1.5</version>
+	<packager>Joomla!</packager>
+	<packagerurl>http://www.joomla.org</packagerurl>
+	<description>Classes for sending email</description>	
+	<filelist>
+		<file>phpmailer.php</file>
+		<file>language/phpmailer.lang-en.php</file>
+		<file>language/phpmailer.lang-joomla.php</file>
+		<file>smtp.php</file>
+	</filelist>
+</manifest>

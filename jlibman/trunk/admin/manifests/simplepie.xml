@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<manifest>
+	<name>SimplePie</name>
+	<packagename>simplepie</packagename>
+	<url>http://simplepie.org/</url>
+	<version>1.0.1</version>
+	<packager>Joomla!</packager>
+	<packagerurl>http://www.joomla.org</packagerurl>
+	<description>A PHP-Based RSS and Atom Feed Framework.</description>
+	<filelist>
+		<file>idn/idna_convert.class.php</file>
+		<file>simplepie.php</file>
+	</filelist>
+</manifest>

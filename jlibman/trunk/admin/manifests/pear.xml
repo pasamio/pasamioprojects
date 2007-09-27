@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<manifest>
+	<name>PEAR</name>
+	<packagename>pear</packagename>
+	<url>http://pear.php.net/package/PEAR</url>
+	<version>1.4.10</version>
+	<packager>Joomla!</packager>
+	<packagerurl>http://www.joomla.org</packagerurl>
+	<description>PEAR, the PHP Extension and Application Repository</description>
+	<filelist>
+		<file>PEAR.php</file>
+	</filelist>
+</manifest>

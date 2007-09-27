@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<manifest>
+	<name>XML RPC for PHP</name>
+	<packagename>phpxmlrpc</packagename>
+	<url>http://www.joomla.org</url>
+	<version>1.5</version>
+	<packager>Joomla!</packager>
+	<packagerurl>http://www.joomla.org</packagerurl>
+	<description>PHP XML RPC Library for Client and Server</description>
+	<filelist>
+		<file>xmlrpc.php</file>
+		<file>compat/version_compare.php</file>
+		<file>compat/is_a.php</file>
+		<file>compat/is_callable.php</file>
+		<file>compat/is_scalar.php</file>
+		<file>compat/var_export.php</file>
+		<file>compat/array_key_exists.php</file>
+		<file>xmlrpcs.php</file>
+		<file>xmlrpc_wrappers.php</file>
+	</filelist>
+</manifest>

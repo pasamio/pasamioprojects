@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<manifest>
+	<name>PHP</name>
+	<packagename>phputf8</packagename>
+	<url>http://www.joomla.org</url>
+	<version>1.5</version>
+	<packager>Joomla!</packager>
+	<packagerurl>http://www.joomla.org</packagerurl>
+	<description>PHP UTF-8 support functions</description>	
+	<filelist>
+		<file>trim.php</file>
+		<file>substr_replace.php</file>
+		<file>utils/ascii.php</file>
+		<file>utils/validation.php</file>
+		<file>utils/specials.php</file>
+		<file>utils/patterns.php</file>
+		<file>utils/bad.php</file>
+		<file>utils/unicode.php</file>
+		<file>str_split.php</file>
+		<file>stristr.php</file>
+		<file>ucfirst.php</file>
+		<file>native/case.php</file>
+		<file>native/core.php</file>
+		<file>native/strlen.php</file>
+		<file>strrev.php</file>
+		<file>mbstring/case.php</file>
+		<file>mbstring/core.php</file>
+		<file>mbstring/strlen.php</file>
+		<file>ucwords.php</file>
+		<file>str_ireplace.php</file>
+		<file>strcspn.php</file>
+		<file>strcasecmp.php</file>
+		<file>utf8.php</file>
+		<file>strspn.php</file>
+	</filelist>
+</manifest>

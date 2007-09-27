@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<manifest>
+	<name>phpGACL</name>
+	<packagename>phpgacl</packagename>
+	<url>http://phpgacl.sourceforge.net/</url>
+	<version>15</version>
+	<packager>Joomla!</packager>
+	<packagerurl>http://www.joomla.org</packagerurl>
+	<description>phpGACL - Generic Access Control List</description>
+	<filelist>
+		<file>gacl_api.php</file>
+		<file>gacl.php</file>
+	</filelist>
+</manifest>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<manifest>
+	<name>Archive</name>
+	<packagename>Archive</packagename>
+	<url>http://www.joomla.org</url>
+	<description>Assorted Archive Libraries</description>
+	<packager>Joomla!</packager>
+	<packagerurl>http://www.joomla.org</packagerurl>
+	<version>1.5</version>
+	<filelist>
+		<file>Tar.php</file>
+	</filelist>
+</manifest>

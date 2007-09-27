@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<manifest>
+	<name>BitFolge</name>
+	<packagename>bitfolge</packagename>
+	<url>http://www.bitfolge.de/en</url>
+	<description>Useful PHP scripts (incl feedcreator)</description>
+	<packager>Joomla!</packager>
+	<packagerurl>http://www.joomla.org</packagerurl>
+	<version>1.5</version>
+	<filelist>
+		<file>feedcreator.php</file>
+		<file>vcard.php</file>
+	</filelist>
+</manifest>

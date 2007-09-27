@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<manifest>
+	<name>GeSHI</name>
+	<packagename>geshi</packagename>
+	<url>http://qbnz.com/highlighter/</url>
+	<version>1.0.7.19</version>
+	<packager>Joomla!</packager>
+	<packagerurl>http://www.joomla.org</packagerurl>
+	<description>The GeSHi class for Generic Syntax Highlighting</description>
+	<filelist>
+		<file>geshi/xml.php</file>
+		<file>geshi/diff.php</file>
+		<file>geshi/css.php</file>
+		<file>geshi/sql.php</file>
+		<file>geshi/php-brief.php</file>
+		<file>geshi/html4strict.php</file>
+		<file>geshi/javascript.php</file>
+		<file>geshi/php.php</file>
+		<file>geshi/mysql.php</file>
+		<file>geshi/ini.php</file>
+		<file>geshi.php</file>
+	</filelist>
+</manifest>
