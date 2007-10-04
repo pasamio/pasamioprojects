@@ -46,5 +46,10 @@ class JLibManModelJLibMan extends JModel
 		
 		   return $greeting;
     }
+    
+    function listLibraries() {
+		$dir = JFolder::readFiles(JPATH_ADMINISTRATOR . DS . 'components' . DS . 'com_jlibman' . DS .'manifests');
+		
+    }
 }
 ?>

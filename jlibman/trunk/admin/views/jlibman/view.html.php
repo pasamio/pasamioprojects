@@ -37,7 +37,7 @@ class JLibManViewJLibMan extends JView
         $model =& $this->getModel();
 		$greeting = $model->getGreeting();
         $this->assignRef( 'greeting', $greeting );
-
+		$dir = $model->listLibraries();
         parent::display($tpl);
     }
 }
