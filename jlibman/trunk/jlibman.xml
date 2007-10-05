@@ -13,7 +13,6 @@
  <version>0.1</version>
  <!-- The description is optional and defaults to the name -->
  <description>This component is designed to allow custom library installation</description>
- 
  <administration>
   <!-- Administration Menu Section -->
   <menu>JLibMan</menu>

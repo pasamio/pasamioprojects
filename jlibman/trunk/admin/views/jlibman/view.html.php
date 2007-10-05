@@ -34,10 +34,13 @@ class JLibManViewJLibMan extends JView
 {
     function display($tpl = null)
     {
+    	JToolBarHelper::title( JText::_( 'JLibrary Manager' ), 'generic.png' );
+        JToolBarHelper::deleteList('uninstall','Uninstall');
+        JToolBarHelper::addNewX();
+    	
         $model =& $this->getModel();
-		$greeting = $model->getGreeting();
-        $this->assignRef( 'greeting', $greeting );
-		$dir = $model->listLibraries();
+		$libs = $model->listLibraries();
+		$this->assignRef( 'items', $libs);
         parent::display($tpl);
     }
 }

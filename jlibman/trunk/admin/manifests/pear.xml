@@ -6,6 +6,7 @@
 	<version>1.4.10</version>
 	<packager>Joomla!</packager>
 	<packagerurl>http://www.joomla.org</packagerurl>
+	<update>http://www.jsitepoint.com/update/libraries/</update>
 	<description>PEAR, the PHP Extension and Application Repository</description>
 	<filelist>
 		<file>PEAR.php</file>

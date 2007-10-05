@@ -6,7 +6,9 @@
 	<description>patTemplate is a powerful templating engine</description>
 	<packager>Joomla!</packager>
 	<packagerurl>http://www.joomla.org</packagerurl>
+	<update>http://www.jsitepoint.com/update/libraries/</update>
 	<version>3.1.0</version>
+	<filelist>
 		<file>patErrorManager.php</file>
 		<file>patTemplate.php</file>
 		<file>patError.php</file>

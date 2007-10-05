@@ -7,6 +7,7 @@
 	<packager>Joomla!</packager>
 	<packagerurl>http://www.joomla.org</packagerurl>
 	<description>The GeSHi class for Generic Syntax Highlighting</description>
+	<update>http://www.jsitepoint.com/update/libraries/</update>
 	<filelist>
 		<file>geshi/xml.php</file>
 		<file>geshi/diff.php</file>

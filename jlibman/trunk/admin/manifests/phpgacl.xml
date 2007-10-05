@@ -6,6 +6,7 @@
 	<version>15</version>
 	<packager>Joomla!</packager>
 	<packagerurl>http://www.joomla.org</packagerurl>
+	<update>http://www.jsitepoint.com/update/libraries/</update>
 	<description>phpGACL - Generic Access Control List</description>
 	<filelist>
 		<file>gacl_api.php</file>

@@ -7,6 +7,7 @@
 	<description>The Joomla! Web Application Framework is the Core of the Joomla! Content Management System</description>
 	<packager>Joomla!</packager>
 	<packagerurl>http://www.joomla.org</packagerurl>
+	<update>http://www.jsitepoint.com/update/libraries/</update>
 	<version>1.5</version>	
 	<filelist>
 		<file>base/tree.php</file>

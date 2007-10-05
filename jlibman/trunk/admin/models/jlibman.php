@@ -23,6 +23,8 @@
 defined('_JEXEC') or die();
 
 jimport( 'joomla.application.component.model' );
+jimport( 'joomla.filesystem.file');
+jimport( 'joomla.filesystem.folder');
 
 /**
  * Hello Model
@@ -32,6 +34,7 @@ jimport( 'joomla.application.component.model' );
  */
 class JLibManModelJLibMan extends JModel
 {
+	
     /**
     * Gets the greeting
     * @return string The greeting to be displayed to the user
@@ -47,9 +50,33 @@ class JLibManModelJLibMan extends JModel
 		   return $greeting;
     }
     
-    function listLibraries() {
-		$dir = JFolder::readFiles(JPATH_ADMINISTRATOR . DS . 'components' . DS . 'com_jlibman' . DS .'manifests');
+    function _parseFile($xmlfile) {
+    			$xml = JFactory::getXMLParser('Simple');
+				//$xml = new JSimpleXML();
+				if(!$xml->loadFile($xmlfile)) {
+					$this->_errors[] = 'Failed to load XML File: ' . $xmlfile;
+				} else {
+					return clone($xml->document);
+				}
+    	return false;
+    }
+    
+    function &listLibraries() {
+    	define('MANIFEST_PATH',JPATH_ADMINISTRATOR . DS . 'components' . DS . 'com_jlibman' . DS .'manifests');
+		$files =  JFolder::files(MANIFEST_PATH);
+		$retval = Array();
+		$file = $files[0];
+		
+		foreach($files as $file) {
+			if(strtolower(JFile::getExt($file)) == 'xml') {
+				$tmp = $this->_parseFile(MANIFEST_PATH . DS . $file);
+				if($tmp) $retval[] = $tmp;
+			}
+		}
+		return $retval;
 		
     }
+    
+    
 }
 ?>

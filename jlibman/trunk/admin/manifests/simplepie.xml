@@ -6,6 +6,7 @@
 	<version>1.0.1</version>
 	<packager>Joomla!</packager>
 	<packagerurl>http://www.joomla.org</packagerurl>
+	<update>http://www.jsitepoint.com/update/libraries/</update>
 	<description>A PHP-Based RSS and Atom Feed Framework.</description>
 	<filelist>
 		<file>idn/idna_convert.class.php</file>
