@@ -35,42 +35,14 @@ jimport( 'joomla.filesystem.folder');
 class JLibManModelJLibMan extends JModel
 {
 	
-    /**
-    * Gets the greeting
-    * @return string The greeting to be displayed to the user
-    */
-    function getGreeting()
-    {
-           $db =& JFactory::getDBO();
-
-		   $query = 'SELECT title FROM #__content';
-		   $db->setQuery( $query );
-		   $greeting = $db->loadResult();
-		
-		   return $greeting;
-    }
-    
-    function _parseFile($xmlfile) {
-    			$xml = JFactory::getXMLParser('Simple');
-				//$xml = new JSimpleXML();
-				if(!$xml->loadFile($xmlfile)) {
-					$this->_errors[] = 'Failed to load XML File: ' . $xmlfile;
-				} else {
-					return clone($xml->document);
-				}
-    	return false;
-    }
-    
     function &listLibraries() {
-    	define('MANIFEST_PATH',JPATH_ADMINISTRATOR . DS . 'components' . DS . 'com_jlibman' . DS .'manifests');
 		$files =  JFolder::files(MANIFEST_PATH);
 		$retval = Array();
 		$file = $files[0];
 		
 		foreach($files as $file) {
 			if(strtolower(JFile::getExt($file)) == 'xml') {
-				$tmp = $this->_parseFile(MANIFEST_PATH . DS . $file);
-				if($tmp) $retval[] = $tmp;
+				$retval[] = new JLibraryManifest(MANIFEST_PATH . DS . $file);
 			}
 		}
 		return $retval;

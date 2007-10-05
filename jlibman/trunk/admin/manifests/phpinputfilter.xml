@@ -8,7 +8,7 @@
 	<packagerurl>http://www.joomla.org</packagerurl>
 	<update>http://www.jsitepoint.com/update/libraries/</update>
 	<description>Filter out unwanted PHP / Javascript / HTML tags.</description>
-	<filelist>
+	<files>
 		<file>inputfilter.php</file>
-	</filelist>
+	</files>
 </manifest>

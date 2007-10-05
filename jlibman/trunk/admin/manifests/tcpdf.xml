@@ -8,10 +8,10 @@
 	<packagerurl>http://www.joomla.org</packagerurl>
 	<update>http://www.jsitepoint.com/update/libraries/</update>
 	<description>A PHP4 class for generating PDF files on-the-fly without requiring external extensions</description>	
-	<filelist>
+	<files>
 		<file>tcpdf.php</file>
 		<file>html_entity_decode_php4.php</file>
 		<file>config/lang/eng.php</file>
 		<file>config/tcpdf_config.php</file>
-	</filelist>
+	</files>
 </manifest>

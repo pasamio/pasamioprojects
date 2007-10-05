@@ -8,7 +8,7 @@
 	<packagerurl>http://www.joomla.org</packagerurl>
 	<update>http://www.jsitepoint.com/update/libraries/</update>
 	<version>1.01</version>
-	<filelist>
+	<files>
 		<file>xml_domit_doctor.php</file>
 		<file>xml_domit_lite_include.php</file>
 		<file>xml_saxy_lite_parser.php</file>
@@ -28,5 +28,5 @@
 		<file>xml_saxy_shared.php</file>
 		<file>xml_domit_parser.php</file>
 		<file>xml_domit_lite_parser.php</file>
-	</filelist>
+	</files>
 </manifest>

@@ -9,7 +9,7 @@
 	<packagerurl>http://www.joomla.org</packagerurl>
 	<update>http://www.jsitepoint.com/update/libraries/</update>
 	<version>1.5</version>	
-	<filelist>
+	<files>
 		<file>base/tree.php</file>
 		<file>base/observer.php</file>
 		<file>base/object.php</file>
@@ -42,7 +42,7 @@
 		<file>html/parameter/element/radio.php</file>
 		<file>html/parameter/element/section.php</file>
 		<file>html/parameter/element/calendar.php</file>
-		<file>html/parameter/element/filelist.php</file>
+		<file>html/parameter/element/files.php</file>
 		<file>html/parameter/element/timezones.php</file>
 		<file>html/parameter/element/password.php</file>
 		<file>html/parameter/element/helpsites.php</file>
@@ -174,5 +174,5 @@
 		<file>registry/format/ini.php</file>
 		<file>registry/format.php</file>
 		<file>registry/registry.php</file>
-	</filelist>
+	</files>
 </manifest>

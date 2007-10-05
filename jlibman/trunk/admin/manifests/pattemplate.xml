@@ -8,7 +8,7 @@
 	<packagerurl>http://www.joomla.org</packagerurl>
 	<update>http://www.jsitepoint.com/update/libraries/</update>
 	<version>3.1.0</version>
-	<filelist>
+	<files>
 		<file>patErrorManager.php</file>
 		<file>patTemplate.php</file>
 		<file>patError.php</file>
@@ -58,5 +58,5 @@
 		<file>patTemplate/TemplateCache.php</file>
 		<file>patTemplate/InputFilter/StripComments.php</file>
 		<file>patTemplate/InputFilter/ShortModifiers.php</file>
-	</filelist>
+	</files>
 </manifest>

@@ -34,8 +34,7 @@ class JLibManViewJLibMan extends JView
 {
     function display($tpl = null)
     {
-    	JToolBarHelper::title( JText::_( 'JLibrary Manager' ), 'generic.png' );
-        JToolBarHelper::deleteList('uninstall','Uninstall');
+    	JToolBarHelper::title( JText::_( 'JLibrary Manager' ), 'install.png' );
         JToolBarHelper::addNewX();
     	
         $model =& $this->getModel();

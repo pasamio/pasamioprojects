@@ -23,6 +23,12 @@ defined('_JEXEC') or die('No direct access allowed ;)');
 // Require the base controller
 require_once( JPATH_COMPONENT.DS.'controller.php' );
 
+//require_once (JApplicationHelper::getPath('admin_html'));
+require_once (JApplicationHelper::getPath('class'));
+
+// Manifest Path; manifest stores information about installed extensions
+define('MANIFEST_PATH',JPATH_ADMINISTRATOR . DS . 'components' . DS . 'com_jlibman' . DS .'manifests');
+
 // Require specific controller if requested
 if($controller = JRequest::getWord('controller')) {
     $path = JPATH_COMPONENT.DS.'controllers'.DS.$controller.'.php';

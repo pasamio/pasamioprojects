@@ -33,7 +33,7 @@ defined('_JEXEC') or die('Restricted access'); ?>
             	<?php echo JText::_( 'Version' ); ?>
             </th>
             <th>
-            	<?php echo JText::_( 'Package Name' ); ?>
+            	<?php echo JText::_( 'Package URL' ); ?>
             </th>
         </tr>            
     </thead>
@@ -46,13 +46,13 @@ defined('_JEXEC') or die('Restricted access'); ?>
         <tr class="<?php echo "row$k"; ?>">
 
             <td>
-                <?php echo $row->name[0]->data(); ?>
+                <a href="index.php?option=com_jlibman&view=details&package=<?php echo $row->packagename ?>"><?php echo $row->name ?></a>
             </td>
             <td align="center">
-            	<?php echo $row->version[0]->data(); ?>
+            	<?php echo $row->version; // $row->version[0]->data(); ?>
             </td>
             <td align="center">
-            	<?php echo $row->packagename[0]->data(); ?>
+            	<a target="_blank" href="<?php echo $row->url ?>"><?php echo $row->url ?></a>
             </td>
         </tr>
         <?php
@@ -62,9 +62,9 @@ defined('_JEXEC') or die('Restricted access'); ?>
     </table>
 </div>
 
-<input type="hidden" name="option" value="com_hello" />
+<input type="hidden" name="option" value="com_jlibman" />
 <input type="hidden" name="task" value="" />
 <input type="hidden" name="boxchecked" value="0" />
-<input type="hidden" name="controller" value="hello" />
+<input type="hidden" name="controller" value="jlibman" />
 
 </form>

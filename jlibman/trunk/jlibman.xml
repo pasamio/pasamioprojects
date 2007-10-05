@@ -21,6 +21,7 @@
   <files folder="admin">
    <filename>index.html</filename>
    <filename>admin.jlibman.php</filename>
+   <filename>jlibman.class.php</filename>
   </files>  
  </administration>
 </install>

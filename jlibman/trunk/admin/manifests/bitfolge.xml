@@ -8,8 +8,8 @@
 	<packagerurl>http://www.joomla.org</packagerurl>
 	<update>http://www.jsitepoint.com/update/libraries/</update>
 	<version>1.5</version>
-	<filelist>
+	<files>
 		<file>feedcreator.php</file>
 		<file>vcard.php</file>
-	</filelist>
+	</files>
 </manifest>

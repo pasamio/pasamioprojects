@@ -1,0 +1,62 @@
+<?php
+/**
+ * Document Description
+ * 
+ * Document Long Description 
+ * 
+ * PHP4/5
+ *  
+ * Created on Oct 5, 2007
+ * 
+ * @package package_name
+ * @author Your Name <author@toowoomba.qld.gov.au>
+ * @author Toowoomba City Council Information Management Branch
+ * @license GNU/GPL http://www.gnu.org/licenses/gpl.html
+ * @copyright 2007 Toowoomba City Council/Developer Name 
+ * @version SVN: $Id:$
+ * @see Project Documentation DM Number: #???????
+ * @see Gaza Documentation: http://gaza.toowoomba.qld.gov.au
+ * @see JoomlaCode Project: http://joomlacode.org/gf/project/
+ */
+ 
+class JLibraryManifest extends JObject {
+	
+	var $name = '';
+	var $packagename = '';
+	var $url = '';
+	var $description = '';
+	var $packager = '';
+	var $packagerurl = '';
+	var $update = '';
+	var $version = '';
+	var $filelist = Array();
+	
+	function __construct($xmlpath='') {
+		if(strlen($xmlpath)) $this->loadManifestFromXML($xmlpath);
+	}
+	
+	function loadManifestFromXML($xmlfile) {
+		$xml = JFactory::getXMLParser('Simple');
+		//$xml = new JSimpleXML();
+		if(!$xml->loadFile($xmlfile)) {
+			$this->_errors[] = 'Failed to load XML File: ' . $xmlfile;
+			return false;
+		} else {
+			$xml = $xml->document;
+			$this->name = $xml->name[0]->data();
+			$this->packagename = $xml->packagename[0]->data();
+			$this->update = $xml->update[0]->data();
+			$this->url = $xml->url[0]->data();
+			$this->description = $xml->description[0]->data();
+			$this->packager = $xml->packager[0]->data();
+			$this->packagerurl = $xml->packagerurl[0]->data();
+			$this->version = $xml->version[0]->data();
+			foreach($xml->files[0]->file as $file) {
+				$this->filelist[] = $file->data();
+			}
+			return true;
+		}
+	}
+}
+
+?>

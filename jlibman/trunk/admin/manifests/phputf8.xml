@@ -8,7 +8,7 @@
 	<packagerurl>http://www.joomla.org</packagerurl>
 	<update>http://www.jsitepoint.com/update/libraries/</update>
 	<description>PHP UTF-8 support functions</description>	
-	<filelist>
+	<files>
 		<file>trim.php</file>
 		<file>substr_replace.php</file>
 		<file>utils/ascii.php</file>
@@ -33,5 +33,5 @@
 		<file>strcasecmp.php</file>
 		<file>utf8.php</file>
 		<file>strspn.php</file>
-	</filelist>
+	</files>
 </manifest>

@@ -8,7 +8,7 @@
 	<packagerurl>http://www.joomla.org</packagerurl>
 	<description>The GeSHi class for Generic Syntax Highlighting</description>
 	<update>http://www.jsitepoint.com/update/libraries/</update>
-	<filelist>
+	<files>
 		<file>geshi/xml.php</file>
 		<file>geshi/diff.php</file>
 		<file>geshi/css.php</file>
@@ -20,5 +20,5 @@
 		<file>geshi/mysql.php</file>
 		<file>geshi/ini.php</file>
 		<file>geshi.php</file>
-	</filelist>
+	</files>
 </manifest>
