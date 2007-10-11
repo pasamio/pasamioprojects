@@ -134,7 +134,7 @@ class JInstallerLibrary extends JObject
 	 * Custom uninstall method
 	 *
 	 * @access	public
-	 * @param	int		$cid	The id of the plugin to uninstall
+	 * @param	string	$cid	The id of the library to uninstall
 	 * @param	int		$clientId	The id of the client (unused)
 	 * @return	boolean	True on success
 	 * @since	1.5
