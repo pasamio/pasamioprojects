@@ -42,6 +42,10 @@ class JLibManController extends JController
         parent::display();
     }
 
+    function uninstall() {
+    	print_r($_POST);
+    	parent::display();
+    }
 }
 
 ?>

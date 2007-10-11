@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<manifest>
+<install type="library" version="1.5">
 	<name>BitFolge</name>
 	<packagename>bitfolge</packagename>
 	<url>http://www.bitfolge.de/en</url>
@@ -12,4 +12,4 @@
 		<file>feedcreator.php</file>
 		<file>vcard.php</file>
 	</files>
-</manifest>
+</install>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<manifest>
+<install type="library" version="1.5">
 	<name>PHP</name>
 	<packagename>phputf8</packagename>
 	<url>http://www.joomla.org</url>
@@ -34,4 +34,4 @@
 		<file>utf8.php</file>
 		<file>strspn.php</file>
 	</files>
-</manifest>
+</install>

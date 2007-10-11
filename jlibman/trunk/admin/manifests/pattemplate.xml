@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<manifest>
+<install type="library" version="1.5">
 	<name>patTemplate</name>
 	<packagename>pattemplate</packagename>
 	<url>http://www.php-tools.net</url>
@@ -59,4 +59,4 @@
 		<file>patTemplate/InputFilter/StripComments.php</file>
 		<file>patTemplate/InputFilter/ShortModifiers.php</file>
 	</files>
-</manifest>
+</install>

@@ -72,18 +72,10 @@ class JInstallerLibrary extends JObject
 
 		// Set the installation path
 		$element =& $this->manifest->getElementByPath('files');
-		if (is_a($element, 'JSimpleXMLElement') && count($element->children())) {
-			$files =& $element->children();
-			foreach ($files as $file) {
-				if ($file->attributes($type)) {
-					$pname = $file->attributes($type);
-					break;
-				}
-			}
-		}
-		$group = $this->manifest->attributes('group');
-		if (!empty ($pname) && !empty($group)) {
-			$this->parent->setPath('extension_root', JPATH_ROOT.DS.'libraries'.DS.implode(DS,explode('/',$packagename)));
+		$group = $this->manifest->getElementByPath('packagename');
+		$group = $group->data();
+		if (!empty($group)) {
+			$this->parent->setPath('extension_root', JPATH_ROOT.DS.'libraries'.DS.implode(DS,explode('/',$group)));
 		} else {
 			$this->parent->abort(JText::_('Library').' '.JText::_('Install').': '.JText::_('No library file specified'));
 			return false;
@@ -127,7 +119,10 @@ class JInstallerLibrary extends JObject
 		 */
 
 		// Lastly, we will copy the manifest file to its appropriate place.
-		if (!$this->parent->copyManifest(-1)) {
+		$manifest = Array();
+		$manifest['src'] = $this->parent->getPath('manifest');
+		$manifest['dest'] = JPATH_ADMINISTRATOR.DS.'components'.DS.'com_jlibman'.DS.'manifests'.DS.basename($this->parent->getPath('manifest'));
+		if (!$this->parent->copyFiles(array($manifest), true)) {
 			// Install failed, rollback changes
 			$this->parent->abort(JText::_('Library').' '.JText::_('Install').': '.JText::_('Could not copy setup file'));
 			return false;

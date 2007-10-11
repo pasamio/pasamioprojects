@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<manifest>
+<install type="library" version="1.5">
 	<name>OpenID</name>
 	<packagename>openid</packagename>
 	<url>http://www.openidenabled.com/</url>
@@ -43,4 +43,4 @@
 		<file>Services/Yadis/PlainHTTPFetcher.php</file>
 		<file>consumer.php</file>
 	</files>
-</manifest>
+</install>

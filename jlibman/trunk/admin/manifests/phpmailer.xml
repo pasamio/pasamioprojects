@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<manifest>
+<install type="library" version="1.5">
 	<name>PHPMailer</name>
 	<packagename>phpmailer</packagename>
 	<url>http://www.joomla.org</url>
@@ -14,4 +14,4 @@
 		<file>language/phpmailer.lang-joomla.php</file>
 		<file>smtp.php</file>
 	</files>
-</manifest>
+</install>

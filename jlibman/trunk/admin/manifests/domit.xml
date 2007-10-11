@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<manifest>
+<install type="library" version="1.5">
 	<name>DOMiT</name>
 	<packagename>domit</packagename>
 	<url>http://www.engageinteractive.com</url>
@@ -29,4 +29,4 @@
 		<file>xml_domit_parser.php</file>
 		<file>xml_domit_lite_parser.php</file>
 	</files>
-</manifest>
+</install>

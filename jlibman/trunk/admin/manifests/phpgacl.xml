@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<manifest>
+<install type="library" version="1.5">
 	<name>phpGACL</name>
 	<packagename>phpgacl</packagename>
 	<url>http://phpgacl.sourceforge.net/</url>
@@ -12,4 +12,4 @@
 		<file>gacl_api.php</file>
 		<file>gacl.php</file>
 	</files>
-</manifest>
+</install>

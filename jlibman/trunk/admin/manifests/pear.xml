@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<manifest>
+<install type="library" version="1.5">
 	<name>PEAR</name>
 	<packagename>pear</packagename>
 	<url>http://pear.php.net/package/PEAR</url>
@@ -11,4 +11,4 @@
 	<files>
 		<file>PEAR.php</file>
 	</files>
-</manifest>
+</install>

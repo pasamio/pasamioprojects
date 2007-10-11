@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<manifest>
+<install type="library" version="1.5">
 	<name>Joomla! Web Application Framework</name>
 	<packagename>joomla</packagename>
 	<url>http://www.joomla.org</url>
@@ -175,4 +175,4 @@
 		<file>registry/format.php</file>
 		<file>registry/registry.php</file>
 	</files>
-</manifest>
+</install>

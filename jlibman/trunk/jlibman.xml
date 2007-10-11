@@ -13,15 +13,18 @@
  <version>0.1</version>
  <!-- The description is optional and defaults to the name -->
  <description>This component is designed to allow custom library installation</description>
+ <installfile>install.php</installfile>
+ <uninstallfile>uninstall.php</uninstallfile>
  <administration>
   <!-- Administration Menu Section -->
-  <menu>JLibMan</menu>
+  <menu>Library Management</menu>
   
   <!-- Administration Main File Copy Section -->
   <files folder="admin">
    <filename>index.html</filename>
    <filename>admin.jlibman.php</filename>
    <filename>jlibman.class.php</filename>
+   <filename>include/library.php</filename>
   </files>  
  </administration>
 </install>

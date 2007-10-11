@@ -6,7 +6,7 @@
  * 
  * PHP4/5
  *  
- * Created on Sep 28, 2007
+ * Created on Oct 5, 2007
  * 
  * @package package_name
  * @author Your Name <author@toowoomba.qld.gov.au>
@@ -19,28 +19,26 @@
  * @see JoomlaCode Project: http://joomlacode.org/gf/project/
  */
  
+
 // no direct access
 defined( '_JEXEC' ) or die( 'Restricted access' );
 
 jimport( 'joomla.application.component.view');
 
-/**
- * HTML View class for the HelloWorld Component
- *
- * @package    HelloWorld
- */
-
-class JLibManViewJLibMan extends JView
+ class JLibManViewdetails extends JView
 {
     function display($tpl = null)
     {
-    	JToolBarHelper::title( JText::_( 'JLibrary Manager' ), 'install.png' );
-        //JToolBarHelper::addNewX(); // Use install manager
+    	JToolBarHelper::title( JText::_( 'JLibrary Manager - Details' ), 'install.png' );
+        JToolBarHelper::trash('uninstall','Uninstall',false);
+        JToolBarHelper::customX('home','back.png', 'back_f2.png','Home',false);
     	
         $model =& $this->getModel();
-		$libs = $model->listLibraries();
-		$this->assignRef( 'items', $libs);
-        parent::display($tpl);
+        $library = $_GET['package'];
+		$lib = $model->getDetails($library);
+		$this->assignRef( 'library', $lib);
+		
+    	parent::display($tpl);
     }
 }
 ?>

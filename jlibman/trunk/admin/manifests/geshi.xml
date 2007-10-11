@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<manifest>
+<install type="library" version="1.5">
 	<name>GeSHI</name>
 	<packagename>geshi</packagename>
 	<url>http://qbnz.com/highlighter/</url>
@@ -21,4 +21,4 @@
 		<file>geshi/ini.php</file>
 		<file>geshi.php</file>
 	</files>
-</manifest>
+</install>

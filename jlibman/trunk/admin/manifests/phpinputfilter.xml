@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<manifest>
+<install type="library" version="1.5">
 	<name>PHP Input Filter</name>
 	<packagename>phpinputfilter</packagename>
 	<url>http://www.phpclasses.org/browse/package/2189.html</url>
@@ -11,4 +11,4 @@
 	<files>
 		<file>inputfilter.php</file>
 	</files>
-</manifest>
+</install>

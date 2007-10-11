@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<manifest>
+<install type="library" version="1.5">
 	<name>SimplePie</name>
 	<packagename>simplepie</packagename>
 	<url>http://simplepie.org/</url>
@@ -12,4 +12,4 @@
 		<file>idn/idna_convert.class.php</file>
 		<file>simplepie.php</file>
 	</files>
-</manifest>
+</install>

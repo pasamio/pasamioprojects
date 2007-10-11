@@ -37,7 +37,6 @@ class JLibraryManifest extends JObject {
 	
 	function loadManifestFromXML($xmlfile) {
 		$xml = JFactory::getXMLParser('Simple');
-		//$xml = new JSimpleXML();
 		if(!$xml->loadFile($xmlfile)) {
 			$this->_errors[] = 'Failed to load XML File: ' . $xmlfile;
 			return false;

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<manifest>
+<install type="library" version="1.5">
 	<name>TCPDF</name>
 	<packagename>tcpdf</packagename>
 	<url>http://tcpdf.sourceforge.net</url>
@@ -14,4 +14,4 @@
 		<file>config/lang/eng.php</file>
 		<file>config/tcpdf_config.php</file>
 	</files>
-</manifest>
+</install>

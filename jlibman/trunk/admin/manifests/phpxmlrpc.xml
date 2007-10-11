@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<manifest>
+<install type="library" version="1.5">
 	<name>XML RPC for PHP</name>
 	<packagename>phpxmlrpc</packagename>
 	<url>http://www.joomla.org</url>
@@ -19,4 +19,4 @@
 		<file>xmlrpcs.php</file>
 		<file>xmlrpc_wrappers.php</file>
 	</files>
-</manifest>
+</install>
