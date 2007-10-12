@@ -50,5 +50,11 @@ class JLibManModelJLibMan extends JModel
     }
     
     
+    function uninstall($libid) {
+    	// Get an installer object for the extension type
+		jimport('joomla.installer.installer');
+		$installer = & JInstaller::getInstance();
+		return $installer->uninstall('library', $libid, 0 );
+    }
 }
 ?>

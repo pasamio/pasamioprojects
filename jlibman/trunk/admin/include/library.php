@@ -134,8 +134,8 @@ class JInstallerLibrary extends JObject
 	 * Custom uninstall method
 	 *
 	 * @access	public
-	 * @param	string	$cid	The id of the library to uninstall
-	 * @param	int		$clientId	The id of the client (unused)
+	 * @param	string	$id	The id of the library to uninstall
+	 * @param	int		$clientId	The id of the client (unused; libraries are global)
 	 * @return	boolean	True on success
 	 * @since	1.5
 	 */
@@ -144,38 +144,20 @@ class JInstallerLibrary extends JObject
 		// Initialize variables
 		$row	= null;
 		$retval = true;
-		$db		=& $this->parent->getDBO();
-
-		// First order of business will be to load the module object table from the database.
-		// This should give us the necessary information to proceed.
-		$row = & JTable::getInstance('plugin');
-		$row->load((int) $id);
-
-		// Is the plugin we are trying to uninstall a core one?
-		// Because that is not a good idea...
-		if ($row->iscore) {
-			JError::raiseWarning(100, JText::_('Plugin').' '.JText::_('Uninstall').': '.JText::sprintf('WARNCOREPLUGIN', $row->name)."<br />".JText::_('WARNCOREPLUGIN2'));
-			return false;
-		}
-
-		// Get the plugin folder so we can properly build the plugin path
-		if (trim($row->folder) == '') {
-			JError::raiseWarning(100, JText::_('Library').' '.JText::_('Uninstall').': '.JText::_('Folder field empty, cannot remove files'));
-			return false;
-		}
+		$manifestFile = MANIFEST_PATH . DS . $id .'.xml';
+		$manifest = new JLibraryManifest($manifestFile);		
 
 		// Set the plugin root path
-		$this->parent->setPath('extension_root', JPATH_ROOT.DS.'plugins'.DS.$row->folder);
+		$this->parent->setPath('extension_root', JPATH_ROOT.DS.'libraries'.DS.$manifest->packagename);
 
-		// Because plugins don't have their own folders we cannot use the standard method of finding an installation manifest
-		$manifestFile = JPATH_ROOT.DS.'plugins'.DS.$row->folder.DS.$row->element.'.xml';
+		// Because libraries may not have their own folders we cannot use the standard method of finding an installation manifest
 		if (file_exists($manifestFile))
 		{
 			$xml =& JFactory::getXMLParser('Simple');
 
 			// If we cannot load the xml file return null
 			if (!$xml->loadFile($manifestFile)) {
-				JError::raiseWarning(100, JText::_('Plugin').' '.JText::_('Uninstall').': '.JText::_('Could not load manifest file'));
+				JError::raiseWarning(100, JText::_('Library').' '.JText::_('Uninstall').': '.JText::_('Could not load manifest file'));
 				return false;
 			}
 
@@ -186,26 +168,17 @@ class JInstallerLibrary extends JObject
 			 */
 			$root =& $xml->document;
 			if ($root->name() != 'install' && $root->name() != 'mosinstall') {
-				JError::raiseWarning(100, JText::_('Plugin').' '.JText::_('Uninstall').': '.JText::_('Invalid manifest file'));
+				JError::raiseWarning(100, JText::_('Library').' '.JText::_('Uninstall').': '.JText::_('Invalid manifest file'));
 				return false;
 			}
 
-			// Remove the plugin files
-			$this->parent->removeFiles($root->getElementByPath('images'), -1);
 			$this->parent->removeFiles($root->getElementByPath('files'), -1);
 			JFile::delete($manifestFile);
 
-			// Remove all media and languages as well
-			$this->parent->removeFiles($root->getElementByPath('media'));
-			$this->parent->removeFiles($root->getElementByPath('languages'), 1);
 		} else {
-			JError::raiseWarning(100, 'Plugin Uninstall: Manifest File invalid or not found');
+			JError::raiseWarning(100, 'Library Uninstall: Manifest File invalid or not found');
 			return false;
 		}
-
-		// Now we will no longer need the plugin object, so lets delete it
-		$row->delete($row->id);
-		unset ($row);
 
 		// If the folder is empty, let's delete it
 		$files = JFolder::files($this->parent->getPath('extension_root'));

@@ -43,7 +43,9 @@ class JLibManController extends JController
     }
 
     function uninstall() {
-    	print_r($_POST);
+    	$model = $this->getModel('jlibman');
+    	$lib = JRequest::getWord('library','');
+    	if(strlen($lib)) echo $model->uninstall($lib);
     	parent::display();
     }
 }
