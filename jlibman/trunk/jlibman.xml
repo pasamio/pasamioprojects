@@ -21,10 +21,42 @@
   
   <!-- Administration Main File Copy Section -->
   <files folder="admin">
-   <filename>index.html</filename>
-   <filename>admin.jlibman.php</filename>
-   <filename>jlibman.class.php</filename>
-   <filename>include/library.php</filename>
+		<!-- System Views, the default list and the detail screen --> 
+		<filename>views/jlibman/tmpl/default.php</filename>
+		<filename>views/jlibman/tmpl/index.html</filename>
+		<filename>views/jlibman/index.html</filename>
+		<filename>views/jlibman/view.html.php</filename>
+		<filename>views/details/tmpl/index.html</filename>
+		<filename>views/details/view.html.php</filename>
+		<filename>views/index.html</filename>
+		<!-- Data access models, default and details -->
+		<filename>models/jlibman.php</filename>
+		<filename>models/index.html</filename>
+		<filename>models/details.php</filename>
+		<!-- Controller and Joomla! Admin landing point -->
+		<filename>controller.php</filename>
+		<filename>admin.jlibman.php</filename>
+		<filename>index.html</filename>
+		<!-- Manifests for libraries installed with 1.5 -->
+		<filename>manifests/phpmailer.xml</filename>
+		<filename>manifests/archive.xml</filename>
+		<filename>manifests/phputf8.xml</filename>
+		<filename>manifests/geshi.xml</filename>
+		<filename>manifests/index.html</filename>
+		<filename>manifests/bitfolge.xml</filename>
+		<filename>manifests/phpxmlrpc.xml</filename>
+		<filename>manifests/phpinputfilter.xml</filename>
+		<filename>manifests/domit.xml</filename>
+		<filename>manifests/pear.xml</filename>
+		<filename>manifests/pattemplate.xml</filename>
+		<filename>manifests/joomla.xml</filename>
+		<filename>manifests/openid.xml</filename>
+		<filename>manifests/phpgacl.xml</filename>
+		<!-- The installer adapter to allow Joomla! 1.5 to handle libraries -->
+		<filename>include/library.php</filename>
+		<filename>include/index.html</filename>
+		<!-- JLibMan Support Class -->
+		<filename>jlibman.class.php</filename>
   </files>  
  </administration>
 </install>
