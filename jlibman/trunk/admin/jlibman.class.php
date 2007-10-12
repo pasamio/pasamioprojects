@@ -30,12 +30,14 @@ class JLibraryManifest extends JObject {
 	var $update = '';
 	var $version = '';
 	var $filelist = Array();
+	var $manifest_file = '';
 	
 	function __construct($xmlpath='') {
 		if(strlen($xmlpath)) $this->loadManifestFromXML($xmlpath);
 	}
 	
 	function loadManifestFromXML($xmlfile) {
+		$this->manifest_file = JFile::stripExt(basename($xmlfile));
 		$xml = JFactory::getXMLParser('Simple');
 		if(!$xml->loadFile($xmlfile)) {
 			$this->_errors[] = 'Failed to load XML File: ' . $xmlfile;

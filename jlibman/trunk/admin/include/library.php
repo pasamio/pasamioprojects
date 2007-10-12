@@ -180,6 +180,7 @@ class JInstallerLibrary extends JObject
 			return false;
 		}
 
+		// TODO: Change this so it walked up the path backwards so we clobber multiple empties
 		// If the folder is empty, let's delete it
 		$files = JFolder::files($this->parent->getPath('extension_root'));
 		if (!count($files)) {
