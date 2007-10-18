@@ -20,7 +20,7 @@ do
 	fi
 	cd $DIRNAME
 	# Use -type f so that we ignore symlinks
-	find -type f | grep -v svn | grep php | sed -e 's/.\/\(.*\)/\t\t<file>\1<\/file>/g' >> $OUTPUT/$DIRNAME.xml
+	find -type f | grep -v svn | sed -e 's/.\/\(.*\)/\t\t<file>\1<\/file>/g' >> $OUTPUT/$DIRNAME.xml
 	cat $FOOTER >> $OUTPUT/$DIRNAME.xml
 	cd ..
 done
