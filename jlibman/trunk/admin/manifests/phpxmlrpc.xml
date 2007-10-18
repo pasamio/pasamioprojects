@@ -6,10 +6,14 @@
 	<version>1.5</version>
 	<packager>Joomla!</packager>
 	<packagerurl>http://www.joomla.org</packagerurl>
-	<update>http://www.jsitepoint.com/update/libraries/</update>
+	<update>http://www.jsitepoint.com/update/libraries/phpxmlrpc</update>
 	<description>PHP XML RPC Library for Client and Server</description>
 	<files>
+		<file>NEWS</file>
+		<file>README</file>
 		<file>xmlrpc.php</file>
+		<file>index.html</file>
+		<file>compat/index.html</file>
 		<file>compat/version_compare.php</file>
 		<file>compat/is_a.php</file>
 		<file>compat/is_callable.php</file>
@@ -18,5 +22,6 @@
 		<file>compat/array_key_exists.php</file>
 		<file>xmlrpcs.php</file>
 		<file>xmlrpc_wrappers.php</file>
+		<file>Changelog</file>
 	</files>
 </install>

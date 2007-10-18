@@ -6,7 +6,7 @@
 	<description>OpenID is a way for individuals to create identity online and use it anywhere OpenID is supported. This library provides an OpenID consumer.</description>
 	<packager>Joomla!</packager>
 	<packagerurl>http://www.joomla.org</packagerurl>
-	<update>http://www.jsitepoint.com/update/libraries/</update>
+	<update>http://www.jsitepoint.com/update/libraries/openid</update>
 	<version>1.2.2</version>
 	<files>
 		<file>Auth/OpenID/MySQLStore.php</file>
@@ -15,6 +15,7 @@
 		<file>Auth/OpenID/SQLStore.php</file>
 		<file>Auth/OpenID/KVForm.php</file>
 		<file>Auth/OpenID/ServerRequest.php</file>
+		<file>Auth/OpenID/index.html</file>
 		<file>Auth/OpenID/FileStore.php</file>
 		<file>Auth/OpenID/URINorm.php</file>
 		<file>Auth/OpenID/Server.php</file>
@@ -30,17 +31,24 @@
 		<file>Auth/OpenID/Association.php</file>
 		<file>Auth/OpenID/BigMath.php</file>
 		<file>Auth/OpenID.php</file>
+		<file>Auth/index.html</file>
+		<file>README</file>
+		<file>index.html</file>
 		<file>Services/Yadis/XRDS.php</file>
 		<file>Services/Yadis/XRI.php</file>
 		<file>Services/Yadis/ParseHTML.php</file>
 		<file>Services/Yadis/HTTPFetcher.php</file>
 		<file>Services/Yadis/Misc.php</file>
+		<file>Services/Yadis/index.html</file>
 		<file>Services/Yadis/ParanoidHTTPFetcher.php</file>
 		<file>Services/Yadis/Yadis.php</file>
 		<file>Services/Yadis/XRIRes.php</file>
 		<file>Services/Yadis/Manager.php</file>
 		<file>Services/Yadis/XML.php</file>
 		<file>Services/Yadis/PlainHTTPFetcher.php</file>
+		<file>Services/index.html</file>
+		<file>CHANGELOG</file>
 		<file>consumer.php</file>
+		<file>COPYING</file>
 	</files>
 </install>

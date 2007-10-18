@@ -6,7 +6,7 @@
 	<description>DOMIT! is a non-validating, but lightweight and fast DOM parser for PHP</description>
 	<packager>Joomla!</packager>
 	<packagerurl>http://www.joomla.org</packagerurl>
-	<update>http://www.jsitepoint.com/update/libraries/</update>
+	<update>http://www.jsitepoint.com/update/libraries/domit</update>
 	<version>1.01</version>
 	<files>
 		<file>xml_domit_doctor.php</file>
@@ -19,12 +19,15 @@
 		<file>xml_domit_parseattributes.php</file>
 		<file>xml_domit_rss_lite.php</file>
 		<file>xml_domit_nodetools.php</file>
+		<file>index.html</file>
 		<file>xml_domit_rss.php</file>
 		<file>xml_domit_include.php</file>
 		<file>xml_domit_getelementsbypath.php</file>
 		<file>xml_saxy_parser.php</file>
+		<file>domitBanner.gif</file>
 		<file>xml_domit_rss_shared.php</file>
 		<file>xml_domit_nodemaps.php</file>
+		<file>license.txt</file>
 		<file>xml_saxy_shared.php</file>
 		<file>xml_domit_parser.php</file>
 		<file>xml_domit_lite_parser.php</file>

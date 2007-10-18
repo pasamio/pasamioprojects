@@ -6,10 +6,13 @@
 	<version>1.5</version>
 	<packager>Joomla!</packager>
 	<packagerurl>http://www.joomla.org</packagerurl>
-	<update>http://www.jsitepoint.com/update/libraries/</update>
+	<update>http://www.jsitepoint.com/update/libraries/phpmailer</update>
 	<description>Classes for sending email</description>	
 	<files>
 		<file>phpmailer.php</file>
+		<file>LICENSE</file>
+		<file>index.html</file>
+		<file>language/index.html</file>
 		<file>language/phpmailer.lang-en.php</file>
 		<file>language/phpmailer.lang-joomla.php</file>
 		<file>smtp.php</file>

@@ -6,24 +6,31 @@
 	<version>1.5</version>
 	<packager>Joomla!</packager>
 	<packagerurl>http://www.joomla.org</packagerurl>
-	<update>http://www.jsitepoint.com/update/libraries/</update>
+	<update>http://www.jsitepoint.com/update/libraries/phputf8</update>
 	<description>PHP UTF-8 support functions</description>	
 	<files>
 		<file>trim.php</file>
 		<file>substr_replace.php</file>
+		<file>LICENSE</file>
 		<file>utils/ascii.php</file>
 		<file>utils/validation.php</file>
 		<file>utils/specials.php</file>
+		<file>utils/index.html</file>
 		<file>utils/patterns.php</file>
 		<file>utils/bad.php</file>
 		<file>utils/unicode.php</file>
+		<file>TODO.tsk</file>
 		<file>str_split.php</file>
+		<file>README</file>
+		<file>index.html</file>
 		<file>stristr.php</file>
 		<file>ucfirst.php</file>
+		<file>native/index.html</file>
 		<file>native/case.php</file>
 		<file>native/core.php</file>
 		<file>native/strlen.php</file>
 		<file>strrev.php</file>
+		<file>mbstring/index.html</file>
 		<file>mbstring/case.php</file>
 		<file>mbstring/core.php</file>
 		<file>mbstring/strlen.php</file>
