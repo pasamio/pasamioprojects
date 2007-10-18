@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<install type="library" version="1.5">
+	<name>DOMiT</name>
+	<packagename>domit</packagename>
+	<url>http://www.engageinteractive.com</url>
+	<description>DOMIT! is a non-validating, but lightweight and fast DOM parser for PHP</description>
+	<packager>Joomla!</packager>
+	<packagerurl>http://www.joomla.org</packagerurl>
+	<update>http://www.jsitepoint.com/update/libraries/</update>
+	<version>1.01</version>
+	<files>

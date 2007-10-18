@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<install type="library" version="1.5">
+	<name>OpenID</name>
+	<packagename>openid</packagename>
+	<url>http://www.openidenabled.com/</url>
+	<description>OpenID is a way for individuals to create identity online and use it anywhere OpenID is supported. This library provides an OpenID consumer.</description>
+	<packager>Joomla!</packager>
+	<packagerurl>http://www.joomla.org</packagerurl>
+	<update>http://www.jsitepoint.com/update/libraries/</update>
+	<version>1.2.2</version>
+	<files>

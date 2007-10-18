@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<install type="library" version="1.5">
+	<name>PHP Input Filter</name>
+	<packagename>phpinputfilter</packagename>
+	<url>http://www.phpclasses.org/browse/package/2189.html</url>
+	<version>1.2.2</version>
+	<packager>Joomla!</packager>
+	<packagerurl>http://www.joomla.org</packagerurl>
+	<update>http://www.jsitepoint.com/update/libraries/</update>
+	<description>Filter out unwanted PHP / Javascript / HTML tags.</description>
+	<files>

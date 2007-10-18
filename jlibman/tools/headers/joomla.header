@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<install type="library" version="1.5">
+	<name>Joomla! Web Application Framework</name>
+	<packagename>joomla</packagename>
+	<url>http://www.joomla.org</url>
+	<version>1.5</version>
+	<description>The Joomla! Web Application Framework is the Core of the Joomla! Content Management System</description>
+	<packager>Joomla!</packager>
+	<packagerurl>http://www.joomla.org</packagerurl>
+	<update>http://www.jsitepoint.com/update/libraries/</update>
+	<version>1.5</version>	
+	<files>

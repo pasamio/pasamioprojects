@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<install type="library" version="1.5">
+	<name>GeSHI</name>
+	<packagename>geshi</packagename>
+	<url>http://qbnz.com/highlighter/</url>
+	<version>1.0.7.19</version>
+	<packager>Joomla!</packager>
+	<packagerurl>http://www.joomla.org</packagerurl>
+	<description>The GeSHi class for Generic Syntax Highlighting</description>
+	<update>http://www.jsitepoint.com/update/libraries/</update>
+	<files>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<install type="library" version="1.5">
+	<name>patTemplate</name>
+	<packagename>pattemplate</packagename>
+	<url>http://www.php-tools.net</url>
+	<description>patTemplate is a powerful templating engine</description>
+	<packager>Joomla!</packager>
+	<packagerurl>http://www.joomla.org</packagerurl>
+	<update>http://www.jsitepoint.com/update/libraries/</update>
+	<version>3.1.0</version>
+	<files>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<install type="library" version="1.5">
+	<name>SimplePie</name>
+	<packagename>simplepie</packagename>
+	<url>http://simplepie.org/</url>
+	<version>1.0.1</version>
+	<packager>Joomla!</packager>
+	<packagerurl>http://www.joomla.org</packagerurl>
+	<update>http://www.jsitepoint.com/update/libraries/</update>
+	<description>A PHP-Based RSS and Atom Feed Framework.</description>
+	<files>

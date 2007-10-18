@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<install type="library" version="1.5">
+	<name>PHP</name>
+	<packagename>phputf8</packagename>
+	<url>http://www.joomla.org</url>
+	<version>1.5</version>
+	<packager>Joomla!</packager>
+	<packagerurl>http://www.joomla.org</packagerurl>
+	<update>http://www.jsitepoint.com/update/libraries/</update>
+	<description>PHP UTF-8 support functions</description>	
+	<files>
