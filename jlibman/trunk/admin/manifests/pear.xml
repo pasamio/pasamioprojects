@@ -9,6 +9,7 @@
 	<update>http://www.jsitepoint.com/update/libraries/</update>
 	<description>PEAR, the PHP Extension and Application Repository</description>
 	<files>
+		<file>archive_tar/Archive_Tar.php</file>
 		<file>PEAR.php</file>
 	</files>
 </install>

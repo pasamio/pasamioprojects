@@ -13,8 +13,7 @@
 		<file>base/tree.php</file>
 		<file>base/observer.php</file>
 		<file>base/object.php</file>
-		<file>i18n/language.php</file>
-		<file>i18n/help.php</file>
+		<file>base/observable.php</file>
 		<file>html/html/menu.php</file>
 		<file>html/html/list.php</file>
 		<file>html/html/grid.php</file>
@@ -42,7 +41,7 @@
 		<file>html/parameter/element/radio.php</file>
 		<file>html/parameter/element/section.php</file>
 		<file>html/parameter/element/calendar.php</file>
-		<file>html/parameter/element/files.php</file>
+		<file>html/parameter/element/filelist.php</file>
 		<file>html/parameter/element/timezones.php</file>
 		<file>html/parameter/element/password.php</file>
 		<file>html/parameter/element/helpsites.php</file>
@@ -57,6 +56,8 @@
 		<file>html/parameter/element/category.php</file>
 		<file>html/parameter/element/hidden.php</file>
 		<file>html/parameter/element.php</file>
+		<file>mail/helper.php</file>
+		<file>mail/mail.php</file>
 		<file>user/helper.php</file>
 		<file>user/authorization.php</file>
 		<file>user/authentication.php</file>
@@ -70,8 +71,10 @@
 		<file>database/table/module.php</file>
 		<file>database/table/plugin.php</file>
 		<file>database/table/component.php</file>
+		<file>database/table/arogroup.php</file>
 		<file>database/table/content.php</file>
 		<file>database/table/session.php</file>
+		<file>database/table/aro.php</file>
 		<file>database/table/user.php</file>
 		<file>database/table/category.php</file>
 		<file>database/table/menutypes.php</file>
@@ -88,9 +91,7 @@
 		<file>cache/handler/output.php</file>
 		<file>cache/handler/callback.php</file>
 		<file>cache/handler/view.php</file>
-		<file>event/handler.php</file>
-		<file>event/helper.php</file>
-		<file>event/plugin.php</file>
+		<file>event/event.php</file>
 		<file>event/dispatcher.php</file>
 		<file>session/storage.php</file>
 		<file>session/storage/none.php</file>
@@ -120,8 +121,9 @@
 		<file>client/ldap.php</file>
 		<file>client/helper.php</file>
 		<file>client/ftp.php</file>
-		<file>filter/output.php</file>
-		<file>filter/input.php</file>
+		<file>filter/filteroutput.php</file>
+		<file>filter/filterinput.php</file>
+		<file>import.php</file>
 		<file>filesystem/archive.php</file>
 		<file>filesystem/file.php</file>
 		<file>filesystem/path.php</file>
@@ -131,10 +133,16 @@
 		<file>filesystem/archive/gzip.php</file>
 		<file>filesystem/archive/bzip2.php</file>
 		<file>factory.php</file>
+		<file>plugin/helper.php</file>
+		<file>plugin/plugin.php</file>
 		<file>environment/request.php</file>
 		<file>environment/uri.php</file>
 		<file>environment/response.php</file>
 		<file>environment/browser.php</file>
+		<file>language/helper.php</file>
+		<file>language/language.php</file>
+		<file>language/help.php</file>
+		<file>installer/helper.php</file>
 		<file>installer/adapters/module.php</file>
 		<file>installer/adapters/plugin.php</file>
 		<file>installer/adapters/component.php</file>
@@ -159,16 +167,14 @@
 		<file>utilities/profiler.php</file>
 		<file>utilities/date.php</file>
 		<file>utilities/log.php</file>
-		<file>utilities/mail.php</file>
 		<file>utilities/simplexml.php</file>
 		<file>utilities/string.php</file>
-		<file>utilities/compat/phputf8env.php</file>
 		<file>utilities/compat/php50x.php</file>
 		<file>utilities/compat/compat.php</file>
-		<file>utilities/array.php</file>
 		<file>utilities/buffer.php</file>
 		<file>utilities/simplecrypt.php</file>
 		<file>utilities/error.php</file>
+		<file>utilities/arrayhelper.php</file>
 		<file>registry/format/xml.php</file>
 		<file>registry/format/php.php</file>
 		<file>registry/format/ini.php</file>
