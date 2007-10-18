@@ -6,6 +6,6 @@
 	<description>Useful PHP scripts (incl feedcreator)</description>
 	<packager>Joomla!</packager>
 	<packagerurl>http://www.joomla.org</packagerurl>
-	<update>http://www.jsitepoint.com/update/libraries/</update>
+	<update>http://www.jsitepoint.com/update/libraries/bitfolge</update>
 	<version>1.5</version>
 	<files>

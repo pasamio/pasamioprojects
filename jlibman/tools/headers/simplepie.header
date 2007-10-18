@@ -6,6 +6,6 @@
 	<version>1.0.1</version>
 	<packager>Joomla!</packager>
 	<packagerurl>http://www.joomla.org</packagerurl>
-	<update>http://www.jsitepoint.com/update/libraries/</update>
+	<update>http://www.jsitepoint.com/update/libraries/simplepie</update>
 	<description>A PHP-Based RSS and Atom Feed Framework.</description>
 	<files>

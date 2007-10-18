@@ -6,6 +6,6 @@
 	<description>DOMIT! is a non-validating, but lightweight and fast DOM parser for PHP</description>
 	<packager>Joomla!</packager>
 	<packagerurl>http://www.joomla.org</packagerurl>
-	<update>http://www.jsitepoint.com/update/libraries/</update>
+	<update>http://www.jsitepoint.com/update/libraries/domit</update>
 	<version>1.01</version>
 	<files>
