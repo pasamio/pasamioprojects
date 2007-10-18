@@ -19,7 +19,8 @@ do
 		echo "WARNING: No header found for this directory!";
 	fi
 	cd $DIRNAME
-	find | grep -v svn | grep php | sed -e 's/.\/\(.*\)/\t\t<file>\1<\/file>/g' >> $OUTPUT/$DIRNAME.xml
+	# Use -type f so that we ignore symlinks
+	find -type f | grep -v svn | grep php | sed -e 's/.\/\(.*\)/\t\t<file>\1<\/file>/g' >> $OUTPUT/$DIRNAME.xml
 	cat $FOOTER >> $OUTPUT/$DIRNAME.xml
 	cd ..
 done
