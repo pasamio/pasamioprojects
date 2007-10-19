@@ -21,7 +21,7 @@ defined('_JEXEC') or die('Saya tidak suka kamu ;)');
 function com_install() {
 	$src = JPATH_SITE . DS . 'administrator'. DS . 'components'. DS .'com_jlibman' . DS . 'include' . DS . 'library.php';
 	$dest = JPATH_SITE . DS . 'libraries' . DS . 'joomla' . DS . 'installer' . DS . 'adapters' . DS .'library.php';
-	if(JFile::copy($src, $dest)) echo "Congrats you installed the library manager!";
-	else echo "Failed to install Library adapter, please try copying manually!";
+	if(JFile::copy($src, $dest)) echo "Congratulations you successfully installed the library manager!";
+	else echo "Failed to install Library adapter, please try copying manually! Please see the <a href='http://sammoffatt.com.au/content/view/16/7/'>installation notes</a> for more information.";
 }
 ?>
