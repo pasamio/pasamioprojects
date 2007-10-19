@@ -31,13 +31,13 @@ jimport( 'joomla.application.component.view');
  * @package    HelloWorld
  */
 
-class JDevToolsViewJDevTools extends JView
+class JDevToolsViewdefault extends JView
 {
     function display($tpl = null)
     {
         $model =& $this->getModel();
-		$greeting = $model->getGreeting();
-        $this->assignRef( 'greeting', $greeting );
+		$links = $model->getTrackerLinks();
+        $this->assignRef( 'links', $links );
 
         parent::display($tpl);
     }

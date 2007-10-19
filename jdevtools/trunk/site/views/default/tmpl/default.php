@@ -21,4 +21,27 @@
 
 // no direct access
 defined('_JEXEC') or die('Restricted access'); ?>
-<h1><?php echo $this->greeting; ?></h1>
+<h1>JDevTools</h1>
+<table class="">
+	<tr>
+		<th><?php echo JText::_('Link') ?></th>
+		<th><?php echo JText::_('Last Update') ?></th>
+		<th><?php echo JText::_('Status') ?></th>
+		<th><?php echo JText::_('Check') ?></th>
+	</tr>
+
+	<?php 
+	$k = 0;
+    for ($i=0, $n=count( $this->links ); $i < $n; $i++)
+    {
+        $row =& $this->links[$i];
+        ?>
+	<tr class="<?php echo "row$k"; ?>">
+		<td><a href="<?php echo $row->url ?>"><?php echo $row->url ?></a></td>
+		<td><?php echo $row->lastupdate ?></td>
+		<td><?php echo $row->status ?></td>
+	</tr>
+	<?php
+		$k = 1 - $k; 
+	} ?>
+</table>

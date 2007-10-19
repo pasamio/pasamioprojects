@@ -5,7 +5,8 @@ CREATE TABLE `jos_jdevtools_trackerlinks` (
 	`url`			text		NOT NULL,
 	`lastupdate`		datetime	NOT NULL,
 	`status`			varchar(20)	NOT NULL,
-	PRIMARY KEY		(`lid`)
+	PRIMARY KEY		(`lid`),
+	UNIQUE(`url`)
 ) ENGINE=MyISAM AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
 
 DROP TABLE IF EXISTS `jos_jdevtools_userlinks`;
@@ -13,5 +14,6 @@ DROP TABLE IF EXISTS `jos_jdevtools_userlinks`;
 CREATE TABLE `jos_jdevtools_userlinks` (
 	`lid`			int(11)		NOT NULL,
 	`uid`			int(11)		NOT NULL,
+	`lastviewed`	datetime	NOT	NULL,
 	PRIMARY KEY		(`lid`,`uid`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;	
