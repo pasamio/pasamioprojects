@@ -19,7 +19,7 @@
  * @see JoomlaCode Project: http://joomlacode.org/gf/project/
  */
  
-class JLibraryManifest extends JObject {
+class JPackageManifest extends JObject {
 	
 	var $name = '';
 	var $packagename = '';
