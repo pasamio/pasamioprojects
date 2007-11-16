@@ -8,13 +8,13 @@
  *  
  * Created on Sep 21, 2007
  * 
- * @package jdevtools
+ * @package JDevTools
  * @author Sam Moffatt <S.Moffatt@toowoomba.qld.gov.au>
  * @author Toowoomba City Council Information Management Branch
  * @license GNU/GPL http://www.gnu.org/licenses/gpl.html
  * @copyright 2007 Toowoomba City Council/Developer Name 
  * @version SVN: $Id:$
- * @see JoomlaCode Project: http://joomlacode.org/gf/project/tccprojects
+ * @see JoomlaCode Project: http://joomlacode.org/gf/project/pasamioprojects
  */
 
 // no direct access

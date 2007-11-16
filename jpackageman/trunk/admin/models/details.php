@@ -8,7 +8,7 @@
  *  
  * Created on Oct 5, 2007
  * 
- * @package package_name
+ * @package JPackageMan
  * @author Your Name <author@toowoomba.qld.gov.au>
  * @author Toowoomba City Council Information Management Branch
  * @license GNU/GPL http://www.gnu.org/licenses/gpl.html

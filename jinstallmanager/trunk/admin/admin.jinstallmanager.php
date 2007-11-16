@@ -8,7 +8,7 @@
  *  
  * Created on 26 Jul 2007
  * 
- * @package JInstall Manager
+ * @package JInstallManager
  * @author Sam Moffatt <author@toowoomba.qld.gov.au>
  * @author Toowoomba City Council Information Management Branch
  * @license GNU/GPL http://www.gnu.org/licenses/gpl.html

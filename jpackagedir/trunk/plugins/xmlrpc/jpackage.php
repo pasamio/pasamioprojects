@@ -1,7 +1,7 @@
 <?php
 /**
 * @version $Id: jpackage.php 202 2006-08-20 07:05:55Z schmalls $
-* @package Joomla
+* @package JPackageDir
 * @subpackage JPackage
 * @copyright Copyright (C) 2005 - 2006 Open Source Matters. All rights reserved.
 * @license http://www.gnu.org/copyleft/gpl.html GNU/GPL, see LICENSE.php

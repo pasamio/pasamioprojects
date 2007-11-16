@@ -1,7 +1,7 @@
 <?php
 /**
  * @version 	$Id: project.php 148 2006-08-08 21:45:44Z willebil $
- * @package 	Joomla
+ * @package 	JPackageDir
  * @subpackage	J!Package Directory
  * @copyright Copyright (C) 2005 - 2006 Open Source Matters. All rights reserved.
  * @license http://www.gnu.org/copyleft/gpl.html GNU/GPL, see LICENSE.php

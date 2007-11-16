@@ -1,7 +1,7 @@
 <?php
 /**
  * @version		$Id:plugin.php 6961 2007-03-15 16:06:53Z tcp $
- * @package		Joomla.Framework
+ * @package		JLibMan
  * @subpackage	Installer
  * @copyright	Copyright (C) 2007 Toowoomba City Council/Sam Moffatt
  * @copyright 	Copyright (C) 2005-2007 Open Source Matters (Portions)

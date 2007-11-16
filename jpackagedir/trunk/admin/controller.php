@@ -1,7 +1,7 @@
 <?php
 /**
  * @version 	$Id: controller.php 162 2006-08-11 23:45:36Z willebil $
- * @package 	Joomla
+ * @package 	JPackageDir
  * @subpackage	J!Package Directory
  * @copyright Copyright (C) 2005 - 2006 Open Source Matters. All rights reserved.
  * @license http://www.gnu.org/copyleft/gpl.html GNU/GPL, see LICENSE.php

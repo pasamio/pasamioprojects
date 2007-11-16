@@ -6,7 +6,7 @@
  *  
  * Created on Oct 5, 2007
  * 
- * @package jpackageman
+ * @package JPackageMan
  * @subpackage Install
  * @author Sam Moffatt <S.Moffatt@toowoomba.qld.gov.au>
  * @author Toowoomba City Council Information Management Branch

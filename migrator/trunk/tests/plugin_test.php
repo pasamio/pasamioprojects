@@ -8,11 +8,12 @@
  *  
  * Created on May 22, 2007
  * 
- * @package jmigrator
+ * @package Migrator
+ * @subpackage Tests
  * @author Sam Moffatt <S.Moffatt@toowoomba.qld.gov.au>
  * @author Toowoomba City Council Information Management Department
  * @license GNU/GPL http://www.gnu.org/licenses/gpl.html
- * @copyright 2007 Toowoomba City Council/Developer Name 
+ * @copyright 2007 Toowoomba City Council/Sam Moffatt
  * @version SVN: $Id:$
  * @see JoomlaCode Project: http://joomlacode.org/gf/project/pasamioprojects
  */

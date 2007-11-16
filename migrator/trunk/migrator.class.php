@@ -9,7 +9,7 @@
  *  
  * Created on May 25, 2007
  * 
- * @package JMigrator
+ * @package Migrator
  * @author Sam Moffatt <S.Moffatt@toowoomba.qld.gov.au>
  * @author Toowoomba City Council Information Management Department
  * @license GNU/GPL http://www.gnu.org/licenses/gpl.html

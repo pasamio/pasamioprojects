@@ -1,8 +1,7 @@
 <?php
 /**
  * @version $Id: core.php 136 2006-07-29 22:53:53Z schmalls $
- * @package Joomla
- * @subpackage JPackage
+ * @package JInstallManager
  * @copyright Copyright (C) 2005 - 2006 Open Source Matters. All rights reserved.
  * @license http://www.gnu.org/copyleft/gpl.html GNU/GPL, see LICENSE.php
  * Joomla! is free software. This version may have been modified pursuant to the

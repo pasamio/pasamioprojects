@@ -9,7 +9,7 @@
  *  
  * Created on 12/06/2007
  * 
- * @package JMigrator
+ * @package JDiagnostic
  * @author Sam Moffatt <pasamio@gmail.com>
  * @license GNU/GPL http://www.gnu.org/licenses/gpl.html
  * @copyright 2007 Sam Moffatt
