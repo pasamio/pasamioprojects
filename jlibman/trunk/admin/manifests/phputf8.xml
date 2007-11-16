@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <install type="library" version="1.5">
 	<name>PHP</name>
-	<packagename>phputf8</packagename>
+	<libraryname>phputf8</libraryname>
 	<url>http://www.joomla.org</url>
 	<version>1.5</version>
 	<packager>Joomla!</packager>

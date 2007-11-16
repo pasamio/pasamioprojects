@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <install type="library" version="1.5">
 	<name>BitFolge</name>
-	<packagename>bitfolge</packagename>
+	<libraryname>bitfolge</libraryname>
 	<url>http://www.bitfolge.de/en</url>
 	<description>Useful PHP scripts (incl feedcreator)</description>
 	<packager>Joomla!</packager>

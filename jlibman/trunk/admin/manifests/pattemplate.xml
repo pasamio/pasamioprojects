@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <install type="library" version="1.5">
 	<name>patTemplate</name>
-	<packagename>pattemplate</packagename>
+	<libraryname>pattemplate</libraryname>
 	<url>http://www.php-tools.net</url>
 	<description>patTemplate is a powerful templating engine</description>
 	<packager>Joomla!</packager>

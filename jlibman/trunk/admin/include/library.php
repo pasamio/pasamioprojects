@@ -58,7 +58,7 @@ class JInstallerLibrary extends JObject
 		 */
 
 		// Set the extensions name
-		$name =& $this->manifest->getElementByPath('packagename');
+		$name =& $this->manifest->getElementByPath('libraryname');
 		$name = JFilterInput::clean($name->data(), 'cmd');
 		$this->set('name', $name);
 
@@ -72,7 +72,7 @@ class JInstallerLibrary extends JObject
 
 		// Set the installation path
 		$element =& $this->manifest->getElementByPath('files');
-		$group = $this->manifest->getElementByPath('packagename');
+		$group = $this->manifest->getElementByPath('libraryname');
 		$group = $group->data();
 		if (!empty($group)) {
 			$this->parent->setPath('extension_root', JPATH_ROOT.DS.'libraries'.DS.implode(DS,explode('/',$group)));
@@ -148,7 +148,7 @@ class JInstallerLibrary extends JObject
 		$manifest = new JLibraryManifest($manifestFile);		
 
 		// Set the plugin root path
-		$this->parent->setPath('extension_root', JPATH_ROOT.DS.'libraries'.DS.$manifest->packagename);
+		$this->parent->setPath('extension_root', JPATH_ROOT.DS.'libraries'.DS.$manifest->libraryname);
 
 		// Because libraries may not have their own folders we cannot use the standard method of finding an installation manifest
 		if (file_exists($manifestFile))

@@ -40,7 +40,7 @@ defined('_JEXEC') or die('Ni Ai Wo?');
 				<td width="100%" class="key">
 						<?php echo JText::_( 'Package Name' ) ?>
 				</td>
-				<td><?php echo $this->library->packagename ?></td>
+				<td><?php echo $this->library->libraryname ?></td>
 			</tr>
 			<tr>
 				<td width="100%" class="key"><?php echo JText::_( 'URL' ) ?></td>

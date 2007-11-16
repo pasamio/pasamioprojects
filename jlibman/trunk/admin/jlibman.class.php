@@ -22,7 +22,7 @@
 class JLibraryManifest extends JObject {
 	
 	var $name = '';
-	var $packagename = '';
+	var $libraryname = '';
 	var $url = '';
 	var $description = '';
 	var $packager = '';
@@ -45,7 +45,7 @@ class JLibraryManifest extends JObject {
 		} else {
 			$xml = $xml->document;
 			$this->name = $xml->name[0]->data();
-			$this->packagename = $xml->packagename[0]->data();
+			$this->libraryname = $xml->libraryname[0]->data();
 			$this->update = $xml->update[0]->data();
 			$this->url = $xml->url[0]->data();
 			$this->description = $xml->description[0]->data();
