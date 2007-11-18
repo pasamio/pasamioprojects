@@ -8,7 +8,7 @@
  *  
  * Created on Sep 21, 2007
  * 
- * @package jdevtools
+ * @package JDevTools
  * @author Sam Moffatt <S.Moffatt@toowoomba.qld.gov.au>
  * @author Toowoomba City Council Information Management Branch
  * @license GNU/GPL http://www.gnu.org/licenses/gpl.html
@@ -23,10 +23,9 @@ defined('_JEXEC') or die();
 jimport( 'joomla.application.component.model' );
 
 /**
- * Hello Model
+ * JDevTools Model
  *
- * @package    Joomla.Tutorials
- * @subpackage Components
+ * @package    JDevTools
  */
 class JDevToolsModelDefault extends JModel
 {

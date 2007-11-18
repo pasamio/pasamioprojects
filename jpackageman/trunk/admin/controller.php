@@ -26,7 +26,7 @@ jimport('joomla.application.component.controller');
 /**
  * jpackageman Component Controller
  *
- * @package    jpackageman
+ * @package    JPackageMan
  */
 class jpackagemanController extends JController
 {

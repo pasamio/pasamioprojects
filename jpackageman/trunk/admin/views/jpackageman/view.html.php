@@ -25,9 +25,9 @@ defined( '_JEXEC' ) or die( 'Restricted access' );
 jimport( 'joomla.application.component.view');
 
 /**
- * HTML View class for the HelloWorld Component
+ * HTML View class for the JPackage Manager Component
  *
- * @package    HelloWorld
+ * @package    JPackageMan
  */
 
 class jpackagemanViewjpackageman extends JView

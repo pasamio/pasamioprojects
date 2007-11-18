@@ -9,7 +9,7 @@
  * Created on Sep 28, 2007
  * 
  * @package JLibMan
- * @author Your Name <author@toowoomba.qld.gov.au>
+ * @author Sam Moffatt <s.moffatt@toowoomba.qld.gov.au>
  * @author Toowoomba City Council Information Management Branch
  * @license GNU/GPL http://www.gnu.org/licenses/gpl.html
  * @copyright 2007 Toowoomba City Council/Developer Name 
@@ -27,7 +27,7 @@ jimport( 'joomla.application.component.view');
 /**
  * HTML View class for the HelloWorld Component
  *
- * @package    HelloWorld
+ * @package    JLibMan
  */
 
 class JLibManViewJLibMan extends JView

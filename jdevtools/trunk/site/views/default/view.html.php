@@ -26,7 +26,7 @@ jimport( 'joomla.application.component.view');
 /**
  * HTML View class for the HelloWorld Component
  *
- * @package    HelloWorld
+ * @package    JDevTools
  */
 
 class JDevToolsViewdefault extends JView
