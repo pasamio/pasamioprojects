@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <install type="library" version="1.5">
 	<name>TCPDF</name>
-	<packagename>tcpdf</packagename>
+	<libraryname>tcpdf</libraryname>
 	<url>http://tcpdf.sourceforge.net</url>
 	<version>1.53</version>
 	<packager>Joomla!</packager>

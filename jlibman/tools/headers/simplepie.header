@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <install type="library" version="1.5">
 	<name>SimplePie</name>
-	<packagename>simplepie</packagename>
+	<libraryname>simplepie</libraryname>
 	<url>http://simplepie.org/</url>
 	<version>1.0.1</version>
 	<packager>Joomla!</packager>

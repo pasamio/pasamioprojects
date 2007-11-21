@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <install type="library" version="1.5">
 	<name>phpGACL</name>
-	<packagename>phpgacl</packagename>
+	<libraryname>phpgacl</libraryname>
 	<url>http://phpgacl.sourceforge.net/</url>
 	<version>15</version>
 	<packager>Joomla!</packager>

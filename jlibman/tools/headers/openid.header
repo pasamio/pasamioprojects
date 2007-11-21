@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <install type="library" version="1.5">
 	<name>OpenID</name>
-	<packagename>openid</packagename>
+	<libraryname>openid</libraryname>
 	<url>http://www.openidenabled.com/</url>
 	<description>OpenID is a way for individuals to create identity online and use it anywhere OpenID is supported. This library provides an OpenID consumer.</description>
 	<packager>Joomla!</packager>

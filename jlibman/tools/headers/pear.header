@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <install type="library" version="1.5">
 	<name>PEAR</name>
-	<packagename>pear</packagename>
+	<libraryname>pear</libraryname>
 	<url>http://pear.php.net/package/PEAR</url>
 	<version>1.4.10</version>
 	<packager>Joomla!</packager>
