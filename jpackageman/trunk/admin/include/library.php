@@ -19,7 +19,7 @@ defined('JPATH_BASE') or die();
 /**
  * Plugin installer
  *
- * @package		Joomla.Framework
+ * @package		JPackageMan
  * @subpackage	Installer
  * @since		1.5
  */
