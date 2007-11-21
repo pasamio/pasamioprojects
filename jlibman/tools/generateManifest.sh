@@ -16,7 +16,9 @@ do
 	if [ -f $HEADERS/$DIRNAME.header ]; then
 		cat $HEADERS/$DIRNAME.header > $OUTPUT/$DIRNAME.xml
 	else
-		echo "WARNING: No header found for this directory!";
+		echo "WARNING: No header found for this directory: $DIRNAME"; 
+		echo "WARNING: $DIRNAME has been skipped, please create a header for it.";
+		continue;
 	fi
 	cd $DIRNAME
 	# Use -type f so that we ignore symlinks
