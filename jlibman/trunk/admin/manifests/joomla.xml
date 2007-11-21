@@ -8,6 +8,7 @@
 	<packager>Joomla!</packager>
 	<packagerurl>http://www.joomla.org</packagerurl>
 	<update>http://www.jsitepoint.com/update/libraries/joomla</update>
+	<version>1.5</version>	
 	<files>
 		<file>base/tree.php</file>
 		<file>base/observer.php</file>
@@ -105,6 +106,11 @@
 		<file>cache/handler/index.html</file>
 		<file>cache/handler/callback.php</file>
 		<file>cache/handler/view.php</file>
+		<file>error/profiler.php</file>
+		<file>error/exception.php</file>
+		<file>error/log.php</file>
+		<file>error/index.html</file>
+		<file>error/error.php</file>
 		<file>event/index.html</file>
 		<file>event/event.php</file>
 		<file>event/dispatcher.php</file>
@@ -187,6 +193,7 @@
 		<file>installer/helper.php</file>
 		<file>installer/index.html</file>
 		<file>installer/adapters/module.php</file>
+		<file>installer/adapters/library.php</file>
 		<file>installer/adapters/index.html</file>
 		<file>installer/adapters/plugin.php</file>
 		<file>installer/adapters/component.php</file>
@@ -216,9 +223,7 @@
 		<file>document/index.html</file>
 		<file>document/renderer.php</file>
 		<file>utilities/utility.php</file>
-		<file>utilities/profiler.php</file>
 		<file>utilities/date.php</file>
-		<file>utilities/log.php</file>
 		<file>utilities/index.html</file>
 		<file>utilities/simplexml.php</file>
 		<file>utilities/string.php</file>
@@ -227,7 +232,6 @@
 		<file>utilities/compat/index.html</file>
 		<file>utilities/buffer.php</file>
 		<file>utilities/simplecrypt.php</file>
-		<file>utilities/error.php</file>
 		<file>utilities/arrayhelper.php</file>
 		<file>registry/index.html</file>
 		<file>registry/format/xml.php</file>

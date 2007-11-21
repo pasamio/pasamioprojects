@@ -17,7 +17,7 @@
 defined('JPATH_BASE') or die();
 
 /**
- * Plugin installer
+ * Library installer
  *
  * @package		JLibMan
  * @subpackage	Installer
