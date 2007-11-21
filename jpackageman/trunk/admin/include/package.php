@@ -17,13 +17,13 @@
 defined('JPATH_BASE') or die();
 
 /**
- * Plugin installer
+ * Package installer
  *
  * @package		JPackageMan
  * @subpackage	Installer
  * @since		1.5
  */
-class JInstallerLibrary extends JObject
+class JInstallerPackage extends JObject
 {
 	/**
 	 * Constructor

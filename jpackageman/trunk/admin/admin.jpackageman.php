@@ -1,8 +1,8 @@
 <?php
 /**
- * Joomla! Library Manager
+ * Joomla! Package Manager
  * 
- * The Joomla! Library Manager installs libraries 
+ * The Joomla! Package Manager installs packages 
  * 
  * PHP4/5
  *  
@@ -12,7 +12,7 @@
  * @author Sam Moffatt <S.Moffatt@toowoomba.qld.gov.au>
  * @author Toowoomba City Council Information Management Branch
  * @license GNU/GPL http://www.gnu.org/licenses/gpl.html
- * @copyright 2007 Toowoomba City Council/Developer Name 
+ * @copyright 2007 Toowoomba City Council/Sam Moffatt 
  * @version SVN: $Id:$
  * @see JoomlaCode Project: http://joomlacode.org/gf/project/tccprojects
  */
@@ -57,4 +57,3 @@ $controller->execute( JRequest::getVar( 'task' ) );
 
 // Redirect if set by the controller
 $controller->redirect();
-?>
