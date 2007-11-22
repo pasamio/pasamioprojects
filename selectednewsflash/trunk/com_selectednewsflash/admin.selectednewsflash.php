@@ -12,7 +12,7 @@ defined( '_VALID_MOS' ) or die( 'Restricted access' );
 require_once( $mainframe->getPath( 'admin_html' ) );
 require_once( $mainframe->getPath( 'class' ) );
 
-$task 	= mosGetParam( $_REQUEST, 'task', array(0) );
+$task 	= mosGetParam( $_REQUEST, 'task', '' );
 $cid 	= mosGetParam( $_POST, 'cid', array(0) );
 $id 	= mosGetParam( $_GET, 'id', 0 );
 if (!is_array( $cid )) {
