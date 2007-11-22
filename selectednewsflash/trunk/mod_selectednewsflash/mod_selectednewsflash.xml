@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<mosinstall type="module" version="1.0.0">
+	<name>Selected Newsflash</name>
+	<author>Samuel Moffatt</author>
+	<creationDate>January 2006</creationDate>
+	<copyright>(C) 2006 Samuel Moffatt. All rights reserved.</copyright>
+	<authorEmail>pasamio@pasamio.id.au</authorEmail>
+	<authorUrl>pasamio.id.au</authorUrl>
+	<version>1.0.0</version>
+	<description>The Selected Newsflash module randomly selects one of the content items previously selected on each page refresh.</description>
+	<files>
+		<filename module="mod_selectednewsflash">mod_selectednewsflash.php</filename>
+	</files>
+</mosinstall>

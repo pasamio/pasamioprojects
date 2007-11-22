@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<mosinstall type="component" version="1.0.0">
+	<name>Selected Newsflash</name>
+	<author>Samuel Moffatt</author>
+	<creationDate>January 2006</creationDate>
+	<copyright>(C) 2006 Samuel Moffatt. All rights reserved.</copyright>
+	<license>http://www.gnu.org/copyleft/gpl.html GNU/GPL</license>
+	<authorEmail>pasamio@pasamio.id.au</authorEmail>
+	<authorUrl>pasamio.id.au</authorUrl>
+	<version>1.0.0</version>
+	<description>This component manages selected newsflashes</description>
+	<params />
+	<install>
+		<queries>
+			<query>CREATE TABLE `#__selectednewsflash` (
+			`id` int(11) NOT NULL auto_increment,
+			`contentid` int(11) NOT NULL default '0',
+			`published` int(11) NOT NULL default '0',
+			PRIMARY KEY  (`id`)
+			) TYPE=MyISAM;
+			</query>
+		</queries>
+	</install>
+	<uninstall>
+		<queries>
+			<query>DROP TABLE `#__selectednewsflash`;</query>
+		</queries>
+	</uninstall>
+	<administration>
+		<menu>Selected Newsflash</menu>
+		<files>
+			<filename>admin.selectednewsflash.html.php</filename>
+			<filename>admin.selectednewsflash.php</filename>
+			<filename>index.html</filename>
+			<filename>selectednewsflash.class.php</filename>
+			<filename>selectednewsflash.xml</filename>
+			<filename>toolbar.selectednewsflash.html.php</filename>
+			<filename>toolbar.selectednewsflash.php</filename>
+		</files>
+	</administration>
+</mosinstall>
