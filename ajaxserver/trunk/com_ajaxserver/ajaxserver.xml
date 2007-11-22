@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<mosinstall type="component" version="1.0.0">
+	<name>AJAX Server</name>
+	<author>Samuel Moffatt</author>
+	<creationDate>January 2006</creationDate>
+	<copyright>(C) 2006 Samuel Moffatt. All rights reserved.</copyright>
+	<license>http://www.gnu.org/copyleft/gpl.html GNU/GPL</license>
+	<authorEmail>pasamio@pasamio.id.au</authorEmail>
+	<authorUrl>pasamio.id.au</authorUrl>
+	<version>1.0.0</version>
+	<description>This component creates an AJAX server and connects into mambots</description>
+	<params />
+	<install />
+	<uninstall />
+	<installfile>install.php</installfile>
+	<uninstallfile />
+	<administration>
+		<menu>AJAX Server</menu>
+		<files>
+			<filename>admin.ajaxserver.php</filename>
+			<filename>index.html</filename>
+			<filename>ajax/ajax.server.php</filename>
+			<filename>ajax/includes/xajax.common.php</filename>
+			<filename>ajax/includes/xajax.inc.php</filename>
+			<filename>ajax/.ajax.server.php.swp</filename>
+		</files>
+	</administration>
+</mosinstall>

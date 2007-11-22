@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<mosinstall version="1.0.0" type="mambot" group="ajax">
+        <name>AJAX Article Search</name>
+	<author>Samuel Moffatt</author>
+	<creationDate>January 2005</creationDate>
+	<copyright>(C) 2005 Open Source Matters. All rights reserved.</copyright>
+	<license>http://www.gnu.org/copyleft/gpl.html GNU/GPL</license>
+	<authorUrl>pasamio.id.au</authorUrl>
+	<authorEmail>pasamio@gmail.com</authorEmail>
+	<version>1.0</version>
+	<description>AJAX Mambot to search for content items.</description>
+	<files>
+		<filename mambot="article.search">article.search.php</filename>
+	</files>
+	<params/>
+</mosinstall>
