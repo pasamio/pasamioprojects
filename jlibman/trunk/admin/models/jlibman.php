@@ -1,22 +1,20 @@
 <?php
 /**
- * Document Description
+ * JLibMan Main Model
  * 
- * Document Long Description 
+ * Main display and listing model 
  * 
  * PHP4/5
  *  
  * Created on Sep 28, 2007
  * 
- * @package package_name
- * @author Your Name <author@toowoomba.qld.gov.au>
+ * @package JLibMan
+ * @author Sam Moffatt <s.@toowoomba.qld.gov.au>
  * @author Toowoomba City Council Information Management Branch
  * @license GNU/GPL http://www.gnu.org/licenses/gpl.html
- * @copyright 2007 Toowoomba City Council/Developer Name 
+ * @copyright 2007 Toowoomba City Council/Sam Moffatt 
  * @version SVN: $Id:$
- * @see Project Documentation DM Number: #???????
- * @see Gaza Documentation: http://gaza.toowoomba.qld.gov.au
- * @see JoomlaCode Project: http://joomlacode.org/gf/project/
+ * @see JoomlaCode Project: http://joomlacode.org/gf/project/pasamioprojects
  */
  
 // Check to ensure this file is included in Joomla!
@@ -27,10 +25,9 @@ jimport( 'joomla.filesystem.file');
 jimport( 'joomla.filesystem.folder');
 
 /**
- * Hello Model
+ * Main Model
  *
- * @package    Joomla.Tutorials
- * @subpackage Components
+ * @package    JLibMan
  */
 class JLibManModelJLibMan extends JModel
 {

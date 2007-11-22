@@ -1,6 +1,6 @@
 <?php
 /**
- * Document Description
+ * JLibMan Details Model
  * 
  * Document Long Description 
  * 
@@ -27,8 +27,7 @@ jimport( 'joomla.filesystem.folder');
 /**
  * 
  *
- * @package    Joomla.Tutorials
- * @subpackage Components
+ * @package    JLibMan
  */
 class JLibManModelDetails extends JModel
 {
