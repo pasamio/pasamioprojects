@@ -1,0 +1,113 @@
+/**
+* @version $Id: menu.css 9226 2007-10-13 18:36:29Z mtk $
+* @copyright Copyright (C) 2005 - 2006 Open Source Matters. All rights reserved.
+* @license GNU/GPL, see LICENSE.php
+* Joomla! is free software. This version may have been modified pursuant
+* to the GNU General Public License, and as distributed it includes or
+* is derivative of works licensed under the GNU General Public License or
+* other free or open source software licenses.
+* See COPYRIGHT.php for copyright notices and details.
+*/
+
+/**
+ * JMenu javascript behavior styling
+ *
+ * @author		Johan Janssens <johan.janssens@joomla.org>
+ * @package		Joomla
+ * @since		1.5
+ * @version    1.0
+ */
+
+/* ---- Basic menu styles ------------------- */
+
+/* common styling */
+#advmenu, #advmenu ul, #advmenu li { margin: 0; padding: 0; border: 0 none; }
+
+#advmenu       { position:relative; z-index: 100;}
+#advmenu li    { float:left;  position:relative; list-style: none; display: inline;}
+#advmenu li a  { display:block; white-space: nowrap;  }
+#advmenu li li { /*width: 100%;*/ clear: both;  /*FF 1.0.7 needs this */  }
+#advmenu li ul { visibility: hidden; position:absolute; }
+
+#advmenu li li ul {  top: 0; left: 0; }
+
+#advmenu li.hover ul               {  visibility: visible; }
+#advmenu li.hover ul li ul 		  {  visibility: hidden;  }
+#advmenu li.hover li.hover ul      {  visibility: visible;  left: 100%; }
+
+/* ---- Menu layout -------------------------- */
+
+#advmenu li {
+	border-left: 1px solid #fff;
+	border-right: 1px solid #d8d8d8;
+}
+#advmenu li li { border: 0;}
+
+#advmenu ul    { border: 0.1em solid #ccc; background: #f6f6f6 url(../images/bg-menu.gif) repeat-y left;}
+#advmenu ul li.node { background: transparent url(../images/j_arrow.png) no-repeat right 50%; }
+#advmenu ul li.separator { background: #DDE1E6 url(../images/bg-menu.gif);  height: 1px;  }
+
+#advmenu a, #advmenu div {
+	padding: 0.35em 1em 0.35em;
+	margin: 0 1px 0 1px;
+	color: #333333;
+	line-height: 1.6em; vertical-align: middle;
+	font-size: 11px; font-weight: bold; text-decoration: none;
+	cursor: default;
+	background-repeat: no-repeat; background-position: left 50%
+}
+
+#advmenu li.disabled a { color: grey; }
+
+#advmenu ul a {
+	font-size: 11px;
+	font-weight: normal;
+	padding-left: 25px;
+	padding-right: 20px;
+	line-height: 1.2em;
+}
+
+/* 1 level - hover */
+#advmenu li.hover a {  background-color: #E7EDDF; border-left: 1px solid #6D9D2E;  border-right:1px solid #6D9D2E; margin: 0; }
+/* 2 level - normal */
+#advmenu li.hover li a { background-color: transparent; border: 0 none;   margin: 2px;  }
+/* 2 level - hover */
+#advmenu li.hover li.hover a { background-color: #E7EDDF; border: 1px solid #6D9D2E;  margin: 1px;   }
+/* 3 level - normal */
+#advmenu li.hover li.hover li a { background-color: transparent; border: 0 none;   margin: 2px;  }
+/* 3 level - hover */
+#advmenu li.hover li.hover li a:hover { background-color: #E7EDDF; border: 1px solid #6D9D2E;  margin: 1px;  }
+
+/* submenu styling */
+#submenu {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+#submenu li {
+	float: left;
+	padding: 0;
+	margin: 0;
+}
+
+#submenu li a,
+#submenu span.nolink {
+	cursor: pointer;
+	padding: 0px 15px;
+	border-right: 1px solid #ccc;
+	font-weight: bold;
+	color: #0B55C4;
+	line-height: 12px;
+	height: 12px;
+}
+
+#submenu span.nolink {
+	color: #999;
+}
+
+#submenu a.active,
+#submenu span.nolink.active {
+	color: #000;
+	text-decoration: underline;
+}
