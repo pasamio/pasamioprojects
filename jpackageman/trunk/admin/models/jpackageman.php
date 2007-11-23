@@ -1,21 +1,19 @@
 <?php
 /**
- * Document Description
+ * JPackageMan Default Model
  * 
- * Document Long Description 
+ * This is the default list view model 
  * 
  * PHP4/5
  *  
  * Created on Sep 28, 2007
  * 
  * @package JPackageMan
- * @author Your Name <author@toowoomba.qld.gov.au>
+ * @author Sam Moffatt <s.moffatt@toowoomba.qld.gov.au>
  * @author Toowoomba City Council Information Management Branch
  * @license GNU/GPL http://www.gnu.org/licenses/gpl.html
- * @copyright 2007 Toowoomba City Council/Developer Name 
+ * @copyright 2007 Toowoomba City Council/Sam Moffatt 
  * @version SVN: $Id:$
- * @see Project Documentation DM Number: #???????
- * @see Gaza Documentation: http://gaza.toowoomba.qld.gov.au
  * @see JoomlaCode Project: http://joomlacode.org/gf/project/
  */
  
@@ -27,10 +25,10 @@ jimport( 'joomla.filesystem.file');
 jimport( 'joomla.filesystem.folder');
 
 /**
- * Hello Model
+ * JPackageMan Default Model (List)
  *
- * @package    Joomla.Tutorials
- * @subpackage Components
+ * @package    JPackageMan
+ * @subpackage Models
  */
 class jpackagemanModeljpackageman extends JModel
 {
