@@ -1,8 +1,9 @@
 <?php
 /**
  * AJAX Server Framework
+ * @package AJAX-Server
  * @author Samuel Moffatt <pasamio.id.au>
- * @copyright Copyright (C) 2006 Samuel Moffatt. All rights reserved
+ * @copyright Copyright (C) 2007 Samuel Moffatt. All rights reserved
  * @license http://www.gnu.org/copyleft/gpl.html GNU/GPL
  */
 
