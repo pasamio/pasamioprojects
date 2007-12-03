@@ -51,7 +51,7 @@ class JAdminCSSMenuX extends JTree
 		/*
 		 * Recurse through children if they exist
 		 */
-		while ($this->_current->hasChildren())
+		while ($this->_current && $this->_current->hasChildren())
 		{
 			echo "<ul ".$id." ".$class.">\n";
 			foreach ($this->_current->getChildren() as $child)

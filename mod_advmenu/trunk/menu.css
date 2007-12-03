@@ -57,7 +57,7 @@
 	background-repeat: no-repeat; background-position: left 50%
 }
 
-#advmenu li.disabled a { color: grey; }
+#advmenu li.disabled a { color: gray; }
 
 #advmenu ul a {
 	font-size: 11px;

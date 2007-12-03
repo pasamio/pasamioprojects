@@ -51,88 +51,19 @@ class modMenuXHelper
 		 * Site SubMenu
 		 */
 		if($editAllComponents) {
-JHTML::script('init.js', 'administrator/modules/mod_xmenu/');
-		$menu->addChild(new JMenuXNode(JText::_('Advanced')), true);
-		$menu->addChild(new JMenuXNode(JText::_('Updated Manager'), 'index.php', 'class:cpanel'));
-		$menu->addChild(new JMenuXNode(JText::_('Library Management'), 'index.php?option=com_media', 'class:media'));
-		$menu->addSeparator();
-		if ($canConfig) {
-			$menu->addChild(new JMenuXNode(JText::_('Configure Advanced Settings'), 'index.php?option=com_config', 'class:config'));
+			$menu->addChild(new JMenuXNode(JText::_('Advanced')), true);
+			$menu->addChild(new JMenuXNode(JText::_('Update Manager'), 'index.php?option=com_jupdateman', 'class:install'));
+			$menu->addChild(new JMenuXNode(JText::_('Library Manager'), 'index.php?option=com_jlibman', 'class:plugin'));
+			$menu->addChild(new JMenuXNode(JText::_('Package Manager'), 'index.php?option=com_jpackageman', 'class:module'));
+			$menu->addChild(new JMenuXNode(JText::_('Tools Manager'), 'index.php?option=com_advtools', 'class:config'));
 			$menu->addSeparator();
-		}
-
-		$menu->getParent();
-		}
-
-
-		/*
-		 * Components SubMenu
-		 */
-/*
-		if ($editAllComponents) 
-		{
-			$menu->addChild(new JMenuXNode(JText::_('Advanced Tools')), true);
-
-			$query = 'SELECT *' .
-				' FROM #__components' .
-				' WHERE '.$db->NameQuote( 'option' ).' <> "com_frontpage"' .
-				' AND '.$db->NameQuote( 'option' ).' <> "com_media"' .
-				' AND enabled = 1' .
-				' ORDER BY ordering, name';
-			$db->setQuery($query);
-			$comps = $db->loadObjectList(); // component list
-			$subs = array(); // sub menus
-			$langs = array(); // additional language files to load
-
-			// first pass to collect sub-menu items
-			foreach ($comps as $row)
-			{
-				if ($row->parent)
-				{
-					if (!array_key_exists($row->parent, $subs)) {
-						$subs[$row->parent] = array ();
-					}
-					$subs[$row->parent][] = $row;
-					$langs[$row->option.'.menu'] = true;
-				} elseif (trim($row->admin_menu_link)) {
-					$langs[$row->option.'.menu'] = true;
-				}
+			if ($canConfig) {
+				$menu->addChild(new JMenuXNode(JText::_('Configure Advanced Settings'), 'index.php?option=com_advconfig', 'class:config'));
+				$menu->addSeparator();
 			}
-
-			// Load additional language files
-			if (array_key_exists('.menu', $langs)) {
-				unset($langs['.menu']);
-			}
-			foreach ($langs as $lang_name => $nothing) {
-				$lang->load($lang_name);
-			}
-
-			foreach ($comps as $row)
-			{
-				if ($editAllComponents | $user->authorize('administration', 'edit', 'components', $row->option))
-				{
-					if ($row->parent == 0 && (trim($row->admin_menu_link) || array_key_exists($row->id, $subs)))
-					{
-						$text = $lang->hasKey($row->option) ? JText::_($row->option) : $row->name;
-						$link = $row->admin_menu_link ? "index.php?$row->admin_menu_link" : "index.php?option=$row->option";
-						if (array_key_exists($row->id, $subs)) {
-							$menu->addChild(new JMenuXNode($text, $link, $row->admin_menu_img), true);
-							foreach ($subs[$row->id] as $sub) {
-								$key  = $row->option.'.'.$sub->name;
-								$text = $lang->hasKey($key) ? JText::_($key) : $sub->name;
-								$link = $sub->admin_menu_link ? "index.php?$sub->admin_menu_link" : null;
-								$menu->addChild(new JMenuXNode($text, $link, $sub->admin_menu_img));
-							}
-							$menu->getParent();
-						} else {
-							$menu->addChild(new JMenuXNode($text, $link, $row->admin_menu_img));
-						}
-					}
-				}
-			}
+	
 			$menu->getParent();
 		}
-*/
 
 		$menu->renderMenu('advmenu', '');
 	}
@@ -144,51 +75,29 @@ JHTML::script('init.js', 'administrator/modules/mod_xmenu/');
 	 */
 	function buildDisabledMenu()
 	{
-		$lang	 =& JFactory::getLanguage();
-		$user	 =& JFactory::getUser();
-		$usertype = $user->get('usertype');
+		global $mainframe;
 
+		$lang		= & JFactory::getLanguage();
+		$user		= & JFactory::getUser();
+		$db			= & JFactory::getDBO();
+		$caching	= $mainframe->getCfg('caching');
+		$usertype	= $user->get('usertype');
+
+		// cache some acl checks
+		$canCheckin			= $user->authorize('com_checkin', 'manage');
 		$canConfig			= $user->authorize('com_config', 'manage');
-		$installModules		= $user->authorize('com_installer', 'module');
-		$editAllModules		= $user->authorize('com_modules', 'manage');
-		$installPlugins		= $user->authorize('com_installer', 'plugin');
-		$editAllPlugins		= $user->authorize('com_plugins', 'manage');
 		$installComponents	= $user->authorize('com_installer', 'component');
 		$editAllComponents	= $user->authorize('com_components', 'manage');
-		$canMassMail			= $user->authorize('com_massmail', 'manage');
-		$canManageUsers		= $user->authorize('com_users', 'manage');
-		JHTML::script('init.js', 'administrator/modules/mod_xmenu/');
-		$text = JText::_('Menu inactive for this Page', true);
 
+		$text = JText::_('Menu inactive for this Page', true);
+		
 		// Get the menu object
 		$menu = new JAdminCSSMenuX();
 
-		// Site SubMenu
-		$menu->addChild(new JMenuXNode(JText::_('Site'), null, 'disabled'));
-
-		// Menus SubMenu
-		$menu->addChild(new JMenuXNode(JText::_('Menus'), null, 'disabled'));
-
-		// Content SubMenu
-		$menu->addChild(new JMenuXNode(JText::_('Content'), null, 'disabled'));
-
-		// Components SubMenu
-		if ($installComponents) {
-			$menu->addChild(new JMenuXNode(JText::_('Components'), null, 'disabled'));
+		// Advanced SubMenu
+		if($editAllComponents) {
+			$menu->addChild(new JMenuXNode(JText::_('Advanced'),  null, 'disabled'));
 		}
-
-		// Extensions SubMenu
-		if ($installModules) {
-			$menu->addChild(new JMenuXNode(JText::_('Extensions'), null, 'disabled'));
-		}
-
-		// System SubMenu
-		if ($canConfig) {
-			$menu->addChild(new JMenuXNode(JText::_('Tools'),  null, 'disabled'));
-		}
-
-		// Help SubMenu
-		$menu->addChild(new JMenuXNode(JText::_('Help'),  null, 'disabled'));
 
 		$menu->renderMenu('advmenu', 'disabled');
 	}

@@ -15,10 +15,8 @@
 defined( '_JEXEC' ) or die( 'Restricted access' );
 require_once( dirname(__FILE__).DS.'helper.php' );
 
-//$document =& JFactory::getDocument();
-//$document->addHeadLink(JRoute::_('administrator/modules/mod_xmenu/menu.css'), 'stylesheet');
-JHTML::stylesheet('menu.css','administrator/modules/mod_xmenu/');
-
+JHTML::stylesheet('menu.css','administrator/modules/mod_advmenu/');
+JHTML::script('init.js', 'administrator/modules/mod_advmenu/');
 $hide	= JRequest::getInt('hidemainmenu');
 
 if ( $hide ) {
