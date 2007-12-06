@@ -3,6 +3,7 @@
 /**
 * Installer file
 * Creates the AJAX Mambot
+* @package Selected-Newsflash
 */
 
 function com_install() {
