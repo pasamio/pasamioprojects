@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="jauthtools-10" default="build">
+	<target name="clean">
+		<echo msg="Cleaning directories" />
+		<delete dir="httpsso" includeemptydirs="true" />
+		<delete dir="joomla_ldap" includeemptydirs="true" />
+		<delete dir="packages" includeemptydirs="true" />
+	</target>
+	
+	<target name="build" depends="ldaptools_export,directories">
+		<echo msg="Building all packages" />
+		<phingcall target="httpsso" />
+		<phingcall target="joomla_ldap" />
+		<phingcall target="ldap_sso" />
+		<phingcall target="ldap_ssi" />
+		<phingcall target="ldap_sync" />
+	</target>
+	
+	<target name="directories">
+		<mkdir dir="packages" />
+	</target>
+	
+	<target name="ldaptools_export">
+			<svnexport todir="joomla_ldap" force="true" repositoryurl="http://svn.joomlacode.org/svn/jauthtools/ldap/joomla_10x/trunk/" />
+			<delete file="joomla_ldap/.project" />
+			<delete file="joomla_ldap/CHANGELOG" />
+	</target>
+	
+	<target name="httpsso" depends="directories" >
+		<echo message="Building HTTP SSO..." />
+		<svnexport todir="httpsso" force="true" repositoryurl="http://svn.joomlacode.org/svn/jauthtools/sso/joomla10x/trunk/" />
+		<delete file="httpsso/.project" />
+		<zip destfile="packages/httpsso.zip" basedir="httpsso" />
+	</target>
+	
+	<target name="joomla_ldap" depends="ldaptools_export,directories">
+		<echo message="Building Joomla! 1.0.x LDAP Library" />
+		<zip destfile="packages/joomla_ldap.bot.zip" basedir="joomla_ldap/joomla_ldap.bot" />
+	</target>
+	
+	<target name="ldap_sso" depends="ldaptools_export,directories">
+		<echo message="Building Joomla! 1.0.x LDAP SSO Mambot" />
+		<zip destfile="packages/ldap.sso.bot.zip" basedir="joomla_ldap/ldap.sso.bot" />
+	</target>
+		
+	<target name="ldap_ssi" depends="ldaptools_export,directories">
+		<echo msg="Building Joomla! 1.0.x LDAP SSI Mambot" />
+		<zip destfile="packages/ldap.ssi.bot.zip" basedir="joomla_ldap/ldap.ssi.bot" />
+	</target>
+	
+	<target name="ldap_sync" depends="ldaptools_export,directories">
+		<echo msg="Building Joomla! 1.0.x LDAP Sync Mambot" />
+		<zip destfile="packages/ldap.sync.bot.zip" basedir="joomla_ldap/ldap.sync.bot" />
+	</target>
+</project>

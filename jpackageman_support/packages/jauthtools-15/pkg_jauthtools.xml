@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<install type="package" version="1.5">
+	<name>Joomla! Authentication Tools</name>
+	<packagename>jauthtools</packagename>
+	<url>http://sammoffatt.com.au/os</url>
+	<version>1.5</version>
+	<packager>Sam Moffatt</packager>
+	<packagerurl>http://www.sammoffatt.com.au</packagerurl>
+	<description>Joomla! Authentication Tools (JAuthTools) provides the ability to use more advanced authentication systems with Joomla! 1.5.</description>
+	<update>http://www.jsitepoint.com/update/packages/jauthtools</update>
+	<version>1.5</version>	
+	<files />
+</install>

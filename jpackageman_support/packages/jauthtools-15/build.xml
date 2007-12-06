@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="jauthtools-15" default="build">
+	<target name="clean">
+		<echo msg="Cleaning directories" />
+		<delete dir="sso" includeemptydirs="true" />
+		<delete dir="usersource" includeemptydirs="true" />
+		<delete dir="packages" includeemptydirs="true" />
+	</target>
+	
+	<target name="build">
+		<echo msg="Building all packages and 1.5 Package installer for set" />
+		<phingcall target="sso" />
+		<phingcall target="usersource" />
+		<phingcall target="package" />
+	</target>
+	
+	<target name="package">
+		<echo msg="All tasks completed, building rollup package" />
+		<zip destfile="packages/pkg_jauthtools.zip" >
+			<fileset dir=".">
+				<include name="pkg_jauthtools.xml" />
+				<include name="packages/**" />
+				<exclude name="pkg_jauthtools.zip" />	
+			</fileset>
+		</zip>
+	</target>
+	
+	<target name="directories">
+		<mkdir dir="packages" />
+	</target>
+	
+	<target name="sso_export">
+			<svnexport todir="sso" force="true" repositoryurl="http://svn.joomlacode.org/svn/jauthtools/sso/joomla15/trunk/" />
+	</target>
+	
+	<target name="usersource_export">
+			<svnexport todir="usersource" force="true" repositoryurl="http://svn.joomlacode.org/svn/jauthtools/usersources/joomla15/trunk/" />
+	</target>
+	
+	<target name="sso" depends="sso_export,directories" >
+		
+		<echo msg="Building SSO Library" />
+		<zip destfile="packages/lib_jauthtools_sso.zip" basedir="sso/libraries/jauthtools" />
+		<echo msg="Building SSO HTTP Plugin" />
+		<zip destfile="packages/plgSSOHTTP.zip" basedir="sso/plugins/sso/" includes="http.*"/>
+		<echo msg="Building SSO eDirectory Plugin" />
+		<zip destfile="packages/plgSSOeDirLDAP.zip" basedir="sso/plugins/sso/" includes="edirldap.*"/>
+	</target>
+	
+	<target name="usersource" depends="usersource_export,directories">
+		<echo msg="Building User Source Library" />
+		<zip destfile="packages/lib_jauthtools_usersource.zip" basedir="usersource/libraries/jauthtools" />
+		<echo msg="Building LDAP User Source Plugin" />
+		<zip destfile="packages/plgUserSourceLDAP.zip" basedir="usersource/plugins/usersource/" includes="ldap.*" />
+		<echo msg="Building User Source Synchronisation Plugin" />
+		<zip destfile="packages/plgSystemSync.zip" basedir="usersource/plugins/system/" includes="sync.*" />
+	</target>
+	
+</project>
