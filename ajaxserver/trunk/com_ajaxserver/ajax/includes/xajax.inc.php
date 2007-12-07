@@ -1,4 +1,8 @@
 <?php
+/**
+ * xajax include file
+ * @package XAJAX
+ */
 ///////////////////////////////////////////////////////////////////////////////
 // xajax version 0.1 beta4
 // copyright (c) 2005 by J. Max Wilson
