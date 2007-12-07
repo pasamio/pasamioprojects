@@ -8,7 +8,7 @@
 	<authorEmail>pasamio@gmail.com</authorEmail>
 	<authorUrl>pasamio.id.au</authorUrl>
 	<version>1.0.0</version>
-	<description>Replaces {anniversary date} tag in content with time between now and given position</description>
+	<description>Replaces {anniversary YYYY-MM-DD} tag in content with time between now and given position</description>
 	<files>
 		<filename mambot="content.anniversary">content.anniversary.php</filename>
 	</files>

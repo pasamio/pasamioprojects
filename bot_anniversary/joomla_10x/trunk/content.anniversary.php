@@ -1,21 +1,19 @@
 <?php
 /**
- * Document Description
+ * Anniversary Content Mambot
  * 
- * Document Long Description 
+ * Puts in the years since a given date automatically and substitute it in.
  * 
  * PHP4/5
  *  
  * Created on Dec 7, 2007
  * 
- * @package package_name
- * @author Your Name <author@toowoomba.qld.gov.au>
+ * @package Anniversary-Content
+ * @author Sam Moffatt <s.moffatt@toowoomba.qld.gov.au>
  * @author Toowoomba City Council Information Management Branch
  * @license GNU/GPL http://www.gnu.org/licenses/gpl.html
- * @copyright 2007 Toowoomba City Council/Developer Name 
+ * @copyright 2007 Toowoomba City Council/Sam Moffatt 
  * @version SVN: $Id:$
- * @see Project Documentation DM Number: #???????
- * @see Gaza Documentation: http://gaza.toowoomba.qld.gov.au
  * @see JoomlaCode Project: http://joomlacode.org/gf/project/
  */
  
