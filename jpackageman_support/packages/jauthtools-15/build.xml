@@ -41,10 +41,20 @@
 		
 		<echo msg="Building SSO Library" />
 		<zip destfile="packages/lib_jauthtools_sso.zip" basedir="sso/libraries/jauthtools" />
+		
 		<echo msg="Building SSO HTTP Plugin" />
-		<zip destfile="packages/plgSSOHTTP.zip" basedir="sso/plugins/sso/" includes="http.*"/>
+		<zip destfile="packages/plgSSOHTTP.zip">
+			<fileset dir="sso/plugins/sso/">
+				<include name="http.*"/>
+			</fileset>
+		</zip>
+		
 		<echo msg="Building SSO eDirectory Plugin" />
-		<zip destfile="packages/plgSSOeDirLDAP.zip" basedir="sso/plugins/sso/" includes="edirldap.*"/>
+		<zip destfile="packages/plgSSOeDirLDAP.zip">
+			<fileset dir="sso/plugins/sso/">
+				<include name="edirldap.*"/>
+			</fileset>
+		</zip>
 	</target>
 	
 	<target name="usersource" depends="usersource_export,directories">

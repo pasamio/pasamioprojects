@@ -9,5 +9,12 @@
 	<description>Joomla! Authentication Tools (JAuthTools) provides the ability to use more advanced authentication systems with Joomla! 1.5.</description>
 	<update>http://www.jsitepoint.com/update/packages/jauthtools</update>
 	<version>1.5</version>	
-	<files />
+	<files folder="packages">
+		<filename id="lib_jauthtools_sso" type="library">lib_jauthtools_sso.zip</filename>
+		<filename id="lib_jauthtools_usersource" type="library">lib_jauthtools_usersource.zip</filename>
+		<filename id="edirldap" type="plugin" folder="sso">plgSSOeDirLDAP.zip</filename>
+		<filename id="http" type="plugin" folder="http">plgSSOHTTP.zip</filename>
+		<filename id="sync" type="plugin" folder="sync">plgSystemSync.zip</filename>
+		<filename id="ldap" type="plugin" folder="usersource">plgUserSourceLDAP.zip</filename>
+	</files>
 </install>
