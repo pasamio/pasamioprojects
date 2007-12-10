@@ -1,7 +1,7 @@
 <?php
 /**
  * @version		$Id: menu.php 9233 2007-10-15 21:14:45Z jinx $
- * @package		Joomla
+ * @package		Advanced-Menu
  * @copyright	Copyright (C) 2005 - 2007 Open Source Matters. All rights reserved.
  * @license		GNU/GPL, see LICENSE.php
  * Joomla! is free software. This version may have been modified pursuant to the
