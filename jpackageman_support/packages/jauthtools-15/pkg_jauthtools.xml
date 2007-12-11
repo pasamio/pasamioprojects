@@ -10,11 +10,11 @@
 	<update>http://www.jsitepoint.com/update/packages/jauthtools</update>
 	<version>1.5</version>	
 	<files folder="packages">
-		<filename id="lib_jauthtools_sso" type="library">lib_jauthtools_sso.zip</filename>
-		<filename id="lib_jauthtools_usersource" type="library">lib_jauthtools_usersource.zip</filename>
-		<filename id="edirldap" type="plugin" folder="sso">plgSSOeDirLDAP.zip</filename>
-		<filename id="http" type="plugin" folder="http">plgSSOHTTP.zip</filename>
-		<filename id="sync" type="plugin" folder="sync">plgSystemSync.zip</filename>
-		<filename id="ldap" type="plugin" folder="usersource">plgUserSourceLDAP.zip</filename>
+		<file type="library" 	id="lib_jauthtools_sso" >lib_jauthtools_sso.zip</file>
+		<file type="library" 	id="lib_jauthtools_usersource" >lib_jauthtools_usersource.zip</file>
+		<file type="plugin" 		group="sso"			id="edirldap" >plgSSOeDirLDAP.zip</file>
+		<file type="plugin" 		group="sso"			id="http" >plgSSOHTTP.zip</file>
+		<file type="plugin" 		group="system"			id="sync" >plgSystemSync.zip</file>
+		<file type="plugin" 		group="usersource"	id="ldap" >plgUserSourceLDAP.zip</file>
 	</files>
 </install>
