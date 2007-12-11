@@ -34,13 +34,13 @@ class jpackagemanModeljpackageman extends JModel
 {
 	
     function &listLibraries() {
-		$files =  JFolder::files(MANIFEST_PATH);
+		$files =  JFolder::files(PACKAGE_MANIFEST_PATH);
 		$retval = Array();
 		$file = $files[0];
 		
 		foreach($files as $file) {
 			if(strtolower(JFile::getExt($file)) == 'xml') {
-				$retval[] = new JLibraryManifest(MANIFEST_PATH . DS . $file);
+				$retval[] = new JPackageManifest(PACKAGE_MANIFEST_PATH . DS . $file);
 			}
 		}
 		return $retval;
@@ -48,11 +48,15 @@ class jpackagemanModeljpackageman extends JModel
     }
     
     
-    function uninstall($libid) {
+    function uninstall($packid) {
     	// Get an installer object for the extension type
 		jimport('joomla.installer.installer');
 		$installer = & JInstaller::getInstance();
-		return $installer->uninstall('library', $libid, 0 );
+		return $installer->uninstall('package', $packid, 0 );
+    }
+    
+    function remove($packid) {
+    	return JFile::delete(PACKAGE_MANIFEST_PATH . DS . $packid .'.xml');
     }
 }
 ?>

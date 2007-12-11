@@ -29,14 +29,18 @@ jimport( 'joomla.application.component.view');
 {
     function display($tpl = null)
     {
-    	JToolBarHelper::title( JText::_( 'JLibrary Manager - Details' ), 'install.png' );
+    	JToolBarHelper::title( JText::_( 'JPackage Manager - Details' ), 'install.png' );
+    	JToolBarHelper::trash('remove', 'Remove Manifest', false);
         JToolBarHelper::trash('uninstall','Uninstall',false);
         JToolBarHelper::customX('home','back.png', 'back_f2.png','Home',false);
+        
     	
         $model =& $this->getModel();
-        $library = $_GET['package'];
-		$lib = $model->getDetails($library);
-		$this->assignRef( 'library', $lib);
+        $package = $_GET['package'];
+		$lib = $model->getDetails($package);
+		$this->assignRef( 'package', $lib);
+		
+		JHTML::_('behavior.tooltip');
 		
     	parent::display($tpl);
     }

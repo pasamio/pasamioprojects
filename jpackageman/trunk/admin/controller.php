@@ -42,10 +42,17 @@ class jpackagemanController extends JController
 
     function uninstall() {
     	$model = $this->getModel('jpackageman');
-    	$lib = JRequest::getWord('library','');
-    	if(strlen($lib)) echo $model->uninstall($lib);
+    	$lib = JRequest::getWord('package','');
+    	if(strlen($lib)) $model->uninstall($lib);
     	parent::display();
     }
+
+	function remove() {
+		$model = $this->getModel('jpackageman');
+    	$lib = JRequest::getWord('package','');
+    	if(strlen($lib)) $model->remove($lib);
+    	parent::display();
+	}
 }
 
 ?>

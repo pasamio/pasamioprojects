@@ -36,7 +36,7 @@ require_once( JPATH_COMPONENT.DS.'controller.php' );
 require_once (JApplicationHelper::getPath('class'));
 
 // Manifest Path; manifest stores information about installed extensions
-define('MANIFEST_PATH',JPATH_ADMINISTRATOR . DS . 'components' . DS . 'com_jpackageman' . DS .'manifests');
+define('PACKAGE_MANIFEST_PATH',JPATH_ADMINISTRATOR . DS . 'components' . DS . 'com_jpackageman' . DS .'manifests');
 
 // Require specific controller if requested
 if($controller = JRequest::getWord('controller')) {

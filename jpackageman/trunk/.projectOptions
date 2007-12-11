@@ -5,5 +5,7 @@
 	<projectOption name="org.eclipse.php.core.defaultEncoding">
 	</projectOption>
 	<includepath>
-	</includepath>
+		<includepathentry createdReference="true" resource="joomla_trunk" path="/joomla_trunk" contentKind="source" kind="prj">
+	</includepathentry>
+</includepath>
 </phpProjectOptions>

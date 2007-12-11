@@ -34,7 +34,7 @@ class jpackagemanViewjpackageman extends JView
 {
     function display($tpl = null)
     {
-    	JToolBarHelper::title( JText::_( 'JLibrary Manager' ), 'install.png' );
+    	JToolBarHelper::title( JText::_( 'JPackage Manager' ), 'install.png' );
         //JToolBarHelper::addNewX(); // Use install manager
     	
         $model =& $this->getModel();

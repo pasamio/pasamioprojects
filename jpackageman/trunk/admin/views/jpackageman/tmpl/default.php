@@ -23,7 +23,7 @@ defined('_JEXEC') or die('Restricted access'); ?>
     <thead>
         <tr>
             <th>
-                <?php echo JText::_( 'Library' ); ?>
+                <?php echo JText::_( 'Package' ); ?>
             </th>
             <th>
             	<?php echo JText::_( 'Version' ); ?>

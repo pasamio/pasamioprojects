@@ -25,7 +25,7 @@ defined('_JEXEC') or die('Ni Ai Wo?');
 <form action="index.php" method="post" name="adminForm" autocomplete="off">
 <div class="col50">
 	<fieldset class="adminform">
-	<legend>Library Details</legend>
+	<legend>Package Details</legend>
 
 		<table class="admintable" cellspacing="1">
 			<tr>
@@ -33,42 +33,42 @@ defined('_JEXEC') or die('Ni Ai Wo?');
 						<?php echo JText::_( 'Full Name' ) ?>
 				</td>
 				<td>
-					<?php echo $this->library->name ?>
+					<?php echo $this->package->name ?>
 				</td>				
 			</tr>
 			<tr>
 				<td width="100%" class="key">
 						<?php echo JText::_( 'Package Name' ) ?>
 				</td>
-				<td><?php echo $this->library->packagename ?></td>
+				<td><?php echo $this->package->packagename ?></td>
 			</tr>
 			<tr>
 				<td width="100%" class="key"><?php echo JText::_( 'URL' ) ?></td>
-				<td><a target="_blank" href="<?php echo $this->library->url ?>"><?php echo $this->library->url ?></a></td>
+				<td><a target="_blank" href="<?php echo $this->package->url ?>"><?php echo $this->package->url ?></a></td>
 			</tr>
 			<tr>
 				<td width="100%" class="key"><?php echo JText::_( 'Description' ) ?></td>
-				<td><?php echo $this->library->description ?></td>
+				<td><?php echo $this->package->description ?></td>
 			</tr>
 			<tr>
 				<td width="100%" class="key"><?php echo JText::_( 'Packager' ) ?></td>
-				<td><?php echo $this->library->packager ?></td>
+				<td><?php echo $this->package->packager ?></td>
 			</tr>
 			<tr>
 				<td width="100%" class="key"><?php echo JText::_( 'Packager URL' ) ?></td>
-				<td><a target="_blank" href="<?php echo $this->library->packagerurl ?>"><?php echo $this->library->packagerurl ?></a></td>
+				<td><a target="_blank" href="<?php echo $this->package->packagerurl ?>"><?php echo $this->package->packagerurl ?></a></td>
 			</tr>
 			<tr>
 				<td width="100%" class="key"><?php echo JText::_( 'Update Site' ) ?></td>
-				<td><?php echo $this->library->update ?></td>
+				<td><?php echo $this->package->update ?></td>
 			</tr>
 			<tr>
 				<td width="100%" class="key"><?php echo JText::_( 'Version' ) ?></td>
-				<td><?php echo $this->library->version ?></td>
+				<td><?php echo $this->package->version ?></td>
 			</tr>
 			<tr>
 				<td width="100%" class="key"><?php echo JText::_( 'Manifest File' ) ?></td>
-				<td><?php echo $this->library->manifest_filename ?></td>
+				<td><?php echo $this->package->manifest_filename ?></td>
 			</tr>
 		</table>
 	</fieldset>
@@ -84,16 +84,24 @@ defined('_JEXEC') or die('Ni Ai Wo?');
    </thead>
         <?php
         $k = 0;
-         foreach($this->library->filelist as $file) : ?>
+         foreach($this->package->filelist as $file) : ?>
        	<tr class="<?php echo "row$k"; ?>">
-       		<td><?php echo $file; $k = 1 - $k; ?></td>
+       		<td>
+       		<span class="editlinktip hasTip" title="<?php echo JText::_( 'Package Details' );?>::
+       		Package ID: <?php echo $file->id; ?><br />
+       		Type: <?php echo $file->type ?><br />
+       		<?php if(in_array($file->type, Array('module','template','language'))) { echo 'Client: '. $file->client .'<br />'; }
+       		else if($file->type == 'plugin') { echo 'Group: '. $file->group .'<br />'; } ?>">
+       		<?php echo $file->filename; $k = 1 - $k; ?>
+       		</span>
+       		</td>
        	</tr>
        	<?php endforeach ?>
      </table>
    </fieldset>
    </div>
 
-<input type="hidden" name="library" value="<?php echo $this->library->manifest_filename ?>" />   
+<input type="hidden" name="package" value="<?php echo $this->package->manifest_filename ?>" />   
 <input type="hidden" name="option" value="com_jpackageman" />
 <input type="hidden" name="task" value="" />
 <input type="hidden" name="boxchecked" value="0" />

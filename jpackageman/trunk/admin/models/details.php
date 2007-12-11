@@ -34,11 +34,11 @@ class jpackagemanModelDetails extends JModel
 {
 	
     function &getDetails($file) {		
-		$library = new JLibraryManifest();
+		$package = new JPackageManifest();
 		$retval = false;
-		$library->manifest_filename = $file;
-		if($library->loadManifestFromXML(MANIFEST_PATH . DS . $file . '.xml')) 
-			return $library;
+		$package->manifest_filename = $file;
+		if($package->loadManifestFromXML(PACKAGE_MANIFEST_PATH . DS . $file . '.xml')) 
+			return $package;
 		else 
 			return $retval;
     }

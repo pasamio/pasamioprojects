@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<install type="library" version="1.5">
+<install type="package" version="1.5">
 	<name>Joomla! Content Management System</name>
 	<packagename>joomla</packagename>
 	<url>http://www.joomla.org</url>
 	<version>1.5</version>
+	<packager>Joomla!</packager>
+	<packagerurl>http://www.joomla.org</packagerurl>
 	<description>The Joomla! Content Management System is one of the most popular content management system's available today.</description>
 	<update>http://www.jsitepoint.com/update/packages/joomla</update>
 	<version>1.5</version>	
-	<files>
-		
-	</files>
+	<files />
 </install>
