@@ -36,7 +36,7 @@ class JLibManModelDetails extends JModel
 		$library = new JLibraryManifest();
 		$retval = false;
 		$library->manifest_filename = $file;
-		if($library->loadManifestFromXML(MANIFEST_PATH . DS . $file . '.xml')) 
+		if($library->loadManifestFromXML(LIBRARY_MANIFEST_PATH . DS . $file . '.xml')) 
 			return $library;
 		else 
 			return $retval;

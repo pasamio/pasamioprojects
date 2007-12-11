@@ -16,6 +16,8 @@
 // Check to ensure this file is within the rest of the framework
 defined('JPATH_BASE') or die();
 
+if(!defined('LIBRARY_MANIFEST_PATH')) define('LIBRARY_MANIFEST_PATH',JPATH_ADMINISTRATOR . DS . 'components' . DS . 'com_jlibman' . DS .'manifests');
+
 /**
  * Library installer
  *
@@ -131,6 +133,33 @@ class JInstallerLibrary extends JObject
 	}
 
 	/**
+	 * Custom update method
+	 * @access public
+	 * @return boolean True on success
+	 * @since  1.5
+	 */
+	function update() {
+		// since this is just files, an update removes old files
+		// Get the extension manifest object
+		$manifest =& $this->parent->getManifest();
+		$this->manifest =& $manifest->document;
+
+		/**
+		 * ---------------------------------------------------------------------------------------------
+		 * Manifest Document Setup Section
+		 * ---------------------------------------------------------------------------------------------
+		 */
+
+		// Set the extensions name
+		$name =& $this->manifest->getElementByPath('name');
+		$name = JFilterInput::clean($name->data(), 'string');
+		$installer = new JInstaller(); // we don't want to compromise this instance!
+		return $installer->uninstall('library', $name, 0 );
+		// ...and adds new files
+		return $this->install();
+	}
+	
+	/**
 	 * Custom uninstall method
 	 *
 	 * @access	public
@@ -144,15 +173,15 @@ class JInstallerLibrary extends JObject
 		// Initialize variables
 		$row	= null;
 		$retval = true;
-		$manifestFile = MANIFEST_PATH . DS . $id .'.xml';
-		$manifest = new JLibraryManifest($manifestFile);		
-
-		// Set the plugin root path
-		$this->parent->setPath('extension_root', JPATH_ROOT.DS.'libraries'.DS.$manifest->libraryname);
+		$manifestFile = LIBRARY_MANIFEST_PATH . DS . $id .'.xml'; 
 
 		// Because libraries may not have their own folders we cannot use the standard method of finding an installation manifest
 		if (file_exists($manifestFile))
 		{
+			$manifest = new JLibraryManifest($manifestFile);
+			// Set the plugin root path
+			$this->parent->setPath('extension_root', JPATH_ROOT.DS.'libraries'.DS.$manifest->libraryname);
+			
 			$xml =& JFactory::getXMLParser('Simple');
 
 			// If we cannot load the xml file return null
@@ -182,12 +211,61 @@ class JInstallerLibrary extends JObject
 
 		// TODO: Change this so it walked up the path backwards so we clobber multiple empties
 		// If the folder is empty, let's delete it
-		$files = JFolder::files($this->parent->getPath('extension_root'));
-		if (!count($files)) {
-			JFolder::delete($this->parent->getPath('extension_root'));
+		if(JFolder::exists($this->parent->getPath('extension_root'))) {
+			if(is_dir($this->parent->getPath('extension_root'))) {
+				$files = JFolder::files($this->parent->getPath('extension_root'));
+				if (!count($files)) {
+					JFolder::delete($this->parent->getPath('extension_root'));
+				}
+			}
 		}
 
 		return $retval;
 	}
 
+}
+
+if(!class_exists('JLibraryManifest')) {
+	class JLibraryManifest extends JObject {
+		
+		var $name = '';
+		var $libraryname = '';
+		var $url = '';
+		var $description = '';
+		var $packager = '';
+		var $packagerurl = '';
+		var $update = '';
+		var $version = '';
+		var $filelist = Array();
+		var $manifest_file = '';
+		
+		function __construct($xmlpath='') {
+			if(strlen($xmlpath)) $this->loadManifestFromXML($xmlpath);
+		}
+		
+		function loadManifestFromXML($xmlfile) {
+			$this->manifest_file = JFile::stripExt(basename($xmlfile));
+			$xml = JFactory::getXMLParser('Simple');
+			if(!$xml->loadFile($xmlfile)) {
+				$this->_errors[] = 'Failed to load XML File: ' . $xmlfile;
+				return false;
+			} else {
+				$xml = $xml->document;
+				$this->name = $xml->name[0]->data();
+				$this->libraryname = $xml->libraryname[0]->data();
+				$this->update = $xml->update[0]->data();
+				$this->url = $xml->url[0]->data();
+				$this->description = $xml->description[0]->data();
+				$this->packager = $xml->packager[0]->data();
+				$this->packagerurl = $xml->packagerurl[0]->data();
+				$this->version = $xml->version[0]->data();
+				if(isset($xml->files[0]->file) && count($xml->files[0]->file)) {
+					foreach($xml->files[0]->file as $file) {
+						$this->filelist[] = $file->data();
+					}
+				}
+				return true;
+			}
+		}
+	}
 }

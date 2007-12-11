@@ -33,13 +33,13 @@ class JLibManModelJLibMan extends JModel
 {
 	
     function &listLibraries() {
-		$files =  JFolder::files(MANIFEST_PATH);
+		$files =  JFolder::files(LIBRARY_MANIFEST_PATH);
 		$retval = Array();
 		$file = $files[0];
 		
 		foreach($files as $file) {
 			if(strtolower(JFile::getExt($file)) == 'xml') {
-				$retval[] = new JLibraryManifest(MANIFEST_PATH . DS . $file);
+				$retval[] = new JLibraryManifest(LIBRARY_MANIFEST_PATH . DS . $file);
 			}
 		}
 		return $retval;

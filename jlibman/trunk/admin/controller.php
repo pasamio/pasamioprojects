@@ -45,7 +45,13 @@ class JLibManController extends JController
     function uninstall() {
     	$model = $this->getModel('jlibman');
     	$lib = JRequest::getWord('library','');
-    	if(strlen($lib)) echo $model->uninstall($lib);
+    	if(strlen($lib)) {
+    		if($model->uninstall($lib)) {
+    			$mainframe->enqueueMessage(JText::_('Uninstall Success'));
+    		} else {
+				$mainframe->enqueueMessage(JText::_('Uninstall Failure'));
+    		}
+    	}
     	parent::display();
     }
 }
