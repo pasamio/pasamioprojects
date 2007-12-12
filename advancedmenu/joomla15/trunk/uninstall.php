@@ -19,7 +19,5 @@
  * @see JoomlaCode Project: http://joomlacode.org/gf/project/
  */
  
-function com_uninstall() {
- 	
-}
+// We don't do anything here, the user has to uninstall the package manager and package themselves.
 ?>
