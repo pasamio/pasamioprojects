@@ -234,11 +234,11 @@ class JInstallerPackage extends JObject
 				$result = $db->loadResult();
 				break;
 			case 'component':
-				$db->setQuery("SELECT id FROM #__components WHERE parent = 0 AND option = '$id'");
+				$db->setQuery("SELECT id FROM #__components WHERE parent = 0 AND `option` = '$id'");
 				$result = $db->loadResult();
 				break;
 			case 'module':
-				$db->setQuery("SELECT id FROM #__modules WHERE module = '$id' and client_id = $client");
+				$db->setQuery("SELECT id FROM #__modules WHERE module = '$id' and client_id = '$client'");
 				$result = $db->loadResult();
 				break;
 			case 'language':

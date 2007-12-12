@@ -39,4 +39,8 @@ if(!$tmpInstaller->install($package['dir'])) {
 }
 //JFolder::delete($package['dir']);
 
+$dbo =& JFactory::getDBO();
+$dbo->setQuery("UPDATE #__modules SET published = 1 AND positon = 'menu' WHERE client_id = 1 AND module = 'mod_advmenu'");
+$dbo->Query();
+
 ?>

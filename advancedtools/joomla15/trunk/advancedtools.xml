@@ -33,6 +33,9 @@ PRIMARY KEY (menuid)
   
   <!-- Administration Main File Copy Section -->
   <files folder="admin">
+  		<!-- Packages -->
+		<filename>packages/pkg_advtools.zip</filename>
+		<filename>packages/com_jpackageman.zip</filename>
 		<!-- System Views, the default list and the detail screen --> 
 		<filename>views/advancedtools/tmpl/default.php</filename>
 		<filename>views/advancedtools/tmpl/index.html</filename>
