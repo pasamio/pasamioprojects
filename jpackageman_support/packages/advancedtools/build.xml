@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="advancedtools" default="build">
+	<target name="clean">
+		<echo msg="Cleaning directories" />
+		<delete dir="packagemanager" includeemptydirs="true" />
+		<delete dir="mod_advmenu" includeemptydirs="true" />
+		<delete dir="advancedtools" includeemptydirs="true" />
+		<delete dir="jlibman" includeemptydirs="true" />
+		<delete dir="packages" includeemptydirs="true" />
+	</target>
+	
+	<target name="build">
+		<mkdir dir="packages"/>
+		<echo msg="Building Advanced Tools Manager" />
+		<phingcall target="advancedtools" />
+	</target>
+	
+	<target name="advancedtools" depends="packagemanager, advancedtoolspackage">
+		<mkdir dir="packages"/>		
+		<svnexport todir="advancedtools" force="true" repositoryurl="http://svn.joomlacode.org/svn/pasamioprojects/advancedtools/joomla15/trunk/" />
+		<copy todir="advancedtools/admin/packages" overwrite="true" >
+			<fileset dir="packages">
+				<include name="pkg_advtools.zip" />
+				<include name="com_jpackageman.zip" />
+			</fileset>
+		</copy>
+		<zip destfile="packages/com_advancedtools.zip" basedir="advancedtools" />
+	</target>
+	
+	<target name="packagemanager">
+		<mkdir dir="packages"/>		
+		<svnexport todir="packagemanager" force="true" repositoryurl="http://svn.joomlacode.org/svn/pasamioprojects/jpackageman/trunk/" />
+		<zip destfile="packages/com_jpackageman.zip" basedir="packagemanager" />
+	</target>
+	
+	<target name="advancedtoolspackage" depends="librarymanager, advmenumodule">
+		<mkdir dir="packages"/>	
+		<zip destfile="packages/pkg_advtools.zip" >
+			<fileset dir=".">
+				<include name="pkg_advtools.xml" />
+				<include name="packages/**" />
+				<exclude name="pkg_advtools.zip" />	
+				<exclude name="com_advancedtools" />
+			</fileset>
+		</zip>
+	</target>
+	
+	<target name="librarymanager">
+		<mkdir dir="packages"/>	
+		<svnexport todir="jlibman" force="true" repositoryurl="http://svn.joomlacode.org/svn/pasamioprojects/jlibman/trunk" />
+		<zip destfile="packages/com_jlibman.zip" basedir="jlibman" />
+	</target>
+		
+	<target name="advmenumodule">
+		<mkdir dir="packages" />	
+		<svnexport todir="mod_advmenu" force="true" repositoryurl="http://svn.joomlacode.org/svn/pasamioprojects/mod_advmenu/trunk/" />
+		<zip destfile="packages/mod_advmenu.zip" basedir="mod_advmenu" />
+	</target>
+		
+</project>
