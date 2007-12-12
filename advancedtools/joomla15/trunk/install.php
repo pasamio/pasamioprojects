@@ -22,7 +22,8 @@
 // Install Package Manager
 jimport('joomla.installer.helper');
 $basedir = dirname(__FILE__);
-$package = JInstallerHelper::unpack($basedir . DS . 'packages' . DS . 'com_jpackageman.zip');
+echo $basedir . DS . 'packages' . DS . 'com_jpackageman.zip'.'<br />';
+/*$package = JInstallerHelper::unpack($basedir . DS . 'packages' . DS . 'com_jpackageman.zip');
 $tmpInstaller = new JInstaller();
 if(!$tmpInstaller->install($package['dir'])) {
 	$this->parent->abort(JText::_('Package').' '.JText::_('Install').': '.JText::_('There was an error installing an extension:') . basename($file));
@@ -36,5 +37,7 @@ if(!$tmpInstaller->install($package['dir'])) {
 	$this->parent->abort(JText::_('Package').' '.JText::_('Install').': '.JText::_('There was an error installing an extension:') . basename($file));
 }
 JFolder::delete($package['dir']);
+*/
+echo $basedir . DS . 'packages' . DS . 'pkg_advtools.zip'
 
 ?>

@@ -17,9 +17,9 @@
 
 defined('_JEXEC') or die('Saya tidak suka kamu ;)');
 
-function com_uninstall() {
+//function com_uninstall() {
 	$dest = JPATH_SITE . DS . 'libraries' . DS . 'joomla' . DS . 'installer' . DS . 'adapters' . DS .'package.php';
 	JFile::delete($dest);
-} 
+//} 
  
 ?>

@@ -19,9 +19,10 @@
 defined('_JEXEC') or die('Saya tidak suka kamu ;)');
 
 //function com_install() {
+	$url = 'http://sammoffatt.com.au/os/index.php/joomla-15-products/2-JPackageMan/5-jpackageman-installation';
 	$src = JPATH_SITE . DS . 'administrator'. DS . 'components'. DS .'com_jpackageman' . DS . 'include' . DS . 'package.php';
 	$dest = JPATH_SITE . DS . 'libraries' . DS . 'joomla' . DS . 'installer' . DS . 'adapters' . DS .'package.php';
 	if(JFile::copy($src, $dest)) echo "Congratulations you successfully installed the package manager!";
-	else echo "Failed to install Package adapter, please try copying manually! Please see the <a href='http://sammoffatt.com.au/os/'>installation notes</a> for more information.";
+	else echo "Failed to install Package adapter, please try copying manually! Please see the <a href='$url'>installation notes</a> for more information.";
 //}
 ?>
