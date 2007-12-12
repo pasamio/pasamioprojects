@@ -19,10 +19,12 @@
  * @see JoomlaCode Project: http://joomlacode.org/gf/project/
  */
 
+
 // Install Package Manager
 jimport('joomla.installer.helper');
 $basedir = dirname(__FILE__);
 $file = $basedir . DS . 'packages' . DS . 'com_jpackageman.zip';
+echo "Installing " . $file . '<br />';
 $package = JInstallerHelper::unpack($file);
 $tmpInstaller = new JInstaller();
 if(!$tmpInstaller->install($package['dir'])) {
@@ -32,6 +34,7 @@ if(!$tmpInstaller->install($package['dir'])) {
 
 // Install Tools package
 $file = $basedir . DS . 'packages' . DS . 'pkg_advtools.zip';
+echo "Installing " . $file . '<br />';
 $package = JInstallerHelper::unpack($file);
 $tmpInstaller = new JInstaller();
 if(!$tmpInstaller->install($package['dir'])) {
@@ -39,8 +42,9 @@ if(!$tmpInstaller->install($package['dir'])) {
 }
 //JFolder::delete($package['dir']);
 
+echo "Updating modules table...<br />";
 $dbo =& JFactory::getDBO();
-$dbo->setQuery("UPDATE #__modules SET published = 1 AND positon = 'menu' WHERE client_id = 1 AND module = 'mod_advmenu'");
+$dbo->setQuery('INSERT INTO jos_modules VALUES(0, "Advanced Admin Menu", "", 5, "menu", 0, "0000-00-00 00:00:00", 1, "mod_advmenu", 0, 2, 1, "", 0, 1, "")');
 $dbo->Query();
 
 ?>
