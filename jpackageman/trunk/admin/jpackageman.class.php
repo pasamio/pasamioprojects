@@ -76,10 +76,12 @@ if(!class_exists('JPackageManifest')) {
 				$this->type = $element->attributes('type');
 				$this->id = $element->attributes('id');
 				switch($this->type) {
-					case 'modules':
-					case 'templates':
-					case 'languages':
+					case 'module':
+					case 'template':
+					case 'language':
 						$this->client = $element->attributes('client');
+						$this->client_id = JApplicationHelper::getClientInfo($this->client,1);
+						$this->client_id = $this->client_id->id;
 						break;
 					case 'plugin':
 						$this->group = $element->attributes('group');
