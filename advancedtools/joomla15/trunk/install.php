@@ -26,17 +26,17 @@ $file = $basedir . DS . 'packages' . DS . 'com_jpackageman.zip';
 $package = JInstallerHelper::unpack($file);
 $tmpInstaller = new JInstaller();
 if(!$tmpInstaller->install($package['dir'])) {
-	$this->parent->abort(JText::_('Package').' '.JText::_('Install').': '.JText::_('There was an error installing an extension:') . basename($file));
+	JError::raiseWarning(100,JText::_('Automated').' '.JText::_('Install').': '.JText::_('There was an error installing an extension:') . basename($file));
 }
-JFolder::delete($package['dir']);
+//JFolder::delete($package['dir']);
 
 // Install Tools package
 $file = $basedir . DS . 'packages' . DS . 'pkg_advtools.zip';
 $package = JInstallerHelper::unpack($file);
 $tmpInstaller = new JInstaller();
 if(!$tmpInstaller->install($package['dir'])) {
-	$this->parent->abort(JText::_('Package').' '.JText::_('Install').': '.JText::_('There was an error installing an extension:') . basename($file));
+	JError::raiseWarning(100,JText::_('Automated').' '.JText::_('Install').': '.JText::_('There was an error installing an extension:') . basename($file));
 }
-JFolder::delete($package['dir']);
+//JFolder::delete($package['dir']);
 
 ?>

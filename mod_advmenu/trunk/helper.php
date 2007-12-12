@@ -52,17 +52,20 @@ class modMenuXHelper
 		 */
 		if($editAllComponents) {
 			$menu->addChild(new JMenuXNode(JText::_('Advanced')), true);
-			$menu->addChild(new JMenuXNode(JText::_('Update Manager'), 'index.php?option=com_jupdateman', 'class:install'));
-			$menu->addChild(new JMenuXNode(JText::_('Library Manager'), 'index.php?option=com_jlibman', 'class:plugin'));
-			$menu->addChild(new JMenuXNode(JText::_('Package Manager'), 'index.php?option=com_jpackageman', 'class:module'));
-			$menu->addChild(new JMenuXNode(JText::_('Tools Manager'), 'index.php?option=com_advtools', 'class:config'));
-			$menu->addSeparator();
-			if ($canConfig) {
-				$menu->addChild(new JMenuXNode(JText::_('Configure Advanced Settings'), 'index.php?option=com_advconfig', 'class:config'));
-				$menu->addSeparator();
+			$dbo =& JFactory::getDBO();
+			$dbo->setQuery("SELECT * FROM #__advancedtools_menu WHERE published = 1");
+			$results = $dbo->loadObjectList();
+			$css = Array();
+			foreach($results as $result) {
+				$menu->addChild(new JMenuXNode(JText::_($result->name), $result->link, $result->class));
+				if(strlen($result->csspath) && strlen($result->cssfile)) 	$css[$result->csspath] = $result->cssfile;
 			}
-	
 			$menu->getParent();
+		}
+		
+		// include other css documents
+		foreach($css as $key->$value) {
+			JHTML::stylesheet($key,$value);
 		}
 
 		$menu->renderMenu('advmenu', '');
