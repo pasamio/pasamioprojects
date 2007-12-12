@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE install SYSTEM "http://dev.joomla.org/xml/1.5/component-install.dtd">
+<install type="component" version="1.5.0">
+ <name>Advanced Tools</name>
+ <!-- The following elements are optional and free of formatting conttraints -->
+ <creationDate>25-Oct-2007</creationDate>
+ <author>Sam Moffatt</author>
+ <authorEmail>S.Moffatt@toowoomba.qld.gov.au</authorEmail>
+ <authorUrl>http://www.toowoomba.qld.gov.au</authorUrl>
+ <copyright>Copyright (c) 2007 Toowoomba City Council/Sam Moffatt</copyright>
+ <license>GNU GPL</license>
+ <!--  The version string is recorded in the components table -->
+ <version id="1">1.0</version>
+ <!-- The description is optional and defaults to the name -->
+ <description>This component is designed to install the package and library installers as well as the advanced menu module</description>
+ <installfile>install.php</installfile>
+ <uninstallfile>uninstall.php</uninstallfile>
+ <query>
+ CREATE TABLE jos_advancedtools_menu (
+menuid 	INT(11) AUTO_INCREMENT,
+name 	VARCHAR(100) NOT NULL,
+link	VARCHAR(255) NOT NULL,
+class 	VARCHAR(50) NOT NULL,
+csspath	VARCHAR(255) NOT NULL,
+cssfile VARCHAR(20) NOT NULL,
+published INT NOT NULL,
+PRIMARY KEY (menuid)
+);
+ </query>
+ <administration>
+  <!-- Administration Menu Section -->
+  <menu>Advanced Tools</menu>
+  
+  <!-- Administration Main File Copy Section -->
+  <files folder="admin">
+		<!-- System Views, the default list and the detail screen --> 
+		<filename>views/advancedtools/tmpl/default.php</filename>
+		<filename>views/advancedtools/tmpl/index.html</filename>
+		<filename>views/advancedtools/index.html</filename>
+		<filename>views/advancedtools/view.html.php</filename>
+		<filename>views/details/tmpl/index.html</filename>
+		<filename>views/details/tmpl/default.php</filename>
+		<filename>views/details/view.html.php</filename>
+		<filename>views/index.html</filename>
+		<!-- Data access models, default and details -->
+		<filename>models/advancedtools.php</filename>
+		<filename>models/index.html</filename>
+		<filename>models/details.php</filename>
+		<!-- Controller and Joomla! Admin landing point -->
+		<filename>controller.php</filename>
+		<filename>admin.advancedtools.php</filename>
+		<filename>index.html</filename>
+		<!-- The installer adapter to allow Joomla! 1.5 to handle packages -->
+		<filename>include/package.php</filename>
+		<filename>include/index.html</filename>
+		<!-- advancedtools Support Class -->
+		<filename>advancedtools.class.php</filename>
+  </files>  
+ </administration>
+ <update>http://www.jsitepoint.com/update/components/advancedtools</update>
+</install>
