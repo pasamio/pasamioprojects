@@ -50,11 +50,6 @@ PRIMARY KEY (menuid)
 		<filename>controller.php</filename>
 		<filename>admin.advancedtools.php</filename>
 		<filename>index.html</filename>
-		<!-- The installer adapter to allow Joomla! 1.5 to handle packages -->
-		<filename>include/package.php</filename>
-		<filename>include/index.html</filename>
-		<!-- advancedtools Support Class -->
-		<filename>advancedtools.class.php</filename>
   </files>  
  </administration>
  <update>http://www.jsitepoint.com/update/components/advancedtools</update>
