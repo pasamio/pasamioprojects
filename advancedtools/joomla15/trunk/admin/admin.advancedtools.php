@@ -1,14 +1,14 @@
 <?php
 /**
- * Joomla! Package Manager
+ * Advanced Tools Manager
  * 
- * The Joomla! Package Manager installs packages 
+ * The Advanced Tools Manager installs JPackageMan, JLibMan and the advanced menu 
  * 
  * PHP4/5
  *  
  * Created on Sep 21, 2007
  * 
- * @package JPackageMan
+ * @package Advanced Tools
  * @author Sam Moffatt <S.Moffatt@toowoomba.qld.gov.au>
  * @author Toowoomba City Council Information Management Branch
  * @license GNU/GPL http://www.gnu.org/licenses/gpl.html

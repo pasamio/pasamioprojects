@@ -1,14 +1,14 @@
 <?php
 /**
- * Document Description
+ * Advanced Tools Controller
  * 
- * Document Long Description 
+ * Controller 
  * 
  * PHP4/5
  *  
  * Created on Sep 28, 2007
  * 
- * @package JPackageMan
+ * @package Advanced-Tools
  * @author Sam Moffatt <s.moffatt@toowoomba.qld.gov.au>
  * @author Toowoomba City Council Information Management Branch
  * @license GNU/GPL http://www.gnu.org/licenses/gpl.html

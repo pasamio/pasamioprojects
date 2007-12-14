@@ -41,14 +41,10 @@ PRIMARY KEY (menuid)
 		<filename>views/advancedtools/tmpl/index.html</filename>
 		<filename>views/advancedtools/index.html</filename>
 		<filename>views/advancedtools/view.html.php</filename>
-		<filename>views/details/tmpl/index.html</filename>
-		<filename>views/details/tmpl/default.php</filename>
-		<filename>views/details/view.html.php</filename>
 		<filename>views/index.html</filename>
 		<!-- Data access models, default and details -->
 		<filename>models/advancedtools.php</filename>
 		<filename>models/index.html</filename>
-		<filename>models/details.php</filename>
 		<!-- Controller and Joomla! Admin landing point -->
 		<filename>controller.php</filename>
 		<filename>admin.advancedtools.php</filename>
