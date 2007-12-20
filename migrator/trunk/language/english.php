@@ -110,6 +110,7 @@
   DEFINE('_BBKP_EXAMINING', 'Examining ');
   DEFINE('_BBKP_PROCESSED', 'Processed ');
   DEFINE('_BBKP_PERCOFTABLE', '% of table');
+  DEFINE('_BBKP_PERCOFALLTASKS', '% of all tasks');
   DEFINE('_BBKP_BEFORETIMEOUT', ' before timeout ');
   DEFINE('_BBKP_OF', ' of ');
   DEFINE('_BBKP_TO', ' to ');
@@ -126,4 +127,6 @@
   DEFINE('_BBKP_AMOUNTTOCONVERT', '; Amount to convert: ');
   DEFINE('_BBKP_TOTALROWS','; Total Rows: ');
   DEFINE('_BBKP_TRANSFORMSTABLE','; Transforms table ');
+  DEFINE('_BBKP_TIMESPENT', 'Time spent this cycle: ');
+  DEFINE('_BBKP_TASKSREMAINING', 'tasks remaining');
   ?>

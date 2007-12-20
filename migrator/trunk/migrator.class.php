@@ -292,13 +292,14 @@ class Task extends mosDBTable {
 	var $tablename = '';
 	var $start = 0;
 	var $amount = 0;
+	var $tasksremaining = 0;
 
-	function Task(& $db, $table = '', $s = 0, $a = 0, $t = null) {
+	function Task(& $db, $table = '', $s = 0, $a = 0, $t = null,$tr=0) {
 		$this->tablename = $table;
 		$this->start = $s;
 		$this->total = $t ? $t : $a;
 		$this->amount = $a ? $a : $this->total - $this->start;
-		
+		$this->tasksremaining = ($tr >= $this->amount) ? $tr :  $this->amount;
 		$this->mosDBTable('#__migrator_tasks', 'taskid', $db);
 	}
 
@@ -321,7 +322,7 @@ class Task extends mosDBTable {
 			$checkTime = mosProfiler :: getmicrotime();
 			if (($checkTime - $startTime) >= $run_time) {
 				$rows  = $i - $this->start;
-				echo '<p>' . _BBKP_PROCESSED . $rows. _BBKP_ROWS . '('. $this->start . _BBKP_TO . $i .') '. _BBKP_OF . $this->tablename . _BBKP_BEFORETIMEOUT .' ( '. number_format((($i / $this->amount) * 100),2) . _BBKP_PERCOFTABLE .')</p>';
+				echo '<p>' . _BBKP_PROCESSED . $rows. _BBKP_ROWS . '('. $this->start . _BBKP_TO . $i .') '. _BBKP_OF . $this->tablename . _BBKP_BEFORETIMEOUT .' ('. number_format((($i / $this->amount) * 100),2) . _BBKP_PERCOFTABLE .'; ~'. $this->tasksremaining-$rows .' '. _BBKP_TASKSREMAINING . '; '. _BBKP_TIMESPENT . $checkTime - $startTime .'</p>';
 				// Update this task
 				$this->start = $i + 1;
 				$this->store();
@@ -352,17 +353,20 @@ class TaskBuilder {
 	var $plugins = null;
 	/** @var $tasklist List of tasks */
 	var $tasklist = Array ();
-
+	/** @var $tasksremaining Number of tasks remaining over all */
+	var $tasksremaining = 0;
+	
 	function TaskBuilder(& $database, & $plugins) {
 		$this->db = & $database;
 		$this->plugins = & $plugins;
 	}
 
 	function buildTaskList($debug = false) {
+		$this->countAllRows();
 		foreach ($this->plugins as $name => $plugin) {
 			if ($debug)
 				echo _BBKP_EXAMINING . $name . '<br />';
-			$this->tasklist[] = new Task($this->db, $this->plugins[$name]->getAssociatedTable(), 0, $this->plugins[$name]->getEntries());
+			$this->tasklist[] = new Task($this->db, $this->plugins[$name]->getAssociatedTable(), 0, $this->plugins[$name]->getEntries(), $this->tasksremaining);
 		}
 		return $this->tasklist;
 	}
@@ -375,6 +379,11 @@ class TaskBuilder {
 			$this->db->setQuery("INSERT INTO #__migrator_tasks VALUES (0,'" . $task->tablename . "','" . $task->start . "','" . $task->amount . "','" . $task->amount . "')");
 			$this->db->Query() or die($this->db->getErrorMsg());
 		}
+	}
+	
+	function countAllRows() { 
+		$this->db->setQuery("SELECT sum(total-start) FROM #__migrator_tasks");
+		$this->tasksremaining = $this->db->loadResult();
 	}
 }
 
