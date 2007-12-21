@@ -18,11 +18,13 @@
  <install>
   <sql>
    <file driver="mysql">install.sql</file>
+   <file driver="mysqli">install.sql</file>
   </sql>
  </install>
  <uninstall>
   <sql>
    <file driver="mysql">uninstall.sql</file>
+   <file driver="mysqli">uninstall.sql</file>
   </sql>
  </uninstall>
 

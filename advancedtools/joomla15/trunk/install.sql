@@ -12,5 +12,5 @@ PRIMARY KEY (`menuid`)
 );
 
 INSERT INTO `#__advancedtools_menu` VALUES(0, 'Update Manager', 'index.php?option=com_jupdateman', 'class:install', '', '', 1);
-INSERT INTO `#__advancedtools_menu` VALUES(0, 'Package Manager', 'index.php?option=com_jpackageman', 'class:module', '', '', 2);
-INSERT INTO `#__advancedtools_menu` VALUES(0, 'Library Manager', 'index.php?option=com_jlibman', 'class:plugin', '', '', 3);
+INSERT INTO `#__advancedtools_menu` VALUES(0, 'Package Manager', 'index.php?option=com_jpackageman', 'class:module', '', '', 1);
+INSERT INTO `#__advancedtools_menu` VALUES(0, 'Library Manager', 'index.php?option=com_jlibman', 'class:plugin', '', '', 1);
