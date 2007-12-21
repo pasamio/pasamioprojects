@@ -16,17 +16,16 @@
  <installfile>install.php</installfile>
  <uninstallfile>uninstall.php</uninstallfile>
  <install>
- 	<sql>
-		<file driver="mysql">install.sql</file>
-	</sql>
-</install>
-<uninstall>
-	<sql>
-		<file driver="mysql">uninstall.sql</file>
-	</sql>
-</uninstall>
+  <sql>
+   <file driver="mysql">install.sql</file>
+  </sql>
+ </install>
+ <uninstall>
+  <sql>
+   <file driver="mysql">uninstall.sql</file>
+  </sql>
+ </uninstall>
 
- </query>
  <administration>
   <!-- Administration Menu Section -->
   <menu>Advanced Tools</menu>
