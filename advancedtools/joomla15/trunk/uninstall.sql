@@ -1,1 +1,1 @@
-DROP DATABASE #__advancedtools_menu;
+DROP TABLE #__advancedtools_menu;

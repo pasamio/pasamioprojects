@@ -19,7 +19,12 @@
  	<sql>
 		<file driver="mysql">install.sql</file>
 	</sql>
-</uninstall
+</install>
+<uninstall>
+	<sql>
+		<file driver="mysql">uninstall.sql</file>
+	</sql>
+</uninstall>
 
  </query>
  <administration>
