@@ -193,6 +193,7 @@
 		<file>installer/helper.php</file>
 		<file>installer/index.html</file>
 		<file>installer/adapters/module.php</file>
+		<file>installer/adapters/package.php</file>
 		<file>installer/adapters/library.php</file>
 		<file>installer/adapters/index.html</file>
 		<file>installer/adapters/plugin.php</file>

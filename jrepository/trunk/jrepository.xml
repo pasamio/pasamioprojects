@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE install SYSTEM "http://dev.joomla.org/xml/1.5/component-install.dtd">
+<install type="component" version="1.5.0">
+ <name>JRepository</name>
+ <!-- The following elements are optional and free of formatting conttraints -->
+ <creationDate>21-Sep-2007</creationDate>
+ <author>Sam Moffatt</author>
+ <authorEmail>S.Moffatt@toowoomba.qld.gov.au</authorEmail>
+ <authorUrl>http://www.toowoomba.qld.gov.au</authorUrl>
+ <copyright>Copyright (c) 2007 Toowoomba City Council/Sam Moffatt</copyright>
+ <license>GNU GPL</license>
+ <!--  The version string is recorded in the components table -->
+ <version id="1">1.0</version>
+ <!-- The description is optional and defaults to the name -->
+ <description>This component handles file repository management</description>
+ <!--<installfile>install.php</installfile>
+ <uninstallfile>uninstall.php</uninstallfile>-->
+ <administration>
+  <!-- Administration Menu Section -->
+  <menu>JRepository</menu>
+  
+  <!-- Administration Main File Copy Section -->
+  <files folder="admin">
+		<!-- System Views, the default list and the detail screen --> 
+		<filename>views/jlibman/tmpl/default.php</filename>
+		<filename>views/jlibman/tmpl/index.html</filename>
+		<filename>views/jlibman/index.html</filename>
+		<filename>views/jlibman/view.html.php</filename>
+		<filename>views/details/tmpl/index.html</filename>
+		<filename>views/details/tmpl/default.php</filename>
+		<filename>views/details/view.html.php</filename>
+		<filename>views/index.html</filename>
+		<!-- Data access models, default and details -->
+		<filename>models/jlibman.php</filename>
+		<filename>models/index.html</filename>
+		<filename>models/details.php</filename>
+		<!-- Controller and Joomla! Admin landing point -->
+		<filename>controller.php</filename>
+		<filename>admin.jlibman.php</filename>
+		<filename>index.html</filename>
+		<!-- Manifests for libraries installed with 1.5 -->
+		<filename>manifests/phpmailer.xml</filename>
+		<filename>manifests/phputf8.xml</filename>
+		<filename>manifests/geshi.xml</filename>
+		<filename>manifests/index.html</filename>
+		<filename>manifests/bitfolge.xml</filename>
+		<filename>manifests/phpxmlrpc.xml</filename>
+		<filename>manifests/phpinputfilter.xml</filename>
+		<filename>manifests/domit.xml</filename>
+		<filename>manifests/pear.xml</filename>
+		<filename>manifests/pattemplate.xml</filename>
+		<filename>manifests/joomla.xml</filename>
+		<filename>manifests/openid.xml</filename>
+		<filename>manifests/phpgacl.xml</filename>
+		<!-- The installer adapter to allow Joomla! 1.5 to handle libraries -->
+		<filename>include/library.php</filename>
+		<filename>include/index.html</filename>
+		<!-- JLibMan Support Class -->
+		<filename>jlibman.class.php</filename>
+  </files>  
+ </administration>
+ <update>http://www.jsitepoint.com/update/components/jlibman</update>
+</install>

@@ -3,6 +3,7 @@
 	<name>jrepository</name>
 	<comment></comment>
 	<projects>
+		<project>joomla_trunk</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
