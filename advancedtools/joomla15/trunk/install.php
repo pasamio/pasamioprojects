@@ -42,7 +42,11 @@ if(!$tmpInstaller->install($package['dir'])) {
 
 echo "Updating modules table...<br />";
 $dbo =& JFactory::getDBO();
-$dbo->setQuery('INSERT INTO jos_modules VALUES(0, "Advanced Admin Menu", "", 5, "menu", 0, "0000-00-00 00:00:00", 1, "mod_advmenu", 0, 2, 1, "", 0, 1, "")');
+$dbo->setQuery('DELETE FROM #__modules_menu WHERE moduleid IN (SELECT id FROM #__modules WHERE module = "mod_advmenu")');
+$dbo->Query();
+$dbo->setQuery('DELETE FROM #__modules WHERE module = "mod_advmenu"');
+$dbo->Query();
+$dbo->setQuery('INSERT INTO #__modules VALUES(0, "Advanced Admin Menu", "", 5, "menu", 0, "0000-00-00 00:00:00", 1, "mod_advmenu", 0, 2, 1, "", 0, 1, "")');
 $dbo->Query();
 
 ?>
