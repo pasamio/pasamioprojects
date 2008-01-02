@@ -26,6 +26,8 @@ class Menu_ETL extends ETLPlugin {
 	function getName() { return "Menu ETL Plugin"; }
 	function getAssociatedTable() { return 'menu'; }
 	
+	function getWhere() { return " WHERE published != -2 "; }
+	
 	function mapvalues($key,$value) {
 		switch($key) {
 			case 'params':

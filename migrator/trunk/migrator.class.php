@@ -54,6 +54,7 @@ function displayResource($file) {
 	}
 	else
 		die(_BBKP_CRITINCLERR . $file);
+	echo __VERSION_STRING;
 }
 
 /**
@@ -149,7 +150,7 @@ class ETLPlugin {
 	 * Returns the number of entries in the table
 	 */
 	function getEntries() {
-		$this->db->setQuery('SELECT count(*) FROM #__' . $this->getAssociatedTable());
+		$this->db->setQuery('SELECT count(*) FROM #__' . $this->getAssociatedTable() . $this->getWhere());
 		return $this->db->loadResult();
 	}
 
@@ -167,12 +168,20 @@ class ETLPlugin {
 	function mapNames($key) {
 		return $key;
 	}
+	
+	/**
+	 * Generates an SQL where clause
+	 *
+	 */
+	function getWhere() {
+		return '';
+	}
 
 	/**
 	 * Does the transformation from start to amount rows.
 	 */
 	function doTransformation($start, $amount) {
-		$this->db->setQuery('SELECT * FROM #__' . $this->getAssociatedTable() . ' LIMIT ' . $start . ',' . $amount);
+		$this->db->setQuery('SELECT * FROM #__' . $this->getAssociatedTable() . $this->getWhere() . ' LIMIT ' . $start . ',' . $amount);
 		$retval = Array ();
 		$newFields = Array();
 		foreach($this->newfieldlist as $fieldname) {
@@ -329,6 +338,7 @@ class Task extends mosDBTable {
 				//die('Updating a task due to timeout');
 				$link = "index2.php?option=com_migrator&act=dotask";
 				echo '<a href="'.$link.'">'._BBKP_NEXT.'</a>';
+				// mark:javascript autoprogress
 				echo "<script language=\"JavaScript\" type=\"text/javascript\">window.setTimeout('location.href=\"" . $link . "\";',1000);</script>\n";
 				echo '</div>';
 				flush();

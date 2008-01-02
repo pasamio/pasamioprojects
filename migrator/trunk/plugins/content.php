@@ -29,6 +29,9 @@ class Content_ETL extends ETLPlugin {
 	function getName() { return "Content ETL Plugin"; }	
 	function getAssociatedTable() { return 'content'; }
 	
+	// Ignore items in the trash
+	function getWhere() { return " WHERE state != -2 "; }
+	
 	function mapvalues($key,$value) {
 
 		switch($key) {

@@ -105,7 +105,7 @@ class JFiler{
 
   function createFile($filename){
     $this->filename = $filename;
-    if ($this->fp = fopen($this->filename, "wb")){
+    if ($this->fp = @fopen($this->filename, "wb")){ //stop fopen spamming us
        @chmod ($this->filename, 0777);
        $this->isopen = true;
        return $this->filename;
@@ -117,7 +117,7 @@ class JFiler{
 
   function openFile($filename){
     $this->filename = $filename;
-    if ($this->fp = fopen($this->filename, "ab")){
+    if ($this->fp = @fopen($this->filename, "ab")){ //stop fopen spamming us
        $this->isopen = true;
        return $this->filename;
     }else{

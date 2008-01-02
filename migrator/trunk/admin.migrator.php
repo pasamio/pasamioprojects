@@ -16,6 +16,8 @@ defined('_VALID_MOS') or die('Restricted access');
 
 if(!count($_SESSION)) die('BLANK SESSION!');
 
+define('__VERSION_STRING', 'Migrator 1.0RC4');
+
 define("MAX_LINE_LENGTH", 65536);
 $max_php_run = ini_get("max_execution_time");
 if ($max_php_run <> 0) {
@@ -130,12 +132,6 @@ function testTaskList() {
 
 function start() {
 	global $mosConfig_absolute_path, $mosConfig_db, $mosConfig_dbprefix, $database;
-	$enumerator = new ETLEnumerator();
-	$plugins = $enumerator->createPlugins();
-	$tasks = new TaskBuilder($database, $plugins);
-	$tasks->saveTaskList();
-	$tasklist = new TaskList($database);
-	$tasklist->listAll();
 	$SQLDump = new JFiler(1);
 	if (!isset ($_SESSION['sql_file_time'])) {
 		$_SESSION['sql_file_time'] = time();
@@ -146,11 +142,19 @@ function start() {
 	if (!isset ($_SESSION['sql_file'])) {
 		$sql_file = $mosConfig_db . "_" . strftime("%Y%m%d_%H%M%S", $sql_time) . '.sql';
 		$_SESSION['sql_file'] = $sql_file;
-		$SQLDump->createFile($mosConfig_absolute_path . "/administrator/components/com_migrator/dumps/" . $sql_file);
+		$filename = $mosConfig_absolute_path . "/administrator/components/com_migrator/dumps/" . $sql_file;
+		if(!is_writable($filename) || !$SQLDump->createFile( $filename )) {
+			displayResource('unwriteable');
+			return;
+		}
+		
 		//makeHeaderTableDef($mosConfig_db, $sql_time, & $SQLDump, count($tables), $header_def, $dump_struct);
 	} else {
 		$sql_file = mosGetParam($_SESSION, 'sql_file');
-		$SQLDump->openFile($mosConfig_absolute_path . "/administrator/components/com_migrator/dumps/" . $sql_file);
+		if(!$SQLDump->openFile($mosConfig_absolute_path . "/administrator/components/com_migrator/dumps/" . $sql_file)) {
+			displayResource('unwriteable');
+			return;
+		}
 	}
 	$table_base_path = $mosConfig_absolute_path . "/administrator/components/com_migrator/tables/"; 
 	if($tables = opendir($table_base_path)) {
@@ -172,8 +176,17 @@ function start() {
 		
 		closedir($tables);
 	}
+	
+	$enumerator = new ETLEnumerator();
+	$plugins = $enumerator->createPlugins();
+	$tasks = new TaskBuilder($database, $plugins);
+	$tasks->saveTaskList();
+	$tasklist = new TaskList($database);
+	$tasklist->listAll();
+	
 	$link = "index2.php?option=com_migrator&act=dotask";
-	echo "<script language=\"JavaScript\" type=\"text/javascript\">window.setTimeout('location.href=\"" . $link . "\";',500);</script>\n";
+	//echo "<script language=\"JavaScript\" type=\"text/javascript\">window.setTimeout('location.href=\"" . $link . "\";',500);</script>\n";
+	echo '<p><a href="index2.php?option=com_migrator&act=dotask">Next &gt;&gt;&gt;</a></p>';
 //	flush();
 //	die();
 }
@@ -218,7 +231,7 @@ function doTask() {
 	
 	echo '<p>'. _BBKP_NOTASKSLEFT . ' <a href="index2.php?option=com_migrator&act=done">'. _BBKP_HOME .'</a></p>';
 	$link = "index2.php?option=com_migrator&act=done&mosmsg=Your+SQL+Download+File+Name+is+". urlencode($sql_file);
-	echo "<script language=\"JavaScript\" type=\"text/javascript\">window.setTimeout('location.href=\"" . $link . "\";',500);</script>\n";
+	//echo "<script language=\"JavaScript\" type=\"text/javascript\">window.setTimeout('location.href=\"" . $link . "\";',500);</script>\n";
 
 }
 
