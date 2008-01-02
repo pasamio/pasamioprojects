@@ -55,5 +55,5 @@ function _getExtensionID($type, $id, $client, $group) {
 // However we do uninstall the module manager
 $tmpinstaller = new JInstaller();
 $result = $tmpinstaller->uninstall('module', _getExtensionID('module','mod_advmenu', 'administrator','menu'), 1 );
-echo JText::_("Please note that this component has uninstalled the Advanced Menu module as well.");
-if(!$result) echo JText::_("Automated uninstallation of the module failed."); 
+echo JText::_("Please note that this component will attempt to uninstall the Advanced Menu module as well.");
+if(!$result) echo JText::_("Automated uninstallation of the module failed."._getExtensionID('module','mod_advmenu', 'administrator','menu')); 

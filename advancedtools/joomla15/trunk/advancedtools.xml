@@ -17,14 +17,12 @@
  <uninstallfile>uninstall.php</uninstallfile>
  <install>
   <sql>
-   <file driver="mysql">install.sql</file>
-   <file driver="mysqli">install.sql</file>
+   <file charset="utf8" driver="mysql">install.sql</file>
   </sql>
  </install>
  <uninstall>
   <sql>
-   <file driver="mysql">uninstall.sql</file>
-   <file driver="mysqli">uninstall.sql</file>
+   <file charset="utf8" driver="mysql">uninstall.sql</file>
   </sql>
  </uninstall>
 
@@ -50,6 +48,9 @@
 		<filename>controller.php</filename>
 		<filename>admin.advancedtools.php</filename>
 		<filename>index.html</filename>
+		<!-- Copy the SQL files -->
+		<filename>install.sql</filename>
+		<filename>uninstall.sql</filename>
   </files>  
  </administration>
  <update>http://www.jsitepoint.com/update/components/advancedtools</update>
