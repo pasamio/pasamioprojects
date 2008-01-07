@@ -1,15 +1,15 @@
 <?php
 /**
-* @version $Id: admin.migrator.php 2006-05-29 23:00
-* @package Migrator
-* @copyright Copyright (C) 2006 by Mambobaer.de. All rights reserved.
-* @license http://www.gnu.org/copyleft/gpl.html GNU/GPL, see LICENSE.php
-* Joomla! is free software. This version may have been modified pursuant
-* to the GNU General Public License, and as distributed it includes or
-* is derivative of works licensed under the GNU General Public License or
-* other free or open source software licenses.
-* See COPYRIGHT.php for copyright notices and details.
-*/
+ * @version $Id: admin.migrator.php 2006-05-29 23:00
+ * @package Migrator
+ * @copyright Copyright (C) 2006 by Mambobaer.de. All rights reserved.
+ * @license http://www.gnu.org/copyleft/gpl.html GNU/GPL, see LICENSE.php
+ * Joomla! is free software. This version may have been modified pursuant
+ * to the GNU General Public License, and as distributed it includes or
+ * is derivative of works licensed under the GNU General Public License or
+ * other free or open source software licenses.
+ * See COPYRIGHT.php for copyright notices and details.
+ */
 
 // no direct access
 defined('_VALID_MOS') or die('Restricted access');
@@ -73,6 +73,9 @@ switch ($func) {
 	case 'start' :
 		start();
 		break;
+	case 'create':
+		create();
+		break;
 	case 'dotask' :
 		doTask();
 		break;
@@ -82,16 +85,16 @@ switch ($func) {
 	case '3rdparty' :
 		displayResource('3pd');
 		break;
-	// Legacy Functions
+		// Legacy Functions
 	case 'showdumps' :
 		showDumps($option);
 		break;
 	case 'deletefile' :
 		deleteFile($option);
-		break;		
+		break;
 	case 'downloadit' :
 		downloadIt($option);
-		break;		
+		break;
 	case 'done':
 		done($option);
 		break;
@@ -130,6 +133,22 @@ function testTaskList() {
 	back();
 }
 
+function create() {
+	HTML_migrator::formHeader();
+	echo '<p>'. _BBKP_CREATE_TITLE . '</p>';
+	$enumerator = new ETLEnumerator();
+	echo '<table class="adminlist">';
+	echo '<tr><th></th><th>'. _BBKP_NAME . '</th><th>'. _BBKP_TRANSFORMATION .'</th></tr>';
+	foreach ($enumerator->createPlugins() as $plugin) {
+		
+		echo '<tr><td>'. $cbox .'</td><td>' . implode('</td><td>', explode(';', $plugin->toString())) . '</td></tr>';
+	}
+	echo '</table>';
+	echo '<p><a href="#top" onclick="submitbutton(\'start\');">'. _BBKP_START_MIGRATION . ' >></a></p>';
+	back();
+	HTML_migrator::formFooter('com_migrator','start'); 
+}
+
 function start() {
 	global $mosConfig_absolute_path, $mosConfig_db, $mosConfig_dbprefix, $database;
 	$SQLDump = new JFiler(1);
@@ -156,7 +175,7 @@ function start() {
 			return;
 		}
 	}
-	$table_base_path = $mosConfig_absolute_path . "/administrator/components/com_migrator/tables/"; 
+	$table_base_path = $mosConfig_absolute_path . "/administrator/components/com_migrator/tables/";
 	if($tables = opendir($table_base_path)) {
 		$tablelist = Array();
 		while($entry = readdir($tables)) {
@@ -173,7 +192,7 @@ function start() {
 			$SQLDump->writeFile($data."\n");
 			fclose($file);
 		}
-		
+
 		closedir($tables);
 	}
 	
@@ -187,8 +206,8 @@ function start() {
 	$link = "index2.php?option=com_migrator&act=dotask";
 	//echo "<script language=\"JavaScript\" type=\"text/javascript\">window.setTimeout('location.href=\"" . $link . "\";',500);</script>\n";
 	echo '<p><a href="index2.php?option=com_migrator&act=dotask">Next &gt;&gt;&gt;</a></p>';
-//	flush();
-//	die();
+	//	flush();
+	//	die();
 }
 
 function doTask() {
@@ -228,7 +247,7 @@ function doTask() {
 	unset ($_SESSION['sql_file']);
 	unset ($_SESSION['rec_no']);
 	unset ($_SESSION['start_time']);
-	
+
 	echo '<p>'. _BBKP_NOTASKSLEFT . ' <a href="index2.php?option=com_migrator&act=done">'. _BBKP_HOME .'</a></p>';
 	$link = "index2.php?option=com_migrator&act=done&mosmsg=Your+SQL+Download+File+Name+is+". urlencode($sql_file);
 	//echo "<script language=\"JavaScript\" type=\"text/javascript\">window.setTimeout('location.href=\"" . $link . "\";',500);</script>\n";
@@ -256,20 +275,20 @@ function addPlugin() {
 
 function install() {
 	global $mosConfig_absolute_path;
-	$installbasepath = $mosConfig_absolute_path .'/administrator/components/com_migrator/';	
+	$installbasepath = $mosConfig_absolute_path .'/administrator/components/com_migrator/';
 	if(isset($_FILES['uploadfile']) && is_array($_FILES['uploadfile'])) {
 		$file = $_FILES['uploadfile'];
 		switch(substr($file['name'], -3)) {
 			case 'sql':
 				// We have a table upload
 				if(move_uploaded_file($file['tmp_name'], $installbasepath.'/tables/'.$file['name']))
-					mosRedirect("index2.php?option=com_migrator&act=add","Install succeeded");
+				mosRedirect("index2.php?option=com_migrator&act=add","Install succeeded");
 				else mosRedirect("index2.php?option=com_migrator&act=add","Install failed.");
-				break;	
+				break;
 			case 'php':
 				// We have a migrator plugin upload
 				if(move_uploaded_file($file['tmp_name'], $installbasepath.'/plugins/'.$file['name']))
-					mosRedirect("index2.php?option=com_migrator&act=add","Install succeeded");
+				mosRedirect("index2.php?option=com_migrator&act=add","Install succeeded");
 				else mosRedirect("index2.php?option=com_migrator&act=add","Install failed.");
 				break;
 			default:

@@ -129,4 +129,6 @@
   DEFINE('_BBKP_TRANSFORMSTABLE','; Transforms table ');
   DEFINE('_BBKP_TIMESPENT', 'Time spent this cycle: ');
   DEFINE('_BBKP_TASKSREMAINING', 'tasks remaining');
+  DEFINE('_BBKP_CREATE_TITLE', 'Select plugins to enable for migration. By default all plugins should be selected. If you experience errors with a given plugin, you can deselect it.');
+  DEFINE('_BBKP_START_MIGRATION', 'Start Migration');
   ?>
