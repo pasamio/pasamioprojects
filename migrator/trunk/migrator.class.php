@@ -263,16 +263,19 @@ class ETLEnumerator {
 			$this->getPlugins();
 		}
 		$pluginChecks = Array();
+		
 		if(isset($_POST['pluginCheck'])) {
 			foreach($_POST['pluginCheck'] as $key=>$value) {
 				$pluginChecks[$key] = $value;
 			}
 		}
+		
 		foreach ($this->pluginList as $plugin) {
-			if((!isset($pluginChecks[$plugin])) || ($pluginChecks[$plugin] == 1)) {
+			if((!count($pluginChecks)) || (isset($pluginChecks[$plugin]))) {
 				$this->createPlugin($plugin);
 			}
 		}
+		
 		return $this->plugins;
 	}
 

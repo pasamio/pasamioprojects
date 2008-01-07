@@ -70,6 +70,9 @@ switch ($func) {
 	case 'testtasklist' :
 		testTaskList();
 		break;
+	case 'purge':
+		purge();
+		break;
 	case 'start' :
 		start();
 		break;
@@ -133,6 +136,14 @@ function testTaskList() {
 	back();
 }
 
+function purge() {
+	global $database;
+	$database->setQuery("TRUNCATE TABLE #__migrator_tasks");
+	$database->Query();
+	displayResource('purge');
+	back();
+}
+
 function create() {
 	HTML_migrator::formHeader();
 	echo '<p>'. _BBKP_CREATE_TITLE . '</p>';
@@ -140,7 +151,8 @@ function create() {
 	echo '<table class="adminlist">';
 	echo '<tr><th></th><th>'. _BBKP_NAME . '</th><th>'. _BBKP_TRANSFORMATION .'</th></tr>';
 	foreach ($enumerator->createPlugins() as $plugin) {
-		
+		$name = str_replace('_etl','',strtolower(get_class($plugin)));
+		$cbox = '<input type="checkbox" name="pluginCheck['.$name.']" id="pluginCheck['.$name .']" checked="true" />';
 		echo '<tr><td>'. $cbox .'</td><td>' . implode('</td><td>', explode(';', $plugin->toString())) . '</td></tr>';
 	}
 	echo '</table>';
@@ -204,10 +216,10 @@ function start() {
 	$tasklist->listAll();
 	
 	$link = "index2.php?option=com_migrator&act=dotask";
-	//echo "<script language=\"JavaScript\" type=\"text/javascript\">window.setTimeout('location.href=\"" . $link . "\";',500);</script>\n";
+	echo "<script language=\"JavaScript\" type=\"text/javascript\">window.setTimeout('location.href=\"" . $link . "\";',500);</script>\n";
 	echo '<p><a href="index2.php?option=com_migrator&act=dotask">Next &gt;&gt;&gt;</a></p>';
-	//	flush();
-	//	die();
+	//flush();
+	//die();
 }
 
 function doTask() {
@@ -250,7 +262,7 @@ function doTask() {
 
 	echo '<p>'. _BBKP_NOTASKSLEFT . ' <a href="index2.php?option=com_migrator&act=done">'. _BBKP_HOME .'</a></p>';
 	$link = "index2.php?option=com_migrator&act=done&mosmsg=Your+SQL+Download+File+Name+is+". urlencode($sql_file);
-	//echo "<script language=\"JavaScript\" type=\"text/javascript\">window.setTimeout('location.href=\"" . $link . "\";',500);</script>\n";
+	echo "<script language=\"JavaScript\" type=\"text/javascript\">window.setTimeout('location.href=\"" . $link . "\";',500);</script>\n";
 
 }
 

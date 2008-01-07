@@ -26,17 +26,18 @@
 class HTML_migrator extends HTML_migrator_legacy {
 	
 	function formHeader() {
-		?><form action="index2.php" method="post" name="adminForm"><?
+		?><form action="index2.php" method="post" name="adminForm"><?php
 	}
 	
 	function formFooter($option, $task) {
 		?>
 			<input type="hidden" name="option" value="<?php echo $option;?>" />
-			<input type="hidden" name="task" value="<?php echo $task; ?>" /> 
+			<input type="hidden" name="task" value="<?php echo $task; ?>" /> 		
 			<input type="hidden" name="boxchecked" value="0" /> 
 			<input type="hidden" name="act" value="" />
-		</form>
-	<?php		
+		</form>		
+		<?php
 	}
+	
 }
 ?>
