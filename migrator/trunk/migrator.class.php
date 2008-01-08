@@ -334,7 +334,12 @@ class Task extends mosDBTable {
 		for ($i = $this->start; $i <= $this->amount; $i++) {
 			// Ensure that we get at least one through
 			$enumerator = new ETLEnumerator();
-			$plugin = $enumerator->createPlugin($this->tablename) or die(_BBKP_PLUGINCREATEFAILURE. $this->tablename);
+			$plugin = $enumerator->createPlugin($this->tablename);
+			if($plugin === false) {
+				$this->delete(); // clean up this task
+				echo '<p>'._BBKP_PLUGINCREATEFAILURE. $this->tablename.'</p>';
+				return false;
+			}
 			$sql = $plugin->doTransformation($i,1);
 			foreach($sql as $query) {
 				if($outputfile) $outputfile->writeFile($query); else echo $query.'<br />';
