@@ -156,7 +156,7 @@ function create() {
 		echo '<tr><td>'. $cbox .'</td><td>' . implode('</td><td>', explode(';', $plugin->toString())) . '</td></tr>';
 	}
 	echo '</table>';
-	echo '<p><a href="#top" onclick="submitbutton(\'start\');">'. _BBKP_START_MIGRATION . ' >></a></p>';
+	echo '<p><a href="#top" onclick="submitbutton(\'start\');">'. _BBKP_START_MIGRATION . ' &gt;&gt;</a></p>';
 	back();
 	HTML_migrator::formFooter('com_migrator','start'); 
 }

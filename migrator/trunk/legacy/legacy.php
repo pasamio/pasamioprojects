@@ -54,14 +54,14 @@ function showDumps($option) {
 		$z_temp = "";
 		foreach ($dumps as $dump) {
 			$download = "<a href=\"index2.php?option=$option&act=downloadIt&file=" . $dump . "\">\n" .
-			"<img src=\"components/$option/images/download.png\" width=\"16\" height=\"16\" border=\"0\" alt=\"" . _BBKP_DOWNLOAD . "\" title=\"" . _BBKP_DOWNLOAD . "\" /></a>";
+			_BBKP_DOWNLOAD . "</a>";
 			$delete = "<a href=\"javascript:if (confirm('Are you sure you want to delete $dump?')){ window.location.href='index2.php?option=$option&act=deletefile&file=$dump';}\">\n" .
-			"<img src=\"components/$option/images/delete.png\" width=\"16\" height=\"16\" border=\"0\" alt=\"" . _BBKP_DEL . "\" title=\"" . _BBKP_DEL . "\" /></a>";
+			_BBKP_DEL . "</a>";
 			if ((strpos($dump, "REPORT") > 0) && (strpos($dump, ".html") > 0)) {
 				$info = "&nbsp;";
 			} else {
 				$info = "<a href=\"index2.php?option=$option&act=showInfo&file=" . $dump . "\">\n" .
-				"<img src=\"components/$option/images/sql_info.png\" width=\"16\" height=\"16\" border=\"0\" alt=\"" . _BBKP_SQL_INFO . "\" title=\"" . _BBKP_SQL_INFO . "\" /></a>";
+				_BBKP_SQL_INFO . "</a>";
 			}
 
 			$x_temp = substr($dump, strlen($mosConfig_db) + 1, 15);
