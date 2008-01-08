@@ -174,7 +174,8 @@ function start() {
 		$sql_file = $mosConfig_db . "_" . strftime("%Y%m%d_%H%M%S", $sql_time) . '.sql';
 		$_SESSION['sql_file'] = $sql_file;
 		$filename = $mosConfig_absolute_path . "/administrator/components/com_migrator/dumps/" . $sql_file;
-		if(!is_writable($filename) || !$SQLDump->createFile( $filename )) {
+		
+		if(!is_writable(dirname($filename)) || !$SQLDump->createFile( $filename )) {
 			displayResource('unwriteable');
 			return;
 		}
