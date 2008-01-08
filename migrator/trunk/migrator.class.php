@@ -32,7 +32,7 @@ function migratorInclude($file) {
 	if (file_exists($file)) {
 		require_once ($file);
 	} else
-		die(_BBKP_CRITINCLERR . $file);
+		die(_BBKP_CRITINCLUDEERR . $file);
 }
 
 /**
@@ -342,7 +342,7 @@ class Task extends mosDBTable {
 			$checkTime = mosProfiler :: getmicrotime();
 			if (($checkTime - $startTime) >= $run_time) {
 				$rows  = $i - $this->start;
-				echo '<p>' . _BBKP_PROCESSED . $rows. _BBKP_ROWS . '('. $this->start . _BBKP_TO . $i .') '. _BBKP_OF . $this->tablename . _BBKP_BEFORETIMEOUT .' ('. number_format((($i / $this->amount) * 100),2) . _BBKP_PERCOFTABLE .'; ~'. $this->tasksremaining-$rows .' '. _BBKP_TASKSREMAINING . '; '. _BBKP_TIMESPENT . $checkTime - $startTime .'</p>';
+				echo '<p>' . _BBKP_PROCESSED . $rows. _BBKP_ROWS . '('. $this->start . _BBKP_TO . $i .') '. _BBKP_OF . $this->tablename . _BBKP_BEFORETIMEOUT .' ('. number_format((($i / $this->amount) * 100),2) . _BBKP_PERCOFTABLE .'; ~'. $this->tasksremaining-$rows .' '. _BBKP_TASKSREMAINING . ';</p>'; // '. _BBKP_TIMESPENT . $checkTime - $startTime .'
 				// Update this task
 				$this->start = $i + 1;
 				$this->store();

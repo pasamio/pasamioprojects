@@ -48,6 +48,7 @@ PRIMARY KEY(`taskid`)
 			<filename>resources/default.english.html</filename>
 			<filename>resources/add.english.html</filename>
 			<filename>resources/done.english.html</filename>
+			<filename>resources/purge.english.html</filename>
 			<filename>tests/index.htm</filename>
 			<filename>tests/enumerator_test.php</filename>
 			<filename>tests/plugin_test.php</filename>
