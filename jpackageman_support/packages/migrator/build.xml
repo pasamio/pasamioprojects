@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="migrator" default="build">
+	<target name="clean">
+		<echo msg="Cleaning directories" />
+		<delete dir="migrator" includeemptydirs="true" />
+		<delete dir="packages" includeemptydirs="true" />
+	</target>
+	
+	<target name="build">
+		<echo msg="Building package" />
+		<mkdir dir="packages" />
+		<svnexport todir="migrator" force="true" repositoryurl="http://svn.joomlacode.org/svn/pasamioprojects/migrator/trunk/" />
+		<zip destfile="packages/migrator.zip" basedir="migrator" />
+	</target>
+	
+</project>
