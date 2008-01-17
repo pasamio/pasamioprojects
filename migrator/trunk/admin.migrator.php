@@ -16,7 +16,7 @@ defined('_VALID_MOS') or die('Restricted access');
 
 if(!count($_SESSION)) die('BLANK SESSION!');
 
-define('__VERSION_STRING', 'Migrator 1.0RC4');
+define('__VERSION_STRING', 'Migrator 1.0RC5');
 
 define("MAX_LINE_LENGTH", 65536);
 $max_php_run = ini_get("max_execution_time");
@@ -193,7 +193,7 @@ function start() {
 		$tablelist = Array();
 		while($entry = readdir($tables)) {
 			if( $entry != "." && $entry != ".." && is_file($table_base_path.$entry)) {
-				if(stristr($entry,'sql') !== FALSE) {
+				if(stristr($entry,'.sql') !== FALSE) {
 					$tablelist[] = $entry;
 				}
 			}
@@ -251,6 +251,28 @@ function doTask() {
 			$task->execute($SQLDump);
 		}
 	}
+	
+	$table_base_path = $mosConfig_absolute_path . "/administrator/components/com_migrator/footer/";
+	if($tables = opendir($table_base_path)) {
+		$tablelist = Array();
+		while($entry = readdir($tables)) {
+			if( $entry != "." && $entry != ".." && is_file($table_base_path.$entry)) {
+				if(stristr($entry,'.sql') !== FALSE) {
+					$tablelist[] = $entry;
+				}
+			}
+		}
+		sort($tablelist);
+		foreach($tablelist as $entry) {
+			$file = fopen($table_base_path.$entry,'r');
+			$data = fread($file, filesize($table_base_path.$entry));
+			$SQLDump->writeFile($data."\n");
+			fclose($file);
+		}
+
+		closedir($tables);
+	}
+	
 	unset ($_SESSION['dump_stage']);
 	unset ($_SESSION['sql_file_time']);
 	unset ($_SESSION['prev_time']);
