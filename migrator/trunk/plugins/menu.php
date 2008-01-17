@@ -75,8 +75,8 @@ class Menu_ETL extends ETLPlugin {
 				break;
 			case 'alias':
 				if(!strlen(trim($value))) {
-					// Name + Menu type to ensure that the alias is unique to the menu (or close enough)
-					return stringURLSafe($this->_currentRecord['name'] .' '.$this->_currentRecord['menutype']);
+					// Name + Menu type to ensure that the alias is unique
+					return stringURLSafe($this->_currentRecord['name'] .' '.$this->_currentRecord['menutype'].' '. $this->_currentRecord['id']);
 				}
 				return $value;
 				break; // could really let this drop down here but anyway				
