@@ -86,6 +86,13 @@ class Content_ETL extends ETLPlugin {
 		}
 	}
 
+	function getSQLPrologue() {
+		return "# Start of Content\n";
+	}
+	
+	function getSQLEpilogue() {
+		return "# End of Content\n";
+	}
 }
 
 /**

@@ -178,6 +178,20 @@ class ETLPlugin {
 	}
 
 	/**
+	 * Generates any SQL statements that need to be completed before the rows are generated
+	 */
+	function getSQLPrologue() {
+		return '';
+	}
+	
+	/**
+	 * Generates any SQL statements that should be completed after the rows are generated 
+	 */
+	function getSQLEpilogue() {
+		return '';
+	}
+	
+	/**
 	 * Does the transformation from start to amount rows.
 	 */
 	function doTransformation($start, $amount) {
@@ -330,16 +344,19 @@ class Task extends mosDBTable {
 	function execute($outputfile=null) {
 		global $run_time, $startTime;
 		echo '<p>'. _BBKP_EXECTASK .  $this->toString() .'</p>';
+		$enumerator = new ETLEnumerator();
+		$plugin = $enumerator->createPlugin($this->tablename);
+		if($plugin === false) {
+			$this->delete(); // clean up this task
+			echo '<p>'._BBKP_PLUGINCREATEFAILURE. $this->tablename.'</p>';
+			return false;
+		}		
 		if(!$this->amount || $this->start > $this->amount) { $this->delete(); return false; }
+		if($this->start == 0) {
+			if($outputfile) 	$outputfile->writeFile($plugin->getSQLPrologue()); else echo $plugin->getSQLPrologue().'<br />';
+		}
 		for ($i = $this->start; $i <= $this->amount; $i++) {
 			// Ensure that we get at least one through
-			$enumerator = new ETLEnumerator();
-			$plugin = $enumerator->createPlugin($this->tablename);
-			if($plugin === false) {
-				$this->delete(); // clean up this task
-				echo '<p>'._BBKP_PLUGINCREATEFAILURE. $this->tablename.'</p>';
-				return false;
-			}
 			$sql = $plugin->doTransformation($i,1);
 			foreach($sql as $query) {
 				if($outputfile) $outputfile->writeFile($query); else echo $query.'<br />';
@@ -363,6 +380,8 @@ class Task extends mosDBTable {
 			}
 		}
 		//echo 'Now deleting task outside loop';
+		if($outputfile) 	$outputfile->writeFile($plugin->getSQLEpilogue()); else echo $plugin->getSQLEpilogue().'<br />';
+
 		$this->delete() or die($database->_db->getErrorMsg());
 		return true;
 	}
