@@ -258,6 +258,7 @@ class ETLEnumerator {
 			}
 		}
 		closedir($dir);
+		sort($this->pluginList);
 		return $this->pluginList;
 	}
 
