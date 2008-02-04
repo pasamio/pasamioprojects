@@ -25,6 +25,7 @@ class Templates_Menu_ETL extends ETLPlugin {
 	
 	function getName() { return "Templates Menu ETL Plugin"; }
 	function getAssociatedTable() { return 'templates_menu'; }
+	function getSQLPrologue() { return "TRUNCATE TABLE jos_templates_menu\n";
 	
 	function mapvalues($key,$value) {
 		switch($key) {
