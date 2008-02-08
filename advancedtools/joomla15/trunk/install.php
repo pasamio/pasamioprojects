@@ -21,7 +21,7 @@
 // Install Package Manager
 jimport('joomla.installer.helper');
 $basedir = dirname(__FILE__);
-$file = $basedir . DS . 'packages' . DS . 'com_jpackageman.zip';
+$file = $basedir . DS . 'packages' . DS . 'com_jpackageman.tgz';
 echo "Installing " . $file . '<br />';
 $package = JInstallerHelper::unpack($file);
 $tmpInstaller = new JInstaller();
@@ -31,7 +31,7 @@ if(!$tmpInstaller->install($package['dir'])) {
 //JFolder::delete($package['dir']);
 
 // Install Tools package
-$file = $basedir . DS . 'packages' . DS . 'pkg_advtools.zip';
+$file = $basedir . DS . 'packages' . DS . 'pkg_advtools.tgz';
 echo "Installing " . $file . '<br />';
 $package = JInstallerHelper::unpack($file);
 $tmpInstaller = new JInstaller();
