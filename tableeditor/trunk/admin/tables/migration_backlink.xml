@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Joomla! 1.5 compatible install file too, sexy! -->
+<install type="table" version="1.5">
+	<name>Migration Backlinks</name>
+	<table>migration_backlink</table>
+	<key>menuid</key>
+	<!-- Fields to use in a list view -->
+	<list>
+		<column name="Menu ID" key="menuid" />
+		<column name="Menu Name" key="name" />
+		<column name="Menu Link" key="link" />
+	</list>
+	<!-- All fields in the table -->
+	<params>
+		<param name="menuid" type="text" label="Menu ID" description="Unique ID of the menu item" writeable="false" />
+		<param name="name" type="text" label="Menu Name" description="Display name of the menu" />
+		<param name="link" type="text" label="Menu Link" description="Link for the menu" />
+		<param name="class" type="text" label="Class" description="CSS Class to render the menu" />
+		<param name="csspath" type="text" label="CSS Path" description="Custom CSS Path to find a CSS file" />
+		<param name="cssfile" type="text" label="CSS Filename" description="Custom CSS File to find the CSS class" />
+	</params>
+</install>
