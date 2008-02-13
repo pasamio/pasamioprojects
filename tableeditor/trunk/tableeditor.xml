@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE install SYSTEM "http://dev.joomla.org/xml/1.5/component-install.dtd">
 <install type="component" version="1.5.0">
- <name>JLibMan</name>
+ <name>Table Editor</name>
  <!-- The following elements are optional and free of formatting conttraints -->
  <creationDate>21-Sep-2007</creationDate>
  <author>Sam Moffatt</author>
@@ -10,14 +10,14 @@
  <copyright>Copyright (c) 2007 Toowoomba City Council/Sam Moffatt</copyright>
  <license>GNU GPL</license>
  <!--  The version string is recorded in the components table -->
- <version id="2">1.5</version>
+ <version id="1">1.5</version>
  <!-- The description is optional and defaults to the name -->
- <description>This component is designed to allow custom library installation</description>
+ <description>This component is designed to allow generic editing of tables</description>
  <installfile>install.php</installfile>
  <uninstallfile>uninstall.php</uninstallfile>
  <administration>
   <!-- Administration Menu Section -->
-  <menu>Library Management</menu>
+  <menu>Table Editor</menu>
   
   <!-- Administration Main File Copy Section -->
   <files folder="admin">
