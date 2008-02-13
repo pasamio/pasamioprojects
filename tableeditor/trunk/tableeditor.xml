@@ -1,1 +1,56 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE install SYSTEM "http://dev.joomla.org/xml/1.5/component-install.dtd">
+<install type="component" version="1.5.0">
+ <name>JLibMan</name>
+ <!-- The following elements are optional and free of formatting conttraints -->
+ <creationDate>21-Sep-2007</creationDate>
+ <author>Sam Moffatt</author>
+ <authorEmail>S.Moffatt@toowoomba.qld.gov.au</authorEmail>
+ <authorUrl>http://www.toowoomba.qld.gov.au</authorUrl>
+ <copyright>Copyright (c) 2007 Toowoomba City Council/Sam Moffatt</copyright>
+ <license>GNU GPL</license>
+ <!--  The version string is recorded in the components table -->
+ <version id="2">1.5</version>
+ <!-- The description is optional and defaults to the name -->
+ <description>This component is designed to allow custom library installation</description>
+ <installfile>install.php</installfile>
+ <uninstallfile>uninstall.php</uninstallfile>
+ <administration>
+  <!-- Administration Menu Section -->
+  <menu>Library Management</menu>
+  
+  <!-- Administration Main File Copy Section -->
+  <files folder="admin">
+		<!-- System Views, the default list and the detail screen --> 
+		<filename>views/tableeditor/tmpl/default.php</filename>
+		<filename>views/tableeditor/tmpl/index.html</filename>
+		<filename>views/tableeditor/index.html</filename>
+		<filename>views/tableeditor/view.html.php</filename>
+		<filename>views/details/tmpl/index.html</filename>
+		<filename>views/details/tmpl/default.php</filename>
+		<filename>views/details/view.php</filename>
+		<filename>views/list/tmpl/index.html</filename>
+		<filename>views/list/tmpl/default.php</filename>
+		<filename>views/list/view.php</filename>s	
+		<filename>views/index.html</filename>
+		<!-- Data access models, default and details -->
+		<filename>models/tableeditor.php</filename>
+		<filename>models/index.html</filename>
+		<!-- Controller and Joomla! Admin landing point -->
+		<filename>controller.php</filename>
+		<filename>admin.tableeditor.php</filename>
+		<filename>index.html</filename>
+		<!-- Sample tables installed with 1.5 or Advanced Tools -->
+		<filename>tables/advancedtools_menu.xml</filename>
+		<filename>tables/migration_backlinks.xml</filename>
+		<!-- Element directory (empty currently) -->
+		<filename>elements/index.html</filename>
+		<!-- The installer adapter to allow Joomla! 1.5 to handle tables -->
+		<filename>include/tableeditor_table.php</filename>
+		<filename>include/index.html</filename>
+		<!-- Table Editor Support Class -->
+		<filename>tableeditor.class.php</filename>
+  </files>  
+ </administration>
+ <update>http://www.jsitepoint.com/update/components/tableeditor</update>
+</install>

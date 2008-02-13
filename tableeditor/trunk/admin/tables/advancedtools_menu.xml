@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Joomla! 1.5 compatible install file too, sexy! -->
-<install type="tableeditor-table" version="1.5">
+<install type="tableeditor_table" version="1.5">
 	<name>Advanced Tools Menu</name>
 	<table>advancedtools_menu</table>.
+	<description>The Advanced Tools Menu table is used by the advanced tool module to build a menu</description>
 	<key>menuid</key>
 	<!-- Fields to use in a list view -->
 	<list>

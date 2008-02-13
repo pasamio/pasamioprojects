@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Joomla! 1.5 compatible install file too, sexy! -->
+<install type="tableeditor_table" version="1.5">
+	<name>Migration Configuration</name>
+	<table>migration_configuration</table>
+	<key>itemid</key>
+	<description>The Advanced Tools Menu table is used by the advanced tool module to build a menu</description>
+	<!-- Fields to use in a list view -->
+	<list>
+		<column name="ID" key="cid" />
+		<column name="Key" key="key" />
+		<column name="Value" key="value" />
+	</list>
+	<!-- All fields in the table -->
+	<params>
+		<param name="cid" type="text" label="Configuration ID" description="Unique ID of the item" writeable="false" />
+		<param name="key" type="text" label="Key" description="Display name of the item" />
+		<param name="value" type="text" label="Value" description="The value of the item" />
+	</params>
+</install>
