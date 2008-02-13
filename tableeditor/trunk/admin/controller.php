@@ -70,6 +70,8 @@ class TableEditorController extends JController
     }
 
 	function save() {
+		$form = new JParameter('', JPATH_COMPONENT.DS.'tables'.DS. $instance->table . '.xml');
+		$form->
 		$this->setRedirect('index.php?option=com_tableeditor&task=listrows&table=advancedtools_menu','Write save code!');
 	}
 }
