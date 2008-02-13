@@ -93,7 +93,16 @@ class TableEditorModelTableEditor extends JModel
     	// Get an installer object for the extension type
 		jimport('joomla.installer.installer');
 		$installer = & JInstaller::getInstance();
-		return $installer->uninstall('table', $tableid, 0 );
+		return $installer->uninstall('tableeditor_table', $tableid, 0 );
+    }
+    
+    function delete() {
+    	$key = JRequest::getVar($this->_instance->key,0); 
+    	$db =& JFactory::getDBO();
+    	$this->loadDataFile() or die('Failed to load data');
+    	$db->setQuery('DELETE FROM #__'. $this->_instance->table .' WHERE '. $this->_instance->key . ' = "'. $key .'"');
+    	$db->Query() or die('Failed to execute query:' . $db->getErrorMsg());
+    	return true;
     }
 }
 ?>

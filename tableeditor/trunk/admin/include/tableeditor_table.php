@@ -132,9 +132,8 @@ class JInstallerTableEditor_Table extends JObject
 		$row	= null;
 		$retval = true;
 		$manifestFile = TABLEEDITOR_TABLE_PATH . DS . $id .'.xml'; 
-
-		JFile::delete($manifestFile);
-		return $retval;
+		return JFile::delete($manifestFile);
+		//return $retval;
 	}
 
 }

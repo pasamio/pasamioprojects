@@ -55,6 +55,17 @@ class TableEditorController extends JController
 		$view->setModel( $model, true );
 		$view->display();
     }
+    
+    function delete() {
+    	$model 	= &$this->getModel( 'tableeditor' );
+    	$instance = $model->getTableInfo();
+    	if($model->delete()) {
+    		$this->setMessage('Deleted Entry!');
+    	} else {
+    		$this->setMessage('Failed to delete entry!');
+    	}
+    	$this->setRedirect('index.php?option=com_tableeditor&table='.$instance->table);
+    }
 
     function uninstall() {
     	$model = $this->getModel('tableeditor');
