@@ -18,7 +18,7 @@
  
 defined('_JEXEC') or die('Saya tidak suka kamu ;)');
 
- 	$installurl = "http://sammoffatt.com.au/os/index.php/joomla-15-products/1-JLibMan/6-installation_jlibman"; 
+ 	$url = "http://sammoffatt.com.au/os/index.php/joomla-15-products/1-JLibMan/6-installation_jlibman"; 
 //function com_install() {
 	$src = JPATH_SITE . DS . 'administrator'. DS . 'components'. DS .'com_jlibman' . DS . 'include' . DS . 'library.php';
 	$dest = JPATH_SITE . DS . 'libraries' . DS . 'joomla' . DS . 'installer' . DS . 'adapters' . DS .'library.php';
