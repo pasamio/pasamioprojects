@@ -48,7 +48,7 @@ defined('_JEXEC') or die('Restricted access'); ?>
             	<?php echo $row->table; // $row->version[0]->data(); ?>
             </td>
             <td align="center">
-            	Uninstall
+            	<a href="index.php?option=com_tableeditor&task=uninstall&table=<?php echo $row->table ?>">Uninstall</a>
             </td>
         </tr>
         <?php

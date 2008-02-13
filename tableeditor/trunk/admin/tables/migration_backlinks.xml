@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Joomla! 1.5 compatible install file too, sexy! -->
+<install type="tableeditor-table" version="1.5">
+	<name>Migration Backlinks</name>
+	<table>migration_backlinks</table>
+	<key>itemid</key>
+	<!-- Fields to use in a list view -->
+	<list>
+		<column name="Item ID" key="itemid" />
+		<column name="Name" key="name" />
+		<column name="URL" key="url" />
+	</list>
+	<!-- All fields in the table -->
+	<params>
+		<param name="itemid" type="text" label="Item ID" description="Unique ID of the item" writeable="false" />
+		<param name="name" type="text" label="Name" description="Display name of the item" />
+		<param name="url" type="text" label="Base Link" description="The original link of the item" />
+		<param name="sefurl" type="text" label="SEF Link" description="The original SEF url of the item" />
+		<param name="newurl" type="text" label="New Link" description="A new URL to use instead of attempting to discover the right link" />
+	</params>
+</install>

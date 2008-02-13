@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Joomla! 1.5 compatible install file too, sexy! -->
-<install type="table" version="1.5">
+<install type="tableeditor-table" version="1.5">
 	<name>Advanced Tools Menu</name>
 	<table>advancedtools_menu</table>.
 	<key>menuid</key>
@@ -18,5 +18,9 @@
 		<param name="class" type="text" label="Class" description="CSS Class to render the menu" />
 		<param name="csspath" type="text" label="CSS Path" description="Custom CSS Path to find a CSS file" />
 		<param name="cssfile" type="text" label="CSS Filename" description="Custom CSS File to find the CSS class" />
+		<param name="published" type="radio" label="Published" description="Controls whether to show the menu item or not">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
 	</params>
 </install>

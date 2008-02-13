@@ -24,7 +24,7 @@ defined('_JEXEC') or die('Restricted access'); ?>
         <tr>
         <?php foreach($this->table->columns as $col=>$val) : ?>
             <th>
-                <?php echo $col; ?>
+                <?php echo $val; ?>
             </th>
         <?php endforeach ?>
         </tr>            
@@ -58,4 +58,5 @@ defined('_JEXEC') or die('Restricted access'); ?>
 <input type="hidden" name="task" value="" />
 <input type="hidden" name="boxchecked" value="0" />
 <input type="hidden" name="controller" value="tableeditor" />
+<input type="hidden" name="table" value="<?php echo $this->table->table ?>" />
 </form>

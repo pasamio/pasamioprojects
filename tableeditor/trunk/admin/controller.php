@@ -58,21 +58,55 @@ class TableEditorController extends JController
 
     function uninstall() {
     	$model = $this->getModel('tableeditor');
-    	$lib = JRequest::getWord('library','');
-    	if(strlen($lib)) {
-    		if($model->uninstall($lib)) {
-    			$mainframe->enqueueMessage(JText::_('Uninstall Success'));
+    	$table = JRequest::getWord('table','');
+    	if(strlen($table)) {
+    		if($model->uninstall($table)) {
+    			$this->setMessage(JText::_('Uninstall Success'));
     		} else {
-				$mainframe->enqueueMessage(JText::_('Uninstall Failure'));
+				$this->setMessage(JText::_('Uninstall Failure'));
     		}
     	}
-    	parent::display();
+    	$this->setRedirect('index.php?option=com_tableeditor');
+    }
+    
+    function add() {
+    	$model 	= &$this->getModel('tableeditor');
+    	$view 	= &$this->getView('details');
+    	$view->setModel( $model, true );
+    	$view->display();
     }
 
 	function save() {
+		$model = $this->getModel('tableeditor');
+		$instance = $model->getTableInfo();
 		$form = new JParameter('', JPATH_COMPONENT.DS.'tables'.DS. $instance->table . '.xml');
-		$form->
-		$this->setRedirect('index.php?option=com_tableeditor&task=listrows&table=advancedtools_menu','Write save code!');
+		$form->bind($_POST);
+		$data = $form->toArray();
+		$db =& JFactory::getDBO();
+		if($data['params'][$instance->key] != '0') {
+			$set = Array();
+			foreach($data['params'] as $key=>$value) {
+				$set[] = $key .' = "'. $value .'"';
+			}
+			$db->setQuery('UPDATE #__'. $instance->table .' SET ' . implode(', ', $set) .
+				' WHERE '. $instance->key .' = "'. $data["params"][$instance->key] .'"');
+		} else {
+			$col = Array();
+			$val = Array();
+			foreach($data['params'] as $key=>$value) {
+				$col[] 		= $key;
+				$val[]		= $value; 
+			}
+			$db->setQuery('INSERT INTO #__'. $instance->table .' ( ' . implode(',', $col) . ')' .
+				' VALUES("'. implode('","', $val) .'")');
+		}
+		//die($db->getQuery());
+		if($db->Query()) {
+			$this->setMessage(JText::_('Success!'));
+		} else {
+			$this->setMessage(JText::_('Update failed'), 'error');
+		}
+		$this->setRedirect('index.php?option=com_tableeditor&task=listrows&table='. $instance->table);
 	}
 }
 

@@ -42,7 +42,9 @@ class TableEditorViewList extends JView
 		$instance = $model->getTableInfo();
 		$this->assignRef( 'items', $rows);
 		$this->assignRef( 'table', $instance);
-		JToolBarHelper::title( JText::_( 'Table Editor' ) .': '.$instance->name, 'config.png' );		
+		JToolBarHelper::title( JText::_( 'Table Editor' ) .': '.$instance->name, 'config.png' );
+		JToolBarHelper::addNew();		
+		JToolBarHelper::customX('default','back.png', 'back_f2.png','All Tables',false);
         parent::display($tpl);
     }
 }
