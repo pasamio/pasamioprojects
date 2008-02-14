@@ -50,6 +50,7 @@ class TableEditorViewDetails extends JView
 
     	JToolBarHelper::title( JText::_( 'Table Editor - Row Editor' ) .': '. $instance->name, 'config.png' );
     	JToolBarHelper::save();
+    	JToolBarHelper::trash('remove','Delete Row',false);
         JToolBarHelper::cancel('listrows');
 		
 		

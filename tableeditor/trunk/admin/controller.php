@@ -86,6 +86,14 @@ class TableEditorController extends JController
     	$view->setModel( $model, true );
     	$view->display();
     }
+    
+    function remove() {
+    	$model	= &$this->getModel('tableeditor');
+    	$instance = $model->getTableInfo();
+    	if($model->delete()) $this->setMessage('Item removed');
+    		else $this->setMessage('Item failed to be removed');
+    	 $this->setRedirect('index.php?option=com_tableeditor&task=listrows&table='. $instance->table);
+    }
 
 	function save() {
 		$model = $this->getModel('tableeditor');
