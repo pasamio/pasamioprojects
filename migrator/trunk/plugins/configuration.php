@@ -71,7 +71,7 @@ class Configuration_ETL extends ETLPlugin {
 				case 1:
 					global $mosConfig_offline, $mosConfig_sitename, $mosConfig_live_site, $mosConfig_MetaDesc, $mosConfig_debug, $mosConfig_MetaKeys, $mosConfig_MetaTitle, $mosConfig_MetaAuthor, $mosConfig_offline_message,$mosConfig_gzip,$mosConfig_sef,$mosConfig_editor,$mosConfig_smtpauth,$mosConfig_smtpuser,$mosConfig_smtppass,$mosConfig_smtphost,$mosConfig_sendmail,$mosConfig_fromname,$mosConfig_mailfrom,$mosConfig_mailer, $mosConfig_caching,$mosConfig_error_reporting,$mosConfig_list_limit;
 					$params = '';
-					$retval[] = "INSERT INTO jos_migration_configuration VALUES(0,'offline','".mysql_real_escape_string($mosConfig_offline)."');\n";
+					//$retval[] = "INSERT INTO jos_migration_configuration VALUES(0,'offline','".mysql_real_escape_string($mosConfig_offline)."');\n";
 					$retval[] = "INSERT INTO jos_migration_configuration VALUES(0,'offline_message','".mysql_real_escape_string($mosConfig_offline_message)."');\n";
 					$retval[] = "INSERT INTO jos_migration_configuration VALUES(0,'sitename','".mysql_real_escape_string($mosConfig_sitename)."');\n";
 					//$retval[] = "INSERT INTO jos_migration_configuration VALUES(0,'live_site','".mysql_real_escape_string($mosConfig_live_site)."');\n";
@@ -81,7 +81,7 @@ class Configuration_ETL extends ETLPlugin {
 					$retval[] = "INSERT INTO jos_migration_configuration VALUES(0,'MetaTitle','".mysql_real_escape_string($mosConfig_MetaTitle)."');\n";
 					$retval[] = "INSERT INTO jos_migration_configuration VALUES(0,'MetaAuthor','".mysql_real_escape_string($mosConfig_MetaAuthor)."');\n";
 					$retval[] = "INSERT INTO jos_migration_configuration VALUES(0,'gzip','".mysql_real_escape_string($mosConfig_gzip)."');\n";
-					$retval[] = "INSERT INTO jos_migration_configuration VALUES(0,'sef','".mysql_real_escape_string($mosConfig_sef)."');\n";
+					//$retval[] = "INSERT INTO jos_migration_configuration VALUES(0,'sef','".mysql_real_escape_string($mosConfig_sef)."');\n";
 					$retval[] = "INSERT INTO jos_migration_configuration VALUES(0,'editor','".mysql_real_escape_string($mosConfig_editor)."');\n";
 					$retval[] = "INSERT INTO jos_migration_configuration VALUES(0,'smtpauth','".mysql_real_escape_string($mosConfig_smtpauth)."');\n";
 					$retval[] = "INSERT INTO jos_migration_configuration VALUES(0,'smtpuser','".mysql_real_escape_string($mosConfig_smtpuser)."');\n";
