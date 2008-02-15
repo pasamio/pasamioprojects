@@ -18,7 +18,7 @@
  
 defined('_JEXEC') or die('Saya tidak suka kamu ;)');
 
- 	$url = "http://sammoffatt.com.au/os/index.php/joomla-15-products/1-JLibMan/6-installation_jlibman"; 
+ 	$url = "http://sammoffatt.com.au/os/index.php/joomla-15-products/9-simple-table-editor/10-table-editor-installation"; 
 //function com_install() {
 	$src = JPATH_SITE . DS . 'administrator'. DS . 'components'. DS .'com_tableeditor' . DS . 'include' . DS . 'tableeditor_table.php';
 	$dest = JPATH_SITE . DS . 'libraries' . DS . 'joomla' . DS . 'installer' . DS . 'adapters' . DS .'tableeditor_table.php';
