@@ -24,7 +24,7 @@ class Contact_Details_ETL extends ETLPlugin {
 	
 	var $ignorefieldlist = Array();
 	
-	var $valuesmap = Array('alias');
+	var $valuesmap = Array('alias','params');
 	
 	var $newfieldlist = Array('alias');
 	
