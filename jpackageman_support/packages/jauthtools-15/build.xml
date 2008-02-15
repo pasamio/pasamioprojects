@@ -16,13 +16,13 @@
 	
 	<target name="package">
 		<echo msg="All tasks completed, building rollup package" />
-		<zip destfile="packages/pkg_jauthtools.zip" >
+		<tar destfile="packages/pkg_jauthtools.tgz" compression="gzip">
 			<fileset dir=".">
 				<include name="pkg_jauthtools.xml" />
 				<include name="packages/**" />
-				<exclude name="pkg_jauthtools.zip" />	
+				<exclude name="pkg_jauthtools.tgz" />	
 			</fileset>
-		</zip>
+		</tar>
 	</target>
 	
 	<target name="directories">
@@ -40,30 +40,30 @@
 	<target name="sso" depends="sso_export,directories" >
 		
 		<echo msg="Building SSO Library" />
-		<zip destfile="packages/lib_jauthtools_sso.zip" basedir="sso/libraries/jauthtools" />
+		<tar destfile="packages/lib_jauthtools_sso.tgz" basedir="sso/libraries/jauthtools" compression="gzip" />
 		
 		<echo msg="Building SSO HTTP Plugin" />
-		<zip destfile="packages/plgSSOHTTP.zip">
+		<tar destfile="packages/plgSSOHTTP.tgz" compression="gzip">
 			<fileset dir="sso/plugins/sso/">
 				<include name="http.*"/>
 			</fileset>
-		</zip>
+		</tar>
 		
 		<echo msg="Building SSO eDirectory Plugin" />
-		<zip destfile="packages/plgSSOeDirLDAP.zip">
+		<tar compression="gzip"  destfile="packages/plgSSOeDirLDAP.tgz">
 			<fileset dir="sso/plugins/sso/">
 				<include name="edirldap.*"/>
 			</fileset>
-		</zip>
+		</tar>
 	</target>
 	
 	<target name="usersource" depends="usersource_export,directories">
 		<echo msg="Building User Source Library" />
-		<zip destfile="packages/lib_jauthtools_usersource.zip" basedir="usersource/libraries/jauthtools" />
+		<tar compression="gzip"  destfile="packages/lib_jauthtools_usersource.tgz" basedir="usersource/libraries/jauthtools" />
 		<echo msg="Building LDAP User Source Plugin" />
-		<zip destfile="packages/plgUserSourceLDAP.zip" basedir="usersource/plugins/usersource/" includes="ldap.*" />
+		<tar compression="gzip"  destfile="packages/plgUserSourceLDAP.tgz" basedir="usersource/plugins/usersource/" includes="ldap.*" />
 		<echo msg="Building User Source Synchronisation Plugin" />
-		<zip destfile="packages/plgSystemSync.zip" basedir="usersource/plugins/system/" includes="sync.*" />
+		<tar compression="gzip"  destfile="packages/plgSystemSync.tgz" basedir="usersource/plugins/system/" includes="sync.*" />
 	</target>
 	
 </project>

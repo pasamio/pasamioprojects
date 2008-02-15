@@ -14,6 +14,7 @@
 		<phingcall target="ldap_sso" />
 		<phingcall target="ldap_ssi" />
 		<phingcall target="ldap_sync" />
+		<phingcall target="soapsso" />
 	</target>
 	
 	<target name="directories">
@@ -24,6 +25,10 @@
 			<svnexport todir="joomla_ldap" force="true" repositoryurl="http://svn.joomlacode.org/svn/jauthtools/ldap/joomla_10x/trunk/" />
 			<delete file="joomla_ldap/.project" />
 			<delete file="joomla_ldap/CHANGELOG" />
+	</target>
+
+	<target name="soapsso_export">
+			<svnexport todir="soapsso" force="true" repositoryurl="http://svn.joomlacode.org/svn/jauthtools/sso/joomla10x/soapsso/" />
 	</target>
 	
 	<target name="httpsso" depends="directories" >
@@ -51,5 +56,11 @@
 	<target name="ldap_sync" depends="ldaptools_export,directories">
 		<echo msg="Building Joomla! 1.0.x LDAP Sync Mambot" />
 		<zip destfile="packages/ldap.sync.bot.zip" basedir="joomla_ldap/ldap.sync.bot" />
+	</target>
+
+	<target name="soapsso" depends="soapsso_export, directories">
+		<echo msg="Building SOAP SSO System" />
+		<zip destfile="packages/com_soapsso.zip" basedir="soapsso/component" />
+		<zip destfile="packages/mod_soapsso.zip" basedir="soapsso/module" />
 	</target>
 </project>
