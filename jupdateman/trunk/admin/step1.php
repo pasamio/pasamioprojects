@@ -5,7 +5,7 @@
  */
 /** ensure this file is being included by a parent file */
 defined( '_JEXEC' ) or die( 'Direct Access to this location is not allowed.' );
-
+jimport('domit.xml_domit_lite_parser'); // this is deprecated, need to update!
 ?>
 <div align="left" class="upgradebox">
 <?php
@@ -13,6 +13,7 @@ defined( '_JEXEC' ) or die( 'Direct Access to this location is not allowed.' );
 	$version = $_VERSION->getShortVersion();		
 
 	$url = "http://pasamio.id.au/packages/jupgrader.xml";
+	$url = "http://jsitepoint.com/update/packages/joomla/update.xml";
 	$target = $mosConfig_absolute_path . '/cache/jupgrader.xml';
 	$result = downloadFile($url,$target);
 	if(is_object( $result )) {
@@ -37,7 +38,13 @@ defined( '_JEXEC' ) or die( 'Direct Access to this location is not allowed.' );
 	}
 	$latest = $root->getAttribute( 'release' );
 	if($latest == $version) {
-		echo "<p>No updates were found. Please check again later or watch <a href='http://www.joomla.org' target='_blank'>www.joomla.org</a></p>";
+		echo "<p>No updates were found.</p><br /><br /><p>Please check again later or watch <a href='http://www.joomla.org' target='_blank'>www.joomla.org</a></p>";
+		echo '</div>';
+		return true;
+	} elseif(version_compare($latest, $version, '<')) {
+		echo "<p>You are running a greater version of Joomla! than what is available for download.</p><br /><br />";
+		echo "<p>Please check <a href='http://www.joomla.org' target='_blank'>www.joomla.org</a> for release information.</p>";
+		echo '</div>';
 		return true;
 	}
 	echo "<p>You are currently running $version. The latest release is currently $latest. Please select a download:</p>";
@@ -75,5 +82,5 @@ defined( '_JEXEC' ) or die( 'Direct Access to this location is not allowed.' );
 	<li><a href="index2.php?option=com_jupdateman&task=step2&url=<?php echo( urlencode( $patchdownload ) ) ?>&filename=<?php echo( urlencode( $patchfilename ) ) ?>&filesize=<?php echo $patchfilesize ?>">Patch Package</a> (<?php echo round($patchfilesize/1024/1024,2) ?>MB)</li>
 		<?php } ?>
 	</ul>
-	<p>Note: Patch package only contains changed files and should be fine for most upgrades. Major upgrades (e.g. 1.0.x to 1.1) will probably require a full package.</p>
+	<p>Note: Patch package only contains changed files and should be fine for most upgrades. Major upgrades (e.g. 1.5.x to 1.6) will probably require a full package.</p>
 </div>

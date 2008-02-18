@@ -5,7 +5,6 @@ defined( '_JEXEC' ) or die( 'Direct Access to this location is not allowed.' );
 class HTML_jupgrader { 
 	
 	function intro() {
-		// I should really use patTemplate here...but this component is basically paving the way to kill itself
 		?>
 		<div align="left" class="upgradebox">
 		<p>Welcome to the Joomla! Upgrader component. My job is to guide you through upgrading your Joomla! installation.</p>
