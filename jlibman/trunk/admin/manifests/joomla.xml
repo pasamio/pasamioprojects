@@ -19,6 +19,7 @@
 		<file>html/html/list.php</file>
 		<file>html/html/grid.php</file>
 		<file>html/html/email.php</file>
+		<file>html/html/form.php</file>
 		<file>html/html/index.html</file>
 		<file>html/html/select.php</file>
 		<file>html/html/image.php</file>
@@ -193,8 +194,6 @@
 		<file>installer/helper.php</file>
 		<file>installer/index.html</file>
 		<file>installer/adapters/module.php</file>
-		<file>installer/adapters/package.php</file>
-		<file>installer/adapters/library.php</file>
 		<file>installer/adapters/index.html</file>
 		<file>installer/adapters/plugin.php</file>
 		<file>installer/adapters/component.php</file>
