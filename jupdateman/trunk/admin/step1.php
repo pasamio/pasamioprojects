@@ -5,7 +5,7 @@
  */
 /** ensure this file is being included by a parent file */
 defined( '_JEXEC' ) or die( 'Direct Access to this location is not allowed.' );
-jimport('domit.xml_domit_lite_parser'); // this is deprecated, need to update!
+//jimport('domit.xml_domit_lite_parser'); // this is deprecated, need to update!
 ?>
 <div align="left" class="upgradebox">
 <?php
@@ -22,21 +22,25 @@ jimport('domit.xml_domit_lite_parser'); // this is deprecated, need to update!
 	}
 			
 	// Yay! file downloaded! Processing time :(	
-	$xmlDoc = new DOMIT_Lite_Document();
-        $xmlDoc->resolveErrors( true );
+	//$xmlDoc = new DOMIT_Lite_Document();
+    //    $xmlDoc->resolveErrors( true );
+	$xmlDoc =& JFactory::getXMLParser(); //  domit 1.5 style
+	$xmlDoc = new JSimpleXML();
 
-        if (!$xmlDoc->loadXML( $target, false, true )) {
+    if (!$xmlDoc->loadFile( $target )) {
 		HTML_jupgrader::showError( 'Parsing XML Document Failed!</p>' );
 		return false;
 	}
 	
-	$root = &$xmlDoc->documentElement;
+	//$root = &$xmlDoc->documentElement;
+	$root = &$xmlDoc->document;
 
-	if ($root->getTagName() != 'jupgrader') {
+	if ($root->name() != 'jupgrader') {
 		HTML_jupgrader::showError( 'Parsing XML Document Failed: Not a JUpgrader definition file!</p>' );
 		return false;
 	}
-	$latest = $root->getAttribute( 'release' );
+	$rootattributes = $root->attributes();
+	$latest = $rootattributes['release'];
 	if($latest == $version) {
 		echo "<p>No updates were found.</p><br /><br /><p>Please check again later or watch <a href='http://www.joomla.org' target='_blank'>www.joomla.org</a></p>";
 		echo '</div>';
@@ -52,25 +56,28 @@ jimport('domit.xml_domit_lite_parser'); // this is deprecated, need to update!
 	$patchdownload = '';
 	
 	// Get the full package
-	$fullpackage  = $root->getElementsByPath( 'fullpackage', 1 );
-	$fulldownload = $fullpackage->getAttribute( 'url' );
-	$fullfilename = $fullpackage->getAttribute( 'filename' );
-	$fullfilesize = $fullpackage->getAttribute( 'filesize' );
+	$fullpackage  = $root->getElementByPath( 'fullpackage', 1 );
+	$fullpackageattr = $fullpackage->attributes();
+	$fulldownload = $fullpackageattr['url'];
+	$fullfilename = $fullpackageattr['filename'];
+	$fullfilesize = $fullpackageattr['filesize'];
 	
 	// Find the patch package
-	$patches_root = $root->getElementsByPath( 'patches', 1 );
+	$patches_root = $root->getElementByPath( 'patches', 1 );
 	if (!is_null( $patches_root ) ) {
 		// Patches :D
-		if($patches_root->hasChildNodes()) {
+		$patches = $patches_root->children();
+		if(count($patches)) {
 			// Many patches! :D
-			$patches = $patches_root->childNodes;
 			foreach($patches as $patch) {
-				if ($patch->getAttribute( 'version' ) == $version) {
-					$patchdownload = $patch->getAttribute( 'url' );
-					$patchfilename = $patch->getAttribute( 'filename' );
-					$patchfilesize = $patch->getAttribute( 'filesize' );
+				$patchattr = $patch->attributes();
+				if ($patchattr['version'] == $version) {
+					
+					$patchdownload = $patchattr['url'];
+					$patchfilename = $patchattr['filename'];
+					$patchfilesize = $patchattr['filesize'];
 					break;
-				}			
+				}
 			}
 					
 		}
