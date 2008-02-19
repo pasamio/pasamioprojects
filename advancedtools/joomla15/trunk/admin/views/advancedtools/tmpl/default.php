@@ -22,4 +22,6 @@ defined('_JEXEC') or die('Restricted access'); ?>
 <ul>
 	<li>Library Manager and installer</li>
 	<li>Package Manager and installer</li>
+	<li>Update Manager</li>
+	<li>Simple Table Editor</li>
 </ul>
