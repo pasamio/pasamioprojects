@@ -1,8 +1,8 @@
 <?xml version="1.0" ?>
-<mosinstall type="component" version="1.0.0">
-        <name>JUpdateMan</name>
+<install type="component" version="1.5">
+	<name>JUpdateMan</name>
 	<author>Samuel Moffatt</author>
-	<creationDate>January 2006</creationDate>
+	<creationDate>January 2008</creationDate>
 	<copyright>(C) 2006 Samuel Moffatt. All rights reserved.</copyright>
 	<license>http://www.gnu.org/copyleft/gpl.html GNU/GPL</license>
 	<authorEmail>pasamio@pasamio.id.au</authorEmail>
@@ -16,14 +16,22 @@
 	<uninstallfile />
 	<administration>
 		<menu>Update Manager</menu>
-		<files>
+		<files folder="admin">
+			<filename>models/index.html</filename>
+			<filename>models/jupdateman.php</filename>
+			<filename>views/index.html</filename>
+			<filename>views/jupdateman/index.html</filename>
+			<filename>views/jupdateman/view.html.php</filename>
+			<filename>views/jupdateman/tmpl/index.html</filename>
+			<filename>views/jupdateman/tmpl/default.php</filename>
 			<filename>admin.jupdateman.html.php</filename>
 			<filename>admin.jupdateman.php</filename>
 			<filename>jupdateman.class.php</filename>
-			<filename>jupdateman.xml</filename>
+			<filename>controller.php</filename>
+			<filename>jupdateman.css</filename>
 			<filename>step1.php</filename>
 			<filename>step2.php</filename>
 			<filename>step3.php</filename>
 		</files>
 	</administration>
-</mosinstall>
+</install>
