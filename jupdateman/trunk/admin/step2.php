@@ -4,12 +4,12 @@
  */
 /** ensure this file is being included by a parent file */
 defined( '_JEXEC' ) or die( 'Direct Access to this location is not allowed.' );
-$url  = mosGetParam( $_GET, 'url', null );
-$file = mosGetParam( $_GET, 'filename', null );
-$size = mosGetParam( $_GET, 'filesize', 0);
+$url  = JRequest::getVar( 'url', null );
+$file = JRequest::getVar( 'filename', null );
+$size = JRequest::getVar( 'filesize', 0);
 
 set_time_limit(0); // Make sure we don't timeout while downloading
-$result = downloadFile($url,$mosConfig_absolute_path . '/cache/'.$file);
+$result = downloadFile($url,JPATH_SITE . '/cache/'.$file);
 if(is_object( $result )) {
 	HTML_jupgrader::showError( 'Download Failed: '. $result->message . '('. $result->number . ')</p>' );
 	return false;

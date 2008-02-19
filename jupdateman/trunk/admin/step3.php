@@ -5,19 +5,27 @@
 /** ensure this file is being included by a parent file */
 defined( '_JEXEC' ) or die( 'Direct Access to this location is not allowed.' );
 
-$file = mosGetParam( $_GET, 'file', null );
+$file = JRequest::getVar( 'file', null );
 
+/*
 require_once( $mosConfig_absolute_path . '/includes/Archive/Tar.php' );
-$archive = new Archive_Tar( $mosConfig_absolute_path . '/cache/' . $file );
+$archive = new Archive_Tar( JPATH_SITE . '/cache/' . $file );
 $archive->setErrorHandling( PEAR_ERROR_PRINT );
 
-if (!$archive->extractModify( $mosConfig_absolute_path, '' )) {
+if (!$archive->extractModify( JPATH_SITE, '' )) {
+	HTML_jupgrader::showError('Failed to extract archive!');
+	return false;
+}
+*/
+
+jimport('joomla.filesystem.archive');
+if(!JArchive::extract(JPATH_SITE . '/cache/' . $file, JPATH_SITE)) {
 	HTML_jupgrader::showError('Failed to extract archive!');
 	return false;
 }
 
 $sql = 0;
-if (is_dir( $mosConfig_absolute_path .'/installation' )) {
+if (is_dir( JPATH_SITE .'/installation' )) {
 	$sql = 1;	
 }
 

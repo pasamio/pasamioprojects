@@ -9,12 +9,14 @@ defined( '_JEXEC' ) or die( 'Direct Access to this location is not allowed.' );
 ?>
 <div align="left" class="upgradebox">
 <?php
-	global $_VERSION;
-	$version = $_VERSION->getShortVersion();		
+	//global $_VERSION;
+	//$version = $_VERSION->getShortVersion();
+	$v = new JVersion();
+	$version = $v->getShortVersion();		
 
 	$url = "http://pasamio.id.au/packages/jupgrader.xml";
 	$url = "http://jsitepoint.com/update/packages/joomla/update.xml";
-	$target = $mosConfig_absolute_path . '/cache/jupgrader.xml';
+	$target = JPATH_SITE . '/cache/jupgrader.xml';
 	$result = downloadFile($url,$target);
 	if(is_object( $result )) {
 		HTML_jupgrader::showError( 'Download Failed: '. $result->message . '('. $result->number . ')' );
