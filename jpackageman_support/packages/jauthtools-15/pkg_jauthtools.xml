@@ -13,7 +13,8 @@
 		<file type="library" 	id="lib_jauthtools_usersource" >lib_jauthtools_usersource.tgz</file>
 		<file type="plugin" 		group="sso"			id="edirldap" >plgSSOeDirLDAP.tgz</file>
 		<file type="plugin" 		group="sso"			id="http" >plgSSOHTTP.tgz</file>
-		<file type="plugin" 		group="system"			id="sync" >plgSystemSync.tgz</file>
+		<file type="plugin" 		group="system"		id="sync" >plgSystemSync.tgz</file>
+		<file type="plugin"		group="system"		id="sso" >plgSystemSSO.tgz</file>
 		<file type="plugin" 		group="usersource"	id="ldap" >plgUserSourceLDAP.tgz</file>
 	</files>
 </install>

@@ -57,9 +57,9 @@
 		</tar>
 
 		<echo msg="Building SSO Bootstrap Plugin" />
-		<zip destfile="packages/plgSystemSSO.zip">
+		<tar compression="gzip" destfile="packages/plgSystemSSO.tgz">
 			<fileset dir="sso/plugins/system/" />
-		</zip>
+		</tar>
 	</target>
 	
 	<target name="usersource" depends="usersource_export,directories">
