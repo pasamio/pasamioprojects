@@ -4,61 +4,70 @@
 		<echo msg="Cleaning directories" />
 		<delete dir="packagemanager" includeemptydirs="true" />
 		<delete dir="mod_advmenu" includeemptydirs="true" />
+		<delete dir="tableeditor" includeemptydirs="true" />
 		<delete dir="advancedtools" includeemptydirs="true" />
 		<delete dir="jlibman" includeemptydirs="true" />
 		<delete dir="packages" includeemptydirs="true" />
+		<delete dir="tmp" includeemptydirs="true" />
 	</target>
 	
-	<target name="build">
-		<mkdir dir="packages"/>
+	<target name="build" depends="packages">
 		<echo msg="Building Advanced Tools Manager" />
 		<phingcall target="advancedtools" />
 	</target>
 	
-	<target name="advancedtools" depends="packagemanager, advancedtoolspackage">
-		<mkdir dir="packages"/>		
+	<target name="advancedtools" depends="packages, jupdateman, tableeditor, packagemanager, advancedtoolspackage">
 		<svnexport todir="advancedtools" force="true" repositoryurl="http://svn.joomlacode.org/svn/pasamioprojects/advancedtools/joomla15/trunk/" />
 		<copy todir="advancedtools/admin/packages" overwrite="true" >
 			<fileset dir="packages">
-				<include name="pkg_advtools.zip" />
-				<include name="com_jpackageman.zip" />
+				<include name="pkg_advtools.tgz" />
+				<include name="com_jpackageman.tgz" />
 			</fileset>
 		</copy>
-		<zip destfile="packages/com_advancedtools.zip" basedir="advancedtools" />
+		<tar compression="gzip" destfile="packages/com_advancedtools.tgz" basedir="advancedtools" />
 	</target>
 	
-	<target name="advtoolszip">
-		<zip destfile="packages/com_advancedtools.zip" basedir="advancedtools" />
+	<target name="advtoolszip" depends="packages">
+		<tar compression="gzip" destfile="packages/com_advancedtools.tgz" basedir="advancedtools" />
 	</target>
 	
-	<target name="packagemanager">
-		<mkdir dir="packages"/>		
+	<target name="packagemanager" depends="packages">
 		<svnexport todir="packagemanager" force="true" repositoryurl="http://svn.joomlacode.org/svn/pasamioprojects/jpackageman/trunk/" />
-		<zip destfile="packages/com_jpackageman.zip" basedir="packagemanager" />
+		<tar compression="gzip" destfile="packages/com_jpackageman.tgz" basedir="packagemanager" />
 	</target>
 	
-	<target name="advancedtoolspackage" depends="librarymanager, advmenumodule">
-		<mkdir dir="packages"/>	
-		<zip destfile="packages/pkg_advtools.zip" >
+	<target name="advancedtoolspackage" depends="packages, librarymanager, advmenumodule">
+		<tar compression="gzip" destfile="packages/pkg_advtools.tgz" >
 			<fileset dir=".">
 				<include name="pkg_advtools.xml" />
 				<include name="packages/**" />
-				<exclude name="pkg_advtools.zip" />	
+				<exclude name="pkg_advtools.tgz" />	
 				<exclude name="com_advancedtools" />
 			</fileset>
-		</zip>
+		</tar>
 	</target>
 	
-	<target name="librarymanager">
-		<mkdir dir="packages"/>	
+	<target name="librarymanager" depends="packages">
 		<svnexport todir="jlibman" force="true" repositoryurl="http://svn.joomlacode.org/svn/pasamioprojects/jlibman/trunk" />
-		<zip destfile="packages/com_jlibman.zip" basedir="jlibman" />
+		<tar compression="gzip" destfile="packages/com_jlibman.tgz" basedir="jlibman" />
 	</target>
 		
-	<target name="advmenumodule">
-		<mkdir dir="packages" />	
+	<target name="advmenumodule" depends="packages" >	
 		<svnexport todir="mod_advmenu" force="true" repositoryurl="http://svn.joomlacode.org/svn/pasamioprojects/mod_advmenu/trunk/" />
-		<zip destfile="packages/mod_advmenu.zip" basedir="mod_advmenu" />
+		<tar compression="gzip" destfile="packages/mod_advmenu.tgz" basedir="mod_advmenu" />
 	</target>
-		
+	
+	<target name="packages">
+		<mkdir dir="packages" />
+	</target>
+	
+	<target name="tableeditor" depends="packages">
+		<svnexport todir="tableeditor" force="true" repositoryurl="http://svn.joomlacode.org/svn/pasamioprojects/tableeditor/trunk/" />
+		<tar compression="gzip" destfile="packages/com_tableeditor.tgz" basedir="tableeditor" />
+	</target>
+	
+	<target name="jupdateman" depends="packages">
+		<svnexport todir="jupdateman" force="true" repositoryurl="http://svn.joomlacode.org/svn/pasamioprojects/jupdateman/trunk/" />
+		<tar compression="gzip" destfile="packages/com_jupdateman.tgz" basedir="jupdateman" />
+	</target>
 </project>

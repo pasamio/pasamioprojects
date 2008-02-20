@@ -55,6 +55,11 @@
 				<include name="edirldap.*"/>
 			</fileset>
 		</tar>
+
+		<echo msg="Building SSO Bootstrap Plugin" />
+		<zip destfile="packages/plgSystemSSO.zip">
+			<fileset dir="sso/plugins/system/" />
+		</zip>
 	</target>
 	
 	<target name="usersource" depends="usersource_export,directories">
