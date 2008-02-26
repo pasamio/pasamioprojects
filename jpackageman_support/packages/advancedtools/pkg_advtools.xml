@@ -3,7 +3,7 @@
 	<name>Joomla! Advanced Tools Package</name>
 	<packagename>advtools</packagename>
 	<url>http://sammoffatt.com.au/os</url>
-	<version>1.5</version>
+	<version>1.5.1</version>
 	<packager>Sam Moffatt</packager>
 	<packagerurl>http://www.sammoffatt.com.au</packagerurl>
 	<description>Joomla! Advaned Tools provides an easy package to install the library manager, table editor, advanced menu and update manager.</description>
