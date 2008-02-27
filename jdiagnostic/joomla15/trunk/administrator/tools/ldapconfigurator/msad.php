@@ -65,10 +65,10 @@ function step2() {
 	if($msg) echo '<p><b>'.$msg.'</b></p>';
 	if(!testConnect()) step1();
 	hiddenVars('server');
-	$users_dn = mosGetParam($_POST,'users_dn','');
-	$base_dn = mosGetParam($_POST,'base_dn','');
-	$username = mosGetParam($_POST,'username','');
-	$password = mosGetParam($_POST,'password','');
+	$users_dn = JRequest::getVar('users_dn','');
+	$base_dn = JRequest::getVar('base_dn','');
+	$username = JRequest::getVar('username','');
+	$password = JRequest::getVar('password','');
 	//echo '<pre>DN: '.print_R($_POST,1).'</pre>';
 	?>
 	<p>Microsoft Active Directory by default requires a username and password to perform any operation
@@ -95,10 +95,10 @@ function step3() {
 	if($msg) echo '<p><b>'.$msg.'</b></p>';
 	if(!testBind()) step2();
 	hiddenVars('connect');
-	$search_string = mosGetParam($_POST,'search_string','sAMAccountName=[search]');
-	$search_dn = mosGetParam($_POST,'search_dn','');
-	$autocreate = mosGetParam($_POST,'autocreate',1);
-	$forceldap = mosGetParam($_POST,'forceldap',0);
+	$search_string = JRequest::getVar('search_string','sAMAccountName=[search]');
+	$search_dn = JRequest::getVar('search_dn','');
+	$autocreate = JRequest::getVar('autocreate',1);
+	$forceldap = JRequest::getVar('forceldap',0);
 	?><p>Now that we can connect to the AD server, we need to configure how Joomla! will determine users.</p>
 	<p>By default Active Directory places all users in the CN=Users container, but you may have placed 
 	your users somewhere else.  The search string is used to find users based on the username they provide
@@ -133,9 +133,9 @@ function step4() {
 	if($msg) echo '<p><b>'.$msg.'</b></p>';
 	if(!testBind()) step3();
 	hiddenVars('user');
-	$groupmap = mosGetParam($_POST,'groupMap','');
-	$cbconfirm = mosGetParam($_POST,'cbconfirm',0);
-	$autocreateregistered = mosGetParam($_POST,'autocreateregistered',1);
+	$groupmap = JRequest::getVar('groupMap','');
+	$cbconfirm = JRequest::getVar('cbconfirm',0);
+	$autocreateregistered = JRequest::getVar('autocreateregistered',1);
 	?><p>Joomla! needs some information about the attributes that Active Directory uses to store
 	certain user pieces of information. This is all pretty standard and is set in the default settings.
 	If you find you need to change these values, edit the mambots individually later.</p>

@@ -1,16 +1,16 @@
 <?xml version="1.0" ?>
-<mosinstall type="component">
+<install type="component" version="1.5">
 	<name>JDiagnostic</name>
 	<creationDate>May 2007</creationDate>
 	<author>Sam Moffatt</author>
 	<copyright>Sam Moffatt (http://pasamio.id.au)</copyright>
 	<authorEmail>pasamio@gmail.com</authorEmail>
 	<authorUrl>pasamio.id.au</authorUrl>
-	<version>1.0</version>
-	<description>This components handles basic diagnostic functions</description>
+	<version>1.5</version>
+	<description>This components handles basic diagnostic functions via a plugin architecture</description>
 	<administration>
 		<menu>JDiagnostic</menu>
-		<files>
+		<files folder="administrator">
 			<filename>admin.jdiagnostic.php</filename>
 			<filename>diagnostics/ldapsettings/ldapsettings.php</filename>
 			<filename>tools/ldapconfigurator/msad.php</filename>

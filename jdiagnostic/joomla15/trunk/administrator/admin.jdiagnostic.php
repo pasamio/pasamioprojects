@@ -28,6 +28,7 @@ switch($mode) {
 		doTool();
 		break;
 	case 'diagnostic':
+	case 'diag':
 		doDiagnostic();
 		break;
 	default:

@@ -19,16 +19,16 @@
 
 if (!function_exists('ldap_connect')) {
 	die('LDAP: authentication (crit) PHP LDAP Library not detected');
-} else if (!class_exists('ldapConnector')) {
+}/* else if (!class_exists('JLDAP')) {
 	die('LDAP: authentication (crit) Joomla! LDAP Library not detected');
-}
+}*/
 
-global $mosConfig_absolute_path;
-$file = $mosConfig_absolute_path.'/mambots/system/joomla.ldap.php';
-require($file);
+//$file = $mosConfig_absolute_path.'/mambots/system/joomla.ldap.php';
+//require($file);
+jimport('joomla.client.ldap');
 
-$panel = mosGetParam($_POST,'screen','');
-$step = mosGetParam($_POST,'step','');
+$panel = JRequest::getVar('screen','');
+$step = JRequest::getVar('step','');
 
 theader();
 switch($panel) {

@@ -19,15 +19,17 @@
 
 if (!function_exists('ldap_connect')) {
 	die('LDAP: authentication (crit) PHP LDAP Library not detected');
-} /*else if (!class_exists('ldapConnector')) {
+} /*else if (!class_exists('JLDAP')) {
 	die('LDAP: authentication (crit) Joomla! LDAP Library not detected');
 }*/
-global $mosConfig_absolute_path;
-$file = $mosConfig_absolute_path.'/mambots/system/joomla.ldap.php';
-require($file);
+//global $mosConfig_absolute_path;
+//$file = $mosConfig_absolute_path.'/mambots/system/joomla.ldap.php';
+//require($file);
 
-$panel = mosGetParam($_POST,'screen','');
-$step = mosGetParam($_POST,'step','');
+jimport('joomla.client.ldap');
+
+$panel = JRequest::getVar('screen','');
+$step = JRequest::getVar('step','');
 
 theader();
 switch($panel) {
@@ -102,15 +104,15 @@ function hiddenVars($step) {
 }
 
 function hiddenVar($name,$val='') {
-	$val = $val ? $val : mosGetParam($_POST,$name,'');
+	$val = $val ? $val : JRequest::getVar($name,'');
 	echo '<input type="hidden" name="'.$name.'" value="'.$val.'">';
 }
 
 function testConnect() {
 	global $msg,$ldap;
-	$host = mosGetParam($_POST,'host','');
-	$port = mosGetParam($_POST,'port',389);
-	$ldap = new ldapConnector();
+	$host = JRequest::getVar('host','');
+	$port = JRequest::getVar('port',389);
+	$ldap = new JLDAP();
 	$ldap->host = $host;
 	$ldap->port = $port;
 	$ldap->use_ldapV3 = 1;
@@ -124,42 +126,42 @@ function testConnect() {
 function testBind() {
 	global $msg, $ldap;
 	if(!testConnect()) return false;
-	$ldap->username = mosGetParam($_POST,'username','');
-	$ldap->password = mosGetParam($_POST,'password','');
-	$ldap->users_dn = mosGetParam($_POST,'users_dn','');
-	$ldap->base_dn = mosGetParam($_POST,'base_dn','');
+	$ldap->username = JRequest::getVar('username','');
+	$ldap->password = JRequest::getVar('password','');
+	$ldap->users_dn = JRequest::getVar('users_dn','');
+	$ldap->base_dn = JRequest::getVar('base_dn','');
 	if(!$ldap->bind()) { $msg = 'Failed to bind to LDAP server'; return false; }
 	return true;	
 }
 
 function saveConfig() {
-	global $database;
+	$database =& JFactory::getDBO();
 	$config = 'useglobal=0'."\n".
-'host='.mosGetParam($_POST,'host','')."\n".
-'port='.mosGetParam($_POST,'port',389)."\n".
-'use_ldapV3='.mosGetParam($_POST,'use_ldapV3',1)."\n".
-'negotiate_tls='.mosGetParam($_POST,'negotiate_tls',0)."\n".
-'no_referrals='.mosGetParam($_POST,'no_referrals','1')."\n".
-'autocreate='.mosGetParam($_POST,'autocreate','1')."\n".
-'autocreateregistered='.mosGetParam($_POST,'autocreateregistered','1')."\n".
-'defaultgroup='.mosGetParam($_POST,'defaultgroup','registered')."\n".
-'forceldap='.mosGetParam($_POST,'forceldap','0')."\n".
-'base_dn='.mosGetParam($_POST,'base_dn')."\n".
-'search_dn='.mosGetParam($_POST,'search_dn')."\n".
-'search_string='.mosGetParam($_POST,'search_string')."\n".
-'auth_method='.mosGetParam($_POST,'auth_method','search')."\n".
-'username='.mosGetParam($_POST,'username')."\n".
-'password='.mosGetParam($_POST,'password')."\n".
-'users_dn='.mosGetParam($_POST,'users_dn')."\n".
-'ldap_fullname='.mosGetParam($_POST,'ldap_fullname','displayName')."\n".
-'ldap_email='.mosGetParam($_POST,'ldap_email','mail')."\n".
-'ldap_uid='.mosGetParam($_POST,'ldap_uid','sAMAccountName')."\n".
-'ldap_password='.mosGetParam($_POST,'ldap_password','userPassword')."\n".
-'ldap_blocked='.mosGetParam($_POST,'ldap_blocked','loginDisabled')."\n".
-'ldap_groupname='.mosGetParam($_POST,'ldap_groupname','memberOf')."\n".
-'cbconfirm='.mosGetParam($_POST,'cbconfirm',0)."\n".
-'groupMap='.mosGetParam($_POST,'groupMap','');
-	$database->setQuery('UPDATE #__mambots SET params = "'. $database->getEscaped($config).'" WHERE element = "ldap.ssi" OR element = "joomla.ldap"');
+'host='.JRequest::getVar('host','')."\n".
+'port='.JRequest::getVar('port',389)."\n".
+'use_ldapV3='.JRequest::getVar('use_ldapV3',1)."\n".
+'negotiate_tls='.JRequest::getVar('negotiate_tls',0)."\n".
+'no_referrals='.JRequest::getVar('no_referrals','1')."\n".
+'autocreate='.JRequest::getVar('autocreate','1')."\n".
+'autocreateregistered='.JRequest::getVar('autocreateregistered','1')."\n".
+'defaultgroup='.JRequest::getVar('defaultgroup','registered')."\n".
+'forceldap='.JRequest::getVar('forceldap','0')."\n".
+'base_dn='.JRequest::getVar('base_dn')."\n".
+'search_dn='.JRequest::getVar('search_dn')."\n".
+'search_string='.JRequest::getVar('search_string')."\n".
+'auth_method='.JRequest::getVar('auth_method','search')."\n".
+'username='.JRequest::getVar('username')."\n".
+'password='.JRequest::getVar('password')."\n".
+'users_dn='.JRequest::getVar('users_dn')."\n".
+'ldap_fullname='.JRequest::getVar('ldap_fullname','displayName')."\n".
+'ldap_email='.JRequest::getVar('ldap_email','mail')."\n".
+'ldap_uid='.JRequest::getVar('ldap_uid','sAMAccountName')."\n".
+'ldap_password='.JRequest::getVar('ldap_password','userPassword')."\n".
+'ldap_blocked='.JRequest::getVar('ldap_blocked','loginDisabled')."\n".
+'ldap_groupname='.JRequest::getVar('ldap_groupname','memberOf')."\n".
+'cbconfirm='.JRequest::getVar('cbconfirm',0)."\n".
+'groupMap='.JRequest::getVar('groupMap','');
+	$database->setQuery('UPDATE #__plugins SET params = "'. $database->getEscaped($config).'" WHERE element = "joomla" AND folder = "authentication"');
 	$database->Query();
 	return true;
 }
