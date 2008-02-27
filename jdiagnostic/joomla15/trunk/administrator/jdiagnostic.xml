@@ -1,0 +1,22 @@
+<?xml version="1.0" ?>
+<mosinstall type="component">
+	<name>JDiagnostic</name>
+	<creationDate>May 2007</creationDate>
+	<author>Sam Moffatt</author>
+	<copyright>Sam Moffatt (http://pasamio.id.au)</copyright>
+	<authorEmail>pasamio@gmail.com</authorEmail>
+	<authorUrl>pasamio.id.au</authorUrl>
+	<version>1.0</version>
+	<description>This components handles basic diagnostic functions</description>
+	<administration>
+		<menu>JDiagnostic</menu>
+		<files>
+			<filename>admin.jdiagnostic.php</filename>
+			<filename>diagnostics/ldapsettings/ldapsettings.php</filename>
+			<filename>tools/ldapconfigurator/msad.php</filename>
+			<filename>tools/ldapconfigurator/generic.php</filename>
+			<filename>tools/ldapconfigurator/ldapconfigurator.xml</filename>
+			<filename>tools/ldapconfigurator/ldapconfigurator.php</filename>
+		</files>
+	</administration>
+</mosinstall>	
