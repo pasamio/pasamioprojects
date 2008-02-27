@@ -82,7 +82,7 @@ function step2() {
 	example if your service account is in the default user container, modifying something similar to
 	the below settings should work.</p>
 	<table>
-	<tr><td><b>Connect Username:</b></td><td><input type="text" name="username" value="<?php echo $username ?>" /> (You can use the UPN here, e.g. username@<?php echo $sitename ?>, but the User DN below must be blank!)</td></tr>
+	<tr><td><b>Connect Username:</b></td><td><input type="text" name="username" value="<?php echo $username ?>" /> (You can use the user principal name (UPN) here, e.g. username@<?php echo $sitename ?>, but the User DN below must be blank!)</td></tr>
 	<tr><td><b>Connect Password:</b></td><td><input type="password" name="password" value="<?php echo $password ?>" /></td></tr>
 	<tr><td><b>User DN:</b></td><td><input type="text" name="users_dn" value="<?php echo $users_dn ?>" /> (e.g. CN=[username],CN=Users,<?php echo $dummydn ?>)</td></tr>
 	<tr><td><b>Base DN:</b></td><td><input type="text" name="base_dn" value="<?php echo $base_dn ?>" /> (e.g. <?php echo $dummydn ?>)</td></tr>
