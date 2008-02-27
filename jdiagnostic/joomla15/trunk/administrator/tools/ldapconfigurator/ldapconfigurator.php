@@ -99,6 +99,7 @@ function hiddenVars($step) {
 			hiddenVar('use_ldapV3',1);
 			hiddenVar('negotiate_tls',0);
 			hiddenVar('no_referrals', 1);
+			hiddenVar('sitename','joomla.org');
 			break;
 	}
 }
@@ -161,7 +162,7 @@ function saveConfig() {
 'ldap_groupname='.JRequest::getVar('ldap_groupname','memberOf')."\n".
 'cbconfirm='.JRequest::getVar('cbconfirm',0)."\n".
 'groupMap='.JRequest::getVar('groupMap','');
-	$database->setQuery('UPDATE #__plugins SET params = "'. $database->getEscaped($config).'" WHERE element = "joomla" AND folder = "authentication"');
+	$database->setQuery('UPDATE #__plugins SET params = "'. $database->getEscaped($config).'" WHERE element = "ldap" AND folder = "authentication"');
 	$database->Query();
 	return true;
 }

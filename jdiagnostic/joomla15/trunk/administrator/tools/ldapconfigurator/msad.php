@@ -50,6 +50,7 @@ wonderful features put together make MSAD one of the more challenging systems to
 	<p><b>Notes:</b><i>You might wish to use port 3268 again your domain controllers, this LDAP server 
 	doesn't give out referrals and has a complete set of your domain.</i></p>
 	<table>
+	<tr><td><b>Site Name</b></td><td><input type="text" name="sitename" size="50" /> (e.g. joomla.org)</td></tr>
 	<tr><td><b>LDAP Server:</b></td><td><input type="text" name="host" size="50" /></td></tr>
 	<tr><td><b>LDAP Port:</b></td><td><input type="text" name="port" value="389" /></td></tr>
 	<tr><td valign="top"><b>Default Settings:</b></td><td><ul><li>Use LDAPv3</li><li>TLS Disabled</li><li>No Referrals</li></td></tr>
@@ -65,8 +66,10 @@ function step2() {
 	if($msg) echo '<p><b>'.$msg.'</b></p>';
 	if(!testConnect()) step1();
 	hiddenVars('server');
-	$users_dn = JRequest::getVar('users_dn','');
-	$base_dn = JRequest::getVar('base_dn','');
+	$sitename = JRequest::getVar('sitename','joomla.org');
+	$dummydn  = 'DC='.str_replace('.',',DC=',$sitename);
+	$users_dn = JRequest::getVar('users_dn','CN=[username],CN=Users,'. $dummydn);
+	$base_dn = JRequest::getVar('base_dn',$dummydn);
 	$username = JRequest::getVar('username','');
 	$password = JRequest::getVar('password','');
 	//echo '<pre>DN: '.print_R($_POST,1).'</pre>';
@@ -79,10 +82,10 @@ function step2() {
 	example if your service account is in the default user container, modifying something similar to
 	the below settings should work.</p>
 	<table>
-	<tr><td><b>Connect Username:</b></td><td><input type="text" name="username" value="<?php echo $username ?>" /></td></tr>
+	<tr><td><b>Connect Username:</b></td><td><input type="text" name="username" value="<?php echo $username ?>" /> (You can use the UPN here, e.g. username@<?php echo $sitename ?>, but the User DN below must be blank!)</td></tr>
 	<tr><td><b>Connect Password:</b></td><td><input type="password" name="password" value="<?php echo $password ?>" /></td></tr>
-	<tr><td><b>User DN:</b></td><td><input type="text" name="users_dn" value="<?php echo $users_dn ?>" /> (e.g. CN=[username],CN=Users,DC=joomla,DC=org)</td></tr>
-	<tr><td><b>Base DN:</b></td><td><input type="text" name="base_dn" value="<?php echo $base_dn ?>" /> (e.g. DC=joomla,DC=org)</td></tr>
+	<tr><td><b>User DN:</b></td><td><input type="text" name="users_dn" value="<?php echo $users_dn ?>" /> (e.g. CN=[username],CN=Users,<?php echo $dummydn ?>)</td></tr>
+	<tr><td><b>Base DN:</b></td><td><input type="text" name="base_dn" value="<?php echo $base_dn ?>" /> (e.g. <?php echo $dummydn ?>)</td></tr>
 	<tr><td colspan="2"><input type="submit" value="Next >>"></td></tr>
 	</table>
 	<input type="hidden" name="step" value="step3">
@@ -99,6 +102,9 @@ function step3() {
 	$search_dn = JRequest::getVar('search_dn','');
 	$autocreate = JRequest::getVar('autocreate',1);
 	$forceldap = JRequest::getVar('forceldap',0);
+	$sitename = JRequest::getVar('sitename','joomla.org');
+	$dummydn  = 'DC='.str_replace('.',',DC=',$sitename);
+	
 	?><p>Now that we can connect to the AD server, we need to configure how Joomla! will determine users.</p>
 	<p>By default Active Directory places all users in the CN=Users container, but you may have placed 
 	your users somewhere else.  The search string is used to find users based on the username they provide
@@ -108,7 +114,7 @@ function step3() {
 	which group they are assigned automatically. Finally force LDAP causes the LDAP SSI plugin to delete 
 	the users password if they cannot log in via LDAP.</p>
 	<table>
-	<tr><td><b>Search DN:</b></td><td><input type="text" name="search_dn" value="<?php echo $search_dn ?>" /> (e.g. CN=Users,DC=joomla,DC=org)</td></tr>
+	<tr><td><b>Search DN:</b></td><td><input type="text" name="search_dn" value="<?php echo $search_dn ?>" /> (e.g. CN=Users,<?php echo $dummydn ?>)</td></tr>
 	<tr><td><b>Search String:</b></td><td><input type="text" name="search_string" value="<?php echo $search_string ?>" /></td></tr>
 	<tr><td><b>Autocreate:</b></td><td><input type="checkbox" name="autocreate" value="1" <?php if($autocreate) echo 'CHECKED' ?> /></td></tr>
   	<tr><td><b>Default Autocreate Group:</b></td><td>
@@ -136,6 +142,9 @@ function step4() {
 	$groupmap = JRequest::getVar('groupMap','');
 	$cbconfirm = JRequest::getVar('cbconfirm',0);
 	$autocreateregistered = JRequest::getVar('autocreateregistered',1);
+	$sitename = JRequest::getVar('sitename','joomla.org');
+	$dummydn  = 'DC='.str_replace('.',',DC=',$sitename);
+	
 	?><p>Joomla! needs some information about the attributes that Active Directory uses to store
 	certain user pieces of information. This is all pretty standard and is set in the default settings.
 	If you find you need to change these values, edit the mambots individually later.</p>
