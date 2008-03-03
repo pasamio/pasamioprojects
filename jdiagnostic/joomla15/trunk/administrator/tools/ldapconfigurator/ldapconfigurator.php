@@ -87,11 +87,11 @@ function hiddenVars($step) {
 			hiddenVar('autocreate');
 			hiddenVar('forceldap');
 			hiddenVar('defaultgroup');
+			hiddenVar('base_dn');//=DC=site1,DC=pasamio,DC=homelinux,DC=net
 		case 'connect':
 			hiddenVar('username');
 			hiddenVar('password');
 			hiddenVar('users_dn');//=CN=[username],CN=Users,DC=site1,DC=pasamio,DC=homelinux,DC=net
-			hiddenVar('base_dn');//=DC=site1,DC=pasamio,DC=homelinux,DC=net
 		// Server Variables
 		case 'server':
 			hiddenVar('host');
@@ -105,7 +105,7 @@ function hiddenVars($step) {
 }
 
 function hiddenVar($name,$val='') {
-	$val = $val ? $val : JRequest::getVar($name,'');
+	$val = JRequest::getVar($name,$val);
 	echo '<input type="hidden" name="'.$name.'" value="'.$val.'">';
 }
 
@@ -117,7 +117,7 @@ function testConnect() {
 	$ldap->host = $host;
 	$ldap->port = $port;
 	$ldap->use_ldapV3 = 1;
-	$ldap->no_referrals = 1;
+	$ldap->no_referrals = 0;
 	$ldap->negotiate_tls = 0;	
 	$ldap->auth_method = 'bind';
 	if(!$ldap->connect()) { $msg = 'Failed to connect to LDAP server'; return false; }  
@@ -162,7 +162,7 @@ function saveConfig() {
 'ldap_groupname='.JRequest::getVar('ldap_groupname','memberOf')."\n".
 'cbconfirm='.JRequest::getVar('cbconfirm',0)."\n".
 'groupMap='.JRequest::getVar('groupMap','');
-	$database->setQuery('UPDATE #__plugins SET params = "'. $database->getEscaped($config).'" WHERE element = "ldap" AND folder = "authentication"');
+	$database->setQuery('UPDATE #__plugins SET params = "'. $database->getEscaped($config).'", published = 1 WHERE element = "ldap" AND folder = "authentication"');
 	$database->Query();
 	return true;
 }
