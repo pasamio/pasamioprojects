@@ -51,9 +51,14 @@ wonderful features put together make MSAD one of the more challenging systems to
 	doesn't give out referrals and has a complete set of your domain.</i></p>
 	<table>
 	<tr><td><b>Site Name</b></td><td><input type="text" name="sitename" size="50" /> (e.g. joomla.org)</td></tr>
-	<tr><td><b>LDAP Server:</b></td><td><input type="text" name="host" size="50" /></td></tr>
 	<tr><td><b>LDAP Port:</b></td><td><input type="text" name="port" value="389" /></td></tr>
-	<tr><td valign="top"><b>Default Settings:</b></td><td><ul><li>Use LDAPv3</li><li>TLS Disabled</li><li>No Referrals</li></td></tr>
+	<tr><td valign="top"><b>Default Settings:</b></td><td>
+		<ul>
+			<li>Use LDAPv3</li>
+			<li>TLS Disabled</li>
+			<li>Referrals Disabled</li>
+			<li>LDAP Server set to your sitename</li>
+		</ul></td></tr>
 	<tr><td colspan="2"><input type="submit" value="Next >>"></td></tr>
 	</table>
 	<input type="hidden" name="step" value="step2">
@@ -64,6 +69,7 @@ wonderful features put together make MSAD one of the more challenging systems to
 function step2() {
 	global $msg,$ldap;
 	if($msg) echo '<p><b>'.$msg.'</b></p>';
+	JRequest::setVar('host', JRequest::getVar('sitename','joomla.org'));
 	if(!testConnect()) step1();
 	hiddenVars('server');
 	$sitename = JRequest::getVar('sitename','joomla.org');
@@ -75,12 +81,10 @@ function step2() {
 	?>
 	<p>Microsoft Active Directory by default requires a username and password to perform any operation
 	against it. You should put in a valid user account here unless you have configured Active Directory
-	to allow searching from an anonymous bind. Normally this should be a service account of some variety
-	to enforce restrictions upon. Later you can choose if you want to continue using this service account
-	or if you wish to authenticate using a different method.</p>
-	<p>Enter the login of the user in either their domain login (e.g. DOMAIN\username) or their user
-	principal name (e.g. username@your.site.name.com). I would suggest strongly creating a service
-	account for these.</p>
+	to allow searching from an anonymous bind. This is used temporarily to provide an interface to
+	search for the Base DN to search from and will be ignored later.</p>
+	<p>Enter the login of the user you wish to connect with using their user principal name 
+	(e.g. username@your.site.name.com).</p>
 	<table>
 	<tr><td><b>Connect Username:</b></td><td><input type="text" name="username" value="<?php echo $username ?>" /></td></tr>
 	<tr><td><b>Connect Password:</b></td><td><input type="password" name="password" value="<?php echo $password ?>" /></td></tr>
@@ -96,14 +100,14 @@ function step3() {
 	if($msg) echo '<p><b>'.$msg.'</b></p>';
 	if(!testBind()) step2();
 	hiddenVars('connect');
-	$search_string = JRequest::getVar('search_string','sAMAccountName=[search]');
+	$sitename = JRequest::getVar('sitename','joomla.org');
+	$search_string = JRequest::getVar('search_string','userPrincipalName=[search]@'. $sitename);
 	$search_dn = JRequest::getVar('search_dn','');
 	$autocreate = JRequest::getVar('autocreate',1);
 	$forceldap = JRequest::getVar('forceldap',0);
-	$sitename = JRequest::getVar('sitename','joomla.org');
 	$dummydn  = 'DC='.str_replace('.',',DC=',$sitename);
-	$users_dn = JRequest::getVar('users_dn','CN=[username],CN=Users,'. $dummydn);
-	if(!strlen($users_dn)) $users_dn = 'CN=[username],CN=Users,'. $dummydn;
+	$users_dn = JRequest::getVar('users_dn','[username]@'. $sitename);
+	if(!strlen($users_dn)) $users_dn = '[username]@'. $sitename ;
 	$base_dn = JRequest::getVar('base_dn',$dummydn);
 	
 	?><p>Now that we can connect to the AD server, we need to configure how Joomla! will determine users.</p>
@@ -123,7 +127,7 @@ function step3() {
 	<tr><td><b>Search String:</b></td><td><input type="text" name="search_string" value="<?php echo $search_string ?>"  size="50" /></td></tr>
 	<tr><td><b>Base DN:</b></td><td><input type="text" id="base_dn" name="base_dn" value="<?php echo $base_dn ?>" size="100" /> (e.g. <a href="#" onclick="setBaseDN('<?php echo $dummydn ?>'); return false;"><?php echo $dummydn ?></a>)</td></tr>
 	<tr><td><b>User DN:</b></td><td><input type="text" id="users_dn" name="users_dn" value="<?php echo $users_dn ?>" size="100" /> (e.g. <a href="#" onclick="setUserDN('<?php echo $users_dn ?>'); return false;"><?php echo $users_dn ?></a>)</td></tr>
-	<tr><td><b>Default Settings:</b></td><td><ul><li>Auth Method: Search</li></ul></td></tr>
+	<tr><td><b>Default Settings:</b></td><td><ul><li>Auth Method: Bind</li></ul></td></tr>
 	<tr><td colspan="2"><input type="submit" value="Next >>"></td></tr>
 	</table>
 	<?php 
@@ -152,7 +156,7 @@ function step3() {
 	?>
 	<input type="hidden" name="step" value="step4">
 	<input type="hidden" name="screen" value="msad">	
-	<input type="hidden" name="auth_method" value="search">
+	<input type="hidden" name="auth_method" value="bind">
 	<?php
 }
 
@@ -186,6 +190,9 @@ function step4() {
 	global $msg,$ldap;
 	if($msg) echo '<p><b>'.$msg.'</b></p>';
 	if(!testBind()) step3();
+	// reset username and password
+	JRequest::setVar('username','');
+	JRequest::setVar('password','');
 	hiddenVars('user');
 	$groupmap = JRequest::getVar('groupMap','');
 	$cbconfirm = JRequest::getVar('cbconfirm',0);
