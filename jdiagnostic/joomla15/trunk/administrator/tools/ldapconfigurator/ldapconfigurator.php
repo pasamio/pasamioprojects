@@ -136,7 +136,6 @@ function testBind() {
 		JRequest::setVar('username',$ldap->username);
 	}
 	$ldap->base_dn = JRequest::getVar('base_dn','');
-	print_r($ldap);
 	if(!$ldap->bind()) { $msg = 'Failed to bind to LDAP server'; return false; }
 	return true;	
 }
