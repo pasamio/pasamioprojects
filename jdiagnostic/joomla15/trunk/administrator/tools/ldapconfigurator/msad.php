@@ -77,7 +77,6 @@ function step2() {
 	$users_dn = JRequest::getVar('users_dn','CN=[username],CN=Users,'. $dummydn);
 	$username = JRequest::getVar('username','');
 	$password = JRequest::getVar('password','');
-	//echo '<pre>DN: '.print_R($_POST,1).'</pre>';
 	?>
 	<p>Microsoft Active Directory by default requires a username and password to perform any operation
 	against it. You should put in a valid user account here unless you have configured Active Directory
