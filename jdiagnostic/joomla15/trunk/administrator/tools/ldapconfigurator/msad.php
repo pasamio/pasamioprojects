@@ -47,10 +47,14 @@ function step1() {
 	?><p>Microsoft Active Directory stands out as a Microsoft product: it is case sensitive, mostly follows
 the LDAP standard and requires authenticated logins by default to complete searches. All of these
 wonderful features put together make MSAD one of the more challenging systems to configure.</p>
+	<p>Your site name is the same as your AD site name. You can leave the server field blank if you wish
+to use the round robin DNS to select LDAP servers (will do primitive load balancing) or you can manually
+enter in the server you wish Joomla! to use. This requires your DNS to be configure properly.</p>
 	<p><b>Notes:</b><i>You might wish to use port 3268 again your domain controllers, this LDAP server 
 	doesn't give out referrals and has a complete set of your domain.</i></p>
 	<table>
-	<tr><td><b>Site Name</b></td><td><input type="text" name="sitename" size="50" /> (e.g. joomla.org)</td></tr>
+	<tr><td><b>Site Name:</b></td><td><input type="text" name="sitename" size="50" /> (e.g. joomla.org; not your LDAP server name!)</td></tr>
+	<tr><td><b>LDAP Server:</b></td><td><input type="text" name="host" size="50" /> (e.g. ad.joomla.org; can be blank)</td></tr>
 	<tr><td><b>LDAP Port:</b></td><td><input type="text" name="port" value="389" /></td></tr>
 	<tr><td valign="top"><b>Default Settings:</b></td><td>
 		<ul>
@@ -69,7 +73,7 @@ wonderful features put together make MSAD one of the more challenging systems to
 function step2() {
 	global $msg,$ldap;
 	if($msg) echo '<p><b>'.$msg.'</b></p>';
-	JRequest::setVar('host', JRequest::getVar('sitename','joomla.org'));
+	if(JRequest::getVar('host','') == '') JRequest::setVar('host', JRequest::getVar('sitename','joomla.org'));
 	if(!testConnect()) step1();
 	hiddenVars('server');
 	$sitename = JRequest::getVar('sitename','joomla.org');

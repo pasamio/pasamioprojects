@@ -2,9 +2,7 @@
 	<name>LDAP Configurator</name>
 	<author>Sam Moffatt</author>
 	<creationDate>June 2007</creationDate>
-	<copyright>
-		Sam Moffatt (c) 2007
-	</copyright>
+	<copyright>Sam Moffatt (c) 2007</copyright>
 	<license>http://www.gnu.org/copyleft/gpl.html GNU/GPL</license>
 	<authorEmail>pasamio@gmail.com</authorEmail>
 	<authorUrl>pasamio.id.au</authorUrl>

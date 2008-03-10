@@ -17,6 +17,8 @@
 			<filename>tools/ldapconfigurator/generic.php</filename>
 			<filename>tools/ldapconfigurator/ldapconfigurator.xml</filename>
 			<filename>tools/ldapconfigurator/ldapconfigurator.php</filename>
+			<filename>tools/ldapconfigurator/tree.js</filename>
+			<filename>tools/ldapconfigurator/config.css</filename>
 		</files>
 	</administration>
 </install>	
