@@ -13,6 +13,7 @@
 		<files folder="administrator">
 			<filename>admin.jdiagnostic.php</filename>
 			<filename>diagnostics/ldapsettings/ldapsettings.php</filename>
+			<filename>diagnostics/ldapsettings/screens/auth.php</filename>
 			<filename>tools/ldapconfigurator/msad.php</filename>
 			<filename>tools/ldapconfigurator/generic.php</filename>
 			<filename>tools/ldapconfigurator/ldapconfigurator.xml</filename>
