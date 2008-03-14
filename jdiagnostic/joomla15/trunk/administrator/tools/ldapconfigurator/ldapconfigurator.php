@@ -98,7 +98,7 @@ function hiddenVars($step) {
 			hiddenVar('port');
 			hiddenVar('use_ldapV3',1);
 			hiddenVar('negotiate_tls',0);
-			hiddenVar('no_referrals', 1);
+			hiddenVar('no_referrals', 0);
 			hiddenVar('sitename','joomla.org');
 			break;
 	}
@@ -120,7 +120,7 @@ function testConnect() {
 	$ldap->no_referrals = 0;
 	$ldap->negotiate_tls = 0;	
 	$ldap->auth_method = 'bind';
-	if(!$ldap->connect()) { $msg = 'Failed to connect to LDAP server'; return false; }  
+	if(!$ldap->connect()) { $msg = 'Failed to connect to LDAP server'; return false; } 
 	return true;
 }
 
@@ -147,7 +147,7 @@ function saveConfig() {
 'port='.JRequest::getVar('port',389)."\n".
 'use_ldapV3='.JRequest::getVar('use_ldapV3',1)."\n".
 'negotiate_tls='.JRequest::getVar('negotiate_tls',0)."\n".
-'no_referrals='.JRequest::getVar('no_referrals','1')."\n".
+'no_referrals='.JRequest::getVar('no_referrals','0')."\n".
 'autocreate='.JRequest::getVar('autocreate','1')."\n".
 'autocreateregistered='.JRequest::getVar('autocreateregistered','1')."\n".
 'defaultgroup='.JRequest::getVar('defaultgroup','registered')."\n".

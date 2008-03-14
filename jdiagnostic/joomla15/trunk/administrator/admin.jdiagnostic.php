@@ -20,8 +20,8 @@
 if(!defined('_VALID_MOS'))  if(!defined('_JEXEC')) die('Not within Joomla');
 // Forwards compat layer
 if(!defined('_JEXEC')) define('_JEXEC', 1);
+JToolbarHelper::Title('JDiagnostic');
 echo '<div style="padding: 5px; text-align: left;">';
-echo '<p class="componentheading" align="left">JDiagnostic</p><hr />';
 $mode = JRequest::getVar('mode',''); 
 switch($mode) {
 	case 'tool':

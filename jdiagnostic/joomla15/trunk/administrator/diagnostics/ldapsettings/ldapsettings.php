@@ -31,9 +31,10 @@ $panel = JRequest::getVar('screen','');
 $step = JRequest::getVar('step','');
 
 theader();
-switch($panel) {
-	default:
-		
+
+if($panel && file_exists(dirname(__FILE__).'/screens/'. $panel .'.php')) {
+	include(dirname(__FILE__).'/screens/'. $panel .'.php');
+} else {		
 ?>
 <p>LDAP Diagnostics</p>
 <p>This system runs diagnostics against your configuration to try and determine errors.</p>
@@ -44,14 +45,13 @@ switch($panel) {
 <p><input type="submit" value="Proceed >>"></p>
 </form>
 <?php
-		break;
 }
 ?> </form><?php
 
 function theader() { ?>
 	<form method="post" action="index2.php">
 <input type="hidden" name="option" value="com_jdiagnostic">
-<input type="hidden" name="mode" value="diagnostic">
-<input type="hidden" name="tool" value="ldapsettings"><?php
+<input type="hidden" name="mode" value="diag">
+<input type="hidden" name="diag" value="ldapsettings"><?php
 }
 ?>
