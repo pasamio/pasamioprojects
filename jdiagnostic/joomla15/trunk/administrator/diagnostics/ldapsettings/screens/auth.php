@@ -54,11 +54,14 @@ if($username && $password) {
 			echo '<tr><td><b>Username:</b></td><td>'. ($result->username ? $result->username : 'WARNING: Username not returned, suspect search failure').'</td></tr>';
 			echo '<tr><td><b>Email:</b></td><td>'. ($result->email ? $result->email : 'WARNING: Email was blank, user autocreation will likely fail').'</td></tr>';
 			echo '<tr><td valign="top"><b>Warnings:</b></td><td>';
+			$warnings = false;
 			if (eregi( "[\<|\>|\"|\'|\%|\;|\(|\)|\&|\+|\-]", $result->username) || strlen(utf8_decode($result->username )) < 2) {
+					$warnings = true;
 					echo 'Invalid username detected<br />';
 				}
 
 			if ((trim($result->email) == "") || ! JMailHelper::isEmailAddress($result->email) ) {
+				$warnings = true;
 				echo 'Invalid email detected<br />';
 			}	
 	
@@ -69,8 +72,14 @@ if($username && $password) {
 			$db->setQuery( $query );
 			$xid = $db->loadResult();
 			if ($username != $xid) {
+				$warnings = true;
 				echo 'An account already exists with this email address with the username "'. $xid.'"; user autocreation will fail. Please change the other user if this is incorrect.<br />';
-			}			
+			}
+			if(!$warnings && strlen($result->email)) {
+				echo 'There were no warnings, user autocreation should succeed.';			
+			} else {
+				echo 'Email blank, user autocreation likely to fail.';
+			}
 			echo '</td></tr>';
 			echo '</table>';
 			break;
