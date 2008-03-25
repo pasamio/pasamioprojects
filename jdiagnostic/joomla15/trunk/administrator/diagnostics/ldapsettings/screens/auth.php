@@ -77,7 +77,7 @@ if($username && $password) {
 			}
 			if(!$warnings && strlen($result->email)) {
 				echo 'There were no warnings, user autocreation should succeed.';			
-				} elseif(!strlen($result->email) {
+				} elseif(!strlen($result->email)) {
 				echo 'Email blank, user autocreation likely to fail.';
 			}
 			echo '</td></tr>';
