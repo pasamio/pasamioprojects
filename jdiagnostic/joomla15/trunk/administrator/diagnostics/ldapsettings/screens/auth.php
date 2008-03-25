@@ -71,13 +71,13 @@ if($username && $password) {
 				. ' WHERE email = '. $db->Quote($result->email);
 			$db->setQuery( $query );
 			$xid = $db->loadResult();
-			if ($username != $xid) {
+			if (strlen($xid) && $username != $xid) {
 				$warnings = true;
 				echo 'An account already exists with this email address with the username "'. $xid.'"; user autocreation will fail. Please change the other user if this is incorrect.<br />';
 			}
 			if(!$warnings && strlen($result->email)) {
 				echo 'There were no warnings, user autocreation should succeed.';			
-			} else {
+				} elseif(!strlen($result->email) {
 				echo 'Email blank, user autocreation likely to fail.';
 			}
 			echo '</td></tr>';
