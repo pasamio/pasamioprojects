@@ -26,10 +26,12 @@ echo '<div style="padding: 5px; text-align: left;">';
 $mode = JRequest::getVar('mode',''); 
 switch($mode) {
 	case 'tool':
+		JToolbarHelper::Title('JDiagnostic - Tool');
 		doTool();
 		break;
 	case 'diagnostic':
 	case 'diag':
+		JToolbarHelper::Title('JDiagnostic - Diagnostic');
 		doDiagnostic();
 		break;
 	default:
@@ -57,7 +59,7 @@ function displayDefault() {
 		}
 	}
 	foreach($toolset as $tool) {
-		echo '<tr><td><a href="index2.php?option=com_jdiagnostic&mode=tool&tool='.$tool.'">'.$tool.'</a></td></tr>';
+		echo '<tr><td><a href="index.php?option=com_jdiagnostic&mode=tool&tool='.$tool.'">'.$tool.'</a></td></tr>';
 	}
 	?><tr><th align="left">Diagnostics</th></tr><?php
 	while($diag = readdir($diags)) {
@@ -66,7 +68,7 @@ function displayDefault() {
 		}
 	}
 	foreach($diagset as $diag) {
-		echo '<tr><td><a href="index2.php?option=com_jdiagnostic&mode=diag&diag='.$diag.'">'.$diag.'</a></td></tr>';
+		echo '<tr><td><a href="index.php?option=com_jdiagnostic&mode=diag&diag='.$diag.'">'.$diag.'</a></td></tr>';
 	}
 	echo '</table>';
 	

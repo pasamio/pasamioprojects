@@ -57,7 +57,7 @@ switch($panel) {
 ?> </form><?php
 
 function theader() { ?>
-	<form method="post" action="index2.php">
+	<form method="post" action="index.php">
 <input type="hidden" name="option" value="com_jdiagnostic">
 <input type="hidden" name="mode" value="tool">
 <input type="hidden" name="tool" value="ldapconfigurator"><?php

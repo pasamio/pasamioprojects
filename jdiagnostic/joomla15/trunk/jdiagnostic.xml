@@ -20,6 +20,8 @@
 			<filename>tools/ldapconfigurator/ldapconfigurator.php</filename>
 			<filename>tools/ldapconfigurator/tree.js</filename>
 			<filename>tools/ldapconfigurator/config.css</filename>
+			<filename>tools/ipchecker/net_ipv4.class.php</filename>
+			<filename>tools/ipchecker/ipchecker.php</filename>
 		</files>
 	</administration>
 </install>	

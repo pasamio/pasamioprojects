@@ -228,7 +228,7 @@ function step4() {
 function step5() {
 	saveConfig() or die('Failed to save configuration!');
 	?><p>Congratulations, the settings have been automatically written to the LDAP Authentication plugin and should activate automatically.</p>
-	<p><a href="index2.php?option=com_jdiagnostic">Home</a></p>
+	<p><a href="index.php?option=com_jdiagnostic">Home</a></p>
 	<?php
 }
 

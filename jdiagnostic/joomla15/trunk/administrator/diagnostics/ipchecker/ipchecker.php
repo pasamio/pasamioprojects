@@ -43,8 +43,8 @@ if($target && $entries) {
 <p>Enter the IP address you wish to check and your listing. It will then output matches.</p>
 <form method="post" action="index.php">
 <input type="hidden" name="option" value="com_jdiagnostic" />
-<input type="hidden" name="tool" value="ipchecker" />
-<input type="hidden" name="mode" value="tool" />
+<input type="hidden" name="diag" value="ipchecker" />
+<input type="hidden" name="mode" value="diag" />
 <p>Enter mask:<br />
 <textarea cols="50" rows="10" name="entries"><?php echo $entries ?></textarea>
 </p>
