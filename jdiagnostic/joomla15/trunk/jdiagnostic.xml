@@ -6,22 +6,25 @@
 	<copyright>Sam Moffatt (http://pasamio.id.au)</copyright>
 	<authorEmail>pasamio@gmail.com</authorEmail>
 	<authorUrl>pasamio.id.au</authorUrl>
-	<version>1.5</version>
+	<version>1.5.1</version>
 	<description>This components handles basic diagnostic functions via a plugin architecture</description>
 	<administration>
 		<menu>JDiagnostic</menu>
 		<files folder="administrator">
 			<filename>admin.jdiagnostic.php</filename>
-			<filename>diagnostics/ldapsettings/ldapsettings.php</filename>
-			<filename>diagnostics/ldapsettings/screens/auth.php</filename>
 			<filename>tools/ldapconfigurator/msad.php</filename>
 			<filename>tools/ldapconfigurator/generic.php</filename>
 			<filename>tools/ldapconfigurator/ldapconfigurator.xml</filename>
 			<filename>tools/ldapconfigurator/ldapconfigurator.php</filename>
 			<filename>tools/ldapconfigurator/tree.js</filename>
 			<filename>tools/ldapconfigurator/config.css</filename>
-			<filename>tools/ipchecker/net_ipv4.class.php</filename>
-			<filename>tools/ipchecker/ipchecker.php</filename>
+			<filename>tools/paramdumper/paramdumper.php</filename>			
+			<filename>diagnostics/ldapsettings/ldapsettings.php</filename>
+			<filename>diagnostics/ldapsettings/screens/auth.php</filename>
+			<filename>diagnostics/ipchecker/net_ipv4.class.php</filename>
+			<filename>diagnostics/ipchecker/ipchecker.php</filename>
+			<filename>diagnostics/usersourcechecker/usersourcechecker.php</filename>
+			<filename>diagnostics/ssochecker/ssochecker.php</filename>
 		</files>
 	</administration>
 </install>	

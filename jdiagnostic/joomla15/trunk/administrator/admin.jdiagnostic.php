@@ -50,7 +50,13 @@ function displayDefault() {
 	// :D
 	$tools = opendir(toolsPath());
 	$diags = opendir(diagnosticPath());
-	?><table class="adminTable" align="left"><tr><th align="left">Tools</th></tr><?php
+	?>
+	<p>JDiagnostics is a set of minitools and diagnostics that allow you to test individual
+	aspects and see with slightly more detail the results of operations. It is useful for
+	situations where you may not be able to accurately determine the issue.</p>
+	<p>JDiagnostics is not meant to be highly 'user friendly' and has rough edges in places,
+	which may mean error codes are outputted natively without being translated.</p>
+	<table class="adminTable" align="left"><tr><th align="left">Tools</th></tr><?php
 	$toolset = Array();
 	$diagset = Array();
 	while($tool = readdir($tools)) {
