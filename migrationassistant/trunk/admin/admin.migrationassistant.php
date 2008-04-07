@@ -22,31 +22,39 @@
 // check we're in the right place...
 defined('_JEXEC') or die('bad karma dude!');
 JToolBarHelper::title( JText::_( 'Migration Assistant' ), 'config.png' );
+define('MIGBASE',dirname(__FILE__));
+include(MIGBASE.'/includes/tasks.php');
+include(MIGBASE.'/includes/model.php');
+include(MIGBASE.'/includes/mighelper.php');
 
-if(isset($_GET['migrate']) && $_GET['migrate']) {
-	$db =& JFactory::getDBO();
-	$db->setQuery("SELECT `key`,`value` FROM #__migration_configuration");
-	$results = $db->loadAssocList();
-	if(!is_array($results)) { 
-		echo $db->getErrorMsg();
-		return;
-	}
-	$cfg = JFactory::getConfig();
-	foreach($results as $result) {
-		$cfg->setValue('config.'.$result['key'], $result['value']);
-	}
-	echo '<p>Updating your configuration file...</p>';
-	//echo '<pre>'.print_r(htmlspecialchars($cfg->toString('PHP', 'config', array('class' => 'JConfig'))),1).'</pre>';
-	
-	jimport('joomla.filesystem.file');
-	$fname = JPATH_CONFIGURATION.DS.'configuration.php';
-	if (JFile::write($fname, $cfg->toString('PHP', 'config', array('class' => 'JConfig')))) {
-		$msg = JText::_('The Configuration Details have been updated');
-	} else {
-		$msg = JText::_('ERRORCONFIGFILE');
-	}
-	echo '<p>'. $msg .'</p>';
+if(isset($_GET['migratesettings']) && $_GET['migratesettings']) {
+	migrateSettings();
+} else if(isset($_POST['fullmigrate']) && $_POST['fullmigrate']) {
+	fullMigrate();
+} else if(isset($_REQUEST['task']) && $_REQUEST['task'] == 'dumpLoad') {
+	dumpLoad();
+} else if(isset($_REQUEST['task']) && $_REQUEST['task'] == 'postMigrate') {
+	postMigrate();
 } else {
-	echo '<p>Are you sure you want to migrate settings? <a href="index.php?option=com_migrationassistant&migrate=true">Migrate Now</a></p>';
+	echo '<h1>'. JText::_('Settings Migration') .'</h1>';
+	echo '<p>'. JText::_('Use this for sites that have already been migrated with the RC7 release of the Migrator').'.</p>';
+	// are you sure, no really
+	echo '<p>'. JText::_('Are you sure you want to migrate settings?') . ' <a href="index.php?option=com_migrationassistant&migratesettings=true">'. JText::_('Migrate Settings Now').'.</a></p>';
+	echo '<br /><h1>'. JText::_('Full Migration') .'</h1>';
+	echo '<p>'. JText::_('Use this if you wish to migrate your entire site') .'.</p>';
+	echo '<dl id="system-message"><dt class="notice">WARNING</dt><dd class="notice message-fade"><ul>';
+	echo '<li>'. JText::_('Warning: This will delete all existing data in your site and any tables from installed extensions').'</li>';
+	echo '<li>'. JText::_('Any installed extensions will be removed however their files will have to be manually deleted').'</li>';
+	echo '</ul></dt></dl>';
+	echo '<p>'. JText::_('Migration Script').'</p>';
+	?>
+	<form method="post" action="index.php" enctype="multipart/form-data">
+	<input type="hidden" name="option" value="com_migrationassistant" />
+	<input class="input_box" id="migration_script" name="sqlFile" type="file" size="20"  />
+	<br/>
+	<input class="input_box" id="sqlUploaded" name="sqlUploaded" type="checkbox" /><?php echo JText::_('I have already uploaded a SQL file') ?>
+	<br/>
+	<input class="input_box" type="submit" name="fullmigrate" value="<?php echo JText::_('Migrate') ?>" />	
+	<?php
 }
 ?>

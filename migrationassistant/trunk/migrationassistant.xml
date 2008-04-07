@@ -10,7 +10,7 @@
  <copyright>Copyright (c) 2008 Toowoomba City Council/Sam Moffatt</copyright>
  <license>GNU GPL</license>
  <!--  The version string is recorded in the components table -->
- <version id="1">1.5</version>
+ <version id="2">1.5.1</version>
  <!-- The description is optional and defaults to the name -->
  <description>This component copies across the values in the migration configuration table</description>
  <administration>
@@ -20,6 +20,14 @@
   <!-- Administration Main File Copy Section -->
   <files folder="admin">
 		<filename>admin.migrationassistant.php</filename>
+		<filename>includes/bigdump.php</filename>
+		<filename>includes/mighelper.php</filename>
+		<filename>includes/model.php</filename>
+		<filename>includes/tasks.php</filename>
+		<filename>includes/index.html</filename>
+		<filename>sql/index.html</filename>
+		<filename>sql/joomla.sql</filename>
+		<filename>sql/joomla_backward.sql</filename>
 		<filename>index.html</filename>
   </files>  
  </administration>
