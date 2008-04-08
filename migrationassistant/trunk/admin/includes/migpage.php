@@ -21,9 +21,10 @@
  
 echo '<p>'. JText::_('Migrating Site').'</p>';
 ?>
+
 <iframe src="about:blank" name="migrationtarget" style="padding: 0px;  width: 100%;  height: 500px;" class="license" frameborder="0" marginwidth="25px" scrolling="none"></iframe>
 <form action="index.php" method="post" name="adminForm" id="adminForm" class="form-validate" target="migrationtarget">
-	<input type="hidden" name="task" value="dumpLoad" />
+	<input type="hidden" name="task" value="" />
 	<input type="hidden" name="option" value="com_migrationassistant" />
 	<input type="hidden" name="tmpl" value="component" />
   	<input type="hidden" name="start" value="1" />

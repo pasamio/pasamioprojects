@@ -22,6 +22,8 @@
 // check we're in the right place...
 defined('_JEXEC') or die('bad karma dude!');
 JToolBarHelper::title( JText::_( 'Migration Assistant' ), 'config.png' );
+JRequest::setVar('migration',1);
+JRequest::setVar('oldPrefix','jos_');
 define('MIGBASE',dirname(__FILE__));
 include(MIGBASE.'/includes/tasks.php');
 include(MIGBASE.'/includes/model.php');
@@ -32,8 +34,10 @@ if(isset($_GET['migratesettings']) && $_GET['migratesettings']) {
 } else if(isset($_POST['fullmigrate']) && $_POST['fullmigrate']) {
 	fullMigrate();
 } else if(isset($_REQUEST['task']) && $_REQUEST['task'] == 'dumpLoad') {
+	//echo '<script language="javascript">alert("dump Load")</script>';
 	dumpLoad();
-} else if(isset($_REQUEST['task']) && $_REQUEST['task'] == 'postMigrate') {
+} else if(isset($_REQUEST['task']) && $_REQUEST['task'] == 'postmigrate') {
+	echo 'post migrate';
 	postMigrate();
 } else {
 	echo '<h1>'. JText::_('Settings Migration') .'</h1>';
@@ -54,7 +58,9 @@ if(isset($_GET['migratesettings']) && $_GET['migratesettings']) {
 	<br/>
 	<input class="input_box" id="sqlUploaded" name="sqlUploaded" type="checkbox" /><?php echo JText::_('I have already uploaded a SQL file') ?>
 	<br/>
-	<input class="input_box" type="submit" name="fullmigrate" value="<?php echo JText::_('Migrate') ?>" />	
+	<input class="input_box" type="submit" name="fullmigrate" value="<?php echo JText::_('Migrate') ?>" />
+	<br /><br />	
 	<?php
+	print_r($_REQUEST);
 }
 ?>

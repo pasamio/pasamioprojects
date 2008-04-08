@@ -710,7 +710,7 @@ class JInstallationHelper
 		}
 
 		$db = & JFactory::getDBO(); //JInstallationHelper::getDBO($args['DBtype'], $args['DBhostname'], $args['DBuserName'], $args['DBpassword'], $args['DBname'], $args['DBPrefix']);
-
+		
 		/*
 		 * If migration perform manipulations on script file before population
 		 */

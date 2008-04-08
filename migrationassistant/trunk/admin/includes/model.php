@@ -242,12 +242,27 @@ class JInstallationModel extends JModel
 		if ( ! $this->vars )
 		{
 			// get a recursively slash stripped version of post
-			$post		= (array) JRequest::get( 'post' );
+			/*$post		= (array) JRequest::get( 'post' );
 			$postVars	= JArrayHelper::getValue( $post, 'vars', array(), 'array' );
 			$session	=& JFactory::getSession();
 			$registry	=& $session->get('registry');
 			$registry->loadArray($postVars, 'application');
-			$this->vars	= $registry->toArray('application');
+			$this->vars	= $registry->toArray('application');*/
+			$vars = Array();
+			$config =& JFactory::getConfig();
+			$vars['lang'] = 'en-GB';
+			$vars['DBcreated'] = 0;
+			$vars['DBtype'] = $config->getValue('config.dbtype');
+			$vars['DBhostname'] = $config->getValue('config.host');
+			$vars['DBuserName'] = $config->getValue('config.user');
+			$vars['DBpassword'] = $config->getValue('config.password');
+			$vars['DBname'] = $config->getValue('config.db');
+			$vars['DBPrefix'] = $config->getValue('config.dbprefix');
+			$vars['DBOld'] = 'jos_';
+			$vars['oldPrefix'] = 'jos_';
+			$this->vars = $vars;
+			//print_r($this->vars);
+			//die('<p>I found this datas! :D</p>');
 		}
 
 		return $this->vars;
@@ -281,7 +296,6 @@ class JInstallationModel extends JModel
 		if ($vars === false) {
 			$vars	= $this->getVars();
 		}
-
 		$errors 	= null;
 		$lang 		= JArrayHelper::getValue($vars, 'lang', 'en-GB');
 		$DBcreated	= JArrayHelper::getValue($vars, 'DBcreated', '0');
@@ -433,7 +447,7 @@ class JInstallationModel extends JModel
 				$dbscheme = 'sql'.DS.$type.DS.'joomla_backward.sql';
 			}
 
-			if (JInstallationHelper::populateDatabase($db, $dbscheme, $errors) > 0)
+			if (JInstallationHelper::populateDatabase($db, MIGBASE.DS.$dbscheme, $errors) > 0)
 			{
 				$this->setError(JText::_('WARNPOPULATINGDB'));
 				$this->setData('back', 'dbconfig');
@@ -457,7 +471,10 @@ class JInstallationModel extends JModel
 
 			// Handle default backend language setting. This feature is available for
 			// localized versions of Joomla! 1.5.
-			$langfiles = $mainframe->getLocaliseAdmin();
+			//$langfiles = $mainframe->getLocaliseAdmin();
+			$langfiles = array();
+			$langfiles['site'] = array();
+			$langfiles['admin'] = array();
 			if (in_array($lang, $langfiles['admin']) || in_array($lang, $langfiles['site'])) {
 				// Determine the language settings
 				$param[] = Array();
@@ -920,24 +937,24 @@ class JInstallationModel extends JModel
 				$script = $package['folder'].DS.$package['script'];
 			}
 		} else {
-			$script = MIGBASE . DS . 'sql' . DS . 'migrate.sql';
+			$script = MIGBASE . DS . 'sql' . DS . 'migration'. DS . 'migrate.sql';
 		}
 		$migration = JRequest::getVar( 'migration', 0, 'post', 'bool' );
 		/*
 		 * If migration perform manipulations on script file before population
 		 */
 		if ($migration == true) {
-					$db = & JFactory::getDBO(); //JInstallationHelper::getDBO($vars['DBtype'], $vars['DBhostname'], $vars['DBuserName'], $vars['DBpassword'], $vars['DBname'], $vars['DBPrefix']);
-		$script = JInstallationHelper::preMigrate($script, $vars, $db);
-		if ( $script == false )
-		{
-			$this->setError(JText::_( 'Script operations failed' ));
-			return false;
-		}
+			$db = & JFactory::getDBO(); //JInstallationHelper::getDBO($vars['DBtype'], $vars['DBhostname'], $vars['DBuserName'], $vars['DBpassword'], $vars['DBname'], $vars['DBPrefix']);
+			$script = JInstallationHelper::preMigrate($script, $vars, $db);
+			if ( $script == false )
+			{
+				$this->setError(JText::_( 'Script operations failed' ));
+				return false;
+			}
 		} // Disable in testing */
 		// Ensure the script is always in the same location
 		if($script != MIGBASE . DS . 'sql' . DS . 'migration' . DS . 'migrate.sql') {
-			JFile::move($script,  MIGBASE . DS . 'sql' . DS . 'migrate.sql');
+			JFile::move($script,  MIGBASE . DS . 'sql' . DS . 'migration'. DS . 'migrate.sql');
 		}
 		//$this->setData('scriptpath',$script);
 		$vars['dataloaded'] = '1';
@@ -945,7 +962,6 @@ class JInstallationModel extends JModel
 		$vars['migration'] = $migration;
 		return true;
 	}
-
 
 	function postMigrate() {
 		//$migErrors = null;

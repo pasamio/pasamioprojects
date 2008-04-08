@@ -111,7 +111,7 @@ foreach ($_REQUEST as $key => $val) {
 }
 
 // Determine filename to execute for loading...
-$filename = MIGBASE . DS . 'sql' . DS . 'migrate.sql';
+$filename = MIGBASE . DS . 'sql' . DS . 'migration' . DS . 'migrate.sql';
 $_REQUEST['fn'] = $filename;
 $error = false;
 $file = false;
@@ -154,7 +154,6 @@ if (!$error && isset ($_REQUEST["fn"])) {
 // *******************************************************************************************
 // START IMPORT SESSION HERE
 // *******************************************************************************************
-echo '<p>pie</p>';
 if (!$error && isset ($_REQUEST["start"]) && isset ($_REQUEST["foffset"]) && eregi("(\.(sql|gz|csv))$", $_REQUEST["fn"])) {
 
 	// Check start and foffset are numeric values
@@ -281,7 +280,7 @@ if (!$error && isset ($_REQUEST["start"]) && isset ($_REQUEST["foffset"]) && ere
 			if (ereg(";$", trim($dumpline)) && !$inparents) {
 				if (!TESTMODE) {
 					$db->setQuery(trim($query));
-					echo $query . '<br />';
+//					$db->Query();
 					if (!$db->Query()) {
 						echo ("<p class=\"error\">".JText::_('Error at the line') ." $linenumber: ". trim($dumpline) . "</p>\n");
 						echo ("<p>".JText::_('Query:') .  trim(nl2br(htmlentities($query))) ."</p>\n");
@@ -392,8 +391,10 @@ if (!$error && isset ($_REQUEST["start"]) && isset ($_REQUEST["foffset"]) && ere
 			// Do migration
 			if($migration) {
 			?><br />Migration will continue shortly...</div>
-						<form action="index.php" method="post" name="migrateForm" id="migrateForm" class="form-validate" target="migrationtarget">
+						<form action="index.php" method="post" name="adminForm" id="adminForm" class="form-validate" target="migrationtarget">
+	<input type="hidden" name="option" value="com_migrationassistant" />
 	<input type="hidden" name="task" value="postmigrate" />
+	<input type="hidden" name="tmpl" value="component" />
 	<input type="hidden" name="migration" value="<?php echo $migration ?>">
   	<input type="hidden" name="loadchecked" value="1" />
   	<input type="hidden" name="dataLoaded" value="1" />
@@ -403,8 +404,9 @@ if (!$error && isset ($_REQUEST["start"]) && isset ($_REQUEST["foffset"]) && ere
   	<input type="hidden" name="DBpassword" value="<?php echo $DBpassword ?>" />
   	<input type="hidden" name="DBname" value="<?php echo $DBname ?>" />
   	<input type="hidden" name="DBPrefix" value="<?php echo $DBPrefix ?>" />
-  	</form>
-  	<script language="JavaScript" type="text/javascript">window.setTimeout('submitForm(this.document.migrateForm,"postmigrate")',500);</script>
+  	</form><!-- submitForm(this.document.adminForm,"postmigrate") -->
+  	<!-- submitform("postmigrate") -->
+  	<script language="JavaScript" type="text/javascript">window.setTimeout('submitform("postmigrate")',500);</script>
 			<?php
 			} else echo '<br />'. JText::_('FINALIZEINSTALL').'</div>';
 			//echo ("<p class=\"centr\">Thank you for using this tool! Please rate <a href=\"http://www.hotscripts.com/Detailed/20922.html\" target=\"_blank\">Bigdump at Hotscripts.com</a></p>\n");
@@ -413,10 +415,10 @@ if (!$error && isset ($_REQUEST["start"]) && isset ($_REQUEST["foffset"]) && ere
 		} else {
 			if ($delaypersession != 0)
 				echo ("<p class=\"centr\">".JText::sprintf('DELAYMSG',$delaypersession)."</p>\n");
-			?><script language="JavaScript" type="text/javascript">window.setTimeout('submitForm(this.document.migrateForm,"dumpLoad")',500);</script>
+			?><script language="JavaScript" type="text/javascript">window.setTimeout('submitForm("dumpLoad")',500);</script>
 			<div id="installer"><p><?php echo JText::_('LOADSQLFILE') ?></p></div>
 
-			<form action="index.php" method="post" name="migrateForm" id="migrateForm" class="form-validate" target="migrationtarget">
+			<form action="index.php" method="post" name="adminForm" id="adminForm" class="form-validate" target="migrationtarget">
 	<input type="hidden" name="task" value="dumpLoad" />
 	<input type="hidden" name="migration" value="<?php echo $migration ?>">
   	<input type="hidden" name="loadchecked" value="1" />
@@ -448,7 +450,7 @@ if (!$error && isset ($_REQUEST["start"]) && isset ($_REQUEST["foffset"]) && ere
 	if(!isset ($_REQUEST["start"])) echo '<p>No start</p>';
 	if(!isset ($_REQUEST["foffset"])) echo '<p>No foffset</p>';
 	if(!eregi("(\.(sql|gz|csv))$", $_REQUEST["fn"])) echo "<p>Filename failed</p>";
-	echo '<p>something caused an error</p>';
+	echo '<p>Something caused an error</p>';
 }
 
 //if ($dbconnection) mysql_close();
@@ -458,6 +460,6 @@ else
 	if ($file && $gzipmode)
 		gzclose($file);
 
-ob_flush();
-die('end of the line');
+//ob_flush();
+//die('eof');
 ?>
