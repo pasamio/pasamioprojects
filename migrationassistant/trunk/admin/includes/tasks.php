@@ -24,7 +24,7 @@ function migrateSettings(){
 	$db =& JFactory::getDBO();
 	$config =& JFactory::getConfig();
 	$tables = $db->getTableList();
-	if(in_array($config->get('dbprefix').'migration_configuration',$tables)) {
+	if(in_array($config->getValue('config.dbprefix').'migration_configuration',$tables)) {
 		$db->setQuery("SELECT `key`,`value` FROM #__migration_configuration");
 		$results = $db->loadAssocList();
 		if(!is_array($results)) { 
