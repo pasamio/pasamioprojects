@@ -25,9 +25,12 @@
 		<filename>includes/model.php</filename>
 		<filename>includes/tasks.php</filename>
 		<filename>includes/index.html</filename>
+		<filename>includes/migpage.php</filename>
 		<filename>sql/index.html</filename>
-		<filename>sql/joomla.sql</filename>
-		<filename>sql/joomla_backward.sql</filename>
+		<filename>sql/mysql/joomla.sql</filename>
+		<filename>sql/mysql/joomla_backward.sql</filename>
+		<filename>sql/mysql/index.html</filename>
+		<filename>sql/migration/index.html</filename>
 		<filename>index.html</filename>
   </files>  
  </administration>
