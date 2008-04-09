@@ -16,7 +16,7 @@ defined('_VALID_MOS') or die('Restricted access');
 
 if(!count($_SESSION)) die('BLANK SESSION!');
 
-define('__VERSION_STRING', 'Migrator 1.0RC8');
+define('__VERSION_STRING', 'Migrator 1.0');
 
 define("MAX_LINE_LENGTH", 65536);
 $max_php_run = ini_get("max_execution_time");
