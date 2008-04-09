@@ -616,7 +616,8 @@ class JInstallationHelper
 	}
 
 	function findMigration( &$args ) {
-		print_r($args); jexit();
+		jexit();
+		//print_r($args); jexit();
 	}
 
 	/**

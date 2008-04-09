@@ -35,7 +35,7 @@ function migrateSettings(){
 		foreach($results as $result) {
 			$cfg->setValue('config.'.$result['key'], $result['value']);
 		}
-		echo '<p>Updating your configuration file...</p>';
+		echo '<p>'. JText::_('Updating your configuration file') .'</p>';
 		//echo '<pre>'.print_r(htmlspecialchars($cfg->toString('PHP', 'config', array('class' => 'JConfig'))),1).'</pre>';
 		
 		jimport('joomla.filesystem.file');
@@ -49,13 +49,14 @@ function migrateSettings(){
 		$msg = JText::_('Error') .': '. JText::_('Migration Configuration table not found').'. '. JText::_('Was this site migrated with Migrator RC7 or greater').'?';
 	}
 	echo '<p>'. $msg .'</p>';
+	//echo '<p><a href="index.php?option=com_migrationassistant">'. JText::_('Home') .'</a></p>';
 }
 
 
 function dumpLoad() {
 	$model	= new JInstallationModel();
 	$model->dumpLoad();
-	echo '<p>File loaded</p>';
+	//echo '<p>File loaded</p>';
 }
 
 function postmigrate() {
@@ -63,6 +64,10 @@ function postmigrate() {
 	if($model->postMigrate()) {
 		// errors!
 	}
+	$db =& JFactory::getDBO();
+	$db->setQuery("INSERT INTO #__components VALUES(0, 'Migration Assistant', 'option=com_migrationassistant', 0, 0, 'option=com_migrationassistant', 'Migration Assistant', 'com_migrationassistant', 0, 'js/ThemeOffice/component.png', 0, '', 1)");
+	$db->Query();
+	echo '<p>If you used Migrator RC7 or higher you can <a href="index.php?option=com_migrationassistant&task=migratesettings&tmpl=component">migrate your configuration.php settings</a></p>';
 }
 
 function fullMigrate() {
@@ -92,7 +97,7 @@ function fullMigrate() {
 	// put a session back
 	$sessiontable->insert($sessiontable->session_id, $sessiontable->client_id);
 	// and build a session for them
-	print_r(doUserLogIn('migrationassistant'));
+	doUserLogIn('migrationassistant');
 	// and now check what we've just gotten before moving on
 	if(!$model->checkUpload()) {
 		handleError($model);

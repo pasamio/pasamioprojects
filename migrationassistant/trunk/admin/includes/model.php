@@ -260,6 +260,7 @@ class JInstallationModel extends JModel
 			$vars['DBPrefix'] = $config->getValue('config.dbprefix');
 			$vars['DBOld'] = 'jos_';
 			$vars['oldPrefix'] = 'jos_';
+			$vars['srcEncoding'] = JRequest::getVar('srcEncoding','utf-8');
 			$this->vars = $vars;
 			//print_r($this->vars);
 			//die('<p>I found this datas! :D</p>');
@@ -550,7 +551,7 @@ class JInstallationModel extends JModel
 		}
 		if ((JRequest::getVar( 'migrationupload', 0, 'post', 'int' ) == 1) && (JRequest::getVar( 'migrationUploaded', 0, 'post', 'int' ) == 0))
 		{
-			jexit(print_r(JRequest::getVar( 'migrationUploaded', 0, 'post', 'int' )));
+			//jexit(print_r(JRequest::getVar( 'migrationUploaded', 0, 'post', 'int' )));
 			$vars['migresponse'] = JInstallationHelper::uploadSql( $vars, true );
 			$vars['dataloaded'] = '1';
 			$vars['loadchecked'] = 2;

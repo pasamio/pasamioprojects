@@ -19,7 +19,7 @@
  * @see JoomlaCode Project: http://joomlacode.org/gf/project/
  */
  
-echo '<p>'. JText::_('Migrating Site').'</p>';
+echo '<h1>'. JText::_('Migrating Site').'</h1>';
 ?>
 
 <iframe src="about:blank" name="migrationtarget" style="padding: 0px;  width: 100%;  height: 500px;" class="license" frameborder="0" marginwidth="25px" scrolling="none"></iframe>
