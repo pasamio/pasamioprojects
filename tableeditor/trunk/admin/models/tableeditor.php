@@ -100,6 +100,7 @@ class TableEditorModelTableEditor extends JModel
     	$this->loadDataFile() or die('Failed to load data');
     	$params = JRequest::getVar('params');
     	$key = $params[$this->_instance->key]; 
+    	$key = JRequest::getVar('__oldkey',$key);
     	$db =& JFactory::getDBO();
     	$this->loadDataFile() or die('Failed to load data');
     	$db->setQuery('DELETE FROM #__'. $this->_instance->table .' WHERE '. $this->_instance->key . ' = "'. $key .'"');

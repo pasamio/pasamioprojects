@@ -97,18 +97,22 @@ class TableEditorController extends JController
 
 	function save() {
 		$model = $this->getModel('tableeditor');
+		
 		$instance = $model->getTableInfo();
 		$form = new JParameter('', JPATH_COMPONENT.DS.'tables'.DS. $instance->table . '.xml');
 		$form->bind($_POST);
 		$data = $form->toArray();
 		$db =& JFactory::getDBO();
-		if($data['params'][$instance->key] != '0') {
+		$oldkey = JRequest::getVar('__oldkey',$data["params"][$instance->key]);
+		$db->setQuery('SELECT count(*) FROM #__'. $instance->table .' WHERE '. $instance->key .' = "'. $oldkey .'"');
+		$result = $db->loadResult();
+		if($data['params'][$instance->key] != '0' && $result) {
 			$set = Array();
 			foreach($data['params'] as $key=>$value) {
 				$set[] = $key .' = "'. $value .'"';
 			}
 			$db->setQuery('UPDATE #__'. $instance->table .' SET ' . implode(', ', $set) .
-				' WHERE '. $instance->key .' = "'. $data["params"][$instance->key] .'"');
+				' WHERE '. $instance->key .' = "'. $oldkey .'"');
 		} else {
 			$col = Array();
 			$val = Array();

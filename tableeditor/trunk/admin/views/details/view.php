@@ -45,6 +45,7 @@ class TableEditorViewDetails extends JView
 			$form->set($key, $value);
 		}
 		
+		$this->assignRef( 'oldkey', $cols[$instance->key]);
 		$this->assignRef( 'form', $form );
 		$this->assignRef( 'table', $instance );
 

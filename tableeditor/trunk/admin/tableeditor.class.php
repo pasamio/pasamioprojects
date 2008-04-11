@@ -19,7 +19,7 @@
  * @see JoomlaCode Project: http://joomlacode.org/gf/project/
  */
  
-if(!class_exists('JLibraryManifest')) {
+if(!class_exists('TableInstance')) {
 	class TableInstance extends JObject {
 		
 		var $name = '';

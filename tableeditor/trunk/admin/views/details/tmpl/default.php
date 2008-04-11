@@ -24,6 +24,7 @@ JHTML::_('behavior.tooltip');
     <?php echo $this->form->render() ?>
 </div>
 
+<input type="hidden" name="__oldkey" value="<?php echo $this->oldkey ?>" />
 <input type="hidden" name="option" value="com_tableeditor" />
 <input type="hidden" name="task" value="" />
 <input type="hidden" name="boxchecked" value="0" />
