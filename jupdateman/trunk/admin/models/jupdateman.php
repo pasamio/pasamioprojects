@@ -9,7 +9,7 @@
  * Created on Sep 28, 2007
  * 
  * @package JLibMan
- * @author Sam Moffatt <s.@toowoomba.qld.gov.au>
+ * @author Sam Moffatt <s.moffatt@toowoomba.qld.gov.au>
  * @author Toowoomba City Council Information Management Branch
  * @license GNU/GPL http://www.gnu.org/licenses/gpl.html
  * @copyright 2007 Toowoomba City Council/Sam Moffatt 
