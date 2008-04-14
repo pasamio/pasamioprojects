@@ -5,9 +5,9 @@
 	<!-- The following elements are optional and free of formatting conttraints -->
 	<creationDate>21-Sep-2007</creationDate>
 	<author>Sam Moffatt</author>
-	<authorEmail>S.Moffatt@toowoomba.qld.gov.au</authorEmail>
-	<authorUrl>http://www.toowoomba.qld.gov.au</authorUrl>
-	<copyright>Copyright (c) 2007 Toowoomba City Council/Sam Moffatt</copyright>
+	<authorEmail>sam.moffatt@toowoombarc.qld.gov.au</authorEmail>
+	<authorUrl>http://www.toowoombarc.qld.gov.au</authorUrl>
+	<copyright>Copyright (C) 2008 Toowoomba Regional Council/Sam Moffatt</copyright>
 	<license>GNU GPL</license>
 	<!--  The version string is recorded in the components table -->
 	<version>0.1</version>

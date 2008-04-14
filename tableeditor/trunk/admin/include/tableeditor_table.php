@@ -3,7 +3,7 @@
  * @version		$Id:plugin.php 6961 2007-03-15 16:06:53Z tcp $
  * @package		JLibMan
  * @subpackage	Installer
- * @copyright	Copyright (C) 2007 Toowoomba City Council/Sam Moffatt
+ * @copyright	Copyright (C) 2008 Toowoomba Regional Council/Sam Moffatt
  * @copyright 	Copyright (C) 2005-2007 Open Source Matters (Portions)
  * @license		GNU/GPL, see LICENSE.php
  * Joomla! is free software. This version may have been modified pursuant

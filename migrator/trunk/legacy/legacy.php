@@ -9,10 +9,10 @@
  * Created on May 25, 2007
  * 
  * @package Migrator
- * @author Sam Moffatt <s.moffatt@toowoomba.qld.gov.au>
- * @author Toowoomba City Council Information Management Department
+ * @author Sam Moffatt <sam.moffatt@toowoombarc.qld.gov.au>
+ * @author Toowoomba Regional Council Information Management Department
  * @license GNU/GPL http://www.gnu.org/licenses/gpl.html
- * @copyright 2007 Toowoomba City Council/Sam Moffatt 
+ * @copyright 2008 Toowoomba Regional Council/Sam Moffatt 
  * @version SVN: $Id:$
  * @see Project Documentation DM Number: #???????
  * @see Gaza Documentation: http://gaza.toowoomba.qld.gov.au
