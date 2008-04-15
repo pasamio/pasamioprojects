@@ -40,7 +40,7 @@
 	
 	<target name="joomla_ldap" depends="ldaptools_export,directories">
 		<echo message="Building Joomla! 1.0.x LDAP Library" />
-		<zip destfile="packages/joomla_ldap.bot.zip" basedir="joomla_ldap/joomla_ldap.bot" />
+		<zip destfile="packages/joomla.ldap.bot.zip" basedir="joomla_ldap/joomla.ldap.bot" />
 	</target>
 	
 	<target name="ldap_sso" depends="ldaptools_export,directories">

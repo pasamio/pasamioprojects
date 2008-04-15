@@ -8,6 +8,7 @@
 		<delete dir="advancedtools" includeemptydirs="true" />
 		<delete dir="jlibman" includeemptydirs="true" />
 		<delete dir="packages" includeemptydirs="true" />
+		<delete dir="jupdateman" includeemptydirs="true" />
 		<delete dir="tmp" includeemptydirs="true" />
 	</target>
 	
