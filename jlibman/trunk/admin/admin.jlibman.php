@@ -29,13 +29,14 @@ if (!$user->authorize('com_installer', 'installer')) {
 	$mainframe->redirect('index.php', JText::_('ALERTNOTAUTH'));
 }
 
-// Require the base controller
+/** Require the base controller */
 require_once( JPATH_COMPONENT.DS.'controller.php' );
 
 //require_once (JApplicationHelper::getPath('admin_html'));
+/** Grab the class */
 require_once (JApplicationHelper::getPath('class'));
 
-// Manifest Path; manifest stores information about installed extensions
+/*8 Manifest Path; manifest stores information about installed extensions */
 define('LIBRARY_MANIFEST_PATH',JPATH_ADMINISTRATOR . DS . 'components' . DS . 'com_jlibman' . DS .'manifests');
 // moved this into the library adapter
 jimport('joomla.installer.adapters.library');
@@ -44,6 +45,7 @@ jimport('joomla.installer.adapters.library');
 if($controller = JRequest::getWord('controller')) {
     $path = JPATH_COMPONENT.DS.'controllers'.DS.$controller.'.php';
     if (file_exists($path)) {
+    	/** Load Controller */
         require_once $path;
     } else {
         $controller = '';

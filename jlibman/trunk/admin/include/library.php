@@ -16,11 +16,14 @@
 // Check to ensure this file is within the rest of the framework
 defined('JPATH_BASE') or die();
 
-if(!defined('LIBRARY_MANIFEST_PATH')) define('LIBRARY_MANIFEST_PATH',JPATH_ADMINISTRATOR . DS . 'components' . DS . 'com_jlibman' . DS .'manifests');
+if(!defined('LIBRARY_MANIFEST_PATH')) {
+	/** Path to Library Manifest Location */
+	define('LIBRARY_MANIFEST_PATH',JPATH_ADMINISTRATOR . DS . 'components' . DS . 'com_jlibman' . DS .'manifests');
+}
 
 /**
  * Library installer
- *
+ * 
  * @package		JLibMan
  * @subpackage	Installer
  * @since		1.5
@@ -226,6 +229,11 @@ class JInstallerLibrary extends JObject
 }
 
 if(!class_exists('JLibraryManifest')) {
+	/**
+	 * Joomla! Library Manifest File
+	 * This copy is for the installer, ignore
+	 * @ignore
+	 */
 	class JLibraryManifest extends JObject {
 		
 		var $name = '';

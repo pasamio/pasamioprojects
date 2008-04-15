@@ -20,6 +20,10 @@
  */
  
 if(!class_exists('JLibraryManifest')) {
+	/**
+	 * Joomla! Library Manifest
+	 * @package JLibMan
+	 */
 	class JLibraryManifest extends JObject {
 		
 		var $name = '';

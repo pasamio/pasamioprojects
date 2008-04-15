@@ -29,7 +29,6 @@ jimport( 'joomla.application.component.view');
  *
  * @package    JLibMan
  */
-
 class JLibManViewJLibMan extends JView
 {
     function display($tpl = null)
