@@ -2,6 +2,7 @@
 <project name="jauthtools-10" default="build">
 	<target name="clean">
 		<echo msg="Cleaning directories" />
+		<delete dir="soapsso" includeemptydirs="true" />
 		<delete dir="httpsso" includeemptydirs="true" />
 		<delete dir="joomla_ldap" includeemptydirs="true" />
 		<delete dir="packages" includeemptydirs="true" />
