@@ -55,6 +55,13 @@
 				<include name="edirldap.*"/>
 			</fileset>
 		</tar>
+		
+		<echo msg="Building SSO IP Plugin" />
+		<tar compression="gzip" destfile="packages/plgSSOIP.tgz">
+			<fileset dir="sso/plugins/sso/">
+				<include name="ip.*" />
+			</fileset>
+		</tar>
 
 		<echo msg="Building SSO Bootstrap Plugin" />
 		<tar compression="gzip" destfile="packages/plgSystemSSO.tgz">

@@ -2,7 +2,7 @@
 <install type="package" version="1.5">
 	<name>Joomla! Authentication Tools</name>
 	<packagename>jauthtools</packagename>
-	<version>1.5.1</version>		
+	<version id="3">1.5.2</version>		
 	<url>http://sammoffatt.com.au/os</url>
 	<packager>Sam Moffatt</packager>
 	<packagerurl>http://www.sammoffatt.com.au</packagerurl>
@@ -11,10 +11,11 @@
 	<files folder="packages">
 		<file type="library" 	id="lib_jauthtools_sso" >lib_jauthtools_sso.tgz</file>
 		<file type="library" 	id="lib_jauthtools_usersource" >lib_jauthtools_usersource.tgz</file>
-		<file type="plugin" 		group="sso"			id="edirldap" >plgSSOeDirLDAP.tgz</file>
-		<file type="plugin" 		group="sso"			id="http" >plgSSOHTTP.tgz</file>
-		<file type="plugin" 		group="system"		id="sync" >plgSystemSync.tgz</file>
-		<file type="plugin"		group="system"		id="sso" >plgSystemSSO.tgz</file>
-		<file type="plugin" 		group="usersource"	id="ldap" >plgUserSourceLDAP.tgz</file>
+		<file type="plugin" 		group="sso"			id="edirldap" 	>plgSSOeDirLDAP.tgz</file>
+		<file type="plugin" 		group="sso"			id="http" 		>plgSSOHTTP.tgz</file>
+		<file type="plugin"		group="sso"			id="ip"			>plgSSOIP.tgz</file>		
+		<file type="plugin" 		group="system"		id="sync" 		>plgSystemSync.tgz</file>
+		<file type="plugin"		group="system"		id="sso" 		>plgSystemSSO.tgz</file>
+		<file type="plugin" 		group="usersource"	id="ldap" 		>plgUserSourceLDAP.tgz</file>
 	</files>
 </install>
