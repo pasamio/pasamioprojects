@@ -20,7 +20,7 @@
 class Menu_ETL extends ETLPlugin {
 	
 	var $ignorefieldlist = Array();
-	var $valuesmap = Array('params','alias','title_alias');
+	var $valuesmap = Array('params','alias','title_alias','link');
 	var $newfieldlist = Array('alias');
 	
 	function getName() { return "Menu ETL Plugin"; }
@@ -106,6 +106,19 @@ class Menu_ETL extends ETLPlugin {
 				if(!strlen(trim($value))) {
 					// Name + Menu type to ensure that the alias is unique
 					return stringURLSafe($this->_currentRecord['name'] .' '.$this->_currentRecord['menutype'].' '. $this->_currentRecord['id']);
+				}
+				return $value;
+				break;
+			case 'link':
+				if (strstr($value,'option=com_contact')) {
+					if (preg_match('/catid=(\d+)\n/',$this->_currentRecord['params'],$cat_id)) {
+						if (strstr($value,'?')) {
+							$value .= '&view=category&catid=' . $cat_id[1];
+						}
+						else {
+							$value .= '?view=category&catid=' . $cat_id[1];
+						}
+					}
 				}
 				return $value;
 				break; // could really let this drop down here but anyway				
