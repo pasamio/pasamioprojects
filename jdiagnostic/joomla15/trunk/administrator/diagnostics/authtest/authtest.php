@@ -76,8 +76,7 @@ if($username && $password) {
 	$results = $checker->validateUser($username, $password);
 	echo '<hr /><h2>Results</h2>';
 	foreach($results as $result) {
-		echo '<p>Plugin <b>'. $result['plugin'] .'</b> ' . ($result['response']->status != JAUTHENTICATE_STATUS_SUCCESS ? ' failed to authenticate the user with error <b>'. $result['response']->error_message .'</b>
-' : 'authenticated user successfully').'.</p>';
+		echo '<p>Plugin <b>'. $result['plugin'] .'</b> ' . ($result['response']->status != JAUTHENTICATE_STATUS_SUCCESS ? ' failed to authenticate the user with error <b>'. $result['response']->error_message .'</b>' : 'authenticated user successfully').'.</p>';
 
 	}
 }
