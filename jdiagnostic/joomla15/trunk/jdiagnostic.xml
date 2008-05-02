@@ -25,6 +25,7 @@
 			<filename>diagnostics/ipchecker/ipchecker.php</filename>
 			<filename>diagnostics/usersourcechecker/usersourcechecker.php</filename>
 			<filename>diagnostics/ssochecker/ssochecker.php</filename>
+			<filename>diagnostics/authtest/authtest.php</filename>
 		</files>
 	</administration>
 	<update>http://sammoffatt.com.au/update/components/jdiagnostic</update>
