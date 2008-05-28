@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<install type="library" version="1.5">
+<extension type="library" version="1.5">
 	<name>OpenID</name>
 	<libraryname>openid</libraryname>
-	<url>http://www.openidenabled.com/</url>
+	<version>1.2.2</version>
 	<description>OpenID is a way for individuals to create identity online and use it anywhere OpenID is supported. This library provides an OpenID consumer.</description>
+	<creationDate>2008</creationDate>
+	<copyright>Copyright (C) OpenID</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<author>JanRain</author>
+	<authorEmail></authorEmail>
+	<authorUrl>http://www.openidenabled.com/</authorUrl>
 	<packager>Joomla!</packager>
 	<packagerurl>http://www.joomla.org</packagerurl>
-	<update>http://www.jsitepoint.com/update/libraries/openid</update>
-	<version>1.2.2</version>
+	<update>http://update.joomla.org/libraries/openid</update>
 	<files>

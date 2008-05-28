@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<install type="library" version="1.5">
+<extension type="library" version="1.5">
 	<name>TCPDF</name>
 	<libraryname>tcpdf</libraryname>
-	<url>http://tcpdf.sourceforge.net</url>
 	<version>1.53</version>
+	<description>A PHP4 class for generating PDF files on-the-fly without requiring external extensions</description>
+	<creationDate>2008</creationDate>
+	<copyright>Copyright (C) 2008 TCPDF</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<author>TCPDF</author>
+	<authorEmail></authorEmail>
+	<authorUrl>http://tcpdf.sourceforge.net</authorUrl>
 	<packager>Joomla!</packager>
 	<packagerurl>http://www.joomla.org</packagerurl>
-	<update>http://www.jsitepoint.com/update/libraries/tcpdf</update>
-	<description>A PHP4 class for generating PDF files on-the-fly without requiring external extensions</description>	
+	<update>http://update.joomla.org/libraries/tcpdf</update>	
 	<files>

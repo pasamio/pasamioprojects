@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<install type="library" version="1.5">
+<extension type="library" version="1.5">
 	<name>XML RPC for PHP</name>
 	<libraryname>phpxmlrpc</libraryname>
-	<url>http://www.joomla.org</url>
 	<version>1.5</version>
+	<description>PHP XML RPC Library for Client and Server</description>
+	<creationDate>2008</creationDate>
+	<copyright>Copyright (C) 2008 phpxmlrpc.</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<author>Joomla</author>
+	<authorEmail>admin@joomla.org</authorEmail>
+	<authorUrl>http://www.joomla.org</authorUrl>
 	<packager>Joomla!</packager>
 	<packagerurl>http://www.joomla.org</packagerurl>
-	<update>http://www.jsitepoint.com/update/libraries/phpxmlrpc</update>
-	<description>PHP XML RPC Library for Client and Server</description>
+	<update>http://update.joomla.org/libraries/phpxmlrpc</update>
 	<files>

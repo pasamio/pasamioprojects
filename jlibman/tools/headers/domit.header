@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<install type="library" version="1.5">
+<extension type="library" version="1.5">
 	<name>DOMiT</name>
 	<libraryname>domit</libraryname>
-	<url>http://www.engageinteractive.com</url>
+	<version>1.01</version>
 	<description>DOMIT! is a non-validating, but lightweight and fast DOM parser for PHP</description>
+	<creationDate>2006</creationDate>
+	<copyright>Copyright (c) John Heinstein</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<author>John Heinstein</author>
+	<authorEmail></authorEmail>
+	<authorUrl>http://www.engageinteractive.com</authorUrl>
 	<packager>Joomla!</packager>
 	<packagerurl>http://www.joomla.org</packagerurl>
-	<update>http://www.jsitepoint.com/update/libraries/domit</update>
-	<version>1.01</version>
+	<update>http://update.joomla.org/libraries/domit</update>
 	<files>

@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<install type="library" version="1.5">
+<extension type="library" version="1.5">
 	<name>patTemplate</name>
 	<libraryname>pattemplate</libraryname>
-	<url>http://www.php-tools.net</url>
+	<version>3.1.0</version>
 	<description>patTemplate is a powerful templating engine</description>
+	<creationDate>2008</creationDate>
+	<copyright>Copyright (C) patTemplate</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<author>patTemplate</author>
+	<authorEmail></authorEmail>
+	<authorUrl>http://www.php-tools.net</authorUrl>
 	<packager>Joomla!</packager>
 	<packagerurl>http://www.joomla.org</packagerurl>
-	<update>http://www.jsitepoint.com/update/libraries/pattemplate</update>
-	<version>3.1.0</version>
+	<update>http://update.joomla.org/libraries/pattemplate</update>
 	<files>

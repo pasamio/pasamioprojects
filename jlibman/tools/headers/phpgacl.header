@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<install type="library" version="1.5">
+<extension type="library" version="1.5">
 	<name>phpGACL</name>
 	<libraryname>phpgacl</libraryname>
-	<url>http://phpgacl.sourceforge.net/</url>
 	<version>15</version>
+	<description>phpGACL - Generic Access Control List</description>
+	<creationDate>2008</creationDate>
+	<copyright>Copyright (C) phpGACL.</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<author>phpGACL</author>
+	<authorEmail></authorEmail>
+	<authorUrl>http://phpgacl.sourceforge.net/</authorUrl>
 	<packager>Joomla!</packager>
 	<packagerurl>http://www.joomla.org</packagerurl>
-	<update>http://www.jsitepoint.com/update/libraries/phpgacl</update>
-	<description>phpGACL - Generic Access Control List</description>
+	<update>http://update.joomla.org/libraries/phpgacl</update>
 	<files>

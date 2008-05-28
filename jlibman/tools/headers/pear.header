@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<install type="library" version="1.5">
+<extension type="library" version="1.5">
 	<name>PEAR</name>
 	<libraryname>pear</libraryname>
-	<url>http://pear.php.net/package/PEAR</url>
 	<version>1.4.10</version>
+	<description>PEAR, the PHP Extension and Application Repository</description>
+	<creationDate>2008</creationDate>
+	<copyright>Copyright (C) 2005 - 2008 Open Source Matters. All rights reserved.</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<author>Joomla</author>
+	<authorEmail>admin@joomla.org</authorEmail>
+	<authorUrl>http://pear.php.net/package/PEAR</authorUrl>
 	<packager>Joomla!</packager>
 	<packagerurl>http://www.joomla.org</packagerurl>
-	<update>http://www.jsitepoint.com/update/libraries/pear</update>
-	<description>PEAR, the PHP Extension and Application Repository</description>
+	<update>http://update.joomla.org/libraries/pear</update>
 	<files>

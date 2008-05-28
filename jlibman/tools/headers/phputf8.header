@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<install type="library" version="1.5">
-	<name>PHP</name>
+<extension type="library" version="1.5">
+	<name>PHP UTF-8</name>
 	<libraryname>phputf8</libraryname>
-	<url>http://www.joomla.org</url>
 	<version>1.5</version>
+	<description>PHP UTF-8 support functions</description>
+	<creationDate>2008</creationDate>
+	<copyright>Copyright (C) 2008 PHP UTF-8.</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<author>PHP UTF-8</author>
+	<authorEmail></authorEmail>
+	<authorUrl>http://sourceforge.net/projects/phputf8</authorUrl>
 	<packager>Joomla!</packager>
 	<packagerurl>http://www.joomla.org</packagerurl>
-	<update>http://www.jsitepoint.com/update/libraries/phputf8</update>
-	<description>PHP UTF-8 support functions</description>	
+	<update>http://update.joomla.org/libraries/phputf8</update>	
 	<files>

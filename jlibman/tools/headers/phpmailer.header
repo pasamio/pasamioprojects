@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<install type="library" version="1.5">
+<extension type="library" version="1.5">
 	<name>PHPMailer</name>
 	<libraryname>phpmailer</libraryname>
-	<url>http://www.joomla.org</url>
 	<version>1.5</version>
+	<description>Classes for sending email</description>
+	<creationDate>2008</creationDate>
+	<copyright>Copyright (C) PHPMailer.</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<author>PHPMailer</author>
+	<authorEmail></authorEmail>
+	<authorUrl>http://phpmailer.codeworxtech.com/</authorUrl>
 	<packager>Joomla!</packager>
 	<packagerurl>http://www.joomla.org</packagerurl>
-	<update>http://www.jsitepoint.com/update/libraries/phpmailer</update>
-	<description>Classes for sending email</description>	
+	<update>http://update.joomla.org/libraries/phpmailer</update>
 	<files>

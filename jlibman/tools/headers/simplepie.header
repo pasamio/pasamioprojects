@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<install type="library" version="1.5">
+<extension type="library" version="1.5">
 	<name>SimplePie</name>
 	<libraryname>simplepie</libraryname>
-	<url>http://simplepie.org/</url>
 	<version>1.0.1</version>
+	<description>A PHP-Based RSS and Atom Feed Framework.</description>
+	<creationDate>2008</creationDate>
+	<copyright>Copyright (C) 2008 SimplePie</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<author>SimplePie</author>
+	<authorEmail></authorEmail>
+	<authorUrl>http://simplepie.org/</authorUrl>
 	<packager>Joomla!</packager>
 	<packagerurl>http://www.joomla.org</packagerurl>
-	<update>http://www.jsitepoint.com/update/libraries/simplepie</update>
-	<description>A PHP-Based RSS and Atom Feed Framework.</description>
+	<update>http://update.joomla.org/libraries/simplepie</update>
 	<files>
