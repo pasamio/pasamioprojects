@@ -218,7 +218,7 @@ function start() {
 	
 	$link = "index2.php?option=com_migrator&act=dotask";
 	echo "<script language=\"JavaScript\" type=\"text/javascript\">window.setTimeout('location.href=\"" . $link . "\";',500);</script>\n";
-	echo '<p><a href="index2.php?option=com_migrator&act=dotask">Next &gt;&gt;&gt;</a></p>';
+	echo '<p>Note: If this page doesnt change after 5 minutes, click <a href="index2.php?option=com_migrator&act=dotask">Next &gt;&gt;&gt;</a></p>';
 	//flush();
 	//die();
 }
