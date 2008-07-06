@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<install version="1.5" type="plugin"  group="system">
+	<name>System - Canonicalization</name>
+	<author>Sam Moffatt</author>
+	<creationDate>April 2008</creationDate>
+	<copyright>(C) 2008 Sam Moffatt. All rights reserved.</copyright>
+	<license>http://www.gnu.org/copyleft/gpl.html GNU/GPL</license>
+	<authorEmail>pasamio@gmail.com</authorEmail>
+	<authorUrl>sammoffatt.com.au</authorUrl>
+	<version id="1">1.5</version>
+	<update>http://www.jsitepoint.com/update/plugins/plgsystemcanonicalization</update>
+	<description>This plugin provides canonicalization to ensure the site is accessible via only one HTTP host.</description>
+	<files>
+		<filename plugin="canonicalization">canonicalization.php</filename>
+	</files>
+	<params>
+		<param name="correct_host" default="" type="text" label="Correct Host" description="The correct hostname of this site"/>
+	</params>
+</install>
