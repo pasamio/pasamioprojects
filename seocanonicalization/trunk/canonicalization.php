@@ -42,15 +42,19 @@ class plgSystemCanonicalization extends JPlugin {
 	function onAfterInitialise() {
 		$correct_host = $this->params->get('correct_host','');
 		if(!$correct_host) return false;
-		if($_SERVER['HTTP_HOST'] == $correct_host) {
+		
+		// This should probably be filtered
+		if(@$_SERVER['HTTP_HOST'] == $correct_host || @$_SERVER['SERVER_NAME'] == $correct_host) {
 			return true;	
 		}
 		
+		// And this too
 		if(isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') {
 				$url = 'https://';
 		} else {
 				$url = 'http://';
 		}
+		// And maybe this, though
 		$url .= $correct_host . $_SERVER['REQUEST_URI'];
 		header('Location: '. $url, true, 301);
 		$app        = & JFactory::getApplication();
