@@ -19,5 +19,9 @@
 	<params addpath="/plugins/system/canonicalization">
 		<param name="correct_host" default="" type="text" label="Correct Host" description="The correct hostname of this site"/>
 		<param name="domaincheck" default="" type="domaincheck" label="Domain Checker" description="Helps to validate your settings" />
+		<param name="backend" type="radio" default="0" label="Enable Backend Canonicalization" description="Backend Canonicalization">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
 	</params>
 </install>

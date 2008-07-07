@@ -42,6 +42,10 @@ class plgSystemCanonicalization extends JPlugin {
 	function onAfterInitialise() {
 		$correct_host = $this->params->get('correct_host','');
 		if(!$correct_host) return false;
+		if(!$this->params->get('backend',0)) {
+			$app =& JFactory::getApplication();
+			if($app->isAdmin()) return false;
+		}
 		
 		// This should probably be filtered
 		if(@$_SERVER['HTTP_HOST'] == $correct_host || @$_SERVER['SERVER_NAME'] == $correct_host) {
