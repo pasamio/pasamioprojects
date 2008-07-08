@@ -52,13 +52,12 @@ class plgSystemCanonicalization extends JPlugin {
 			return true;	
 		}
 		
-		// And this too
-		if(isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') {
+		if(JURI::isSSL()) {
 				$url = 'https://';
 		} else {
 				$url = 'http://';
 		}
-		// And maybe this, though
+		// And maybe this, though probably not
 		$url .= $correct_host . $_SERVER['REQUEST_URI'];
 		header('Location: '. $url, true, 301);
 		$app        = & JFactory::getApplication();
