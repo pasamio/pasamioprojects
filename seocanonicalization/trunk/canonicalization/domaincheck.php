@@ -22,7 +22,7 @@ defined('_JEXEC') or die( 'Restricted access' );
  * @subpackage	Articles
  * @since		1.5
  */
-class JElementdomaincheck extends JElement
+class JElementDomainCheck extends JElement
 {
 	/**
 	 * Element name
