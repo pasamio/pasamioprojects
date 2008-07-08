@@ -35,8 +35,7 @@ class JElementdomaincheck extends JElement
 	{
 		JHTML::script('checker.js','plugins/system/canonicalization/', false);
 		$html = '';
-		// TODO: Replace this with the correct function call when I remember it
-		$html .= '<p><a href="javascript:validateDomain(\''. str_replace('administrator','',JURI::base()) .'\');">Check Setting</a></p>';
+		$html .= '<p><a href="javascript:validateDomain(\''. JURI::root() .'\');">Check Setting</a></p>';
 		$html .= '<iframe name="DomainCheckFrame" id="DomainCheckFrame" width="200" height="300" src="about:blank" frameborder="0" scrolling="no">You need iframe support to use this feature.</iframe>';
 		return $html;
 	}
