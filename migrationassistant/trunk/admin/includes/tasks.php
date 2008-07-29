@@ -67,7 +67,7 @@ function postmigrate() {
 	$db =& JFactory::getDBO();
 	$db->setQuery("INSERT INTO #__components VALUES(0, 'Migration Assistant', 'option=com_migrationassistant', 0, 0, 'option=com_migrationassistant', 'Migration Assistant', 'com_migrationassistant', 0, 'js/ThemeOffice/component.png', 0, '', 1)");
 	$db->Query();
-	echo '<p>If you used Migrator RC7 or higher you can <a href="index.php?option=com_migrationassistant&task=migratesettings&tmpl=component">migrate your configuration.php settings</a></p>';
+	echo '<p>'.JText::_('MIGRATORRC7HIGHER').'</p>';
 }
 
 function fullMigrate() {

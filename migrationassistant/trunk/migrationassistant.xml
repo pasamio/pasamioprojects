@@ -10,9 +10,9 @@
  <copyright>Copyright (C) 2008 Toowoomba Regional Council/Sam Moffatt</copyright>
  <license>GNU GPL</license>
  <!--  The version string is recorded in the components table -->
- <version id="2">1.5.1</version>
+ <version id="3">1.5.2</version>
  <!-- The description is optional and defaults to the name -->
- <description>This component copies across the values in the migration configuration table</description>
+ <description>This component copies across the values in the migration configuration table and can perform a full migration.</description>
  <administration>
   <!-- Administration Menu Section -->
   <menu>Migration Assistant</menu>
@@ -26,6 +26,7 @@
 		<filename>includes/tasks.php</filename>
 		<filename>includes/index.html</filename>
 		<filename>includes/migpage.php</filename>
+		<filename>includes/installation.js</filename>
 		<filename>sql/index.html</filename>
 		<filename>sql/mysql/joomla.sql</filename>
 		<filename>sql/mysql/joomla_backward.sql</filename>
@@ -33,6 +34,9 @@
 		<filename>sql/migration/index.html</filename>
 		<filename>index.html</filename>
   </files>  
+  <languages folder="admin/languages">
+		<language tag="en-GB">en-GB.com_migrationassistant.ini</language>
+  </languages>
  </administration>
  <update>http://www.jsitepoint.com/update/components/migrationassistant</update>
 </install>

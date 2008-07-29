@@ -53,14 +53,14 @@ $db_name = '';
 $db_username = '';
 $db_password = '';
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <title><?php JText::_('Migration load script') ?></title>
-<script type="text/javascript" src="includes/js/installation.js"></script>
 </head>
-<body>
+<body>-->
+<script type="text/javascript" src="<?php echo JURI::root() ?>administrator/components/com_migrationassistant/includes/installation.js"></script>
 <?php
 
 // Other Settings
@@ -390,49 +390,52 @@ if (!$error && isset ($_REQUEST["start"]) && isset ($_REQUEST["foffset"]) && ere
 			echo ("<div id=\"installer\"><p class=\"successcentr\">".JText::_('CONGRATSEOF')."</p>\n");
 			// Do migration
 			if($migration) {
-			?><br />Migration will continue shortly...</div>
-						<form action="index.php" method="post" name="adminForm" id="adminForm" class="form-validate" target="migrationtarget">
-	<input type="hidden" name="option" value="com_migrationassistant" />
-	<input type="hidden" name="task" value="postmigrate" />
-	<input type="hidden" name="tmpl" value="component" />
-	<input type="hidden" name="migration" value="<?php echo $migration ?>">
-  	<input type="hidden" name="loadchecked" value="1" />
-  	<input type="hidden" name="dataLoaded" value="1" />
-  	<input type="hidden" name="DBtype" value="<?php echo $DBtype ?>" />
-  	<input type="hidden" name="DBhostname" value="<?php echo $DBhostname ?>" />
-  	<input type="hidden" name="DBuserName" value="<?php echo $DBuserName ?>" />
-  	<input type="hidden" name="DBpassword" value="<?php echo $DBpassword ?>" />
-  	<input type="hidden" name="DBname" value="<?php echo $DBname ?>" />
-  	<input type="hidden" name="DBPrefix" value="<?php echo $DBPrefix ?>" />
-  	</form><!-- submitForm(this.document.adminForm,"postmigrate") -->
-  	<!-- submitform("postmigrate") -->
-  	<script language="JavaScript" type="text/javascript">window.setTimeout('submitform("postmigrate")',500);</script>
-			<?php
+				?><br /><?php echo JText::_('Migration will continue shortly') ?></div>
+							<form action="index.php" method="post" name="migForm" id="adminForm" class="form-validate" target="migrationtarget">
+								<input type="hidden" name="option" value="com_migrationassistant" />
+								<input type="hidden" name="task" value="postmigrate" />
+								<input type="hidden" name="tmpl" value="component" />
+								<input type="hidden" name="migration" value="<?php echo $migration ?>">
+							  	<input type="hidden" name="loadchecked" value="1" />
+							  	<input type="hidden" name="dataLoaded" value="1" />
+							  	<input type="hidden" name="DBtype" value="<?php echo $DBtype ?>" />
+							  	<input type="hidden" name="DBhostname" value="<?php echo $DBhostname ?>" />
+							  	<input type="hidden" name="DBuserName" value="<?php echo $DBuserName ?>" />
+							  	<input type="hidden" name="DBpassword" value="<?php echo $DBpassword ?>" />
+							  	<input type="hidden" name="DBname" value="<?php echo $DBname ?>" />
+							  	<input type="hidden" name="DBPrefix" value="<?php echo $DBPrefix ?>" />
+						  	</form><!-- submitForm(this.document.adminForm,"postmigrate") -->
+						  	<!-- submitform("postmigrate") -->
+						  	<script language="JavaScript" type="text/javascript">window.setTimeout('submitmigform(this.document.migForm,"postmigrate")',500);</script>
+				<?php
 			} else echo '<br />'. JText::_('FINALIZEINSTALL').'</div>';
 			//echo ("<p class=\"centr\">Thank you for using this tool! Please rate <a href=\"http://www.hotscripts.com/Detailed/20922.html\" target=\"_blank\">Bigdump at Hotscripts.com</a></p>\n");
 			//echo ("<p class=\"centr\">You can send me some bucks or euros as appreciation <a href=\"http://www.ozerov.de/bigdump.php\" target=\"_blank\">via PayPal</a></p>\n");
 			$error = true;
 		} else {
-			if ($delaypersession != 0)
+			if ($delaypersession != 0) {
 				echo ("<p class=\"centr\">".JText::sprintf('DELAYMSG',$delaypersession)."</p>\n");
-			?><script language="JavaScript" type="text/javascript">window.setTimeout('submitForm("dumpLoad")',500);</script>
+			} ?>
+			<script language="JavaScript" type="text/javascript">window.setTimeout('submitmigform(this.document.migForm,"dumpLoad")',500);</script>
 			<div id="installer"><p><?php echo JText::_('LOADSQLFILE') ?></p></div>
 
-			<form action="index.php" method="post" name="adminForm" id="adminForm" class="form-validate" target="migrationtarget">
-	<input type="hidden" name="task" value="dumpLoad" />
-	<input type="hidden" name="migration" value="<?php echo $migration ?>">
-  	<input type="hidden" name="loadchecked" value="1" />
-  	<input type="hidden" name="dataLoaded" value="1" />
-  	<input type="hidden" name="DBtype" value="<?php echo $DBtype ?>" />
-  	<input type="hidden" name="DBhostname" value="<?php echo $DBhostname ?>" />
-  	<input type="hidden" name="DBuserName" value="<?php echo $DBuserName ?>" />
-  	<input type="hidden" name="DBpassword" value="<?php echo $DBpassword ?>" />
-  	<input type="hidden" name="DBname" value="<?php echo $DBname ?>" />
-  	<input type="hidden" name="DBPrefix" value="<?php echo $DBPrefix ?>" />
-  	 <input type="hidden" name="start" value="<?php echo $linenumber ?>" />
-	<input type="hidden" name="foffset" value="<?php echo $foffset ?>" />
-	<input type="hidden" name="totalqueries" value="<?php echo $totalqueries ?>" />
-  </form>
+			<form action="index.php" method="post" name="migForm" id="adminForm" class="form-validate" target="migrationtarget">
+				<input type="hidden" name="option" value="com_migrationassistant" />
+				<input type="hidden" name="task" value="dumpLoad" />
+				<input type="hidden" name="tmpl" value="component" />
+				<input type="hidden" name="migration" value="<?php echo $migration ?>">
+			  	<input type="hidden" name="loadchecked" value="1" />
+			  	<input type="hidden" name="dataLoaded" value="1" />
+			  	<input type="hidden" name="DBtype" value="<?php echo $DBtype ?>" />
+			  	<input type="hidden" name="DBhostname" value="<?php echo $DBhostname ?>" />
+			  	<input type="hidden" name="DBuserName" value="<?php echo $DBuserName ?>" />
+			  	<input type="hidden" name="DBpassword" value="<?php echo $DBpassword ?>" />
+			  	<input type="hidden" name="DBname" value="<?php echo $DBname ?>" />
+			  	<input type="hidden" name="DBPrefix" value="<?php echo $DBPrefix ?>" />
+			  	<input type="hidden" name="start" value="<?php echo $linenumber ?>" />
+				<input type="hidden" name="foffset" value="<?php echo $foffset ?>" />
+				<input type="hidden" name="totalqueries" value="<?php echo $totalqueries ?>" />
+			</form>
   <?php
 
 				//echo ("<script language=\"JavaScript\" type=\"text/javascript\">window.setTimeout('location.href=\"" . $_SERVER["PHP_SELF"] . "?start=$linenumber&fn=" . $_REQUEST["fn"] . "&foffset=$foffset&totalqueries=$totalqueries\";',500+$delaypersession);</script>\n");
