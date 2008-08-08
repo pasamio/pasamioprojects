@@ -365,15 +365,20 @@ class Task extends mosDBTable {
 			$checkTime = mosProfiler :: getmicrotime();
 			if (($checkTime - $startTime) >= $run_time) {
 				$rows  = $i - $this->start;
-				echo '<p>' . _BBKP_PROCESSED . $rows. _BBKP_ROWS . '('. $this->start . _BBKP_TO . $i .') '. _BBKP_OF . $this->tablename . _BBKP_BEFORETIMEOUT .' ('. number_format((($i / $this->amount) * 100),2) . _BBKP_PERCOFTABLE .'; ~'. $this->tasksremaining-$rows .' '. _BBKP_TASKSREMAINING . ';</p>'; // '. _BBKP_TIMESPENT . $checkTime - $startTime .'
+				//4042917 3434450 tasks remaining
+				$max = $this->amount;
+				$remaining = $this->amount - $i;
+				echo '<p>'. _BBKP_PROCESSED . $rows .  _BBKP_ROWS . '('. $this->start . _BBKP_TO . $i .') ' . _BBKP_OF . $this->tablename . _BBKP_BEFORETIMEOUT . ' ('. number_format((($i / $this->amount) * 100),2) . _BBKP_PERCOFTABLE . ')</p>';
+				echo '<p>' . $remaining .' '. _BBKP_TASKSREMAINING . '</p>';
+				//echo '<p>' . _BBKP_PROCESSED . $rows. _BBKP_ROWS . '('. $this->start . _BBKP_TO . $i .') '. _BBKP_OF . $this->tablename . _BBKP_BEFORETIMEOUT .' ('. number_format((($i / $this->amount) * 100),2) . _BBKP_PERCOFTABLE .'; ~'. $this->tasksremaining-$rows .' '. _BBKP_TASKSREMAINING . ';</p>'; // '. _BBKP_TIMESPENT . $checkTime - $startTime .'
 				// Update this task
 				$this->start = $i + 1;
 				$this->store();
 				//die('Updating a task due to timeout');
 				$link = "index2.php?option=com_migrator&act=dotask";
-				echo '<a href="'.$link.'">'._BBKP_NEXT.'</a>';
+				echo '<div id="proceed"><a href="'.$link.'">'._BBKP_NEXT.'</a></div>';
 				// mark:javascript autoprogress
-				echo "<script language=\"JavaScript\" type=\"text/javascript\">window.setTimeout('location.href=\"" . $link . "\";',1000);</script>\n";
+				echo "<script language=\"JavaScript\" type=\"text/javascript\">window.setTimeout('location.href=\"" . $link . "\";',1000); progress('". _BBKP_NEXT ."');</script>\n";
 				echo '</div>';
 				flush();
 				exit();

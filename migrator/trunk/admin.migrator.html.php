@@ -26,7 +26,15 @@
 class HTML_migrator extends HTML_migrator_legacy {
 	
 	function formHeader() {
-		?><form action="index2.php" method="post" name="adminForm"><?php
+		?><form action="index2.php" method="post" name="adminForm">
+		<script language="javascript"><!--
+			function progress(msg) {
+				element = this.document.getElementById("proceed");
+				if(element) {
+					element.innerHTML = msg +  " (<?php echo _BBKP_AUTOPROGRESSACTIVE ?>)";
+				}
+			}
+		//--></script><?php
 	}
 	
 	function formFooter($option, $task) {
@@ -40,4 +48,3 @@ class HTML_migrator extends HTML_migrator_legacy {
 	}
 	
 }
-?>

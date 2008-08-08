@@ -16,7 +16,7 @@ defined('_VALID_MOS') or die('Restricted access');
 
 if(!count($_SESSION)) die('BLANK SESSION!');
 
-define('__VERSION_STRING', 'Migrator 1.0');
+define('__VERSION_STRING', 'Migrator 1.1');
 
 define("MAX_LINE_LENGTH", 65536);
 $max_php_run = ini_get("max_execution_time");
@@ -163,6 +163,7 @@ function create() {
 
 function start() {
 	global $mosConfig_absolute_path, $mosConfig_db, $mosConfig_dbprefix, $database;
+	HTML_migrator::formHeader();
 	$SQLDump = new JFiler(1);
 	if (!isset ($_SESSION['sql_file_time'])) {
 		$_SESSION['sql_file_time'] = time();
@@ -217,14 +218,15 @@ function start() {
 	$tasklist->listAll();
 	
 	$link = "index2.php?option=com_migrator&act=dotask";
-	echo "<script language=\"JavaScript\" type=\"text/javascript\">window.setTimeout('location.href=\"" . $link . "\";',500);</script>\n";
-	echo '<p>Note: If this page doesnt change after 5 minutes, click <a href="index2.php?option=com_migrator&act=dotask">Next &gt;&gt;&gt;</a></p>';
+	echo '<p>Note: If this page doesnt change after 5 minutes, click <div id="proceed"><a href="index2.php?option=com_migrator&act=dotask">'. _BBKP_NEXT .' &gt;&gt;&gt;</a></div></p>';
+	echo "<script language=\"JavaScript\" type=\"text/javascript\">window.setTimeout('location.href=\"" . $link . "\";',500); progress('"._BBKP_NEXT." &gt;&gt;&gt;');</script>\n";
 	//flush();
 	//die();
 }
 
 function doTask() {
 	global $mosConfig_absolute_path, $mosConfig_db, $mosConfig_dbprefix, $database;
+	HTML_migrator::formHeader();
 	$tasklist = new TaskList($database);
 	if ($tasklist->countTasks()) {
 		$SQLDump = new JFiler(1);
@@ -334,4 +336,3 @@ function install() {
 		}
 	} else mosRedirect("index2.php?option=com_migrator&act=add","Attempt to install failed.");
 }
-?>
