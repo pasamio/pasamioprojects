@@ -1,20 +1,20 @@
 <?php
 /**
- * Document Description
+ * Remote Menu Module
  * 
- * Document Long Description 
+ * Borrows a menu from another Joomla! instance 
  * 
  * PHP4/5
  *  
  * Created on Aug 8, 2008
  * 
- * @package package_name
- * @author Your Name <author@toowoombarc.qld.gov.au>
+ * @package remotemenu
+ * @author Sam Moffatt <sam.moffatt@toowoombarc.qld.gov.au>
  * @author Toowoomba Regional Council Information Management Branch
  * @license GNU/GPL http://www.gnu.org/licenses/gpl.html
- * @copyright 2008 Toowoomba Regional Council/Developer Name 
+ * @copyright 2008 Toowoomba Regional Council/Sam Moffatt 
  * @version SVN: $Id:$
- * @see http://joomlacode.org/gf/project/   JoomlaCode Project:    
+ * @see http://joomlacode.org/gf/project/pasamioprojects   JoomlaCode Project: Pasamio's Project's    
  */
  
 // no direct access
