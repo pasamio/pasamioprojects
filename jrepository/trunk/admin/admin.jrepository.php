@@ -49,7 +49,7 @@ if($controller = JRequest::getWord('controller')) {
 }
 
 // Create the controller
-$classname    = 'JLibManController'.$controller;
+$classname    = 'JRepository'.$controller;
 $controller   = new $classname( );
 
 // Perform the Request task
