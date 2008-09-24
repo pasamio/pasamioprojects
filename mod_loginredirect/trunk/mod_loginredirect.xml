@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<install type="module" version="1.5.0">
+	<name>Login Redirect</name>
+	<author>Sam Moffatt</author>
+	<creationDate>September 2008</creationDate>
+	<copyright>(C) 2008 Sam Moffatt. All rights reserved.</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<authorEmail>pasamio@gmail.com</authorEmail>
+	<authorUrl>sammoffatt.com.au</authorUrl>
+	<version>1.0.0</version>
+	<description>This module handles redirections.</description>
+	<files>
+		<filename module="mod_loginredirect">mod_loginredirect.php</filename>
+	</files>
+	<params>
+		<param name="login" type="menuitem" default="" disable="separator" label="Login Redirection URL" description="PARAMLOGINREDIRECTURL" />
+	</params>
+</install>
