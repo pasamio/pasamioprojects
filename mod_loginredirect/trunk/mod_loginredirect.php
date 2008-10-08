@@ -2,7 +2,6 @@
 /**
  * Redirects a user on a page if criteria are met
  * 
- * 
  * PHP4/5
  *  
  * Created on Sep 24, 2008
