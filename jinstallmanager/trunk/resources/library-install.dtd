@@ -16,7 +16,7 @@
 >
 <!ELEMENT description (#PCDATA)>
 <!ELEMENT library (#PCDATA)>
-<!ELEMENT files (filename | folder)*>
+<!ELEMENT files (file | filename | folder)*>
 <!ATTLIST files
 	folder CDATA #IMPLIED
 >
@@ -24,8 +24,4 @@
 <!ELEMENT filename (#PCDATA)>
 <!ELEMENT folder (#PCDATA)>
 <!ELEMENT file (#PCDATA)>
-<!ATTLIST file
-	charset NMTOKEN #FIXED "utf8"
-	driver NMTOKEN #REQUIRED
->
 
