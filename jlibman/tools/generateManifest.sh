@@ -3,11 +3,11 @@
 
 HEADERS=/home/moffats/public_html/eclipse-workspace/jlibman_tools/headers
 #OUTPUT=/home/moffats/public_html/eclipse-workspace/jlibman/admin/manifests
-OUTPUT=/home/moffats/public_html/eclipse-workspace/joomla_update/administrator/manifests/libraries
+OUTPUT=/home/moffats/public_html/eclipse-workspace/joomla_trunk/administrator/manifests/libraries
 FOOTER=/home/moffats/public_html/eclipse-workspace/jlibman_tools/data/footer.dat
 TMP=/home/moffats/public_html/eclipse-workspace/jlibman_tools/tmp
 
-STARTPOINT=/home/moffats/public_html/eclipse-workspace/joomla_update/libraries
+STARTPOINT=/home/moffats/public_html/eclipse-workspace/joomla_trunk/libraries
 ORIGINAL_PWD=`pwd`
 cd $STARTPOINT
 for i in `find * -maxdepth 0 -type d `
