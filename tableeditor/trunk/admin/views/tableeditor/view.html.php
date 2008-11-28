@@ -43,4 +43,3 @@ class TableEditorViewTableEditor extends JView
         parent::display($tpl);
     }
 }
-?>

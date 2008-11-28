@@ -108,4 +108,3 @@ class TableEditorModelTableEditor extends JModel
     	return true;
     }
 }
-?>
