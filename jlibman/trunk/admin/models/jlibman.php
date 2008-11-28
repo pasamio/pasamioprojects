@@ -42,8 +42,7 @@ class JLibManModelJLibMan extends JModel
 				$retval[] = new JLibraryManifest(LIBRARY_MANIFEST_PATH . DS . $file);
 			}
 		}
-		return $retval;
-		
+		return $retval;	
     }
     
     

@@ -232,6 +232,7 @@ if(!class_exists('JLibraryManifest')) {
 	/**
 	 * Joomla! Library Manifest File
 	 * This copy is for the installer, ignore
+	 * @package JLibMan
 	 * @ignore
 	 */
 	class JLibraryManifest extends JObject {

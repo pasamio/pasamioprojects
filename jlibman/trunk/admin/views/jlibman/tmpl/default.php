@@ -45,7 +45,7 @@ defined('_JEXEC') or die('Restricted access'); ?>
                 <a href="index.php?option=com_jlibman&view=details&package=<?php echo $row->manifest_file ?>"><?php echo $row->name ?></a>
             </td>
             <td align="center">
-            	<?php echo $row->version; // $row->version[0]->data(); ?>
+            	<?php echo $row->version; // $row->version[0]->data(); ?> 
             </td>
             <td align="center">
             	<a target="_blank" href="<?php echo $row->url ?>"><?php echo $row->url ?></a>
