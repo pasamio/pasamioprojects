@@ -1,5 +1,4 @@
 <?php
-
 /**
 * Installer file
 * Creates the AJAX Mambot
