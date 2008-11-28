@@ -72,4 +72,3 @@ class Contact_Details_ETL extends ETLPlugin {
 		}
 	}
 }
-?>
