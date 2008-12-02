@@ -18,14 +18,13 @@
  */
  
 // no direct access
-defined( '_VALID_MOS' ) or die( 'Restricted access' );
+defined( '_JEXEC' ) or die( 'Restricted access' );
 
-$_MAMBOTS->registerFunction( 'onPrepareContent', 'botAnniversaryReplacer' );
+$mainframe->registerEvent( 'onPrepareContent', 'botAnniversaryReplacer' );
 
 /**
 */
-function botAnniversaryReplacer( $published, &$row, &$params, $page=0 ) {
-	global $database, $_MAMBOTS;
+function botAnniversaryReplacer( &$row, &$params, $page=0 ) {
 	
 	// simple performance check to determine whether bot should process further
 	if ( strpos( $row->text, 'anniversary' ) === false ) {
@@ -45,7 +44,7 @@ function botAnniversaryReplacerCalculator(&$matches) {
 	$dx = date('d',time());
 	if($yx <= $parts[0]) {
 		return 0;
-	}
+	} 
 	$yeardiff = $yx - $parts[0];
 	if($mx < $parts[1]) $yeardiff--;
 	else if($dx < $parts[2]) $yeardiff--;

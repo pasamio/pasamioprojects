@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<install version="1.5.0" type="plugin" group="content">
+	<name>Content - Anniversary</name>
+	<author>Sam Moffatt</author>
+	<creationDate>December 2007</creationDate>
+	<copyright>(C) 2007 Sam Moffatt. All rights reserved.</copyright>
+	<license>http://www.gnu.org/copyleft/gpl.html GNU/GPL</license>
+	<authorEmail>pasamio@gmail.com</authorEmail>
+	<authorUrl>pasamio.id.au</authorUrl>
+	<version>1.5.0</version>
+	<description>Replaces {anniversary YYYY-MM-DD} tag in content with time between now and given position</description>
+	<files>
+		<filename plugin="anniversary">anniversary.php</filename>
+	</files>
+	<params>
+	</params>
+</install>
