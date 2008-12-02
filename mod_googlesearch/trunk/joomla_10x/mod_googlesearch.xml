@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+ <mosinstall type="module" version="1.0">
+   <name>Google Search</name>
+   <author>Sam Moffatt</author>
+   <creationDate>08/11/2006</creationDate>
+   <copyright>(C) 2006 Sam Moffatt/Toowoomba Regional Council. All rights reserved.</copyright>
+   <license>http://www.gnu.org/copyleft/gpl.html GNU/GPL</license>
+   <authorEmail>Sam.Moffatt@toowoombarc.qld.gov.au</authorEmail>
+   <authorUrl>www.toowoombarc.qld.gov.au</authorUrl>
+   <description>Simple HTML output for a Google search option</description>
+   <version>1.0</version>
+ 
+   <files>
+     <filename module="mod_googlesearch">mod_googlesearch.php</filename>
+   </files>
+   <params>
+   	<param name="search_width" type="text" default="13" label="Search Width"
+         description="The width of the search field." />
+   	<param name="search_button_text" type="text" default="Go" label="Search Button Text"
+         description="The text used on the search button." />
+   </params>
+ </mosinstall>
