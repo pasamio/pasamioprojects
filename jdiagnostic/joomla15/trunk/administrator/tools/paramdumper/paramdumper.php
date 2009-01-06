@@ -94,7 +94,7 @@ if($table) {
 					$dbo->Query();
 				}
 			}
-			$dbo->setQuery('SELECT params FROM '. $table .' WHERE '. $field .' = "'. $key .'"');
+			$dbo->setQuery('SELECT params FROM '. $dbo->nameQuote($table) .' WHERE '. $dbo->nameQuote($field) .' = '. $dbo->Quote($key));
 			$dbo->Query();
 			if($dbo->getNumRows()) {
 				$result = $dbo->loadResult();
