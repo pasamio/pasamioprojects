@@ -36,6 +36,9 @@ switch($panel) {
 	case 'msad':
 		require_once('msad.php');
 		break;
+	case 'msad-sso':
+		require_once('msad-sso.php');
+		break;
 	case 'generic':
 		require_once('generic.php');
 		break;
@@ -47,7 +50,8 @@ switch($panel) {
 <p>Please select your LDAP directory:</p>
 <p>	<select name="screen">
 		<option value="msad">Microsoft Active Directory</option>
-		<option value="generic">Generic (e.g. OpenLDAP, Fedora Directory Services, etc)</option>
+		<option value="msad-sso">Microsoft Active Directory with support for SSO</option>
+		<!-- ><option value="generic">Generic (e.g. OpenLDAP, Fedora Directory Services, etc)</option>-->
 	</select></p>
 <p><input type="submit" value="Proceed >>"></p>
 </form>
