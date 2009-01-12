@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<install type="package" version="1.5">
+	<name>Joomla! Authentication Tools - Core</name>
+	<packagename>jauthtools_core</packagename>
+	<version id="5">1.5.4</version>		
+	<url>http://sammoffatt.com.au/os</url>
+	<packager>Sam Moffatt</packager>
+	<packagerurl>http://www.sammoffatt.com.au</packagerurl>
+	<description>Joomla! Authentication Tools (JAuthTools) provides the ability to use more advanced authentication systems with Joomla! 1.5. This is the "Core" package.</description>
+	<update>http://www.jsitepoint.com/update/packages/jauthtools_core</update>
+	<files>
+		<file type="library" 	id="lib_jauthtools_sso" >lib_jauthtools_sso.tgz</file>
+		<file type="library" 	id="lib_jauthtools_usersource" >lib_jauthtools_usersource.tgz</file>
+		<file type="library" 	id="lib_jauthtools_helper" 	>lib_jauthtools_helper.tgz</file>
+	</files>
+</install>

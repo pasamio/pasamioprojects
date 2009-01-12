@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<install type="package" version="1.5">
+	<name>Joomla! Authentication Tools - SSO </name>
+	<packagename>jauthtools_sso</packagename>
+	<version id="5">1.5.4</version>		
+	<url>http://sammoffatt.com.au/os</url>
+	<packager>Sam Moffatt</packager>
+	<packagerurl>http://www.sammoffatt.com.au</packagerurl>
+	<description>Joomla! Authentication Tools (JAuthTools) provides the ability to use more advanced authentication systems with Joomla! 1.5. This is the "SSO" package.</description>
+	<update>http://www.jsitepoint.com/update/packages/jauthtools_sso</update>
+	<files>
+		<file type="component"	id="com_ssomanager"						>com_ssomanager.tgz</file>
+		<file type="module" 	id="mod_sso"						>mod_sso.tgz</file>
+		<file type="module" 	id="mod_ssohelper"					>mod_ssohelper.tgz</file>
+		<file type="plugin"		group="system"		id="sso" 		>plgSystemSSO.tgz</file>
+	</files>
+</install>

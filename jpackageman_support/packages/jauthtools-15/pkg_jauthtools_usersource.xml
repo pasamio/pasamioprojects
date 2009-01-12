@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<install type="package" version="1.5">
+	<name>Joomla! Authentication Tools - User Source</name>
+	<packagename>jauthtools_usersource</packagename>
+	<version id="5">1.5.4</version>		
+	<url>http://sammoffatt.com.au/os</url>
+	<packager>Sam Moffatt</packager>
+	<packagerurl>http://www.sammoffatt.com.au</packagerurl>
+	<description>Joomla! Authentication Tools (JAuthTools) provides the ability to use more advanced authentication systems with Joomla! 1.5. This is the "User Source" package.</description>
+	<update>http://www.jsitepoint.com/update/packages/jauthtools_usersource</update>
+	<files>
+		<file type="plugin" 		group="system"		id="sync" 		>plgSystemSync.tgz</file>
+		<file type="plugin" 		group="usersource"	id="ldap" 		>plgUserSourceLDAP.tgz</file>
+		<file type="plugin"			group="usersource"	id="session"	>plgUserSourceSession.tgz</file>
+	</files>
+</install>
