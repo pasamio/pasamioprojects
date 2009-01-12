@@ -6,7 +6,7 @@
 	<copyright>Sam Moffatt (http://pasamio.id.au)</copyright>
 	<authorEmail>pasamio@gmail.com</authorEmail>
 	<authorUrl>pasamio.id.au</authorUrl>
-	<version>1.5.2</version>
+	<version>1.5.3</version>
 	<description>This components handles basic diagnostic functions via a plugin architecture</description>
 	<administration>
 		<menu>JDiagnostic</menu>
