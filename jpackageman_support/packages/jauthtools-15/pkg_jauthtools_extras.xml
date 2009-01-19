@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<install type="package" version="1.5">
+	<name>Joomla! Authentication Tools - Extras</name>
+	<packagename>jauthtools_extra</packagename>
+	<version id="5">1.5.4</version>		
+	<url>http://sammoffatt.com.au/os</url>
+	<packager>Sam Moffatt</packager>
+	<packagerurl>http://www.sammoffatt.com.au</packagerurl>
+	<description>Joomla! Authentication Tools (JAuthTools) provides the ability to use more advanced authentication systems with Joomla! 1.5.  This is the "Extras" package.</description>
+	<update>http://www.jsitepoint.com/update/packages/jauthtools_extras</update>
+	<files folder="packages">
+		<file type="plugin" 		group="authentication"			id="advgmail" 	>plgAuthenticationAdvGMail.tgz</file>
+		<file type="plugin" 		group="authentication"			id="advldap" 	>plgAuthenticationAdvLDAP.tgz</file>
+		<file type="plugin" 		group="user"			id="ldap" 	>plgUserLDAP.tgz</file>
+		<file type="module" 		id="mod_contextlogin" 	client="site">mod_contextloginls.tgz</file>		
+	</files>
+</install>
