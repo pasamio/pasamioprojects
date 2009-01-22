@@ -43,11 +43,28 @@ switch($task) {
 	case 'postmigrate':
 		postMigrate();
 		break;
+	case 'transfer':
+		transfer();
+		break;
 	default:
 		echo '<h1>'. JText::_('Settings Migration') .'</h1>';
 		echo '<p>'. JText::_('Use this for sites that have already been migrated with the Migrator RC7 or higher').'.</p>';
 		// are you sure, no really
 		echo '<p>'. JText::_('Are you sure you want to migrate settings?') . ' <a href="index.php?option=com_migrationassistant&task=migratesettings">'. JText::_('Migrate Settings Now').'.</a></p>';
+		echo '<br /><h1>'. JText::_('Transfer Migration') .'</h1>';
+		echo '<p>'. JText::_('Use this if you wish to migrate your entire site directly via MySQL') .'</p>';
+		echo '<dl id="system-message"><dt class="notice">WARNING</dt><dd class="notice message-fade"><ul>';
+		echo '<li>'. JText::_('Warning: This will delete all existing data in your site and any tables from installed extensions').'</li>';
+		echo '<li>'. JText::_('Any installed extensions will be removed however their files will have to be manually deleted').'</li>';
+		echo '</ul></dt></dl>';
+		?>
+		<form method="post" action="index.php">
+		<p>Database name: <input type="text" name="remote_dbname" value="" /></p>
+		<input type='hidden' name="option" value="com_migrationassistant" />
+		<input type="hidden" name="task" value="transfer" />
+		<input class="input_box" type="submit" name="fullmigrate" value="<?php echo JText::_('Migrate') ?>" />
+		</form>
+		<?php
 		echo '<br /><h1>'. JText::_('Full Migration') .'</h1>';
 		echo '<p>'. JText::_('Use this if you wish to migrate your entire site') .'.</p>';
 		echo '<dl id="system-message"><dt class="notice">WARNING</dt><dd class="notice message-fade"><ul>';
@@ -69,8 +86,8 @@ switch($task) {
 		<br/>
 		<input class="input_box" type="submit" name="fullmigrate" value="<?php echo JText::_('Migrate') ?>" />
 		<br /><br />	
+		</form>
 		<?php
 		//print_r($_REQUEST);
 		break;
 }
-?>

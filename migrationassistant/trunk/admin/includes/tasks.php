@@ -169,3 +169,38 @@ function handleError(&$incoming) {
 	else $msg = print_r($incoming,1);
 	echo '<p>'. JText::_('Error'). ': '. $msg .'</p>';
 }
+
+function transfer() {
+	$remote_dbname = JRequest::getVar('remote_dbname','');
+	if($remote_dbname) {
+                $conf =& JFactory::getConfig();
+
+                $host           = $conf->getValue('config.host');
+                $user           = $conf->getValue('config.user');
+                $password       = $conf->getValue('config.password');
+                $database       = $conf->getValue('config.db');
+                $database 		= $remote_dbname;
+                $prefix         = $conf->getValue('config.dbprefix');
+                $driver         = $conf->getValue('config.dbtype');
+                $debug          = $conf->getValue('config.debug');
+
+                $options        = array ( 'driver' => $driver, 'host' => $host, 'user' => $user, 'password' => $password, 'database' => $database, 'prefix' => $prefix );
+				
+                $db =& JDatabase::getInstance( $options );
+
+                if ( JError::isError($db) ) {
+                        echo '<p>Database Error: '. $db->toString() .'</p>';
+                        return false;
+                }
+
+                if ($db->getErrorNum() > 0) {
+                        echo '<p>JDatabase::getInstance: Could not connect to database <br />' . 'migrationassistant:'.$db->getErrorNum().' - '.$db->getErrorMsg() .'</p>';
+                        return false;
+                }
+
+                $db->debug( 1 );
+                
+				echo '<p>Happy!</p>';
+				
+	}
+}
