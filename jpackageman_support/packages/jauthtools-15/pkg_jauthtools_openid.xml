@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<install type="package" version="1.5">
+	<name>Joomla! Authentication Tools - OpenID</name>
+	<packagename>jauthtools_openid</packagename>
+	<version id="5">1.5.4</version>		
+	<url>http://sammoffatt.com.au/os</url>
+	<packager>Sam Moffatt</packager>
+	<packagerurl>http://www.sammoffatt.com.au</packagerurl>
+	<description>Joomla! Authentication Tools (JAuthTools) provides the ability to use more advanced authentication systems with Joomla! 1.5. This is the "OpenID" package.</description>
+	<update>http://www.jsitepoint.com/update/packages/jauthtools_sso</update>
+	<files folder="packages">
+		<file type="library"	id="lib_jauthtools_openid"						>lib_jauthtools_openid.tgz</file>
+		<file type="plugin"		group="sso"		id="openid" 		>plgSSOOpenID.tgz</file>
+	</files>
+</install>
