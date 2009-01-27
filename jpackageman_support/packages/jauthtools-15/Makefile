@@ -82,7 +82,7 @@ sso-plugin-simplesso: common
 	
 # OpenID Plugins
 openid-plugins: common
-	cd sso/plugins/sso; tar zcf ../../../plgSSOOpenID.tgz openid.* openid
+	cd sso/plugins/sso; tar zcf ../../../packages/plgSSOOpenID.tgz openid.* openid
 
 # Token Login
 tokenlogin: common tokenlogin-library tokenlogin-component tokenlogin-ssoplugin
