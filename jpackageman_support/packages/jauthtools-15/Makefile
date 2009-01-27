@@ -1,5 +1,5 @@
 # Standard Operations
-all: common core sso sso-plugins tokenlogin usersource extras # base #sso-sampleplugins
+all: common core sso sso-plugins tokenlogin usersource extras openid-plugins # base #sso-sampleplugins
 
 
 clean:
@@ -80,6 +80,9 @@ sso-plugin-ip: common
 sso-plugin-simplesso: common
 	cd sso/plugins/sso; tar zcf ../../../packages/plgSSOSimpleSSO.tgz simplesso.*
 	
+# OpenID Plugins
+openid-plugins: common
+	cd sso/plugins/sso; tar zcf ../../../plgSSOOpenID.tgz openid.* openid
 
 # Token Login
 tokenlogin: common tokenlogin-library tokenlogin-component tokenlogin-ssoplugin
