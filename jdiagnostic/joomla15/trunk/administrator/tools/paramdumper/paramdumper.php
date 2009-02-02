@@ -90,8 +90,11 @@ if($table) {
 			if($action) {
 				$params = JRequest::getVar('params','');
 				if($params) {
-					$dbo->setQuery('UPDATE '. $dbo->nameQuote($table) .' SET params = "'. $dbo->getEscaped($params) .'" WHERE '. $dbo->nameQuote($field) .' = "'. $dbo->Quote($key) .'"');
-					$dbo->Query();
+					$dbo->setQuery('UPDATE '. $dbo->nameQuote($table) .' SET params = "'. $dbo->getEscaped($params) .'" WHERE '. $dbo->nameQuote($field) .' = '. $dbo->Quote($key));
+					if(!$dbo->Query()) {
+						JError::raiseWarning(1, $dbo->getErrorMsg());
+					}
+
 				}
 			}
 			$dbo->setQuery('SELECT params FROM '. $dbo->nameQuote($table) .' WHERE '. $dbo->nameQuote($field) .' = '. $dbo->Quote($key));
