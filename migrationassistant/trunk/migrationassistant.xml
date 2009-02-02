@@ -13,9 +13,29 @@
  <version id="3">1.5.2</version>
  <!-- The description is optional and defaults to the name -->
  <description>This component copies across the values in the migration configuration table and can perform a full migration.</description>
+	<install>
+		<queries>
+			<query>
+CREATE TABLE #__migrator_tasks (
+`taskid` INT(11) NOT NULL AUTO_INCREMENT,
+`tablename` VARCHAR(50) NOT NULL,
+`start` INT(11) NOT NULL,
+`amount` INT(11) NOT NULL,
+`total` INT(11) NOT NULL,
+PRIMARY KEY(`taskid`)
+)
+			</query>
+		</queries>
+	</install>  
+	<uninstall>
+		<queries>
+			<query>DROP TABLE #__migrator_tasks</query>
+		</queries>
+	</uninstall> 
+ 
  <administration>
   <!-- Administration Menu Section -->
-  <menu>Migration Assistant</menu>
+  <menu>Migration Assistant</menu>  
   
   <!-- Administration Main File Copy Section -->
   <files folder="admin">
