@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<install type="component" version="1.5.0">
+        <name>User Loader</name>
+        <author>Samuel Moffatt</author>
+        <creationDate>March 2006</creationDate>
+        <copyright>(C) 2006 Samuel Moffatt. All rights reserved.</copyright>
+        <license>http://www.gnu.org/copyleft/gpl.html GNU/GPL</license>
+        <authorEmail>pasamio@pasamio.id.au</authorEmail>
+        <authorUrl>pasamio.id.au</authorUrl>
+        <version>1.5.0</version>
+        <description>This component allows bulk loading of users</description>
+        <params />
+        <install />
+        <uninstall />
+        <administration>
+                <menu>User Loader</menu>
+                <files>
+                        <filename>userloader.php</filename>
+                        <filename>userloader.xml</filename>
+                </files>
+        </administration>
+</install>
+
