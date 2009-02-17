@@ -70,7 +70,7 @@ function getGroupIdFromName($name) {
 
 function displayMessage() {
 	echo 'User Loader';
-	echo '<form action="index2.php?option=com_userloader&task=load" method="post">';
+	echo '<form action="index.php?option=com_userloader&task=load" method="post">';
 	echo '<table><tr><td valign="top">Users:</td><td><textarea cols="100" rows="10" name="users" id="users"></textarea></td></tr>';
 	echo '<tr><td colspan="2"><input type="submit" value="Load Users"></td></tr></table>';
 }
