@@ -51,7 +51,6 @@ function loadUsers() {
         $crypt = JUserHelper::getCryptedPassword($user_details[4], $salt);
         $user->password = $crypt.':'.$salt;
         $user->password_clear = $user_details[4];
-        print_r($user);
 		if(!$user->save()) {
 			echo '<p>User Store Failed: '. $user->getError() .'</p>';
 		}
