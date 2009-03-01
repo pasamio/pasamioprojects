@@ -98,6 +98,7 @@ PRIMARY KEY(`taskid`)
 			<filename>plugins/users.php</filename>
 			<filename>plugins/weblinks.php</filename>
 			<filename>plugins/backlink_migration.php</filename>
+			<filename>plugins/core_acl_aro_groups.php</filename>
 		</files>
 	</administration>
 </mosinstall>
