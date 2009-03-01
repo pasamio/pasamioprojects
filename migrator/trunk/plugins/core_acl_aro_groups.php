@@ -33,7 +33,7 @@ class Core_ACL_ARO_Groups_ETL extends ETLPlugin {
 	
 	function getSQLPrologue() {
 		// We need to clean the table out because it comes pre-populated
-		return "TRUNCATE TABLE #__core_acl_aro_groups\n";
+		return "TRUNCATE TABLE #__core_acl_aro_groups;\n";
 	}
 	
 	function getSelectionPreference() {
