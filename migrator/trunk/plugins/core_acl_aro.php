@@ -17,6 +17,11 @@
  * @see JoomlaCode Project: http://joomlacode.org/gf/project/pasamioproject
  */
 
+defined('_VALID_MOS') or die('Restricted Access');
+
+/**
+ * Core ACL Access Role Object Migration
+ */
 class Core_ACL_ARO_ETL extends ETLPlugin {
 	
 	var $ignorefieldlist = Array();
@@ -41,4 +46,4 @@ class Core_ACL_ARO_ETL extends ETLPlugin {
 		}
 	}
 }
-?>
+

@@ -17,12 +17,13 @@
  * @see JoomlaCode Project: http://joomlacode.org/gf/project/pasamioproject
  */
 
+defined('_VALID_MOS') or die('Restricted Access');
+
+/**
+ * System Configuration ETL plugin
+ * This is a fake plugin that copies the com_content configuration and the global config out of the file into the db
+ */
 class Configuration_ETL extends ETLPlugin {
-	
-	var $ignorefieldlist = Array();
-	var $namesmap = Array();
-	var $valuesmap = Array();
-	
 	function getName() { return "Global Configuration ETL Plugin"; }
 	function getAssociatedTable() { return 'configuration'; }
 	function getTargetTable() { return 'various tables'; }
@@ -100,4 +101,4 @@ class Configuration_ETL extends ETLPlugin {
 		return $retval;
 	}
 }
-?>
+

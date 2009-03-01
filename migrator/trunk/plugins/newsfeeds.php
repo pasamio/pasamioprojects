@@ -17,6 +17,11 @@
  * @see JoomlaCode Project: http://joomlacode.org/gf/project/pasamioproject
  */
 
+defined('_VALID_MOS') or die('Restricted Access');
+
+/**
+ * Newsfeed ETL plugin
+ */
 class Newsfeeds_ETL extends ETLPlugin {
 	
 	var $ignorefieldlist = Array();
@@ -42,4 +47,4 @@ class Newsfeeds_ETL extends ETLPlugin {
 		}
 	}
 }
-?>
+

@@ -19,6 +19,8 @@
  * @see JoomlaCode Project: http://joomlacode.org/gf/project/
  */
 
+defined('_VALID_MOS') or die('Restricted Access');
+
 /**
  * HTML Drawing Class
  * Extends the old version for backwards compat

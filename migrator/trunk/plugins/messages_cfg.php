@@ -17,6 +17,11 @@
  * @see JoomlaCode Project: http://joomlacode.org/gf/project/pasamioproject
  */
 
+defined('_VALID_MOS') or die('Restricted Access');
+
+/**
+ * User messages configuration table migration
+ */
 class Messages_CFG_ETL extends ETLPlugin {
 	
 	var $ignorefieldlist = Array();
@@ -33,4 +38,3 @@ class Messages_CFG_ETL extends ETLPlugin {
 		}
 	}
 }
-?>

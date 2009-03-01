@@ -37,4 +37,3 @@ class TOOLBAR_migrator_legacy {
   }
 }
 
-?>

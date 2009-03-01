@@ -17,6 +17,8 @@
  * @see JoomlaCode Project: http://joomlacode.org/gf/project/pasamioproject
  */
 
+defined('_VALID_MOS') or die('Restricted Access');
+
 /**
  * Contact ETL Plugin
  */

@@ -170,4 +170,3 @@ class HTML_migrator_legacy {
   }
 
 }
-?>

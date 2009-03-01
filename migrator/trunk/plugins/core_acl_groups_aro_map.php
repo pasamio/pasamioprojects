@@ -17,11 +17,12 @@
  * @see JoomlaCode Project: http://joomlacode.org/gf/project/pasamioproject
  */
 
+defined('_VALID_MOS') or die('Restricted Access');
+
+/**
+ * Core ACL Groups Access Role Object Mapping Table
+ */
 class Core_ACL_Groups_ARO_Map_ETL extends ETLPlugin {
-	
-	var $ignorefieldlist = Array();
-	var $valuesmap = Array();
-	
 	function getName() { return "Core ACL Groups ARO Map ETL Plugin"; }
 	function getAssociatedTable() { return 'core_acl_groups_aro_map'; }
 	
@@ -33,4 +34,3 @@ class Core_ACL_Groups_ARO_Map_ETL extends ETLPlugin {
 		}
 	}
 }
-?>

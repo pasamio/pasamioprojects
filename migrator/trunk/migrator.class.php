@@ -207,7 +207,7 @@ class ETLPlugin {
 		foreach ($results as $result) {
 			$fieldvalues = '';
 			$fieldnames = '';
-			$result = array_merge($result, $newFields); // 
+			$result = array_merge($result, $newFields); // push in the new fields
 			$this->_currentRecord =& $result; // Reference this so that sub funcs might get to it
 			foreach ($result as $key => $value) {
 				if (in_array($key, $this->ignorefieldlist)) {
@@ -230,6 +230,13 @@ class ETLPlugin {
 			' VALUES ( ' . $fieldvalues . ');'."\n";
 		}
 		return $retval;
+	}
+	
+	/**
+	 * Handles if the item should be selected by default for migration or not
+	 */
+	function getSelectionPreference() {
+		return true;
 	}
 }
 
@@ -473,4 +480,4 @@ class TaskList {
 		return $this->db->loadResult();
 	}
 }
-?>
+

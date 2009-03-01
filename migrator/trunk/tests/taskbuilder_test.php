@@ -20,6 +20,8 @@
  * @see JoomlaCode Project: http://joomlacode.org/gf/project/
  */
 
+defined('_VALID_MOS') or die('Restricted Access');
+
 global $database;
 $enumerator = new ETLEnumerator();
 $plugins = $enumerator->createPlugins(true);
@@ -31,4 +33,4 @@ $tasklist->listAll();
 $database->setQuery("TRUNCATE TABLE #__migrator_tasks");
 $database->Query();
 echo '<p>Note: Task table has been truncated.</p>';
-?>
+

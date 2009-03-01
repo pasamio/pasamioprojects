@@ -33,7 +33,7 @@ PRIMARY KEY(`taskid`)
 			<filename>admin.migrator.php</filename>
 			<filename>admin.migrator.html.php</filename>
 			<filename>migrator.class.php</filename>		
-			<filename>legacy/index.htm</filename>
+			<filename>legacy/index.html</filename>
 			<filename>legacy/admin.migrator.html.php</filename>
 			<filename>legacy/legacy.php</filename>
 			<filename>legacy/class.migrator.php</filename>
@@ -42,23 +42,23 @@ PRIMARY KEY(`taskid`)
 			<filename>legacy/toolbar.migrator.php</filename>
 			<filename>legacy/toolbar.migrator.html.php</filename>
 			<filename>tables/000migrator.sql</filename>
-			<filename>tables/index.htm</filename>
+			<filename>tables/index.html</filename>
 			<filename>footer/xmigrator.sql</filename>
-			<filename>footer/index.htm</filename>			
-			<filename>resources/index.htm</filename>			
+			<filename>footer/index.html</filename>			
+			<filename>resources/index.html</filename>			
 			<filename>resources/3pd.english.html</filename>
 			<filename>resources/default.english.html</filename>
 			<filename>resources/add.english.html</filename>
 			<filename>resources/done.english.html</filename>
 			<filename>resources/purge.english.html</filename>
 			<filename>resources/unwriteable.english.html</filename>
-			<filename>tests/index.htm</filename>
+			<filename>tests/index.html</filename>
 			<filename>tests/enumerator_test.php</filename>
 			<filename>tests/plugin_test.php</filename>
 			<filename>tests/taskbuilder_test.php</filename>
 			<filename>tests/tasklist_test.php</filename>
-			<filename>dumps/index.htm</filename>
-			<filename>images/index.htm</filename>			
+			<filename>dumps/index.html</filename>
+			<filename>images/index.html</filename>			
 			<filename>images/info.png</filename>
 			<filename>images/info_f2.png</filename>
 			<filename>images/logo.png</filename>
@@ -68,7 +68,7 @@ PRIMARY KEY(`taskid`)
 			<filename>images/download.png</filename>
 			<filename>images/sql_info.png</filename>-->
 			<filename>language/english.php</filename>
-			<filename>plugins/index.htm</filename>			
+			<filename>plugins/index.html</filename>			
 			<filename>plugins/banner.php</filename>
 			<filename>plugins/bannerclient.php</filename>
 			<filename>plugins/categories.php</filename>

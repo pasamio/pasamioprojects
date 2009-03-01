@@ -100,6 +100,7 @@ defined('_VALID_MOS') or die('Restricted access');
        if ($dirhandle = opendir($dirname)){
           while (false !== ($dirfile = readdir($dirhandle))){
                 if ($dirfile != "." && $dirfile != ".."){
+                	if($dirfile == 'index.html') continue; // ignore the index.html file
                    $path_parts = pathinfo($data_path."/".$dirfile);
                    $file_ext = strtolower($path_parts["extension"]);
                    if (($file_ext == "sql") || ($file_ext == "html") || ($file_ext == "gz") || ($file_ext == "dat")) $filelist[] = $dirfile;
@@ -562,4 +563,4 @@ defined('_VALID_MOS') or die('Restricted access');
     }
   }
 
-?>
+

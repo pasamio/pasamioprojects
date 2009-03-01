@@ -17,11 +17,12 @@
  * @see JoomlaCode Project: http://joomlacode.org/gf/project/pasamioproject
  */
 
+defined('_VALID_MOS') or die('Restricted Access');
+
 /**
  * Category ETL Plugin
  */
 class Categories_ETL extends ETLPlugin {
-	
 	var $valuesmap = Array('alias');
 	var $newfieldlist = Array('alias');
 	
@@ -49,4 +50,4 @@ class Categories_ETL extends ETLPlugin {
 		}
 	}
 }
-?>
+

@@ -17,6 +17,11 @@
  * @see JoomlaCode Project: http://joomlacode.org/gf/project/pasamioproject
  */
 
+defined('_VALID_MOS') or die('Restricted Access');
+
+/**
+ * Content Frontpage ETl plugin
+ */
 class Content_Frontpage_ETL extends ETLPlugin {
 	
 	var $ignorefieldlist = Array();
@@ -33,4 +38,3 @@ class Content_Frontpage_ETL extends ETLPlugin {
 		}
 	}
 }
-?>

@@ -17,6 +17,8 @@
  * @see JoomlaCode Project: http://joomlacode.org/gf/project/pasamioproject
  */
 
+defined('_VALID_MOS') or die('Restricted Access');
+
 /**
  * Banner Client ETL Plugin
  */
@@ -27,4 +29,3 @@ class BannerClient_ETL extends ETLPlugin {
 	function getAssociatedTable() { return 'bannerclient'; }
 
 }
-?>

@@ -17,6 +17,11 @@
  * @see JoomlaCode Project: http://joomlacode.org/gf/project/pasamioproject
  */
 
+defined('_VALID_MOS') or die('Restricted Access');
+
+/**
+ * Templates Menu ETL Plugin
+ */
 class Templates_Menu_ETL extends ETLPlugin {
 	
 	var $ignorefieldlist = Array();
@@ -35,4 +40,3 @@ class Templates_Menu_ETL extends ETLPlugin {
 		}
 	}
 }
-?>

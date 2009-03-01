@@ -17,6 +17,11 @@
  * @see JoomlaCode Project: http://joomlacode.org/gf/project/pasamioproject
  */
 
+defined('_VALID_MOS') or die('Restricted Access');
+
+/**
+ * Weblinks ETL plugin
+ */
 class Weblinks_ETL extends ETLPlugin {
 	
 	var $ignorefieldlist = Array();
@@ -42,4 +47,3 @@ class Weblinks_ETL extends ETLPlugin {
 		}
 	}
 }
-?>

@@ -18,13 +18,12 @@
  * @see JoomlaCode Project: http://joomlacode.org/gf/project/pasamioproject
  */
 
+defined('_VALID_MOS') or die('Restricted Access');
+
 /**
  * Backlink Migration ETL Plugin
  */
 class Backlink_Migration_ETL extends ETLPlugin {
-	
-	var $ignorefieldlist = Array();
-	var $valuesmap = Array('');
 	
 	/**
 	 * Returns the name of the plugin
@@ -123,4 +122,4 @@ class Backlink_Migration_ETL extends ETLPlugin {
 	}	
 	
 }
-?>
+

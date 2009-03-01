@@ -20,6 +20,8 @@
  * @see JoomlaCode Project: http://joomlacode.org/gf/project/
  */
 
+defined('_VALID_MOS') or die('Restricted Access');
+
 $enumerator = new ETLEnumerator();
 echo '<pre>';
 print_r($enumerator->getPlugins(true));
@@ -27,4 +29,4 @@ echo '<hr />';
 print_r($enumerator->includePlugins(true));
 echo '<hr />';
 print_r($enumerator->createPlugins(true));
-?>
+

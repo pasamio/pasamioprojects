@@ -17,12 +17,12 @@
  * @see JoomlaCode Project: http://joomlacode.org/gf/project/pasamioproject
  */
 
+defined('_VALID_MOS') or die('Restricted Access');
+
 /**
  * Banner ETL Plugin
  */
 class Banner_ETL extends ETLPlugin {
-	
-	var $ignorefieldlist = Array();
 	var $valuesmap = Array('alias');
 	var $newfieldlist = Array('alias');
 	
@@ -50,4 +50,3 @@ class Banner_ETL extends ETLPlugin {
 		}
 	}
 }
-?>

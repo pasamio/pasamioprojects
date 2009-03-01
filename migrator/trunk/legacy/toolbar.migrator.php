@@ -29,4 +29,3 @@ switch ($task) {
     break;
 }
 
-?>

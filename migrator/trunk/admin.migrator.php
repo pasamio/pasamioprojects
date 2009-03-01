@@ -16,7 +16,7 @@ defined('_VALID_MOS') or die('Restricted access');
 
 if(!count($_SESSION)) die('BLANK SESSION!');
 
-define('__VERSION_STRING', 'Migrator 1.1');
+define('__VERSION_STRING', 'Migrator 1.2');
 
 define("MAX_LINE_LENGTH", 65536);
 $max_php_run = ini_get("max_execution_time");
@@ -58,6 +58,9 @@ elseif ($act <> '') {
 }
 $func = strtolower($func);
 switch ($func) {
+	case 'testbacklink':
+		testBacklink();
+		break;
 	case 'testetl' :
 		testETL();
 		break;
@@ -152,8 +155,10 @@ function create() {
 	echo '<tr><th></th><th>'. _BBKP_NAME . '</th><th>'. _BBKP_TRANSFORMATION .'</th></tr>';
 	foreach ($enumerator->createPlugins() as $plugin) {
 		$name = str_replace('_etl','',strtolower(get_class($plugin)));
-		$cbox = '<input type="checkbox" name="pluginCheck['.$name.']" id="pluginCheck['.$name .']" checked="true" />';
-		echo '<tr><td>'. $cbox .'</td><td>' . implode('</td><td>', explode(';', $plugin->toString())) . '</td></tr>';
+		
+		$checked = $plugin->getSelectionPreference() ? 'checked="true"' : '';
+		$cbox = '<input type="checkbox" name="pluginCheck['.$name.']" id="pluginCheck['.$name .']" '. $checked .' />';
+		echo '<tr><td>'. $cbox .'</td><td>'. implode('</td><td>', explode(';', $plugin->toString())) . '</td></tr>';
 	}
 	echo '</table>';
 	echo '<p><a href="#top" onclick="submitbutton(\'start\');">'. _BBKP_START_MIGRATION . ' &gt;&gt;</a></p>';
@@ -308,6 +313,16 @@ function done($option) {
 
 function addPlugin() {
 	displayResource('add');
+}
+
+function testBacklink() {
+	global $database;
+	include_once(migratorBasePath() .'plugins/backlink_migration.php');
+	$backlink = new Backlink_Migration_ETL($database);
+	$results = $backlink->doTransformation(1,10);
+	foreach($results as $result) {
+		echo '<p>'. $result .'</p>';	
+	}
 }
 
 function install() {

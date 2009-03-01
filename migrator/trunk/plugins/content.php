@@ -17,6 +17,8 @@
  * @see JoomlaCode Project: http://joomlacode.org/gf/project/pasamioproject
  */
 
+defined('_VALID_MOS') or die('Restricted Access');
+
 /**
  * Content ETL Plugin
  */
@@ -342,4 +344,4 @@ function botMosImage_replacer( &$matches ) {
 	$i = $GLOBALS['botMosImageCount']++;
 	return @$GLOBALS['botMosImageArray'][$i];
 }
-?>
+

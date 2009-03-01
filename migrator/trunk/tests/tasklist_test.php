@@ -20,8 +20,10 @@
  * @see JoomlaCode Project: http://joomlacode.org/gf/project/
  */
 
+defined('_VALID_MOS') or die('Restricted Access');
+
 global $database;
 $tasklist = new TaskList($database);
 $task = $tasklist->getNextTask();
 print_r($task);
-?>
+

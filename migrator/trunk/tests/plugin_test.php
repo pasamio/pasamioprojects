@@ -18,6 +18,8 @@
  * @see JoomlaCode Project: http://joomlacode.org/gf/project/pasamioprojects
  */
 
+defined('_VALID_MOS') or die('Restricted Access');
+
 $plugin_target = "modules_etl";
 
 migratorInclude('plugins/modules');
@@ -28,4 +30,4 @@ echo 'Testing Name: '.  $target->getName() . '<br />';
 echo 'Testing Table Name: '. $target->getAssociatedTable() . '<br />';
 echo 'Testing Row Count: '. $target->getEntries() . '<br />';
 echo 'Testing Transformation: <br /><pre>' . print_r($target->doTransformation(0, $target->getEntries()),1) . '</pre><br />';
-?>
+

@@ -278,4 +278,4 @@ function makeReport($option) {
 	createReport($option);
 	$_SESSION['dump_stage'] = 4;
 }
-?>
+

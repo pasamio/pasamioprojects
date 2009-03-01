@@ -17,6 +17,11 @@
  * @see JoomlaCode Project: http://joomlacode.org/gf/project/pasamioproject
  */
 
+defined('_VALID_MOS') or die('Restricted Access');
+
+/**
+ * Module Menu Assignment Table
+ */
 class Modules_Menu_ETL extends ETLPlugin {
 	
 	var $ignorefieldlist = Array();
@@ -33,4 +38,4 @@ class Modules_Menu_ETL extends ETLPlugin {
 		}
 	}
 }
-?>
+
