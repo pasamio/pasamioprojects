@@ -223,7 +223,7 @@ class ETLPlugin {
 					$fieldvalues .= ',';
 					$fieldnames .= ',';
 				}
-				$fieldvalues .= '\'' . mysql_real_escape_string($value) . '\'';
+				$fieldvalues .= '\'' . $this->db->getEscaped($value) . '\'';
 				$fieldnames .= '`' . $key . '`';
 			}
 			$retval[] = 'INSERT INTO jos_' . $this->getTargetTable() . ' (' . $fieldnames . ')' .
