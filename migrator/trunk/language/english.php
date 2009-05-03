@@ -132,3 +132,9 @@
   DEFINE('_BBKP_CREATE_TITLE', 'Select plugins to enable for migration. By default all plugins should be selected. If you experience errors with a given plugin, you can deselect it.');
   DEFINE('_BBKP_START_MIGRATION', 'Start Migration');
   DEFINE('_BBKP_AUTOPROGRESSACTIVE','Auto progress active');
+  DEFINE('__BBKP_CONFIGSTORED', 'Configuration stored');
+  DEFINE('__BBKP_CONFIGFAILED', 'Configuration failed to store');
+  DEFINE('__BBKP_CONFIGURATION', 'Configuration');
+  DEFINE('__BBKP_CONFIGURATION_INCREMENTS', 'Increments');
+  DEFINE('__BBKP_CONFIGURATION_SAVE', 'Save Configuration');
+  DEFINE('__BBKP_CONFIGURATION_INCREMENTS_DESC', 'The number of rows to extract from the database per run. The default is 1, however you may wish to use larger values. Setting this too high could result in PHP timeouts.');

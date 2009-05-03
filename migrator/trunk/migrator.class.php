@@ -363,9 +363,12 @@ class Task extends mosDBTable {
 		if($this->start == 0) {
 			if($outputfile) 	$outputfile->writeFile($plugin->getSQLPrologue()); else echo $plugin->getSQLPrologue().'<br />';
 		}
+		
+		$settings =& MigratorSettings::getInstance();
+
 		for ($i = $this->start; $i <= $this->amount; $i++) {
 			// Ensure that we get at least one through
-			$sql = $plugin->doTransformation($i,1);
+			$sql = $plugin->doTransformation($i,$settings->increments);
 			foreach($sql as $query) {
 				if($outputfile) $outputfile->writeFile($query); else echo $query.'<br />';
 			}
@@ -481,3 +484,50 @@ class TaskList {
 	}
 }
 
+/**
+ * Migrator Settings Store
+ * Hijack mosDBTable for the bind function
+ */
+class MigratorSettings extends mosDBTable {
+	/** @var int Increments to run the batches in */
+	var $increments = 1;
+	
+	/**
+	 * Constructor; loads data
+	 */
+	function MigratorSettings() {
+		global $database;
+		$database->setQuery('SELECT `params` FROM #__components WHERE `parent` = 0 AND `option` = "com_migrator"');
+		$settings = $database->loadResult();
+		if($settings) {
+			$settings = unserialize($settings);
+			if(is_array($settings)) {
+				foreach($settings as $key=>$value) {
+					if($key[0] == '_') continue; // ignore hidden stuff
+					$this->$key = $value;
+				}
+			}
+		}
+	}
+	
+	/**
+	 * Returns an instance of this class
+	 */
+	function &getInstance() {
+		static $instance = null;
+		if(is_null($instance)) {
+			$instance = new MigratorSettings();
+		}
+		return $instance;
+	}
+	
+	/**
+	 * Stores this class back to the database
+	 */
+	function store() {
+		global $database;
+		$settings = get_object_vars($this);
+		$database->setQuery('UPDATE `#__components` SET `params` = "'. $database->getEscaped(serialize($settings)) .'" WHERE `parent` = 0 AND `option` = "com_migrator"');
+		return $database->Query();
+	}
+}

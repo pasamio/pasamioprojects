@@ -1,4 +1,4 @@
-## Created using Migrator 1.2 for Joomla! 1.0
+## Created using Migrator 1.3 for Joomla! 1.0
 #
 # Migrator SQL Plugin
 #

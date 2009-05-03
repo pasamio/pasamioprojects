@@ -16,7 +16,7 @@ defined('_VALID_MOS') or die('Restricted access');
 
 if(!count($_SESSION)) die('BLANK SESSION!');
 
-define('__VERSION_STRING', 'Migrator 1.2');
+define('__VERSION_STRING', 'Migrator 1.3');
 
 define("MAX_LINE_LENGTH", 65536);
 $max_php_run = ini_get("max_execution_time");
@@ -109,6 +109,12 @@ switch ($func) {
 		break;
 	case 'add':
 		addPlugin($option);
+		break;
+	case 'config':
+		config($option);
+		break;
+	case 'config_store':
+		config_store($option);
 		break;
 	default :
 		displayResource('default');
@@ -350,4 +356,21 @@ function install() {
 				break;
 		}
 	} else mosRedirect("index2.php?option=com_migrator&act=add","Attempt to install failed.");
+}
+
+function config($option) {
+	$settings = MigratorSettings::getInstance();
+	HTML_migrator::config($option, $settings);
+}
+
+function config_store($option) {
+	$settings = MigratorSettings::getInstance();
+	$settings->bind($_POST);
+	if($settings->store()) {
+		echo '<p>'. __BBKP_CONFIGSTORED .'</p>';	
+	} else {
+		global $database;
+		echo '<p>'. __BBKP_CONFIGFAILED .': '. $database->getErrorMsg() .'</p>';
+	}
+	config($option);
 }

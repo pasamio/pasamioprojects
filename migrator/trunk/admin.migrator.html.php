@@ -49,4 +49,15 @@ class HTML_migrator extends HTML_migrator_legacy {
 		<?php
 	}
 	
+	function config($option, $settings) {
+		echo '<div align="left" style="border: 1px solid black; padding: 5px; ">';
+		echo '<form method="post" action="index2.php" name="adminForm">';
+		echo '<h1>'. __BBKP_CONFIGURATION .'</h1><br />';
+		echo '<p>'. __BBKP_CONFIGURATION_INCREMENTS .': <input type="text" name="increments" value="'. $settings->increments .'" /> ('. __BBKP_CONFIGURATION_INCREMENTS_DESC . ')</p>';
+		echo '<input type="submit" value="'. __BBKP_CONFIGURATION_SAVE .'" />';
+		HTML_migrator::formFooter($option, 'config_store');
+		echo '<p><a href="index2.php?option=com_migrator">Home</a></p>';
+		echo '</div>';
+		echo __VERSION_STRING;	
+	}
 }
