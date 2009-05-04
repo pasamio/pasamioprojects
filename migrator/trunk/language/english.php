@@ -137,4 +137,4 @@
   DEFINE('__BBKP_CONFIGURATION', 'Configuration');
   DEFINE('__BBKP_CONFIGURATION_INCREMENTS', 'Increments');
   DEFINE('__BBKP_CONFIGURATION_SAVE', 'Save Configuration');
-  DEFINE('__BBKP_CONFIGURATION_INCREMENTS_DESC', 'The number of rows to extract from the database per run. The default is 1, however you may wish to use larger values. Setting this too high could result in PHP timeouts.');
+  DEFINE('__BBKP_CONFIGURATION_INCREMENTS_DESC', 'The number of rows to extract from the database per run. The default is 10, however you may wish to use larger values. Setting this too high could result in PHP timeouts.');

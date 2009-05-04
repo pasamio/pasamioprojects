@@ -490,7 +490,7 @@ class TaskList {
  */
 class MigratorSettings extends mosDBTable {
 	/** @var int Increments to run the batches in */
-	var $increments = 1;
+	var $increments = 10;
 	
 	/**
 	 * Constructor; loads data
