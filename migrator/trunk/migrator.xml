@@ -6,7 +6,7 @@
 	<copyright>Sam Moffatt (http://pasamio.id.au)</copyright>
 	<authorEmail>pasamio@gmail.com</authorEmail>
 	<authorUrl>pasamio.id.au</authorUrl>
-	<version>1.3</version>
+	<version>1.4</version>
 	<description>This components create SQL Dumps for the migration of content from Joomla! 1.0.x to Joomla! 1.5.</description>
 	<install>
 		<queries>

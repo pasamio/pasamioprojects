@@ -366,7 +366,7 @@ class Task extends mosDBTable {
 		
 		$settings =& MigratorSettings::getInstance();
 
-		for ($i = $this->start; $i <= $this->amount; $i++) {
+		for ($i = $this->start; $i <= $this->amount; $i += $settings->increments) {
 			// Ensure that we get at least one through
 			$sql = $plugin->doTransformation($i,$settings->increments);
 			foreach($sql as $query) {
