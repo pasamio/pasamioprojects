@@ -27,6 +27,17 @@ function loadUsers() {
 		return;
 	}
 	$users = explode("\n", $users_text);
+	$sendmail = JRequest::get('sendmail', false);
+	// Pull the user language
+	$lang =& JFactory::getLanguage();
+	$lang->load('com_user');
+	$me =& JFactory::getUser();
+	
+	$app =& JFactory::getApplication();
+	$MailFrom	= $app->getCfg('mailfrom');
+	$FromName	= $app->getCfg('fromname');
+	$SiteName	= $app->getCfg('sitename');
+		
 	echo '<div align="left"><b>Loading users...</b><br>';
 	foreach($users as $user) {
 		$user_details = explode(',',$user);
@@ -47,12 +58,26 @@ function loadUsers() {
         	$user_details[4] = JUserHelper::genRandomPassword();
         	echo '<p>Assigning user password: '. $user_details[4] .'<p>';
         }
+        $user_details[4] = trim($user_details[4]);
         $salt  = JUserHelper::genRandomPassword(32);
         $crypt = JUserHelper::getCryptedPassword($user_details[4], $salt);
         $user->password = $crypt.':'.$salt;
         $user->password_clear = $user_details[4];
 		if(!$user->save()) {
 			echo '<p>User Store Failed: '. $user->getError() .'</p>';
+		} else if($sendmail) {
+			$adminEmail = $me->get('email');
+			$adminName	= $me->get('name');
+
+			$subject = JText::_('NEW_USER_MESSAGE_SUBJECT');
+			$message = sprintf ( JText::_('NEW_USER_MESSAGE'), $user->get('name'), $SiteName, JURI::root(), $user->get('username'), $user->password_clear );
+
+			if ($MailFrom != '' && $FromName != '')
+			{
+				$adminName 	= $FromName;
+				$adminEmail = $MailFrom;
+			}
+			JUtility::sendMail( $adminEmail, $adminName, $user->get('email'), $subject, $message );
 		}
 	}
 	echo '<b>Done.</b></div>';
@@ -72,7 +97,8 @@ function displayMessage() {
 	echo 'User Loader';
 	echo '<form action="index.php?option=com_userloader&task=load" method="post">';
 	echo '<table><tr><td valign="top">Users:</td><td><textarea cols="100" rows="10" name="users" id="users"></textarea></td></tr>';
-	echo '<tr><td colspan="2"><input type="submit" value="Load Users"></td></tr></table>';
+	echo '<tr><td colspan="2"><input type="checkbox" name="sendmail" />Send Emails</td></tr>';
+	echo '<tr><td colspan="2"><input type="submit" value="Load Users" /></td></tr></table>';
 }
 
 
