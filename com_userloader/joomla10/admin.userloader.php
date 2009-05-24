@@ -38,7 +38,7 @@ function loadUsers() {
         $user->gid = getGroupIdFromName($user_details[3]);
         $user->usertype = $user_details[3];
         $user->email = $user_details[2];
-        $user->password = $user_details[4];
+        $user->password = trim($user_details[4]);
 		$user->store();
 	}
 	echo '<b>Done.</b></div>';

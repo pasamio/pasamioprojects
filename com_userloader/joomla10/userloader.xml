@@ -7,7 +7,7 @@
         <license>http://www.gnu.org/copyleft/gpl.html GNU/GPL</license>
         <authorEmail>pasamio@pasamio.id.au</authorEmail>
         <authorUrl>pasamio.id.au</authorUrl>
-        <version>1.0.0</version>
+        <version>1.0.1</version>
         <description>This component allows bulk loading of users</description>
         <params />
         <install />
