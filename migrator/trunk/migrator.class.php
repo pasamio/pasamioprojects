@@ -366,7 +366,7 @@ class Task extends mosDBTable {
 		
 		$settings =& MigratorSettings::getInstance();
 
-		for ($i = $this->start; $i <= $this->amount; $i += $settings->increments) {
+		for ($i = $this->start; $i < $this->amount; $i += $settings->increments) {
 			// Ensure that we get at least one through
 			$sql = $plugin->doTransformation($i,$settings->increments);
 			foreach($sql as $query) {
@@ -382,7 +382,7 @@ class Task extends mosDBTable {
 				echo '<p>' . $remaining .' '. _BBKP_TASKSREMAINING . '</p>';
 				//echo '<p>' . _BBKP_PROCESSED . $rows. _BBKP_ROWS . '('. $this->start . _BBKP_TO . $i .') '. _BBKP_OF . $this->tablename . _BBKP_BEFORETIMEOUT .' ('. number_format((($i / $this->amount) * 100),2) . _BBKP_PERCOFTABLE .'; ~'. $this->tasksremaining-$rows .' '. _BBKP_TASKSREMAINING . ';</p>'; // '. _BBKP_TIMESPENT . $checkTime - $startTime .'
 				// Update this task
-				$this->start = $i + 1;
+				$this->start = $i + $settings->increments;
 				$this->store();
 				//die('Updating a task due to timeout');
 				$link = "index2.php?option=com_migrator&act=dotask";
