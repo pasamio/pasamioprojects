@@ -1,13 +1,13 @@
 <?xml version="1.0" ?>
-<install type="component" version="1.5">
+<install type="component" version="1.5" method="upgrade">
 	<name>JUpdateMan</name>
 	<author>Samuel Moffatt</author>
 	<creationDate>January 2008</creationDate>
-	<copyright>(C) 2006 Samuel Moffatt. All rights reserved.</copyright>
+	<copyright>(C) 2009 Samuel Moffatt</copyright>
 	<license>http://www.gnu.org/copyleft/gpl.html GNU/GPL</license>
-	<authorEmail>pasamio@pasamio.id.au</authorEmail>
+	<authorEmail>pasamio@gmail.com</authorEmail>
 	<authorUrl>pasamio.id.au</authorUrl>
-	<version>1.5.0</version>
+	<version>1.5.1</version>
 	<description>This component automates updating a remote Joomla! installation</description>
 	<params />
 	<install />
@@ -32,6 +32,7 @@
 			<filename>step1.php</filename>
 			<filename>step2.php</filename>
 			<filename>step3.php</filename>
+			<filename>config.xml</filename>
 		</files>
 	</administration>
 </install>

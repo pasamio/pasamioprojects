@@ -16,6 +16,7 @@ defined( '_JEXEC' ) or die( 'Direct Access to this location is not allowed.' );
 
 	$url = "http://pasamio.id.au/packages/jupgrader.xml";
 	$url = "http://jsitepoint.com/update/packages/joomla/update.xml";
+	$url = "http://jsitepoint.com/update/packages/joomla/update2.xml";
 	$target = JPATH_SITE . '/cache/jupgrader.xml';
 	$result = downloadFile($url,$target);
 	if(is_object( $result )) {
@@ -26,7 +27,7 @@ defined( '_JEXEC' ) or die( 'Direct Access to this location is not allowed.' );
 	// Yay! file downloaded! Processing time :(	
 	//$xmlDoc = new DOMIT_Lite_Document();
     //    $xmlDoc->resolveErrors( true );
-	$xmlDoc =& JFactory::getXMLParser(); //  domit 1.5 style
+//	$xmlDoc =& JFactory::getXMLParser(); //  domit 1.5 style
 	$xmlDoc = new JSimpleXML();
 
     if (!$xmlDoc->loadFile( $target )) {

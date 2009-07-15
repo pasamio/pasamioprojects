@@ -35,7 +35,7 @@ class JUpdateManViewJUpdateMan extends JView
     function display($tpl = null)
     {
     	JToolBarHelper::title( JText::_( 'Joomla! Update Manager' ), 'install.png' );
-    	
+    	JToolBarHelper::preferences('com_jupdateman', '550');
         $model =& $this->getModel();
 		//$libs = $model->listLibraries();
 		//$this->assignRef( 'items', $libs);

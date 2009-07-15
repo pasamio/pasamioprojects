@@ -19,6 +19,7 @@
 defined('_JEXEC') or die('Restricted access'); ?>
 	<div align="left">
 		<p>Welcome to the Joomla! Update Manager component. My job is to guide you through upgrading your Joomla! installation.</p>
+		<p>If you have a proxy server you will need to enter your details in the preference screen.</p>
 		<p>This is a simple step by step process, which will hopefully be as simple as possible. This is:<br>
 			<ol>
 				<li>Download the Update XML File and select your package file.</li>
