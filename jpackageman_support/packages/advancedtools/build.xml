@@ -38,6 +38,7 @@
 	</target>
 	
 	<target name="advancedtoolspackage" depends="packages, librarymanager, advmenumodule">
+		<delete file="packages/pkg_advtools.tgz" />
 		<tar compression="gzip" destfile="packages/pkg_advtools.tgz" >
 			<fileset dir=".">
 				<include name="pkg_advtools.xml" />
