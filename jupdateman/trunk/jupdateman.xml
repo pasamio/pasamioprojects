@@ -17,7 +17,7 @@
 	<administration>
 		<menu>Update Manager</menu>
 		<files folder="admin">
-			<folder>library</folder>
+			<folder>libraries</folder>
 			<folder>language</folder>
 			<folder>views</folder>
 			<folders>models</folders>
