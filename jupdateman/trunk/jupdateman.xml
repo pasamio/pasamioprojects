@@ -20,7 +20,7 @@
 			<folder>libraries</folder>
 			<folder>language</folder>
 			<folder>views</folder>
-			<folders>models</folders>
+			<folder>models</folder>
 			<filename>admin.jupdateman.html.php</filename>
 			<filename>admin.jupdateman.php</filename>
 			<filename>jupdateman.class.php</filename>
