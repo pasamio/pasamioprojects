@@ -99,8 +99,9 @@ class JStream extends JObject
 	 * @param resource Context to use when opening
 	 * @param bool Use a prefix to open the file
 	 * @param bool Filename is a relative path (if false, strips JPATH_ROOT to make it relative)
+	 * @param bool Detect the processing method for the file and use the appropriate function to handle output automatically
 	 */
-	function open($filename, $mode='r', $use_include_path=false, $context=null, $use_prefix=true, $relative=false, $detectprocessingmode=true)
+	function open($filename, $mode='r', $use_include_path=false, $context=null, $use_prefix=true, $relative=false, $detectprocessingmode=false)
 	{
 		$filename = $this->_getFilename($filename, $mode, $use_prefix, $relative);
 		if(!$filename)

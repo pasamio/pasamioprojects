@@ -60,7 +60,7 @@ class DownloadercURL extends JAdapterInstance {
 		if (!$output_handle)
 		{
 			$error_object->number = 43;
-			$error_object->message = 'Local output opening failed: ' . $stream->getError();
+			$error_object->message = 'Local output opening failed: ' . $output_stream->getError();
 			ini_set('track_errors',$track_errors);
 			return $error_object;
 		}
