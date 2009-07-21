@@ -98,6 +98,7 @@ $fulldetails 				= new stdClass();
 $fulldetails->url 			= $fullpackageattr['url'];
 $fulldetails->filename 		= $fullpackageattr['filename'];
 $fulldetails->filesize 		= $fullpackageattr['filesize'];
+$fulldetails->md5			= $fullpackageattr['md5'];
 
 // Find the patch package
 $patches_root = $root->getElementByPath( 'patches', 1 );
@@ -112,6 +113,7 @@ if (!is_null( $patches_root ) ) {
 				$patchdetails->url = $patchattr['url'];
 				$patchdetails->filename = $patchattr['filename'];
 				$patchdetails->filesize = $patchattr['filesize'];
+				$patchdetails->md5		= $patchattr['md5'];
 				break;
 			}
 		}
