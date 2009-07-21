@@ -1,16 +1,15 @@
 <?php
 /**
- * View: JLibMan Default Template 
+ * View: JUpdateMan Default Template 
  * 
  * PHP4/5
  *  
  * Created on Sep 28, 2007
  * 
- * @package JLibMan
- * @author Sam Moffatt <sam.moffatt@toowoombarc.qld.gov.au>
- * @author Toowoomba Regional Council Information Management Branch
+ * @package JUpdateMan
+ * @author Sam Moffatt <pasamio@gmail.com>
  * @license GNU/GPL http://www.gnu.org/licenses/gpl.html
- * @copyright 2008 Toowoomba Regional Council/Sam Moffatt 
+ * @copyright 2009 Sam Moffatt 
  * @version SVN: $Id:$
  * @see JoomlaCode Project: http://joomlacode.org/gf/project/pasamioprojects
  */
@@ -27,7 +26,7 @@ defined('_JEXEC') or die('Restricted access'); ?>
 				<li>Completed message</li>
 			</ol>
 			<br>
-			So lets continue our travels and <a href="index2.php?option=com_jupdateman&task=step1">download the update file >>></a>
+			So lets continue our travels and <a href="index.php?option=com_jupdateman&task=step1">download the update file &gt;&gt;&gt;</a>
 		</p>
 		</div>
 		<!--
@@ -56,7 +55,7 @@ defined('_JEXEC') or die('Restricted access'); ?>
         <tr class="<?php echo "row$k"; ?>">
 
             <td>
-                <a href="index.php?option=com_jlibman&view=details&package=<?php echo $row->manifest_file ?>"><?php echo $row->name ?></a>
+                <a href="index.php?option=com_JUpdateMan&view=details&package=<?php echo $row->manifest_file ?>"><?php echo $row->name ?></a>
             </td>
             <td align="center">
             	<?php echo $row->version; // $row->version[0]->data(); ?>
@@ -72,9 +71,9 @@ defined('_JEXEC') or die('Restricted access'); ?>
     </table>
 </div>
 
-<input type="hidden" name="option" value="com_jlibman" />
+<input type="hidden" name="option" value="com_JUpdateMan" />
 <input type="hidden" name="task" value="" />
 <input type="hidden" name="boxchecked" value="0" />
-<input type="hidden" name="controller" value="jlibman" />
+<input type="hidden" name="controller" value="JUpdateMan" />
 </form>
 -->

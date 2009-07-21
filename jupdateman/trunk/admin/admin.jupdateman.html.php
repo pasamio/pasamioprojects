@@ -8,5 +8,3 @@ class HTML_jupgrader {
 	}
 }	
 
-
-?>

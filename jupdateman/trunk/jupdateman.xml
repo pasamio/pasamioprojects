@@ -17,13 +17,10 @@
 	<administration>
 		<menu>Update Manager</menu>
 		<files folder="admin">
-			<filename>models/index.html</filename>
-			<filename>models/jupdateman.php</filename>
-			<filename>views/index.html</filename>
-			<filename>views/jupdateman/index.html</filename>
-			<filename>views/jupdateman/view.html.php</filename>
-			<filename>views/jupdateman/tmpl/index.html</filename>
-			<filename>views/jupdateman/tmpl/default.php</filename>
+			<folder>library</folder>
+			<folder>language</folder>
+			<folder>views</folder>
+			<folders>models</folders>
 			<filename>admin.jupdateman.html.php</filename>
 			<filename>admin.jupdateman.php</filename>
 			<filename>jupdateman.class.php</filename>

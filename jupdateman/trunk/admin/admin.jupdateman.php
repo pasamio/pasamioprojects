@@ -35,6 +35,9 @@ if($controller = JRequest::getWord('controller')) {
 $classname    = 'JUpdateManController'.$controller;
 $controller   = new $classname( );
 
+$lang =& JFactory::getLanguage();
+$lang->load('com_installer'); // borrow the installer language files :D
+
 // Perform the Request task
 $controller->execute( JRequest::getVar( 'task' ) );
 

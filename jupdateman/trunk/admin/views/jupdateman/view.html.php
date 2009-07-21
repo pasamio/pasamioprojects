@@ -1,24 +1,21 @@
 <?php
 /**
  * Document Description
- * 
- * Document Long Description 
- * 
+ *
+ * Document Long Description
+ *
  * PHP4/5
- *  
+ *
  * Created on Sep 28, 2007
- * 
- * @package JLibMan
- * @author Sam Moffatt <sam.moffatt@toowoombarc.qld.gov.au>
- * @author Toowoomba Regional Council Information Management Branch
+ *
+ * @package JUpdateMan
+ * @author Sam Moffatt <pasamio@gmail.com>
  * @license GNU/GPL http://www.gnu.org/licenses/gpl.html
- * @copyright 2008 Toowoomba Regional Council/Sam Moffatt 
+ * @copyright 2009 Sam Moffatt
  * @version SVN: $Id:$
- * @see Project Documentation DM Number: #???????
- * @see Gaza Documentation: http://gaza.toowoomba.qld.gov.au
  * @see JoomlaCode Project: http://joomlacode.org/gf/project/
  */
- 
+
 // no direct access
 defined( '_JEXEC' ) or die( 'Restricted access' );
 
@@ -27,20 +24,17 @@ jimport( 'joomla.application.component.view');
 /**
  * HTML View class for the HelloWorld Component
  *
- * @package    JLibMan
+ * @package    JUpdateMan
  */
 
 class JUpdateManViewJUpdateMan extends JView
 {
-    function display($tpl = null)
-    {
-    	JToolBarHelper::title( JText::_( 'Joomla! Update Manager' ), 'install.png' );
-    	JToolBarHelper::preferences('com_jupdateman', '550');
-        $model =& $this->getModel();
-		//$libs = $model->listLibraries();
-		//$this->assignRef( 'items', $libs);
-        parent::display($tpl);
-        
-    }
+	function display($tpl = null)
+	{
+		JToolBarHelper::title( JText::_( 'Joomla! Update Manager' ), 'install.png' );
+		JToolBarHelper::preferences('com_jupdateman', '300');
+		$model =& $this->getModel();
+		parent::display($tpl);
+	}
 }
-?>
+
