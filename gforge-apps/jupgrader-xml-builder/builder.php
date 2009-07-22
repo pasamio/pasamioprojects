@@ -34,8 +34,14 @@ if($last) {
 	$package = $last;
 	header('Content-type: text/xml');
 	$joomla_version = str_replace('Joomla', '', $package->package_name);
+	$minver = '1.5.1';
+	$curver = '1.5.1';
+	$updateurl = 'http://joomlacode.org/gf/project/pasamioprojects/frs/';
+	$message = '';
 	echo '<?xml version="1.0" ?>'."\n";
-	echo '<jupgrader release="'. $joomla_version .'">'."\n";
+	echo '<update release="'. $joomla_version .'">'."\n";
+	echo '<message>'. $message .'</message>'."\n";
+	echo '<updater minimumversion="'. $minver .'" currentversion="'. $curver .'">'. $updateurl .'</updater>'."\n";
 	$releases = $client->getFrsReleases($package->frs_package_id);
 	
 	foreach($releases as $release) {
@@ -49,9 +55,9 @@ if($last) {
 			if(substr($file->file_name, -6) == 'tar.gz') {
 				if($update) {
 					$version_parts = explode('_', $file->file_name);
-					echo "\t".'<patchpackage version="'. $version_parts[1] .'" url="http://joomlacode.org'. $file->download_url.'" filename="'. $file->file_name_safe .'" filesize="'. $file->file_size .'" />'."\n";	
+					echo "\t".'<patchpackage version="'. $version_parts[1] .'" url="http://joomlacode.org'. $file->download_url.'" filename="'. $file->file_name_safe .'" filesize="'. $file->file_size .'" md5="'. $file->md5_hash .'" />'."\n";	
 				} else {
-					echo '<fullpackage url="http://joomlacode.org'. $file->download_url .'" filename="'. $file->file_name_safe.'" filesize="'. $file->file_size .'" />'."\n";
+					echo '<fullpackage url="http://joomlacode.org'. $file->download_url .'" filename="'. $file->file_name_safe.'" filesize="'. $file->file_size .'" md5="'. $file->md5_hash .'" />'."\n";
 				}
 			}
 		}
@@ -59,7 +65,7 @@ if($last) {
 			echo  '</patches>'."\n";
 		}
 	}
-	echo '</jupgrader>'."\n";
+	echo '</update>'."\n";
 } else {
 	echo 'Failed to find a valid package';
 }
