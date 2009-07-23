@@ -9,11 +9,6 @@
 	<authorUrl>pasamio.id.au</authorUrl>
 	<version>1.5.1</version>
 	<description>This component automates updating a remote Joomla! installation</description>
-	<params />
-	<install />
-	<uninstall />
-	<installfile />
-	<uninstallfile />
 	<administration>
 		<menu>Update Manager</menu>
 		<files folder="admin">
