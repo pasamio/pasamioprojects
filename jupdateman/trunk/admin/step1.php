@@ -56,7 +56,7 @@ if ($root->name() != 'update') {
 $rootattributes = $root->attributes();
 $latest = $rootattributes['release'];
 if($latest == $version) {
-	echo "<p>No updates were found.</p><br /><br /><p>Please check again later or watch <a href='http://www.joomla.org' target='_blank'>www.joomla.org</a></p>";
+	echo "<p>No updates were found. <a href='index.php?option=com_jupdateman&task=step2&target=full'>Force full update &gt;&gt;&gt;</a></p><br /><br /><p>Please check again later or watch <a href='http://www.joomla.org' target='_blank'>www.joomla.org</a></p>";
 	echo '</div>';
 	return true;
 } elseif(version_compare($latest, $version, '<')) {
@@ -121,6 +121,13 @@ if (!is_null( $patches_root ) ) {
 	}
 }
 
+$message_element = $root->getElementByPath('message');
+if($message_element) {
+	$message = $message_element->data();
+	if(strlen($message)) {
+		echo '<p style="background: lightblue; padding: 5px; spacing: 5px; border: 1px solid black;"><b>Update Message:</b><br /> '. $message.'</p>';
+	}
+}
 $session->set('jupdateman_fullpackage', $fulldetails);
 $session->set('jupdateman_patchpackage', $patchdetails);
 ?>

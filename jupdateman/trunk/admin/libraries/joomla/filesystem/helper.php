@@ -145,10 +145,24 @@ class JFilesystemHelper {
 	/**
 	 * Returns a list of J! streams
 	 */
-	function getJStreams() {
-		static $streams;
-		if(!$streams) {
-			$streams = array_map(array('JFile','stripExt'),JFolder::files(dirname(__FILE__).DS.'streams','.php'));	
+	function getJStreams() 
+	{
+		static $streams = null;
+		if(!$streams) 
+		{
+			// Check that the directory exists first else empty array
+			if(file_exists(dirname(__FILE__).DS.'streams')) 
+			{
+				// Look for files and run a map; else 
+				$streams = JFolder::files(dirname(__FILE__).DS.'streams','.php');
+				if(is_array($streams)) {
+					$streams = array_map(array('JFile','stripExt'),$streams);
+				} else {
+					$streams = array();
+				}
+			} else {
+				$streams = array();
+			}	
 		}
 		return $streams;
 	}
