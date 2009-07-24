@@ -25,9 +25,18 @@ defined('_JEXEC') or die('Restricted access'); ?>
 				<li>Download the package file and display customary 'Are you sure?' message</li>			
 				<li>Completed message</li>
 			</ol>
-			<br>
-			So lets continue our travels and <a href="index.php?option=com_jupdateman&task=step1">download the update file &gt;&gt;&gt;</a>
 		</p>
+		<?php if($this->http_support || $this->curl_support) : ?>	
+			<?php if(!$this->http_support && $this->current_method == JUPDATEMAN_DLMETHOD_FOPEN) : ?>
+				<p style="font-weight:bold; color: red;">Note: You have fopen selected but your server doesn't appear to support this method. Try selecting cURL instead.</p>
+			<?php endif; ?>
+			<?php if(!$this->curl_support && $this->current_method == JUPDATEMAN_DLMETHOD_CURL): ?>
+				<p style="font-weight:bold; color: red;">Note: You have selected curl but your server doesn't appear to support this method. Try selecting fopen instead.</p>
+			<?php endif; ?>
+			<p>So lets continue our travels and <a href="index.php?option=com_jupdateman&task=step1">download the update file &gt;&gt;&gt;</a></p>
+		<?php else: ?>
+			<p>Your Joomla! instance doesn't support cURL or fopen HTTP wrappers. This tool cannot be used unless you have either of these features.</p>
+		<?php endif; ?>
 		</div>
 		<!--
 <form action="index.php" method="post" name="adminForm">
