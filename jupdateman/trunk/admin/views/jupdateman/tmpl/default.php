@@ -19,13 +19,18 @@ defined('_JEXEC') or die('Restricted access'); ?>
 	<div align="left">
 		<p>Welcome to the Joomla! Update Manager component. My job is to guide you through upgrading your Joomla! installation.</p>
 		<p>If you have a proxy server you will need to enter your details in the preference screen.</p>
-		<p>This is a simple step by step process, which will hopefully be as simple as possible. This is:<br>
-			<ol>
-				<li>Download the Update XML File and select your package file.</li>
-				<li>Download the package file and display customary 'Are you sure?' message</li>			
-				<li>Completed message</li>
-			</ol>
-		</p>
+		<p>This is a simple step by step process, which will hopefully be as simple as possible. This is:</p>
+		<ol>
+			<li>Download the Update XML File and select your package file.</li>
+			<li>Download the package file and display customary 'Are you sure?' message</li>			
+			<li>Completed message</li>
+		</ol>
+		<?php if($this->calculated_tmp_path != $this->config_tmp_path) : ?>
+			<p style="font-weight:bold; color: orange;">Warning: Potentially invalid temporary path.<br /> 
+				Configured path: <span style="font-weight: bold; color: black"><?php echo $this->config_tmp_path ?></span><br />
+				Suggested path: <span style="font-weight: bold; color: black"><?php echo $this->calculated_tmp_path ?></span>
+			</p>
+		<?php endif; ?>
 		<?php if($this->http_support || $this->curl_support) : ?>	
 			<?php if(!$this->http_support && $this->current_method == JUPDATEMAN_DLMETHOD_FOPEN) : ?>
 				<p style="font-weight:bold; color: red;">Note: You have fopen selected but your server doesn't appear to support this method. Try selecting cURL instead.</p>
@@ -37,52 +42,4 @@ defined('_JEXEC') or die('Restricted access'); ?>
 		<?php else: ?>
 			<p>Your Joomla! instance doesn't support cURL or fopen HTTP wrappers. This tool cannot be used unless you have either of these features.</p>
 		<?php endif; ?>
-		</div>
-		<!--
-<form action="index.php" method="post" name="adminForm">
-<div id="editcell">
-    <table class="adminlist">
-    <thead>
-        <tr>
-            <th>
-                <?php echo JText::_( 'Library' ); ?>
-            </th>
-            <th>
-            	<?php echo JText::_( 'Version' ); ?>
-            </th>
-            <th>
-            	<?php echo JText::_( 'Package URL' ); ?>
-            </th>
-        </tr>            
-    </thead>
-    <?php
-    $k = 0;
-    for ($i=0, $n=count( $this->items ); $i < $n; $i++)
-    {
-        $row =& $this->items[$i];
-        ?>
-        <tr class="<?php echo "row$k"; ?>">
-
-            <td>
-                <a href="index.php?option=com_JUpdateMan&view=details&package=<?php echo $row->manifest_file ?>"><?php echo $row->name ?></a>
-            </td>
-            <td align="center">
-            	<?php echo $row->version; // $row->version[0]->data(); ?>
-            </td>
-            <td align="center">
-            	<a target="_blank" href="<?php echo $row->url ?>"><?php echo $row->url ?></a>
-            </td>
-        </tr>
-        <?php
-        $k = 1 - $k;
-    }
-    ?>
-    </table>
-</div>
-
-<input type="hidden" name="option" value="com_JUpdateMan" />
-<input type="hidden" name="task" value="" />
-<input type="hidden" name="boxchecked" value="0" />
-<input type="hidden" name="controller" value="JUpdateMan" />
-</form>
--->
+	</div>

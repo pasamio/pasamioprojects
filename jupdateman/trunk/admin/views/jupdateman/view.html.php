@@ -34,6 +34,11 @@ class JUpdateManViewJUpdateMan extends JView
 		JToolBarHelper::title( JText::_( 'Joomla! Update Manager' ), 'install.png' );
 		JToolBarHelper::preferences('com_jupdateman', '300');
 		$model =& $this->getModel();
+		$config =& JFactory::getConfig();
+		$config_tmp_path = rtrim($config->getValue('config.tmp_path'), '/');
+		$calculated_tmp_path = JPATH_ROOT . DS . 'tmp';
+		$this->assign('calculated_tmp_path', $calculated_tmp_path);
+		$this->assign('config_tmp_path', $config_tmp_path);
 		$params =& JComponentHelper::getParams('com_jupdateman');
 		$this->assign('current_method', $params->get('extractor'));
 		$this->assign('http_support', in_array('http', stream_get_wrappers()));
