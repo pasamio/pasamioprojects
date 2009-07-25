@@ -27,7 +27,7 @@ $cached_update = $params->get('cached_update', 0);
 
 if($cached_update) {
 	if(!file_exists($target)) {
-		HTML_jupgrader::showError( 'Missing update file. Please <a href="'. $url .'" target="_blank">download the update definition file</a> and put it into your temporary directory as "jupgrader.xml".');
+		HTML_jupgrader::showError( 'Missing update file. Please <a href="'. $url .'" target="_blank">download the update definition file</a> and put it into your temporary directory as "jupgrader.xml".<br />Target Path: '. $target);
 		return false;
 	}
 } else {
@@ -36,6 +36,10 @@ if($cached_update) {
 		HTML_jupgrader::showError( 'Download Failed: '. $result->message . '('. $result->number . ')' );
 		return false;
 	}
+}
+
+if(!file_exists($target)) {
+	HTML_jupgrader::showError( 'Update file does not exist: '. $target );
 }
 
 // Yay! file downloaded! Processing time :(
