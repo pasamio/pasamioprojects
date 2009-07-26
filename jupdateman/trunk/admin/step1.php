@@ -9,9 +9,7 @@ defined( '_JEXEC' ) or die( 'Direct Access to this location is not allowed.' );
 $v = new JVersion();
 $version = $v->getShortVersion();
 
-$url = "http://pasamio.id.au/packages/jupgrader.xml";
 $url = "http://jsitepoint.com/update/packages/joomla/update.xml";
-$url = "http://jsitepoint.com/update/packages/joomla/update2.xml";
 
 $config =& JFactory::getConfig();
 $tmp_path = $config->getValue('config.tmp_path');
@@ -81,7 +79,8 @@ $updater_attributes = $updater->attributes();
 $session =& JFactory::getSession();
 $session->set('jupdateman_updateurl', $updater->data());
 
-if(version_compare($updater_attributes['minimumversion'], getComponentVersion(), '>')) {
+if(version_compare($updater_attributes['minimumversion'], getComponentVersion(), '>')) 
+{
 	echo '<p>Current updater version is lower than minimum version for this update.</p>';
 	echo '<p>Please update this extension. This can be attempted automatically or you can download the update and install it yourself.</p>';
 	echo '<ul>';
@@ -89,6 +88,11 @@ if(version_compare($updater_attributes['minimumversion'], getComponentVersion(),
 	echo '<li><a target="_blank" href="'. $updater->data() .'">Download package and install manually (new window) &gt;&gt;&gt;</a></li>';
 	echo '</ul>';
 	return false;
+}
+
+if(version_compare($updater_attributes['currentversion'], getComponentVersion(), '>')) 
+{
+	echo '<p>An update ('. $updater_attributes['currentversion'] .') is available for this extension. You can <a href="index.php?option=com_jupdateman&task=autoupdate">update automatically</a> or <a target="_blank" href="'. $updater->data() .'">manually download</a> and install the update.</p>';
 }
 
 echo "<p>You are currently running $version. The latest release is currently $latest. Please select a download:</p>";
