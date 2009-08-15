@@ -6,7 +6,7 @@
 	<copyright>Sam Moffatt (http://pasamio.id.au)</copyright>
 	<authorEmail>pasamio@gmail.com</authorEmail>
 	<authorUrl>pasamio.id.au</authorUrl>
-	<version>1.5.4</version>
+	<version>1.5.5</version>
 	<description>This components handles basic diagnostic functions via a plugin architecture</description>
 	<administration>
 		<menu>JDiagnostic</menu>
@@ -21,6 +21,7 @@
 			<filename>tools/paramdumper/paramdumper.php</filename>			
 			<filename>diagnostics/ldapsettings/ldapsettings.php</filename>
 			<filename>diagnostics/ldapsettings/screens/auth.php</filename>
+			<filename>diagnostics/ldapsettings/screens/bind.php</filename>
 			<filename>diagnostics/ipchecker/net_ipv4.class.php</filename>
 			<filename>diagnostics/ipchecker/ipchecker.php</filename>
 			<filename>diagnostics/usersourcechecker/usersourcechecker.php</filename>

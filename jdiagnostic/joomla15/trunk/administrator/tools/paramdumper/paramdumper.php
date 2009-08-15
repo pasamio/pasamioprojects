@@ -34,7 +34,7 @@ function buildTableList() {
 	$validtables[] = Array('value'=>'Select Table');
 	foreach ($tables as $tn) {
 		// make sure we get the right tables based on prefix
-		if (!preg_match( "/^".$config->get('dbprefix')."/i", $tn )) {
+		if (!preg_match( "/^".$config->getValue('config.dbprefix')."/i", $tn )) {
 			continue;
 		}
 		$fields = $db->getTableFields( $tn );

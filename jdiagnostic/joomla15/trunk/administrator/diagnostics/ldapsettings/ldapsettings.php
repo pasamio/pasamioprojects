@@ -41,6 +41,7 @@ if($panel && file_exists(dirname(__FILE__).'/screens/'. $panel .'.php')) {
 <p>Please select a diagnostic:</p>
 <p>	<select name="screen">
 		<option value="auth">Authentication Test</option>
+		<option value="bind">Connection and Bind Test</option>
 	</select></p>
 <p><input type="submit" value="Proceed >>"></p>
 </form>

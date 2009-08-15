@@ -3,6 +3,7 @@
 	<name>jdiagnostic</name>
 	<comment></comment>
 	<projects>
+		<project>joomla_15</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
