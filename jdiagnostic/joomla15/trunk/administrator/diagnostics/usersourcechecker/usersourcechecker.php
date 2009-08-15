@@ -44,7 +44,7 @@ class JAuthUserSourceChecker extends JObservable {
 		foreach ($plugins as $plugin) {
 			$className = 'plg' . $plugin->type . $plugin->name;
 			if (class_exists($className)) {
-				$plugin = new $className ($this);
+				$plugin = new $className ($this, (array)$plugin);
 			} else {
 				JError :: raiseWarning('SOME_ERROR_CODE', 'JAuthUserSource::doUserCreation: Could not load ' . $className);
 				continue;
