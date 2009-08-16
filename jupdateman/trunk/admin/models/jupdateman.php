@@ -24,6 +24,8 @@ jimport( 'joomla.filesystem.file');
 jimport( 'joomla.filesystem.folder');
 jimport( 'joomla.installer.helper');
 jimport( 'joomla.installer.installer');
+jimport( 'joomla.client.helper');
+jimport( 'joomla.client.ftp');
 
 /**
  * Main Model
@@ -177,6 +179,86 @@ class JUpdateManModelJUpdateMan extends JModel
 		$update->patchpackage = clone($patchdetails);
 		$updates[$filename] = clone($update); // keep an original copy
 		return $update;
+	}
+	
+	function getDiagnostics() {
+		$diagnostics = Array();
+		$config =& JFactory::getConfig();
+		$params =& JComponentHelper::getParams('com_jupdateman');
+		
+		// Check to see if FTP mode is enabled and configured correctly
+		$FTPOptions = JClientHelper::getCredentials('ftp');
+		if($FTPOptions['enabled'] == 1)
+		{
+			if($FTPOptions['root'][0] != '/')
+			{
+				// So the item isn't prefixed properly, this will cause an error
+				$message 	  = JText::_('INCORRECT_FTP_PATH_MESSAGE');
+				$description  = JText::_('INCORRECT_FTP_PATH_DESC');
+				$ftp = new JFTP();
+				if($ftp->connect($FTPOptions['host'], $FTPOptions['port']))
+				{
+					if($ftp->login($FTPOptions['user'], $FTPOptions['pass'])) {
+						$pwd = $ftp->pwd();
+						if(strlen($pwd) > 1) {
+							$suggested_pwd = $pwd.'/'.$FTPOptions['root'];
+						} else {
+							$suggested_pwd = '/'. $FTPOptions['root'];
+						}
+						$description .= '<br />'.JText::sprintf('INCORRECT_FTP_PATH_CURRENT', $FTPOptions['root']);
+						$description .= '<br />'.JText::sprintf('INCORRECT_FTP_PATH_SUGGESTED', $suggested_pwd); 
+					} else {
+						$description .= '<br />'.JText::_('INCORRECT_FTP_PATH_LOGIN_FAILURE');
+					}
+				} else {
+					$description .= '<br />'.JText::_('INCORRECT_FTP_PATH_CONNECT_FAILURE');
+				}
+				
+				$diagnostics[] = Array('message'=>$message, 'description'=>$description);
+			}
+		}
+		
+		// Temporary Path Check
+		$config_tmp_path = rtrim($config->getValue('config.tmp_path'), '/');
+		$calculated_tmp_path = JPATH_ROOT . DS . 'tmp';
+		if($calculated_tmp_path != $config_tmp_path)
+		{
+			$message = JText::_('INVALID_TEMP_PATH_MESSAGE');
+			$description  = JText::_('INVALID_TEMP_PATH_DESC');
+			$description .= '<br />'.JText::sprintf('INVALID_TEMP_PATH_CONFIGURED_PATH', $config_tmp_path); 
+			$description .= '<br />'.JText::sprintf('INVALID_TEMP_PATH_SUGGESTED_PATH', $calculated_tmp_path);
+			$diagnostics[] = Array('message'=>$message, 'description'=>$description);		
+		}
+		
+		// Check for download methods - fopen and curl
+		$current_method = $params->get('download_method');
+		$http_support = in_array('http', stream_get_wrappers());
+		$curl_support = function_exists('curl_init');
+		if(!$http_support && !$curl_support) 
+		{
+			$message = JText::_('UNAVAILABLE_METHOD_MESSAGE');
+			$description = JText::_('UNAVAILABLE_METHOD_ALL_DESC');
+			$diagnostics[] = Array('message'=>$message, 'description'=>$description);
+		} 
+		else
+		{
+			// is there http support and are we thinking about trying to use it?
+			if(!$http_support && $current_method == JUPDATEMAN_DLMETHOD_FOPEN)
+			{
+				$message = JText::_('UNAVAILABLE_METHOD_MESSAGE');
+				$description = JText::_('UNAVAILABLE_METHOD_FOPEN_DESC');
+				$diagnostics[] = Array('message'=>$message, 'description'=>$description);
+			}
+			// is there curl support and are we thinking about trying to use it?
+			if(!$curl_support && $current_method == JUPDATEMAN_DLMETHOD_CURL)
+			{
+				$message = JTEXT::_('UNAVAILABLE_METHOD_MESSAGE');
+				$description = JText::_('UNAVAILABLE_METHOD_CURL_DESC');
+				$diagnostics[] = Array('message'=>$message, 'description'=>$description);
+			}
+		}
+		
+		return $diagnostics;
 	}
 }
 

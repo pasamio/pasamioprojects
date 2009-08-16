@@ -31,7 +31,7 @@ class JUpdateManViewJUpdateMan extends JView
 {
 	function display($tpl = null)
 	{
-		JToolBarHelper::title( JText::_( 'Joomla! Update Manager' ), 'install.png' );
+		JToolBarHelper::title( JText::_( 'UPDATEMANAGER' ), 'install.png' );
 		JToolBarHelper::preferences('com_jupdateman', '300');
 		$model =& $this->getModel();
 		$config =& JFactory::getConfig();
@@ -40,6 +40,11 @@ class JUpdateManViewJUpdateMan extends JView
 		$this->assign('calculated_tmp_path', $calculated_tmp_path);
 		$this->assign('config_tmp_path', $config_tmp_path);
 		$params =& JComponentHelper::getParams('com_jupdateman');
+		$warnings = count($model->getDiagnostics());
+		if($warnings) { // ascii embedded messages!
+			JError::raiseWarning(0x506965, JText::sprintf('COM_JUPDATEMAN_JUPDATEMAN_WARNINGS', $warnings));
+		}
+		$this->assign('warnings', count($model->getDiagnostics()));
 		$this->assign('current_method', $params->get('extractor'));
 		$this->assign('http_support', in_array('http', stream_get_wrappers()));
 		$this->assign('curl_support', function_exists('curl_init'));

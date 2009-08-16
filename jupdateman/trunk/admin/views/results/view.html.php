@@ -31,7 +31,7 @@ class JUpdateManViewResults extends JView
 {	
     function display($tpl = null)
     {
-    	JToolBarHelper::title( JText::_( 'Joomla! Update Manager' ), 'install.png' );
+    	JToolBarHelper::title( JText::_( 'Update Manager for Joomla!' ), 'install.png' );
         $model =& $this->getModel();
         $this->assign('message', $model->getState('message'));
         $this->assign('extension_message', $model->getState('extension.message'));

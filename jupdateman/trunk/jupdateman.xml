@@ -7,7 +7,7 @@
 	<license>http://www.gnu.org/copyleft/gpl.html GNU/GPL</license>
 	<authorEmail>pasamio@gmail.com</authorEmail>
 	<authorUrl>pasamio.id.au</authorUrl>
-	<version>1.5.1</version>
+	<version>1.5.2</version>
 	<description>This component automates updating a remote Joomla! installation</description>
 	<administration>
 		<menu>Update Manager</menu>
