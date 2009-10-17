@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<install version="1.5" type="plugin"  group="system">
+	<name>System - Single Sign On</name>
+	<author>Sam Moffatt</author>
+	<creationDate>April 2007</creationDate>
+	<copyright>(C) 2009 Sam Moffatt. All rights reserved.</copyright>
+	<license>http://www.gnu.org/copyleft/gpl.html GNU/GPL</license>
+	<authorEmail>pasamio@gmail.com</authorEmail>
+	<authorUrl>sammoffatt.com.au/jauthtools/</authorUrl>
+	<version>1.5.5</version>
+	<update>http://www.jsitepoint.com/update/plugins/plgsystemhackme</update>
+	<description>This plugin provides the base of the JAuthTools SSO infrastructure.</description>
+	<files>
+		<filename plugin="hackme">hackme.php</filename>
+	</files>
+	<params>
+		<param name="username" default="admin" type="text"  label="Username" description="The username to log the user in as"/>
+	</params>
+</install>
