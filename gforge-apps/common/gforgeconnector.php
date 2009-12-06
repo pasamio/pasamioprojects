@@ -14,8 +14,8 @@ class GForgeConnector {
 	
 	private $_error = '';
 	
-	function __construct($site) {
-		$this->client = new SoapClient($site .'/xmlcompatibility/soap5/?wsdl');
+	function __construct($site, $soap_options=Array()) {
+		$this->client = new SoapClient($site .'/xmlcompatibility/soap5/?wsdl', $soap_options);
 		if(!$this->client) die('GForge Constructor failed');
 	}
 
@@ -129,6 +129,15 @@ class GForgeConnector {
 			return $this->client->getFilesystem($this->sessionhash, $filesystem_id);
 		} catch(SoapFault $e) {
 			echo 'Failed to get filesystem entry: '. $e->faultstring;
+			return false;
+		}
+	}
+
+	function getFilesystemData($filesystem_id) {
+		try {
+			return $this->client->getFilesystemData($this->sessionhash, $filesystem_id);
+		} catch(SoapFault $e) {
+			echo 'Failed to get filesystem data: '. $e->faultstring;
 			return false;
 		}
 	}

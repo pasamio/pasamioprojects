@@ -2,7 +2,7 @@
 include(dirname(__FILE__).'/../common/user_config.php');
 include(dirname(__FILE__).'/../common/gforgeconnector.php');
 $config = new Config();
-$client = new GForgeConnector($config->site);
+$client = new GForgeConnector($config->site, $config->soap_options);
 $client->login($config->username, $config->password);
 //$user = $client->getUser();
 $project = $client->getProject('joomla');
@@ -37,10 +37,10 @@ if($last) {
 	$minver = '1.5.1';
 	$curver = '1.5.1';
 	$updateurl = 'http://joomlacode.org/gf/project/pasamioprojects/frs/';
-	$message = '';
+	$message = @file_get_contents('message');
 	echo '<?xml version="1.0" ?>'."\n";
 	echo '<update release="'. $joomla_version .'">'."\n";
-	echo '<message>'. $message .'</message>'."\n";
+	echo '<message>'. htmlspecialchars($message) .'</message>'."\n";
 	echo '<updater minimumversion="'. $minver .'" currentversion="'. $curver .'">'. $updateurl .'</updater>'."\n";
 	$releases = $client->getFrsReleases($package->frs_package_id);
 	
