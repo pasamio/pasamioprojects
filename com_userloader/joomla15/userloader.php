@@ -20,14 +20,14 @@ switch($task) {
 }
 
 function loadUsers() {
-	echo 'Load Users';
+	JToolbarHelper::title('User Loader - Loading Users');
 	$users_text = JRequest::getVar('users',null);
 	if(!$users_text) {
 		echo 'No users specified!';
 		return;
 	}
 	$users = explode("\n", $users_text);
-	$sendmail = JRequest::get('sendmail', false);
+	$sendmail = JRequest::getVar('sendmail', false);
 	// Pull the user language
 	$lang =& JFactory::getLanguage();
 	$lang->load('com_user');
@@ -81,24 +81,37 @@ function loadUsers() {
 		}
 	}
 	echo '<b>Done.</b></div>';
+	echo '<p><a href="index.php?option=com_userloader">Load more users?</a></p>';
 }
 
 function getGroupIdFromName($name) {
-	$database =& JFactory::getDBO();
-	$database->setQuery("SELECT id FROM #__core_acl_aro_groups WHERE name = '$name'");	
-	$result = $database->loadResult() ;
-	if(!$result) {
-		return 18;
+	static $cache = null;
+	if(empty($cache)) {
+		$cache = Array();
 	}
-	return $result;
+
+	if(!array_key_exists($name, $cache)) {
+		$database =& JFactory::getDBO();
+		$database->setQuery("SELECT id FROM #__core_acl_aro_groups WHERE name = '$name'");	
+		$result = $database->loadResult() ;
+		if(!$result) {
+			$cache[$name] = 18;
+		} else {
+			$cache[$name] = $result;
+		}
+	}
+	return $cache[$name];
 }
 
 function displayMessage() {
-	echo 'User Loader';
-	echo '<form action="index.php?option=com_userloader&task=load" method="post">';
-	echo '<table><tr><td valign="top">Users:</td><td><textarea cols="100" rows="10" name="users" id="users"></textarea></td></tr>';
-	echo '<tr><td colspan="2"><input type="checkbox" name="sendmail" />Send Emails</td></tr>';
-	echo '<tr><td colspan="2"><input type="submit" value="Load Users" /></td></tr></table>';
+	JToolbarHelper::title('User Loader');
+	?>
+	<p>Input Format: Full Name,Username,Email Address,Group Name,Password</p>
+	<form action="index.php?option=com_userloader&task=load" method="post">
+	<table><tr><td valign="top">Users:</td><td><textarea cols="100" rows="10" name="users" id="users"></textarea></td></tr>
+	<tr><td colspan="2"><input type="checkbox" name="sendmail" />Send Emails</td></tr>
+	<tr><td colspan="2"><input type="submit" value="Load Users" /></td></tr></table>
+	<?php
 }
 
 
