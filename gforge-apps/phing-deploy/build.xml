@@ -17,7 +17,7 @@
 		<zip destfile="packages/migrator.zip" basedir="migrator" />
 	</target>
 
-	<target name="deploy"> <!-- depends="build">-->
+	<target name="deploy" depends="build">
 		<gforgedeploy filename="packages/migrator.zip" frsreleaseid="11606" username="${gf.username}" password="${gf.password}" site="${gf.site}"  />
 	</target>	
 </project>
