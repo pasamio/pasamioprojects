@@ -16,6 +16,8 @@
  * @version SVN: $Id:$
  * @see JoomlaCode Project: http://joomlacode.org/gf/project/pasamioproject
  */
+ 
+defined('_JEXEC') or die(); 
 
 $msg = '';
 $ldap = null;

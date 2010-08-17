@@ -81,14 +81,24 @@ function displayDefault() {
 }
 
 function doTool() {
-	$tool = JRequest::getVar('tool', '');
-	if(!$tool) die('Invalid tool');
-	require_once(toolsPath().$tool.'/'.$tool.'.php');
+	$tool = JRequest::getCMD('tool', '');
+	if(!$tool) echo('<p>Invalid tool</p>');
+	$filename = toolsPath().$tool.'/'.$tool.'.php';
+	if(file_exists($filename)) {
+		require_once($filename);	
+	} else {
+		echo '<p>Invalid Tool</p>';	
+	}
 }
 
 function doDiagnostic() {
-	$diag = JRequest::getVar('diag', '');
-	if(!$diag) die('Invalid Diagnostic');
-	require_once(diagnosticPath().$diag.'/'.$diag.'.php');
+	$diag = JRequest::getCMD('diag', '');
+	if(!$diag) echo('<p>Invalid Diagnostic</p>');
+	$filename = diagnosticPath().$diag.'/'.$diag.'.php';
+	if(file_exists($filename)) {
+			require_once($filename);	
+	} else {
+		echo '<p>Invalid diagnostic</p>';	
+	}
 }
-?>
+

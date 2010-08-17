@@ -1,5 +1,7 @@
 <?php
 
+defined('_JEXEC') or die();
+
 $dbo =& JFactory::getDBO();
 $dbo->setQuery('SELECT params FROM #__plugins WHERE folder = "authentication" AND element = "ldap"');
 $paramstring = $dbo->loadResult() or die($dbo->getErrorMsg());

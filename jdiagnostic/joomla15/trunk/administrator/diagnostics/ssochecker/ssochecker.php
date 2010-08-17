@@ -19,6 +19,7 @@
  * @see JoomlaCode Project: http://joomlacode.org/gf/project/
  */
 
+defined('_JEXEC') or die();
 
 class SSOChecker extends JObservable {
 	function __construct() {

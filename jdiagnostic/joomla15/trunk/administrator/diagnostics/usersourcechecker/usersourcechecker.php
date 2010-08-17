@@ -1,23 +1,22 @@
 <?php
 /**
- * Document Description
+ * User Source Checker
  * 
- * Document Long Description 
+ * Accepts a username to work out what their user is
  * 
  * PHP4/5
  *  
  * Created on Mar 28, 2008
  * 
- * @package package_name
- * @author Your Name <author@toowoombarc.qld.gov.au>
- * @author Toowoomba Regional Council Information Management Branch
+ * @package JDiagnostic
+ * @subpackage User Source Checker
+ * @author Sam Moffatt <pasamio@gmail.com>
  * @license GNU/GPL http://www.gnu.org/licenses/gpl.html
- * @copyright 2008 Toowoomba Regional Council/Sam Moffatt 
+ * @copyright 2009 Sam Moffatt 
  * @version SVN: $Id:$
- * @see Project Documentation DM Number: #???????
- * @see Gaza Documentation: http://gaza.toowoomba.qld.gov.au
- * @see JoomlaCode Project: http://joomlacode.org/gf/project/
  */
+ 
+defined('_JEXEC') or die();
 
 class JAuthUserSourceChecker extends JObservable {
 
@@ -101,3 +100,4 @@ if(strlen($username)) {
 		<?php
 	}
 }
+

@@ -19,6 +19,8 @@
  * @see JoomlaCode Project: http://joomlacode.org/gf/project/
  */
 
+defined('_JEXEC') or die();
+
 // register and import helper libraries we want to use
 JLoader::register('JAuthenticationResponse', JPATH_LIBRARIES.DS.'joomla'.DS.'user'.DS.'authentication.php');
 

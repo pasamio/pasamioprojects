@@ -16,6 +16,8 @@
  * @version SVN: $Id:$
  * @see JoomlaCode Project: http://joomlacode.org/gf/project/pasamioproject
  */
+ 
+defined('_JEXEC') or die(); 
 
 if (!function_exists('ldap_connect')) {
 	die('LDAP: authentication (crit) PHP LDAP Library not detected');

@@ -18,6 +18,8 @@
  * @see Gaza Documentation: http://gaza.toowoomba.qld.gov.au
  * @see JoomlaCode Project: http://joomlacode.org/gf/project/
  */
+
+defined('_JEXEC') or die(); 
  
 require('net_ipv4.class.php');
 $entries = JRequest::getVar('entries','');
