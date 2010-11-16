@@ -34,7 +34,9 @@ class GForgeConnector {
 			$this->sessionhash = $sessionhash;
 			return true;
 		} catch(SoapFault $e) {
-			die('Login Failed: '. $e->faultstring . "\n");
+			echo 'Login Failed: '. $e->faultstring . "\n";
+			$this->_error = $e->faultstring;
+			return false;
 		}	
 	}
 	
@@ -44,6 +46,7 @@ class GForgeConnector {
 			return $user;
 		} catch(SoapFault $e) {
 			echo 'Failed to get user: '. $e->faultstring;
+			$this->_error = $e->faultstring;
 			return false;
 		}
 	}
@@ -55,6 +58,7 @@ class GForgeConnector {
 			return $projects;
 		} catch (SoapFault $e) {
 			echo 'Operation failed: '. $e->faultstring;
+			$this->_error = $e->faultstring;
 			return false;
 		}
 	}
@@ -65,6 +69,7 @@ class GForgeConnector {
 			return $project;
 		} catch(SoapFault $e) {
 			echo 'Failed to get project: '. $e->faultstring;
+			$this->_error = $e->faultstring;
 			return false;
 		}
 	}
@@ -74,6 +79,7 @@ class GForgeConnector {
 			return $this->client->getFrsPackages($this->sessionhash, $project_id);
 		} catch(SoapFault $e) {
 			echo 'Failed to get FRS packages: '. $e->faultstring;
+			$this->_error = $e->faultstring;
 			return false;
 		}
 	}
@@ -83,6 +89,7 @@ class GForgeConnector {
 			return $this->client->addFrsPackage($this->sessionhash, $project_id, $package_name, $status_id, $is_public, $require_login);
 		} catch(SoapFault $e) {
 			echo 'Failed to add FRS package: '. $e->faultstring;
+			$this->_error = $e->faultstring;
 			return false;
 		}
 	}
@@ -92,6 +99,7 @@ class GForgeConnector {
 			return $this->client->getFrsReleases($this->sessionhash, $frs_package_id, $released_by);
 		} catch(SoapFault $e) {
 			echo 'Failed to get releases: '. $e->faultstring;
+			$this->_error = $e->faultstring;
 			return false;
 		}
 	}
@@ -101,6 +109,7 @@ class GForgeConnector {
 			return $this->client->getFrsRelease($this->sessionhash, $frs_release_id);
 		} catch(SoapFault $e) {
 			echo 'Failed to get release: '. $e->faultstring;
+			$this->_error = $e->faultstring;
 			return false;
 		}
 	}
@@ -112,6 +121,7 @@ class GForgeConnector {
 			return $this->client->addFrsRelease($this->sessionhash, $frs_package_id, $release_name, $release_notes, $changes, $status_id, $preformatted, $release_date, $is_released);
 		} catch(SoapFault $e) {
 			echo 'Failed to add release: '. $e->faultstring;
+			$this->_error = $e->faultstring;
 			return false;
 		}
 	}
@@ -121,6 +131,7 @@ class GForgeConnector {
 			return $this->client->addFilesystem($this->sessionhash, $section, $ref_id, $file_name, $file_type, $data);
 		} catch(SoapFault $e) {
 			echo 'Failed to add filesystem entry: '. $e->faultstring;
+			$this->_error = $e->faultstring;
 			return false;
 		}	
 	}
@@ -130,6 +141,7 @@ class GForgeConnector {
 			return $this->client->getFilesystem($this->sessionhash, $filesystem_id);
 		} catch(SoapFault $e) {
 			echo 'Failed to get filesystem entry: '. $e->faultstring;
+			$this->_error = $e->faultstring;
 			return false;
 		}
 	}
@@ -139,6 +151,7 @@ class GForgeConnector {
 			return $this->client->getFilesystemData($this->sessionhash, $filesystem_id);
 		} catch(SoapFault $e) {
 			echo 'Failed to get filesystem data: '. $e->faultstring;
+			$this->_error = $e->faultstring;
 			return false;
 		}
 	}
@@ -148,6 +161,7 @@ class GForgeConnector {
 			return $this->client->getFilesystems($this->sessionhash, $section, $ref_id);
 		} catch(SoapFault $e) {
 			echo 'Failed to get filesystems entry: '. $e->faultstring;
+			$this->_error = $e->faultstring;
 			return false;
 		}
 	}
@@ -157,11 +171,13 @@ class GForgeConnector {
 			$this->client->logout($this->sessionhash);
 		} catch (SoapFault $e) {
 			echo ('Logout Failed: '. $e->faultstring);
+			$this->_error = $e->faultstring;
+			return false;
 		}
 	}
 
 	function getError()
 	{
-		return '';
+		return $this->_error;
 	}
 }
