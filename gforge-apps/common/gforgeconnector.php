@@ -16,7 +16,8 @@ class GForgeConnector {
 	
 	function __construct($site, $soap_options=Array()) {
 		$this->client = new SoapClient($site .'/xmlcompatibility/soap5/?wsdl', $soap_options);
-		if(!$this->client) die('GForge Constructor failed');
+		//$this->client = new SoapClient(dirname(__FILE__).'/joomlacode.wsdl', $soap_options);
+		if(!$this->client) die("GForge Constructor failed\n");
 	}
 
 	/**
@@ -33,7 +34,7 @@ class GForgeConnector {
 			$this->sessionhash = $sessionhash;
 			return true;
 		} catch(SoapFault $e) {
-			die('Login Failed: '. $e->faultstring);
+			die('Login Failed: '. $e->faultstring . "\n");
 		}	
 	}
 	
@@ -157,5 +158,10 @@ class GForgeConnector {
 		} catch (SoapFault $e) {
 			echo ('Logout Failed: '. $e->faultstring);
 		}
+	}
+
+	function getError()
+	{
+		return '';
 	}
 }
