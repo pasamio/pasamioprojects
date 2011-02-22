@@ -39,6 +39,7 @@ class AuthTester extends JObservable {
 	function validateUser($username,$password) {
 		$plugins = JPluginHelper :: getPlugin('authentication');
 		$results = Array();
+		$version = new JVersion;
 		foreach ($plugins as $plugin) {
 			$className = 'plg' . $plugin->type . $plugin->name;
 			if (class_exists($className)) {
@@ -49,7 +50,12 @@ class AuthTester extends JObservable {
 			}
 			$response = new JAuthenticationResponse();
 			// Try to authenticate remote user
-			$result = $plugin->onAuthenticate(Array('username'=>$username,'password'=>$password), Array(), $response);
+			if($version->RELEASE == '1.5')
+			{
+				$result = $plugin->onAuthenticate(Array('username'=>$username,'password'=>$password), Array(), $response);
+			} else {
+				$result = $plugin->onUserAuthenticate(Array('username'=>$username,'password'=>$password), Array(), $response);
+			}
 			$results[] = Array('plugin'=>$className, 'result'=>intval($result), 'response'=>clone($response));
 		}
 		return $results;

@@ -37,7 +37,13 @@ class LDAPTester extends JObservable {
 		if (class_exists( $className )) {
 			$plugin = new $className($this, (array)$plugin);
 		}
-		$plugin->onAuthenticate(Array('username'=>$username,'password'=>$password), Array(), $response);
+		$version = new JVersion;
+		if($version->RELEASE == '1.5')
+		{
+			$plugin->onAuthenticate(Array('username'=>$username,'password'=>$password), Array(), $response);
+		} else {
+			$plugin->onUserAuthenticate(Array('username'=>$username,'password'=>$password), Array(), $response);
+		}
 		return $response;
 	}
 }

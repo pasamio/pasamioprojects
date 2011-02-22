@@ -148,32 +148,41 @@ function testBind() {
 
 function saveConfig() {
 	$database =& JFactory::getDBO();
-	$config = 'useglobal=0'."\n".
-'host='.JRequest::getVar('host','')."\n".
-'port='.JRequest::getVar('port',389)."\n".
-'use_ldapV3='.JRequest::getVar('use_ldapV3',1)."\n".
-'negotiate_tls='.JRequest::getVar('negotiate_tls',0)."\n".
-'no_referrals='.JRequest::getVar('no_referrals','0')."\n".
-'autocreate='.JRequest::getVar('autocreate','1')."\n".
-'autocreateregistered='.JRequest::getVar('autocreateregistered','1')."\n".
-'defaultgroup='.JRequest::getVar('defaultgroup','registered')."\n".
-'forceldap='.JRequest::getVar('forceldap','0')."\n".
-'base_dn='.JRequest::getVar('base_dn')."\n".
-'search_dn='.JRequest::getVar('search_dn')."\n".
-'search_string='.JRequest::getVar('search_string')."\n".
-'auth_method='.JRequest::getVar('auth_method','search')."\n".
-'username='.JRequest::getVar('username')."\n".
-'password='.JRequest::getVar('password')."\n".
-'users_dn='.JRequest::getVar('users_dn')."\n".
-'ldap_fullname='.JRequest::getVar('ldap_fullname','displayName')."\n".
-'ldap_email='.JRequest::getVar('ldap_email','mail')."\n".
-'ldap_uid='.JRequest::getVar('ldap_uid','sAMAccountName')."\n".
-'ldap_password='.JRequest::getVar('ldap_password','userPassword')."\n".
-'ldap_blocked='.JRequest::getVar('ldap_blocked','loginDisabled')."\n".
-'ldap_groupname='.JRequest::getVar('ldap_groupname','memberOf')."\n".
-'cbconfirm='.JRequest::getVar('cbconfirm',0)."\n".
-'groupMap='.JRequest::getVar('groupMap','');
-	$database->setQuery('UPDATE #__plugins SET params = "'. $database->getEscaped($config).'", published = 1 WHERE element = "ldap" AND folder = "authentication"');
-	$database->Query();
+	jimport('joomla.registry.registry');
+	$config = new JRegistry();
+	$config->set('useglobal', '0');
+	$config->set('host', JRequest::getVar('host',''));
+	$config->set('port', JRequest::getVar('port',389));
+	$config->set('use_ldapV3', JRequest::getVar('use_ldapV3',1));
+	$config->set('negotiate_tls', JRequest::getVar('negotiate_tls',0));
+	$config->set('no_referrals', JRequest::getVar('no_referrals','0'));
+	$config->set('autocreate', JRequest::getVar('autocreate','1'));
+	$config->set('autocreateregistered', JRequest::getVar('autocreateregistered','1'));
+	$config->set('defaultgroup', JRequest::getVar('defaultgroup','registered'));
+	$config->set('forceldap', JRequest::getVar('forceldap','0'));
+	$config->set('base_dn', JRequest::getVar('base_dn'));
+	$config->set('search_dn', JRequest::getVar('search_dn'));
+	$config->set('search_string', JRequest::getVar('search_string'));
+	$config->set('auth_method', JRequest::getVar('auth_method','search'));
+	$config->set('username', JRequest::getVar('username'));
+	$config->set('password', JRequest::getVar('password'));
+	$config->set('users_dn', JRequest::getVar('users_dn'));
+	$config->set('ldap_fullname', JRequest::getVar('ldap_fullname','displayName'));
+	$config->set('ldap_email', JRequest::getVar('ldap_email','mail'));
+	$config->set('ldap_uid', JRequest::getVar('ldap_uid','sAMAccountName'));
+	$config->set('ldap_password', JRequest::getVar('ldap_password','userPassword'));
+	$config->set('ldap_blocked', JRequest::getVar('ldap_blocked','loginDisabled'));
+	$config->set('ldap_groupname', JRequest::getVar('ldap_groupname','memberOf'));
+	$config->set('cbconfirm', JRequest::getVar('cbconfirm',0));
+	$config->set('groupMap', JRequest::getVar('groupMap',''));
+	$config = $config->toString();
+	$version = new JVersion;
+	if($version->RELEASE == '1.5')
+	{
+		$database->setQuery('UPDATE #__plugins SET params = "'. $database->getEscaped($config).'", published = 1 WHERE element = "ldap" AND folder = "authentication"');
+	} else {
+		$database->setQuery('UPDATE #__extensions SET params = "'. $database->getEscaped($config).'", enabled = 1 WHERE element = "ldap" AND folder = "authentication" AND type="plugin"');
+	}
+	$database->Query() or die('Failed: '. $database->getErrorMsg());
 	return true;
 }
