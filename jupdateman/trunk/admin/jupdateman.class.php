@@ -85,7 +85,7 @@ function getComponentVersion()
 			$app->enqueueMessage('Fallback component version used!');
 			$warned = true;
 		}
-		return '1.5.1'; // fallback call
+		return '1.5.2'; // fallback call
 	}
 }
 

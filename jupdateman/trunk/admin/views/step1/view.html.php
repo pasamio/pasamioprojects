@@ -52,45 +52,7 @@ class JUpdateManViewStep1 extends JView
 		}
 		$rootattributes = $root->attributes();
 		$latest = $rootattributes['release'];
-		if($latest == $version) {
-			echo '<p>'. JText::_('NOUPDATESFOUND') .'</p>';
-			echo '</div>';
-			return true;
-		} elseif(version_compare($latest, $version, '<')) {
-			echo '<p>'. JText::_('GREATERVERSION') .'</p><br /><br />';
-			echo '<p>'. JText::_('RELEASEINFO') .'</p>';
-			echo '</div>';
-			return true;
-		}
 		
-		$updater = $root->getElementByPath('updater', 1);
-		if(!$updater) {
-			HTML_jupgrader::showError( JText::_('FAILED_TO_GET_UPDATER_ELEMENT' ) );
-			return false;
-		}
-		
-		$updater_attributes = $updater->attributes();
-		
-		$session =& JFactory::getSession();
-		$session->set('jupdateman_updateurl', $updater->data());
-		
-		if(version_compare($updater_attributes['minimumversion'], getComponentVersion(), '>')) 
-		{
-			echo '<p>Current updater version is lower than minimum version for this update.</p>';
-			echo '<p>Please update this extension. This can be attempted automatically or you can download the update and install it yourself.</p>';
-			echo '<ul>';
-			echo '<li><a href="index.php?option=com_jupdateman&task=autoupdate">Automatically update &gt;&gt;&gt;</a></li>';
-			echo '<li><a target="_blank" href="'. $updater->data() .'">Download package and install manually (new window) &gt;&gt;&gt;</a></li>';
-			echo '</ul>';
-			return false;
-		}
-		
-		if(version_compare($updater_attributes['currentversion'], getComponentVersion(), '>')) 
-		{
-			echo '<p>An update ('. $updater_attributes['currentversion'] .') is available for this extension. You can <a href="index.php?option=com_jupdateman&task=autoupdate">update automatically</a> or <a target="_blank" href="'. $updater->data() .'">manually download</a> and install the update.</p>';
-		}
-		
-		echo '<p>'. JText::sprintf('CURRENT_RUNNING_LATEST', $version, $latest) .'</p>';
 		$fulldownload = '';
 		$patchdownload = '';
 		
@@ -101,7 +63,9 @@ class JUpdateManViewStep1 extends JView
 		$fulldetails->url 			= $fullpackageattr['url'];
 		$fulldetails->filename 		= $fullpackageattr['filename'];
 		$fulldetails->filesize 		= $fullpackageattr['filesize'];
-		$fulldetails->md5			= $fullpackageattr['md5'];
+		$fulldetails->md5			= $fullpackageattr['md5'];		
+		
+		$patchdetails = new stdClass;
 		
 		// Find the patch package
 		$patches_root = $root->getElementByPath( 'patches', 1 );
@@ -123,6 +87,53 @@ class JUpdateManViewStep1 extends JView
 		
 			}
 		}
+
+		$session =& JFactory::getSession();
+		$session->set('jupdateman_fullpackage', $fulldetails);
+		$session->set('jupdateman_patchpackage', $patchdetails);
+		
+		
+				
+		
+		if($latest == $version) {
+			echo '<p>'. JText::_('NOUPDATESFOUND') .'</p>';
+			echo '</div>';
+			return true;
+		} elseif(version_compare($latest, $version, '<')) {
+			echo '<p>'. JText::_('GREATERVERSION') .'</p><br /><br />';
+			echo '<p>'. JText::_('RELEASEINFO') .'</p>';
+			echo '</div>';
+			return true;
+		}
+		
+		$updater = $root->getElementByPath('updater', 1);
+		if(!$updater) {
+			HTML_jupgrader::showError( JText::_('FAILED_TO_GET_UPDATER_ELEMENT' ) );
+			return false;
+		}
+		
+		$session->set('jupdateman_updateurl', $updater->data());		
+		
+		$updater_attributes = $updater->attributes();
+		
+		if(version_compare($updater_attributes['minimumversion'], getComponentVersion(), '>')) 
+		{
+			echo '<p>Current updater version is lower than minimum version for this update.</p>';
+			echo '<p>Please update this extension. This can be attempted automatically or you can download the update and install it yourself.</p>';
+			echo '<ul>';
+			echo '<li><a href="index.php?option=com_jupdateman&task=autoupdate">Automatically update &gt;&gt;&gt;</a></li>';
+			echo '<li><a target="_blank" href="'. $updater->data() .'">Download package and install manually (new window) &gt;&gt;&gt;</a></li>';
+			echo '</ul>';
+			return false;
+		}
+		
+		if(version_compare($updater_attributes['currentversion'], getComponentVersion(), '>')) 
+		{
+			echo '<p>An update ('. $updater_attributes['currentversion'] .') is available for this extension. You can <a href="index.php?option=com_jupdateman&task=autoupdate">update automatically</a> or <a target="_blank" href="'. $updater->data() .'">manually download</a> and install the update.</p>';
+		}
+		
+		echo '<p>'. JText::sprintf('CURRENT_RUNNING_LATEST', $version, $latest) .'</p>';
+
 		
 		$message_element = $root->getElementByPath('message');
 		if($message_element) {
@@ -131,8 +142,7 @@ class JUpdateManViewStep1 extends JView
 				echo '<p style="background: lightblue; padding: 5px; spacing: 5px; border: 1px solid black;"><b>'. JText::_('UPDATE_MESSAGE') .'</b><br /> '. $message.'</p>';
 			}
 		}
-		$session->set('jupdateman_fullpackage', $fulldetails);
-		$session->set('jupdateman_patchpackage', $patchdetails);
+
 		$this->assignRef('fulldetails', $fulldetails);
 		$this->assignRef('patchdetails', $patchdetails);
 		$this->assignRef('cached_update', $cached_update);

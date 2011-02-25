@@ -20,7 +20,7 @@ class JUpdateManViewStep2 extends JView
 		}
 		if(!is_object($details)) {
 			$app =& JFactory::getApplication();
-			$app->redirect('index.php?option=com_jupdateman&task=step1'); // back to step one if invalid session 
+			$app->redirect('index.php?option=com_jupdateman&task=step1&error=no_details'); // back to step one if invalid session 
 		}
 		$url  = $details->url;
 		$file = $details->filename;

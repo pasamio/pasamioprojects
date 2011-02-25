@@ -25,6 +25,7 @@
 		</files>
 		<languages folder="admin/language">
 			<language tag="en-GB">en-GB/en-GB.com_jupdateman.ini</language>
+			<language tag="en-GB">en-GB/en-GB.com_jupdateman.menu.ini</language>
 		</languages>
 	</administration>
 </install>
