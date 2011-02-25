@@ -65,7 +65,7 @@ class DownloaderFOpen extends JAdapterInstance {
 		$meta_data = stream_get_meta_data($input_handle);
 		foreach ($meta_data['wrapper_data'] as $wrapper_data)
 		{
-			if (substr($wrapper_data, 0, strlen("Content-Disposition")) == "Content-Disposition") {
+			if (is_string($wrapper_data) && substr($wrapper_data, 0, strlen("Content-Disposition")) == "Content-Disposition") {
 				$contentfilename = explode ("\"", $wrapper_data);
 				$target = $contentfilename[1];
 			}
