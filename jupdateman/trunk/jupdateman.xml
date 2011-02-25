@@ -23,8 +23,8 @@
 			<filename>jupdateman.css</filename>
 			<filename>config.xml</filename>
 		</files>
-		<language folder="admin/language">
+		<languages folder="admin/language">
 			<language tag="en-GB">en-GB/en-GB.com_jupdateman.ini</language>
-		</language>
+		</languages>
 	</administration>
 </install>
