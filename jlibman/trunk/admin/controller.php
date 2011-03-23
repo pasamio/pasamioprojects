@@ -43,6 +43,7 @@ class JLibManController extends JController
     }
 
     function uninstall() {
+	global $mainframe;
     	$model = $this->getModel('jlibman');
     	$lib = JRequest::getWord('library','');
     	if(strlen($lib)) {
