@@ -176,6 +176,54 @@ class GForgeConnector {
 		}
 	}
 
+	function getTrackers($projectId)
+	{
+		try {
+			return $this->client->getTrackers($this->sessionhash, $projectId, true, -1);
+		} catch (SoapFault $e) {
+			echo 'Failed to get Project Trackers: ' . $e->faultstring;
+			$this->_error = $e->faultstring;
+			return false;
+		}
+	}
+
+	function getTracker($trackerId)
+	{
+		try {
+			return $this->client->getTracker($this->sessionhash, $trackerId);
+		} catch (SoapFault $e) {
+			echo 'Failed to get tracker: ' . $e->faultstring;
+			$this->_error = $e->faultstring;
+			return false;
+		}
+	}
+
+	function getTrackerItems($trackerId)
+	{
+		try {
+			/*
+  <part name="sessionHash" type="xsd:string" />
+  <part name="tracker_id" type="xsd:int" />
+  <part name="tracker_item_id" type="xsd:int" />
+  <part name="status_id" type="xsd:int" />
+  <part name="priority" type="xsd:int" />
+  <part name="submitted_by" type="xsd:int" />
+  <part name="open_date" type="xsd:string" />
+  <part name="close_date" type="xsd:string" />
+  <part name="last_modified_date" type="xsd:string" />
+  <part name="last_modified_by" type="xsd:int" />
+  <part name="sort_order" type="xsd:int" />
+  <part name="parent_id" type="xsd:int" />
+  <part name="assignees" type="tns:ArrayOfInt" /></message>
+*/
+			return $this->client->getTrackerItemsFull($this->sessionhash, $trackerId, -1, -1, -1, -1, '', '', '', -1, -1, -1);
+		} catch (SoapFault $e) {
+			echo 'Failed to get tracker items: ' . $e->faultstring;
+			$this->_error = $e->faultstring;
+			return false;
+		}
+	}
+
 	function getError()
 	{
 		return $this->_error;
